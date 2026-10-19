@@ -83,8 +83,7 @@ export default function MethodologyPage() {
         </p>
         <p>
           Crypto.com and Kraken have no public per-market URL, so those rows link to the
-          product page. Superform links to its stocks listing: its vault addresses could not
-          be matched to our rows with confidence.
+          product page. Every other market links to its own vault, reserve or market page.
         </p>
         <p>
           The timestamp in the last column links to that pool&rsquo;s rate and TVL history on
@@ -152,6 +151,15 @@ export default function MethodologyPage() {
             loan-to-value. Aave reports a 5.5% liquidation bonus on its equity reserves; other
             venues express the same risk differently, and a single column would flatten
             distinctions that matter.
+          </li>
+          <li>
+            Superform&rsquo;s own app and DefiLlama disagree on its vault rates by roughly a
+            factor of 1.8 — on 19 Oct 2026 Superform showed 12.56% on superTSLA where
+            DefiLlama reported 22.98%, with both reporting the same deposits. The rate is sUP
+            emissions in both cases, so the gap is how that token is valued and annualised.
+            We publish DefiLlama&rsquo;s figure because it is the source we can read hourly,
+            which means our highest headline rate is the higher of two readings. Check the
+            vault page before trusting it.
           </li>
           <li>
             Crypto.com publishes a per-stock rate table but does not say whether the yield is

@@ -241,6 +241,10 @@ tokens:
     underlying: AMZN
     issuer: coinbase
     chain: Base
+  - symbol: SPCXc
+    underlying: SPCX
+    issuer: coinbase
+    chain: Base
   # --- Robinhood Chain ---
   - symbol: NVDA (Robinhood)
     underlying: NVDA
@@ -718,13 +722,18 @@ opportunities:
     category: earn
     variant: superNVDA SuperVault
     url: https://app.superform.xyz
-    deep_link: https://app.superform.xyz/earn
+    deep_link: https://app.superform.xyz/vault/8453_0xc441a2cc3a528b6312740448a70cc4d40f4d7bfc
     verified: false
     lockup: none
     data_source: defillama
     external_id: bc128d75-8019-5d5c-9e6c-2ab94b03b642
     risk_notes: >-
-      The vault borrows USDC on Aave against your stock and loops. Liquidation risk is real and the headline APY is almost entirely token incentives, which can stop at any time.
+      Read the vault's own Allocation panel before depositing: what these vaults do
+      varies and changes. On 19 Oct 2026 superNVDA was running the leveraged strategy
+      (89% supplied to Aave V4, 44% looped into a Morpho vault, against a 44% USDC debt
+      liability), while superTSLA and superSPCX held 100% unallocated stock and no
+      leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
+      almost entirely sUP emissions, not interest.
     active: true
   - id: superform-supertsla
     token: TSLAc
@@ -733,13 +742,18 @@ opportunities:
     category: earn
     variant: superTSLA SuperVault
     url: https://app.superform.xyz
-    deep_link: https://app.superform.xyz/earn
+    deep_link: https://app.superform.xyz/vault/8453_0xaf0edf09ec7f9357292f6bc6445a09aa84a31fa7
     verified: false
     lockup: none
     data_source: defillama
     external_id: 048dcabb-8c0d-598e-9249-858698e72498
     risk_notes: >-
-      The vault borrows USDC on Aave against your stock and loops. Liquidation risk is real and the headline APY is almost entirely token incentives, which can stop at any time.
+      Read the vault's own Allocation panel before depositing: what these vaults do
+      varies and changes. On 19 Oct 2026 superNVDA was running the leveraged strategy
+      (89% supplied to Aave V4, 44% looped into a Morpho vault, against a 44% USDC debt
+      liability), while superTSLA and superSPCX held 100% unallocated stock and no
+      leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
+      almost entirely sUP emissions, not interest.
     active: true
   - id: superform-supergoogl
     token: GOOGLc
@@ -748,13 +762,18 @@ opportunities:
     category: earn
     variant: superGOOGL SuperVault
     url: https://app.superform.xyz
-    deep_link: https://app.superform.xyz/earn
+    deep_link: https://app.superform.xyz/vault/8453_0x363600ac7173e8d91bcfee68d711bb93e992c110
     verified: false
     lockup: none
     data_source: defillama
     external_id: 6a9a0fe1-962e-5393-9be6-811022d51e8a
     risk_notes: >-
-      The vault borrows USDC on Aave against your stock and loops. Liquidation risk is real and the headline APY is almost entirely token incentives, which can stop at any time.
+      Read the vault's own Allocation panel before depositing: what these vaults do
+      varies and changes. On 19 Oct 2026 superNVDA was running the leveraged strategy
+      (89% supplied to Aave V4, 44% looped into a Morpho vault, against a 44% USDC debt
+      liability), while superTSLA and superSPCX held 100% unallocated stock and no
+      leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
+      almost entirely sUP emissions, not interest.
     active: true
   - id: superform-superaapl
     token: AAPLc
@@ -763,13 +782,18 @@ opportunities:
     category: earn
     variant: superAAPL SuperVault
     url: https://app.superform.xyz
-    deep_link: https://app.superform.xyz/earn
+    deep_link: https://app.superform.xyz/vault/8453_0x301a1ceb684d62833101b373ab6c395349b24033
     verified: false
     lockup: none
     data_source: defillama
     external_id: af6e6de5-5fe1-5146-b8b6-e1f6112932a6
     risk_notes: >-
-      The vault borrows USDC on Aave against your stock and loops. Liquidation risk is real and the headline APY is almost entirely token incentives, which can stop at any time.
+      Read the vault's own Allocation panel before depositing: what these vaults do
+      varies and changes. On 19 Oct 2026 superNVDA was running the leveraged strategy
+      (89% supplied to Aave V4, 44% looped into a Morpho vault, against a 44% USDC debt
+      liability), while superTSLA and superSPCX held 100% unallocated stock and no
+      leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
+      almost entirely sUP emissions, not interest.
     active: true
   - id: superform-supermeta
     token: METAc
@@ -778,13 +802,18 @@ opportunities:
     category: earn
     variant: superMETA SuperVault
     url: https://app.superform.xyz
-    deep_link: https://app.superform.xyz/earn
+    deep_link: https://app.superform.xyz/vault/8453_0xc63374bf46d7a9654a96b14a3dc363c92b26d5a3
     verified: false
     lockup: none
     data_source: defillama
     external_id: 717e98da-5997-5024-9834-5a308705da93
     risk_notes: >-
-      The vault borrows USDC on Aave against your stock and loops. Liquidation risk is real and the headline APY is almost entirely token incentives, which can stop at any time.
+      Read the vault's own Allocation panel before depositing: what these vaults do
+      varies and changes. On 19 Oct 2026 superNVDA was running the leveraged strategy
+      (89% supplied to Aave V4, 44% looped into a Morpho vault, against a 44% USDC debt
+      liability), while superTSLA and superSPCX held 100% unallocated stock and no
+      leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
+      almost entirely sUP emissions, not interest.
     active: true
   - id: superform-superamzn
     token: AMZNc
@@ -793,13 +822,18 @@ opportunities:
     category: earn
     variant: superAMZN SuperVault
     url: https://app.superform.xyz
-    deep_link: https://app.superform.xyz/earn
+    deep_link: https://app.superform.xyz/vault/8453_0x4855b2756910b7525d5b466292c394669ee74e7e
     verified: false
     lockup: none
     data_source: defillama
     external_id: 3b519f39-0bb2-5d9e-bade-49bad3dac0a4
     risk_notes: >-
-      The vault borrows USDC on Aave against your stock and loops. Liquidation risk is real and the headline APY is almost entirely token incentives, which can stop at any time.
+      Read the vault's own Allocation panel before depositing: what these vaults do
+      varies and changes. On 19 Oct 2026 superNVDA was running the leveraged strategy
+      (89% supplied to Aave V4, 44% looped into a Morpho vault, against a 44% USDC debt
+      liability), while superTSLA and superSPCX held 100% unallocated stock and no
+      leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
+      almost entirely sUP emissions, not interest.
     active: true
   - id: superform-supermsft
     token: MSFTc
@@ -808,13 +842,38 @@ opportunities:
     category: earn
     variant: superMSFT SuperVault
     url: https://app.superform.xyz
-    deep_link: https://app.superform.xyz/earn
+    deep_link: https://app.superform.xyz/vault/8453_0x7778192c7e2c22a27c63d63485699888148d5919
     verified: false
     lockup: none
     data_source: defillama
     external_id: 3ce855c8-aede-5ebf-abf7-800fae05d2a2
     risk_notes: >-
-      The vault borrows USDC on Aave against your stock and loops. Liquidation risk is real and the headline APY is almost entirely token incentives, which can stop at any time.
+      Read the vault's own Allocation panel before depositing: what these vaults do
+      varies and changes. On 19 Oct 2026 superNVDA was running the leveraged strategy
+      (89% supplied to Aave V4, 44% looped into a Morpho vault, against a 44% USDC debt
+      liability), while superTSLA and superSPCX held 100% unallocated stock and no
+      leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
+      almost entirely sUP emissions, not interest.
+    active: true
+  - id: superform-superspcx
+    token: SPCXc
+    platform: superform
+    chain: Base
+    category: earn
+    variant: superSPCX SuperVault
+    url: https://app.superform.xyz
+    deep_link: https://app.superform.xyz/vault/8453_0x02b12a394f0a98b80e53d85f6831041932f1b621
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 2641f5c8-27d0-5d42-aa69-69bdc760a874
+    risk_notes: >-
+      Read the vault's own Allocation panel before depositing: what these vaults do
+      varies and changes. On 19 Oct 2026 superNVDA was running the leveraged strategy
+      (89% supplied to Aave V4, 44% looped into a Morpho vault, against a 44% USDC debt
+      liability), while superTSLA and superSPCX held 100% unallocated stock and no
+      leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
+      almost entirely sUP emissions, not interest.
     active: true
   - id: morpho-wspyx-eth
     token: wSPYx
