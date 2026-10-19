@@ -75,12 +75,16 @@ export default function MethodologyPage() {
           market-specific.
         </p>
         <p>
-          We do not guess these. Several protocols run isolated markets where the same stock
-          and the same loan asset appear more than once at the same loan-to-value, and a link
-          that lands on the wrong one of those would point at different risk parameters than
-          the row describes. Where we cannot pin the exact market, the link goes to the
-          chain-filtered market list instead, and the row is one a human still needs to
-          confirm.
+          These are resolved from each protocol&rsquo;s own identifiers, not guessed: Kamino
+          token mints and Jupiter vault ids from their APIs, Morpho market ids cross-checked
+          against the markets listed in their sitemap, and Aave reserves by symbol. Where two
+          markets shared a collateral, loan asset and LLTV, we used on-chain activity to tell
+          them apart rather than picking one.
+        </p>
+        <p>
+          Crypto.com and Kraken have no public per-market URL, so those rows link to the
+          product page. Superform links to its stocks listing: its vault addresses could not
+          be matched to our rows with confidence.
         </p>
         <p>
           The timestamp in the last column links to that pool&rsquo;s rate and TVL history on

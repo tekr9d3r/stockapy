@@ -26,7 +26,12 @@ type AaveReserve = {
     maxLiquidationBonus: PercentNumber;
     collateral: boolean;
   };
-  summary: { supplyApy: PercentNumber; borrowApy: PercentNumber };
+  summary: {
+    supplyApy: PercentNumber;
+    borrowApy: PercentNumber;
+    /** Merkl incentive programmes. Not included in supplyApy. */
+    rewards: { extraApy?: PercentNumber | null; endDate?: string | null }[];
+  };
   spoke: { name: string } | null;
 };
 
@@ -40,7 +45,11 @@ const QUERY = `query Reserves($chainIds: [ChainId!]) {
       maxLiquidationBonus { value normalized }
       collateral
     }
-    summary { supplyApy { value normalized } borrowApy { value normalized } }
+    summary {
+      supplyApy { value normalized }
+      borrowApy { value normalized }
+      rewards { ... on MerklSupplyReward { extraApy { value normalized } endDate } }
+    }
     spoke { name }
   }
 }`;
@@ -108,13 +117,20 @@ export async function fetchAave(): Promise<Snapshot[]> {
 
     const supplyApy = num(reserve.summary.supplyApy.normalized);
 
+    // Aave's supplyApy is interest only. The equity reserves currently pay 0%
+    // interest plus a Merkl programme, so reading supplyApy alone reported them
+    // as earning nothing when depositors were in fact being paid.
+    const rewardApy = (reserve.summary.rewards ?? []).reduce(
+      (sum, r) => sum + (num(r.extraApy?.normalized) ?? 0),
+      0,
+    );
+    const hasRewards = (reserve.summary.rewards ?? []).length > 0;
+
     snapshots.push({
       opportunityId: opp.id,
-      apyTotal: supplyApy,
-      // Aave pays supply interest, never token incentives on these reserves, so a
-      // measured supply APY is entirely base.
+      apyTotal: supplyApy === null ? null : supplyApy + rewardApy,
       apyBase: supplyApy,
-      apyReward: supplyApy === null ? null : 0,
+      apyReward: supplyApy === null ? null : hasRewards ? rewardApy : 0,
       tvlUsd: null,
       ltv: reserve.canUseAsCollateral ? num(reserve.settings.collateralFactor.value) : null,
       borrowApr: loan ? num(loan.summary.borrowApy.normalized) : null,

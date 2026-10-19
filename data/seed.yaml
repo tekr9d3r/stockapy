@@ -330,7 +330,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
+    deep_link: https://kamino.com/borrow?collateralFilter=Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh
     verified: false
     lockup: none
     data_source: defillama
@@ -351,7 +351,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
+    deep_link: https://kamino.com/borrow?collateralFilter=XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB
     verified: false
     lockup: none
     data_source: defillama
@@ -372,7 +372,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
+    deep_link: https://kamino.com/borrow?collateralFilter=XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp
     verified: false
     lockup: none
     data_source: defillama
@@ -393,7 +393,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
+    deep_link: https://kamino.com/borrow?collateralFilter=XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN
     verified: false
     lockup: none
     data_source: defillama
@@ -414,7 +414,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
+    deep_link: https://kamino.com/borrow?collateralFilter=XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ
     verified: false
     lockup: none
     data_source: defillama
@@ -435,7 +435,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
+    deep_link: https://kamino.com/borrow?collateralFilter=XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1
     verified: false
     lockup: none
     data_source: defillama
@@ -456,7 +456,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
+    deep_link: https://kamino.com/borrow?collateralFilter=XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg
     verified: false
     lockup: none
     data_source: defillama
@@ -477,7 +477,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
+    deep_link: https://kamino.com/borrow?collateralFilter=XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W
     verified: false
     lockup: none
     data_source: defillama
@@ -498,7 +498,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
+    deep_link: https://kamino.com/borrow?collateralFilter=Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ
     verified: false
     lockup: none
     data_source: defillama
@@ -519,7 +519,7 @@ opportunities:
     category: earn
     variant: Sentora xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://app.kamino.finance/lending/8BNUWRSibVasaAmhYpBCFpGgMisGKfVAf9ho3Cmf6vjr
+    deep_link: https://kamino.com/borrow?collateralFilter=Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh
     verified: false
     lockup: none
     data_source: defillama
@@ -540,7 +540,7 @@ opportunities:
     category: earn
     variant: Sentora xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://app.kamino.finance/lending/8BNUWRSibVasaAmhYpBCFpGgMisGKfVAf9ho3Cmf6vjr
+    deep_link: https://kamino.com/borrow?collateralFilter=XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W
     verified: false
     lockup: none
     data_source: defillama
@@ -561,7 +561,7 @@ opportunities:
     category: earn
     variant: Sentora xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://app.kamino.finance/lending/8BNUWRSibVasaAmhYpBCFpGgMisGKfVAf9ho3Cmf6vjr
+    deep_link: https://kamino.com/borrow?collateralFilter=Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ
     verified: false
     lockup: none
     data_source: defillama
@@ -582,7 +582,7 @@ opportunities:
     category: earn
     variant: NVDAx/USDC
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend
+    deep_link: https://jup.ag/lend/borrow/80/deposit
     verified: false
     lockup: none
     data_source: defillama
@@ -599,7 +599,7 @@ opportunities:
     category: earn
     variant: NVDAx/JupUSD
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend
+    deep_link: https://jup.ag/lend/borrow/84/deposit
     verified: false
     lockup: none
     data_source: defillama
@@ -616,7 +616,7 @@ opportunities:
     category: earn
     variant: TSLAx/USDC
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend
+    deep_link: https://jup.ag/lend/borrow/77/deposit
     verified: false
     lockup: none
     data_source: defillama
@@ -633,7 +633,7 @@ opportunities:
     category: earn
     variant: TSLAx/JupUSD
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend
+    deep_link: https://jup.ag/lend/borrow/81/deposit
     verified: false
     lockup: none
     data_source: defillama
@@ -650,7 +650,7 @@ opportunities:
     category: earn
     variant: SPYx/USDC
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend
+    deep_link: https://jup.ag/lend/borrow/78/deposit
     verified: false
     lockup: none
     data_source: defillama
@@ -667,7 +667,7 @@ opportunities:
     category: earn
     variant: SPYx/JupUSD
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend
+    deep_link: https://jup.ag/lend/borrow/82/deposit
     verified: false
     lockup: none
     data_source: defillama
@@ -684,7 +684,7 @@ opportunities:
     category: earn
     variant: QQQx/USDC
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend
+    deep_link: https://jup.ag/lend/borrow/79/deposit
     verified: false
     lockup: none
     data_source: defillama
@@ -701,7 +701,7 @@ opportunities:
     category: earn
     variant: QQQx/JupUSD
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend
+    deep_link: https://jup.ag/lend/borrow/83/deposit
     verified: false
     lockup: none
     data_source: defillama
@@ -718,6 +718,7 @@ opportunities:
     category: earn
     variant: superNVDA SuperVault
     url: https://app.superform.xyz
+    deep_link: https://app.superform.xyz/earn
     verified: false
     lockup: none
     data_source: defillama
@@ -732,6 +733,7 @@ opportunities:
     category: earn
     variant: superTSLA SuperVault
     url: https://app.superform.xyz
+    deep_link: https://app.superform.xyz/earn
     verified: false
     lockup: none
     data_source: defillama
@@ -746,6 +748,7 @@ opportunities:
     category: earn
     variant: superGOOGL SuperVault
     url: https://app.superform.xyz
+    deep_link: https://app.superform.xyz/earn
     verified: false
     lockup: none
     data_source: defillama
@@ -760,6 +763,7 @@ opportunities:
     category: earn
     variant: superAAPL SuperVault
     url: https://app.superform.xyz
+    deep_link: https://app.superform.xyz/earn
     verified: false
     lockup: none
     data_source: defillama
@@ -774,6 +778,7 @@ opportunities:
     category: earn
     variant: superMETA SuperVault
     url: https://app.superform.xyz
+    deep_link: https://app.superform.xyz/earn
     verified: false
     lockup: none
     data_source: defillama
@@ -788,6 +793,7 @@ opportunities:
     category: earn
     variant: superAMZN SuperVault
     url: https://app.superform.xyz
+    deep_link: https://app.superform.xyz/earn
     verified: false
     lockup: none
     data_source: defillama
@@ -802,6 +808,7 @@ opportunities:
     category: earn
     variant: superMSFT SuperVault
     url: https://app.superform.xyz
+    deep_link: https://app.superform.xyz/earn
     verified: false
     lockup: none
     data_source: defillama
@@ -815,7 +822,7 @@ opportunities:
     chain: Ethereum
     category: collateral
     url: https://app.morpho.org
-    deep_link: https://app.morpho.org/ethereum/variable
+    deep_link: https://app.morpho.org/ethereum/variable/0xbf0432567b44ef5ce013ffcd7dd756c522252503f7986a406e780715b32c74fc/ausd-wspyx
     verified: false
     lockup: none
     data_source: defillama
@@ -831,7 +838,7 @@ opportunities:
     chain: Robinhood Chain
     category: collateral
     url: https://app.morpho.org
-    deep_link: https://app.morpho.org/robinhood-chain/variable
+    deep_link: https://app.morpho.org/robinhood-chain/variable/0xf5ff7d546af5e72f3912d2aa723088fd0bf66fddc158714995637714d9db6e4c/usdg-nvda
     verified: false
     lockup: none
     data_source: defillama
@@ -847,7 +854,7 @@ opportunities:
     chain: Robinhood Chain
     category: collateral
     url: https://app.morpho.org
-    deep_link: https://app.morpho.org/robinhood-chain/variable
+    deep_link: https://app.morpho.org/robinhood-chain/variable/0x50bc39b5722fb5634c436d74c6787f3c125b879e7b73cf9e9ecc01bbb57b8e55/usdg-spy
     verified: false
     lockup: none
     data_source: defillama
@@ -863,7 +870,7 @@ opportunities:
     chain: Base
     category: collateral
     url: https://app.morpho.org
-    deep_link: https://app.morpho.org/base/variable
+    deep_link: https://app.morpho.org/base/variable/0xae1a30486234bf7e7ac166c7c03d9bc5f2cd8a39be2c48e73c665ac7148c3c28/usdc-aaplc
     verified: false
     lockup: none
     data_source: defillama
@@ -879,7 +886,7 @@ opportunities:
     chain: Base
     category: collateral
     url: https://app.morpho.org
-    deep_link: https://app.morpho.org/base/variable
+    deep_link: https://app.morpho.org/base/variable/0xa3913d896b7e9c0e0a84f1be27d376cf2065616101cb7c44674af8a154e684cc/usdc-googlc
     verified: false
     lockup: none
     data_source: defillama
@@ -897,10 +904,10 @@ opportunities:
     token: NVDAc
     platform: aave
     chain: Base
-    category: collateral
+    category: earn
     variant: Coinbase Stocks spoke
     url: https://app.aave.com
-    deep_link: https://app.aave.com/markets/
+    deep_link: https://pro.aave.com/explore/token/NVDAC?chain=8453
     verified: false
     lockup: none
     data_source: aave_api
@@ -910,19 +917,20 @@ opportunities:
       note: >-
         Collateral factor and the USDC borrow rate come from Aave's own GraphQL API.
     risk_notes: >-
-      Your stock earns nothing here: Aave confirms these reserves are collateral-only
-      and cannot be borrowed. What you get is USDC borrowing power, with a 5.5%
-      liquidation bonus paid to whoever liquidates you, against an equity price that
-      gaps between market sessions.
+      Every cent of the rate here is a Merkl incentive programme paid in USDC, not
+      interest: Aave reports 0% supply interest on these reserves, and they cannot be
+      borrowed at all. When the programme ends the rate goes to zero. Posting the stock
+      also unlocks USDC borrowing, with a 5.5% liquidation bonus paid to whoever
+      liquidates you, against an equity price that gaps between market sessions.
     active: true
   - id: aave-v4-tslac
     token: TSLAc
     platform: aave
     chain: Base
-    category: collateral
+    category: earn
     variant: Coinbase Stocks spoke
     url: https://app.aave.com
-    deep_link: https://app.aave.com/markets/
+    deep_link: https://pro.aave.com/explore/token/TSLAC?chain=8453
     verified: false
     lockup: none
     data_source: aave_api
@@ -932,19 +940,20 @@ opportunities:
       note: >-
         Collateral factor and the USDC borrow rate come from Aave's own GraphQL API.
     risk_notes: >-
-      Your stock earns nothing here: Aave confirms these reserves are collateral-only
-      and cannot be borrowed. What you get is USDC borrowing power, with a 5.5%
-      liquidation bonus paid to whoever liquidates you, against an equity price that
-      gaps between market sessions.
+      Every cent of the rate here is a Merkl incentive programme paid in USDC, not
+      interest: Aave reports 0% supply interest on these reserves, and they cannot be
+      borrowed at all. When the programme ends the rate goes to zero. Posting the stock
+      also unlocks USDC borrowing, with a 5.5% liquidation bonus paid to whoever
+      liquidates you, against an equity price that gaps between market sessions.
     active: true
   - id: aave-v4-aaplc
     token: AAPLc
     platform: aave
     chain: Base
-    category: collateral
+    category: earn
     variant: Coinbase Stocks spoke
     url: https://app.aave.com
-    deep_link: https://app.aave.com/markets/
+    deep_link: https://pro.aave.com/explore/token/AAPLC?chain=8453
     verified: false
     lockup: none
     data_source: aave_api
@@ -954,19 +963,20 @@ opportunities:
       note: >-
         Collateral factor and the USDC borrow rate come from Aave's own GraphQL API.
     risk_notes: >-
-      Your stock earns nothing here: Aave confirms these reserves are collateral-only
-      and cannot be borrowed. What you get is USDC borrowing power, with a 5.5%
-      liquidation bonus paid to whoever liquidates you, against an equity price that
-      gaps between market sessions.
+      Every cent of the rate here is a Merkl incentive programme paid in USDC, not
+      interest: Aave reports 0% supply interest on these reserves, and they cannot be
+      borrowed at all. When the programme ends the rate goes to zero. Posting the stock
+      also unlocks USDC borrowing, with a 5.5% liquidation bonus paid to whoever
+      liquidates you, against an equity price that gaps between market sessions.
     active: true
   - id: aave-v4-googlc
     token: GOOGLc
     platform: aave
     chain: Base
-    category: collateral
+    category: earn
     variant: Coinbase Stocks spoke
     url: https://app.aave.com
-    deep_link: https://app.aave.com/markets/
+    deep_link: https://pro.aave.com/explore/token/GOOGLC?chain=8453
     verified: false
     lockup: none
     data_source: aave_api
@@ -976,19 +986,20 @@ opportunities:
       note: >-
         Collateral factor and the USDC borrow rate come from Aave's own GraphQL API.
     risk_notes: >-
-      Your stock earns nothing here: Aave confirms these reserves are collateral-only
-      and cannot be borrowed. What you get is USDC borrowing power, with a 5.5%
-      liquidation bonus paid to whoever liquidates you, against an equity price that
-      gaps between market sessions.
+      Every cent of the rate here is a Merkl incentive programme paid in USDC, not
+      interest: Aave reports 0% supply interest on these reserves, and they cannot be
+      borrowed at all. When the programme ends the rate goes to zero. Posting the stock
+      also unlocks USDC borrowing, with a 5.5% liquidation bonus paid to whoever
+      liquidates you, against an equity price that gaps between market sessions.
     active: true
   - id: aave-v4-msftc
     token: MSFTc
     platform: aave
     chain: Base
-    category: collateral
+    category: earn
     variant: Coinbase Stocks spoke
     url: https://app.aave.com
-    deep_link: https://app.aave.com/markets/
+    deep_link: https://pro.aave.com/explore/token/MSFTC?chain=8453
     verified: false
     lockup: none
     data_source: aave_api
@@ -998,19 +1009,20 @@ opportunities:
       note: >-
         Collateral factor and the USDC borrow rate come from Aave's own GraphQL API.
     risk_notes: >-
-      Your stock earns nothing here: Aave confirms these reserves are collateral-only
-      and cannot be borrowed. What you get is USDC borrowing power, with a 5.5%
-      liquidation bonus paid to whoever liquidates you, against an equity price that
-      gaps between market sessions.
+      Every cent of the rate here is a Merkl incentive programme paid in USDC, not
+      interest: Aave reports 0% supply interest on these reserves, and they cannot be
+      borrowed at all. When the programme ends the rate goes to zero. Posting the stock
+      also unlocks USDC borrowing, with a 5.5% liquidation bonus paid to whoever
+      liquidates you, against an equity price that gaps between market sessions.
     active: true
   - id: aave-v4-metac
     token: METAc
     platform: aave
     chain: Base
-    category: collateral
+    category: earn
     variant: Coinbase Stocks spoke
     url: https://app.aave.com
-    deep_link: https://app.aave.com/markets/
+    deep_link: https://pro.aave.com/explore/token/METAC?chain=8453
     verified: false
     lockup: none
     data_source: aave_api
@@ -1020,19 +1032,20 @@ opportunities:
       note: >-
         Collateral factor and the USDC borrow rate come from Aave's own GraphQL API.
     risk_notes: >-
-      Your stock earns nothing here: Aave confirms these reserves are collateral-only
-      and cannot be borrowed. What you get is USDC borrowing power, with a 5.5%
-      liquidation bonus paid to whoever liquidates you, against an equity price that
-      gaps between market sessions.
+      Every cent of the rate here is a Merkl incentive programme paid in USDC, not
+      interest: Aave reports 0% supply interest on these reserves, and they cannot be
+      borrowed at all. When the programme ends the rate goes to zero. Posting the stock
+      also unlocks USDC borrowing, with a 5.5% liquidation bonus paid to whoever
+      liquidates you, against an equity price that gaps between market sessions.
     active: true
   - id: aave-v4-amznc
     token: AMZNc
     platform: aave
     chain: Base
-    category: collateral
+    category: earn
     variant: Coinbase Stocks spoke
     url: https://app.aave.com
-    deep_link: https://app.aave.com/markets/
+    deep_link: https://pro.aave.com/explore/token/AMZNC?chain=8453
     verified: false
     lockup: none
     data_source: aave_api
@@ -1042,10 +1055,11 @@ opportunities:
       note: >-
         Collateral factor and the USDC borrow rate come from Aave's own GraphQL API.
     risk_notes: >-
-      Your stock earns nothing here: Aave confirms these reserves are collateral-only
-      and cannot be borrowed. What you get is USDC borrowing power, with a 5.5%
-      liquidation bonus paid to whoever liquidates you, against an equity price that
-      gaps between market sessions.
+      Every cent of the rate here is a Merkl incentive programme paid in USDC, not
+      interest: Aave reports 0% supply interest on these reserves, and they cannot be
+      borrowed at all. When the programme ends the rate goes to zero. Posting the stock
+      also unlocks USDC borrowing, with a 5.5% liquidation bonus paid to whoever
+      liquidates you, against an equity price that gaps between market sessions.
     active: true
 
   # Crypto.com Stocks Earn. Rates are published per stock in Crypto.com's help centre
