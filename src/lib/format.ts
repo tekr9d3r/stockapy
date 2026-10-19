@@ -83,6 +83,7 @@ export const SOURCE_LABEL: Record<string, string> = {
   defillama: "DefiLlama",
   onchain: "On-chain",
   manual: "Checked by hand",
+  aave_api: "Aave API",
   bybit_api: "Bybit API",
   kraken_api: "Kraken API",
 };

@@ -2,7 +2,13 @@ export type AssetType = "stock" | "etf" | "private";
 export type PlatformKind = "defi" | "cefi";
 export type Category = "earn" | "collateral" | "structured";
 export type Lockup = "none" | "days" | "fixed_term";
-export type DataSource = "defillama" | "onchain" | "bybit_api" | "kraken_api" | "manual";
+export type DataSource =
+  | "defillama"
+  | "aave_api"
+  | "onchain"
+  | "bybit_api"
+  | "kraken_api"
+  | "manual";
 
 export type UnderlyingAsset = {
   ticker: string;

@@ -41,8 +41,8 @@ export function loadSeed(): Seed {
     if (!platformIds.has(opp.platform)) {
       problems.push(`opportunity ${opp.id} -> unknown platform ${opp.platform}`);
     }
-    if (opp.data_source === "defillama" && !opp.external_id) {
-      problems.push(`opportunity ${opp.id} is sourced from defillama but has no external_id`);
+    if ((opp.data_source === "defillama" || opp.data_source === "aave_api") && !opp.external_id) {
+      problems.push(`opportunity ${opp.id} is sourced from ${opp.data_source} but has no external_id`);
     }
   }
 

@@ -69,8 +69,14 @@ export default function MethodologyPage() {
 
       <Section title="Borrow terms">
         <p>
-          Maximum loan-to-value comes from DefiLlama&rsquo;s lendBorrow endpoint, read from the
-          collateral market itself. The borrow cost is the rate on the asset you would actually
+          Aave V4 reserves come from{" "}
+          <a href="https://aave.com/docs/aave-v4/getting-started/graphql" target="_blank" rel="noopener" className="underline">
+            Aave&rsquo;s own GraphQL API
+          </a>
+          , which DefiLlama does not index for the equity spokes. It gives the collateral
+          factor, the liquidation bonus and the borrow rate on the loan asset directly from the
+          protocol. Everything else comes from DefiLlama&rsquo;s lendBorrow endpoint, read from
+          the collateral market itself. The borrow cost is the rate on the asset you would actually
           borrow, which is not always the same pool: in a pooled market such as Kamino&rsquo;s
           xStocks Market, the stock reserve&rsquo;s own borrow rate is the cost of borrowing the
           stock, so we point at the stablecoin reserve in that market instead and record which
@@ -116,6 +122,12 @@ export default function MethodologyPage() {
       <Section title="Known gaps">
         <ul className="list-disc space-y-1.5 pl-5">
           <li>
+            We do not publish liquidation thresholds as a column, only the maximum
+            loan-to-value. Aave reports a 5.5% liquidation bonus on its equity reserves; other
+            venues express the same risk differently, and a single column would flatten
+            distinctions that matter.
+          </li>
+          <li>
             Crypto.com publishes a per-stock rate table but does not say whether the yield is
             interest, an incentive or revenue share. We record the total and leave the split
             null, and those rows are excluded from the &ldquo;yield that is real
@@ -124,6 +136,10 @@ export default function MethodologyPage() {
           <li>
             Bybit and Bitrue both list tokenized stocks for spot trading but pay nothing on
             them. They stay on the watchlist so the absence is documented rather than implied.
+          </li>
+          <li>
+            Kraken&rsquo;s xStocks Vault rates are still uncollected: they need an on-chain
+            reader for the Veda vault share price on Ink.
           </li>
           <li>
             CeFi has no usable public API for tokenized stock earn products. Kraken&rsquo;s vault

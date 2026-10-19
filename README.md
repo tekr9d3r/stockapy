@@ -38,7 +38,9 @@ npm run logos       # fetch any missing stock logos into public/logos
 2. Add an entry under `opportunities:`.
    - If DefiLlama covers it, run `npm run discover` to find the pool UUID and set
      `data_source: defillama` with `external_id: <uuid>`.
-   - If not, use `data_source: manual` and fill in the `manual:` block with a `checked_at` date.
+   - For an Aave V4 reserve, use `data_source: aave_api` with `external_id: <reserve symbol>`.
+   - If nothing covers it, use `data_source: manual` and fill in the `manual:` block with a
+     `checked_at` date.
 3. If the stock can be posted as collateral there, add a `borrow:` block with the
    `loan_asset`. In an isolated market (Jupiter, Morpho) the opportunity's own pool carries
    the borrow rate. In a pooled market (Kamino) it does not — the stock reserve's borrow APR
@@ -59,6 +61,8 @@ data/seed.yaml             what exists
 data/snapshots/            what it paid, hourly
 src/lib/data/              loaders, referential integrity, the seed↔snapshot join
 src/lib/fetchers/          one isolated module per source
+                           defillama.ts  supply + borrow for most venues
+                           aave.ts       Aave V4 GraphQL (equity spokes DefiLlama misses)
 src/lib/seo/jsonld.ts      Dataset, ItemList, FAQPage, BlogPosting, DefinedTermSet
 src/config.ts              brand name, URL, disclaimer
 scripts/run-fetchers.ts    writes the snapshots

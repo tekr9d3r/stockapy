@@ -873,196 +873,147 @@ opportunities:
     platform: aave
     chain: Base
     category: collateral
-    variant: Equities Hub
+    variant: Coinbase Stocks spoke
     url: https://app.aave.com
     verified: false
     lockup: none
-    data_source: manual
+    data_source: aave_api
+    external_id: NVDAc
     borrow:
       loan_asset: USDC
-      manual_ltv: null
       note: >-
-        Borrowing against equities is the entire point of this market, but Aave V4's
-        equity LTVs are not in any API we read. Needs a human to check the app.
-    manual:
-      apy_base: 0
-      apy_reward: 0
-      apy_total: 0
-      tvl_usd: null
-      checked_at: 2026-10-19
-      note: Collateral only by design. Not a measurement.
+        Collateral factor and the USDC borrow rate come from Aave's own GraphQL API.
     risk_notes: >-
-      Your stock earns nothing here. It only unlocks USDC borrowing power, and that
-      borrowing carries liquidation risk against an equity price that gaps between
-      market sessions.
+      Your stock earns nothing here: Aave confirms these reserves are collateral-only
+      and cannot be borrowed. What you get is USDC borrowing power, with a 5.5%
+      liquidation bonus paid to whoever liquidates you, against an equity price that
+      gaps between market sessions.
     active: true
   - id: aave-v4-tslac
     token: TSLAc
     platform: aave
     chain: Base
     category: collateral
-    variant: Equities Hub
+    variant: Coinbase Stocks spoke
     url: https://app.aave.com
     verified: false
     lockup: none
-    data_source: manual
+    data_source: aave_api
+    external_id: TSLAc
     borrow:
       loan_asset: USDC
-      manual_ltv: null
       note: >-
-        Borrowing against equities is the entire point of this market, but Aave V4's
-        equity LTVs are not in any API we read. Needs a human to check the app.
-    manual:
-      apy_base: 0
-      apy_reward: 0
-      apy_total: 0
-      tvl_usd: null
-      checked_at: 2026-10-19
-      note: Collateral only by design. Not a measurement.
+        Collateral factor and the USDC borrow rate come from Aave's own GraphQL API.
     risk_notes: >-
-      Your stock earns nothing here. It only unlocks USDC borrowing power, and that
-      borrowing carries liquidation risk against an equity price that gaps between
-      market sessions.
+      Your stock earns nothing here: Aave confirms these reserves are collateral-only
+      and cannot be borrowed. What you get is USDC borrowing power, with a 5.5%
+      liquidation bonus paid to whoever liquidates you, against an equity price that
+      gaps between market sessions.
     active: true
   - id: aave-v4-aaplc
     token: AAPLc
     platform: aave
     chain: Base
     category: collateral
-    variant: Equities Hub
+    variant: Coinbase Stocks spoke
     url: https://app.aave.com
     verified: false
     lockup: none
-    data_source: manual
+    data_source: aave_api
+    external_id: AAPLc
     borrow:
       loan_asset: USDC
-      manual_ltv: null
       note: >-
-        Borrowing against equities is the entire point of this market, but Aave V4's
-        equity LTVs are not in any API we read. Needs a human to check the app.
-    manual:
-      apy_base: 0
-      apy_reward: 0
-      apy_total: 0
-      tvl_usd: null
-      checked_at: 2026-10-19
-      note: Collateral only by design. Not a measurement.
+        Collateral factor and the USDC borrow rate come from Aave's own GraphQL API.
     risk_notes: >-
-      Your stock earns nothing here. It only unlocks USDC borrowing power, and that
-      borrowing carries liquidation risk against an equity price that gaps between
-      market sessions.
+      Your stock earns nothing here: Aave confirms these reserves are collateral-only
+      and cannot be borrowed. What you get is USDC borrowing power, with a 5.5%
+      liquidation bonus paid to whoever liquidates you, against an equity price that
+      gaps between market sessions.
     active: true
   - id: aave-v4-googlc
     token: GOOGLc
     platform: aave
     chain: Base
     category: collateral
-    variant: Equities Hub
+    variant: Coinbase Stocks spoke
     url: https://app.aave.com
     verified: false
     lockup: none
-    data_source: manual
+    data_source: aave_api
+    external_id: GOOGLc
     borrow:
       loan_asset: USDC
-      manual_ltv: null
       note: >-
-        Borrowing against equities is the entire point of this market, but Aave V4's
-        equity LTVs are not in any API we read. Needs a human to check the app.
-    manual:
-      apy_base: 0
-      apy_reward: 0
-      apy_total: 0
-      tvl_usd: null
-      checked_at: 2026-10-19
-      note: Collateral only by design. Not a measurement.
+        Collateral factor and the USDC borrow rate come from Aave's own GraphQL API.
     risk_notes: >-
-      Your stock earns nothing here. It only unlocks USDC borrowing power, and that
-      borrowing carries liquidation risk against an equity price that gaps between
-      market sessions.
+      Your stock earns nothing here: Aave confirms these reserves are collateral-only
+      and cannot be borrowed. What you get is USDC borrowing power, with a 5.5%
+      liquidation bonus paid to whoever liquidates you, against an equity price that
+      gaps between market sessions.
     active: true
   - id: aave-v4-msftc
     token: MSFTc
     platform: aave
     chain: Base
     category: collateral
-    variant: Equities Hub
+    variant: Coinbase Stocks spoke
     url: https://app.aave.com
     verified: false
     lockup: none
-    data_source: manual
+    data_source: aave_api
+    external_id: MSFTc
     borrow:
       loan_asset: USDC
-      manual_ltv: null
       note: >-
-        Borrowing against equities is the entire point of this market, but Aave V4's
-        equity LTVs are not in any API we read. Needs a human to check the app.
-    manual:
-      apy_base: 0
-      apy_reward: 0
-      apy_total: 0
-      tvl_usd: null
-      checked_at: 2026-10-19
-      note: Collateral only by design. Not a measurement.
+        Collateral factor and the USDC borrow rate come from Aave's own GraphQL API.
     risk_notes: >-
-      Your stock earns nothing here. It only unlocks USDC borrowing power, and that
-      borrowing carries liquidation risk against an equity price that gaps between
-      market sessions.
+      Your stock earns nothing here: Aave confirms these reserves are collateral-only
+      and cannot be borrowed. What you get is USDC borrowing power, with a 5.5%
+      liquidation bonus paid to whoever liquidates you, against an equity price that
+      gaps between market sessions.
     active: true
   - id: aave-v4-metac
     token: METAc
     platform: aave
     chain: Base
     category: collateral
-    variant: Equities Hub
+    variant: Coinbase Stocks spoke
     url: https://app.aave.com
     verified: false
     lockup: none
-    data_source: manual
+    data_source: aave_api
+    external_id: METAc
     borrow:
       loan_asset: USDC
-      manual_ltv: null
       note: >-
-        Borrowing against equities is the entire point of this market, but Aave V4's
-        equity LTVs are not in any API we read. Needs a human to check the app.
-    manual:
-      apy_base: 0
-      apy_reward: 0
-      apy_total: 0
-      tvl_usd: null
-      checked_at: 2026-10-19
-      note: Collateral only by design. Not a measurement.
+        Collateral factor and the USDC borrow rate come from Aave's own GraphQL API.
     risk_notes: >-
-      Your stock earns nothing here. It only unlocks USDC borrowing power, and that
-      borrowing carries liquidation risk against an equity price that gaps between
-      market sessions.
+      Your stock earns nothing here: Aave confirms these reserves are collateral-only
+      and cannot be borrowed. What you get is USDC borrowing power, with a 5.5%
+      liquidation bonus paid to whoever liquidates you, against an equity price that
+      gaps between market sessions.
     active: true
   - id: aave-v4-amznc
     token: AMZNc
     platform: aave
     chain: Base
     category: collateral
-    variant: Equities Hub
+    variant: Coinbase Stocks spoke
     url: https://app.aave.com
     verified: false
     lockup: none
-    data_source: manual
+    data_source: aave_api
+    external_id: AMZNc
     borrow:
       loan_asset: USDC
-      manual_ltv: null
       note: >-
-        Borrowing against equities is the entire point of this market, but Aave V4's
-        equity LTVs are not in any API we read. Needs a human to check the app.
-    manual:
-      apy_base: 0
-      apy_reward: 0
-      apy_total: 0
-      tvl_usd: null
-      checked_at: 2026-10-19
-      note: Collateral only by design. Not a measurement.
+        Collateral factor and the USDC borrow rate come from Aave's own GraphQL API.
     risk_notes: >-
-      Your stock earns nothing here. It only unlocks USDC borrowing power, and that
-      borrowing carries liquidation risk against an equity price that gaps between
-      market sessions.
+      Your stock earns nothing here: Aave confirms these reserves are collateral-only
+      and cannot be borrowed. What you get is USDC borrowing power, with a 5.5%
+      liquidation bonus paid to whoever liquidates you, against an equity price that
+      gaps between market sessions.
     active: true
 
   # Crypto.com Stocks Earn. Rates are published per stock in Crypto.com's help centre
