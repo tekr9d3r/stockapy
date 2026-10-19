@@ -45,6 +45,22 @@ export type ManualRate = {
   note?: string;
 };
 
+/** How to borrow against this collateral. Absent when the venue does not allow it. */
+export type BorrowConfig = {
+  /** What you can borrow against the stock, e.g. USDC. */
+  loan_asset: string;
+  /**
+   * DefiLlama pool whose borrow APR is the cost of borrowing `loan_asset`.
+   * Omit for isolated markets, where the opportunity's own pool carries it.
+   * Pooled markets (Kamino) need the stablecoin reserve's id instead, because
+   * the stock reserve's own borrow APR is the cost of borrowing the stock.
+   */
+  rate_pool?: string;
+  /** Hand-entered LTV for venues no API covers. Null means unknown, not zero. */
+  manual_ltv?: number | null;
+  note?: string;
+};
+
 export type Opportunity = {
   id: string;
   token: string;
@@ -61,6 +77,7 @@ export type Opportunity = {
   data_source: DataSource;
   external_id?: string;
   manual?: ManualRate;
+  borrow?: BorrowConfig;
   active: boolean;
 };
 
@@ -89,6 +106,10 @@ export type Snapshot = {
   apyReward: number | null;
   pointsLabel?: string | null;
   tvlUsd: number | null;
+  /** Max loan-to-value as a fraction, when the stock is usable as collateral. */
+  ltv?: number | null;
+  /** Cost of borrowing the loan asset against it, APR. */
+  borrowApr?: number | null;
   source: string;
   fetchedAt: string;
 };
@@ -127,4 +148,11 @@ export type Row = {
   unmeasured: boolean;
   /** True when the measurement is older than twice the refresh interval. */
   stale: boolean;
+  /** Borrowing against this position, when the venue supports it. */
+  borrow: {
+    loanAsset: string;
+    ltv: number | null;
+    borrowApr: number | null;
+    note?: string;
+  } | null;
 };

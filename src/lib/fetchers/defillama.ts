@@ -2,6 +2,7 @@ import { loadSeed } from "@/lib/data/seed";
 import type { Snapshot } from "@/lib/data/types";
 
 const POOLS_URL = "https://yields.llama.fi/pools";
+const LEND_BORROW_URL = "https://yields.llama.fi/lendBorrow";
 
 /** The subset of the DefiLlama pool object we rely on. Verified against the live response. */
 type LlamaPool = {
@@ -16,12 +17,35 @@ type LlamaPool = {
   poolMeta: string | null;
 };
 
+/** The /lendBorrow companion endpoint, keyed by the same pool id. */
+type LlamaLendBorrow = {
+  pool: string;
+  apyBaseBorrow: number | null;
+  apyRewardBorrow: number | null;
+  ltv: number | null;
+  borrowable: boolean | null;
+  mintedCoin: string | null;
+};
+
 export async function fetchDefiLlama(): Promise<Snapshot[]> {
   const res = await fetch(POOLS_URL, { headers: { accept: "application/json" } });
   if (!res.ok) throw new Error(`DefiLlama responded ${res.status}`);
 
   const body = (await res.json()) as { status: string; data: LlamaPool[] };
   if (!Array.isArray(body.data)) throw new Error("DefiLlama response has no data array");
+
+  // Borrow terms live on a separate endpoint. A failure here must not lose the
+  // supply-side numbers, so it degrades to "no borrow data" instead of throwing.
+  let borrowById = new Map<string, LlamaLendBorrow>();
+  try {
+    const borrowRes = await fetch(LEND_BORROW_URL, { headers: { accept: "application/json" } });
+    if (borrowRes.ok) {
+      const rows = (await borrowRes.json()) as LlamaLendBorrow[];
+      if (Array.isArray(rows)) borrowById = new Map(rows.map((r) => [r.pool, r]));
+    }
+  } catch (err) {
+    console.warn(`[defillama] lendBorrow unavailable, continuing without it: ${err}`);
+  }
 
   const byId = new Map(body.data.map((p) => [p.pool, p]));
   const fetchedAt = new Date().toISOString();
@@ -49,12 +73,26 @@ export async function fetchDefiLlama(): Promise<Snapshot[]> {
         ? Math.max(0, Number((pool.apy - pool.apyBase).toFixed(5)))
         : null);
 
+    // LTV always comes from the collateral pool. The borrow APR may come from a
+    // different pool: in a pooled market the stock reserve's own borrow rate is the
+    // cost of borrowing the stock, not of borrowing a stablecoin against it.
+    const collateral = borrowById.get(opp.external_id);
+    const rateEntry = opp.borrow?.rate_pool
+      ? borrowById.get(opp.borrow.rate_pool)
+      : collateral;
+
     snapshots.push({
       opportunityId: opp.id,
       apyTotal: pool.apy,
       apyBase: pool.apyBase,
       apyReward,
       tvlUsd: pool.tvlUsd,
+      // `borrowable` says whether the STOCK itself can be borrowed, which is a
+      // different question from whether it works as collateral. Gating on it
+      // silently dropped venues like Kamino's GOOGLx (60% LTV, not borrowable).
+      // An ltv of 0 does mean "not accepted as collateral".
+      ltv: collateral?.ltv ? collateral.ltv : null,
+      borrowApr: opp.borrow ? (rateEntry?.apyBaseBorrow ?? null) : null,
       source: "defillama",
       fetchedAt,
     });

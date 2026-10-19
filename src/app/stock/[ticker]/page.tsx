@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
+import { BorrowTable } from "@/components/BorrowTable";
 import { OpportunityTable } from "@/components/OpportunityTable";
 import { StockLogo } from "@/components/StockLogo";
 import { Stat, StatStrip } from "@/components/Stat";
-import { getRows, marketStats, rowsForTicker } from "@/lib/data/rows";
+import { borrowRows, borrowStats, getRows, marketStats, rowsForTicker } from "@/lib/data/rows";
 import { loadSeed } from "@/lib/data/seed";
 import { loadLatestSnapshot } from "@/lib/data/snapshot";
-import { formatApy, formatDate, formatPp, formatUsd } from "@/lib/format";
+import { formatApy, formatDate, formatLtv, formatPp, formatUsd } from "@/lib/format";
 import { breadcrumbLd, datasetLd, faqLd, itemListLd, stockFaq } from "@/lib/seo/jsonld";
 import { BRAND_NAME } from "@/config";
 
@@ -65,6 +66,8 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
   const asOf = formatDate(loadLatestSnapshot()?.fetchedAt ?? null);
   const best = stats.best;
   const byIssuer = Object.groupBy(rows, (r) => r.issuer.name);
+  const borrow = borrowRows(rows);
+  const borrowSummary = borrowStats(borrow);
   const organicPct = stats.organicShare === null ? null : stats.organicShare * 100;
 
   const faq = stockFaq(asset, rows);
@@ -148,6 +151,37 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
         </h2>
         <OpportunityTable rows={rows} />
       </section>
+
+      {borrow.length > 0 && (
+        <section className="mt-10">
+          <h2 className="mb-2 text-lg font-semibold">
+            Borrow against your {asset.ticker}
+          </h2>
+          <p className="mb-4 max-w-3xl text-sm leading-relaxed text-fg-muted">
+            Keeping the exposure and borrowing against it is what most of these venues are
+            built for.{" "}
+            {borrowSummary.maxLtv !== null && (
+              <>
+                You can draw up to{" "}
+                <strong className="text-fg">{formatLtv(borrowSummary.maxLtv)}</strong> of your{" "}
+                {asset.ticker} position
+                {borrowSummary.cheapest && (
+                  <>
+                    , and the cheapest loan we track costs{" "}
+                    <strong className="text-fg">
+                      {borrowSummary.cheapest.borrow!.borrowApr?.toFixed(2)}%
+                    </strong>{" "}
+                    on {borrowSummary.cheapest.platform.name}
+                  </>
+                )}
+                . Borrowing near the maximum invites liquidation on an ordinary day&rsquo;s
+                move.
+              </>
+            )}
+          </p>
+          <BorrowTable rows={borrow} compact />
+        </section>
+      )}
 
       <section className="mt-10">
         <h2 className="mb-3 text-lg font-semibold">Which {asset.ticker} token do you hold?</h2>

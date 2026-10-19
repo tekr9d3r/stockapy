@@ -209,6 +209,28 @@ export function stockFaq(asset: UnderlyingAsset, rows: Row[]) {
     },
   ];
 
+  const borrowable = rows.filter((r) => r.borrow && r.borrow.ltv !== null);
+  if (borrowable.length > 0) {
+    const best = borrowable.reduce((a, b) => ((b.borrow!.ltv ?? 0) > (a.borrow!.ltv ?? 0) ? b : a));
+    const cheap = borrowable
+      .filter((r) => r.borrow!.borrowApr !== null)
+      .sort((a, b) => a.borrow!.borrowApr! - b.borrow!.borrowApr!)[0];
+    faq.push({
+      question: `Can you borrow against tokenized ${asset.ticker}?`,
+      answer:
+        `Yes. ${borrowable.length} of the venues we track accept a tokenized ${asset.ticker} ` +
+        `as collateral. The highest loan-to-value is ${Math.round((best.borrow!.ltv ?? 0) * 100)}% ` +
+        `on ${best.platform.name}` +
+        (cheap
+          ? `, and the cheapest loan costs ${cheap.borrow!.borrowApr!.toFixed(2)}% a year ` +
+            `borrowing ${cheap.borrow!.loanAsset} on ${cheap.platform.name}`
+          : "") +
+        `. Borrowing against a tokenized share adds a liquidation price that holding the ` +
+        `share itself does not have, and the oracle keeps quoting a price while the stock ` +
+        `exchange is shut.`,
+    });
+  }
+
   if (collateralOnly.length > 0) {
     faq.push({
       question: `Why do some ${asset.ticker} venues show 0%?`,

@@ -38,6 +38,13 @@ export function GET() {
         tvlUsd: row.tvlUsd,
         lockup: row.lockup,
         withdrawalDelayDays: row.withdrawalDelayDays ?? null,
+        borrow: row.borrow
+          ? {
+              loanAsset: row.borrow.loanAsset,
+              maxLtv: row.borrow.ltv,
+              borrowApr: row.borrow.borrowApr,
+            }
+          : null,
         url: row.url,
         verified: row.verified,
         source: row.source,

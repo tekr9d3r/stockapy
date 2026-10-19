@@ -113,6 +113,15 @@ export default function Home() {
           stablecoin against it and loop. That multiplies an incentive programme — and it adds a
           liquidation price that an ordinary share has never had.
         </Explainer>
+        <Explainer title="Borrowing is the bigger opportunity">
+          Lending a tokenized stock out pays almost nothing, but posting it as collateral and
+          borrowing against it is what most of these venues are built for. See the{" "}
+          <Link href="/borrow" className="text-accent underline underline-offset-2">
+            borrow comparison
+          </Link>{" "}
+          for max LTV and the cost of each loan.
+        </Explainer>
+
         <Explainer title="A rate with no stated source is not interest">
           Centralised platforms publish a flat number — Crypto.com pays 2% to 4% on its
           tokenized stocks — without saying whether it is interest, a marketing budget or

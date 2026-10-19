@@ -1,7 +1,7 @@
-import { getRows, marketStats } from "@/lib/data/rows";
+import { borrowRows, borrowStats, getRows, marketStats } from "@/lib/data/rows";
 import { loadLatestSnapshot } from "@/lib/data/snapshot";
 import { listPosts } from "@/lib/content/posts";
-import { formatApy, formatDate } from "@/lib/format";
+import { formatApy, formatDate, formatLtv } from "@/lib/format";
 import { BRAND_NAME, SITE_DESCRIPTION, SITE_URL } from "@/config";
 
 export const revalidate = 3600;
@@ -16,6 +16,8 @@ export function GET() {
   const stats = marketStats(rows);
   const asOf = formatDate(loadLatestSnapshot()?.fetchedAt ?? null);
   const tickers = [...new Set(rows.map((r) => r.underlying.ticker))].sort();
+  const borrow = borrowRows(rows);
+  const bs = borrowStats(borrow);
   const organic = stats.organicShare === null ? "unknown" : `${(stats.organicShare * 100).toFixed(1)}%`;
 
   const body = `# ${BRAND_NAME}
@@ -29,6 +31,7 @@ export function GET() {
 - Highest advertised APY: ${formatApy(stats.maxApy)}${stats.best ? ` (${stats.best.platform.name}, ${stats.best.token.symbol})` : ""}.
 - Share of all yield on offer that is interest paid by borrowers rather than token incentives: ${organic}.
 - ${stats.zeroCount} of ${stats.earnCount} earn opportunities pay exactly 0%.
+- Borrowing is the larger opportunity: ${borrow.length} markets accept a tokenized stock as collateral, with a maximum loan-to-value of ${formatLtv(bs.maxLtv)} and a median borrow cost of ${bs.medianApr === null ? "unknown" : `${bs.medianApr.toFixed(2)}%`}${bs.cheapest ? `, the cheapest being ${bs.cheapest.borrow!.borrowApr?.toFixed(2)}% on ${bs.cheapest.platform.name}` : ""}.
 
 ## Data
 
@@ -38,7 +41,8 @@ export function GET() {
 
 ## Pages
 
-- [Comparison table](${SITE_URL}/): every tracked opportunity.
+- [Comparison table](${SITE_URL}/): every tracked earn opportunity.
+- [Borrow against tokenized stocks](${SITE_URL}/borrow): max LTV, loan asset and borrow cost per venue.
 - [Glossary](${SITE_URL}/glossary): base APY, reward APY, points, collateral-only venues, looped vaults, oracle gap risk.
 - [Platforms](${SITE_URL}/platforms)
 - [Issuers](${SITE_URL}/issuers)

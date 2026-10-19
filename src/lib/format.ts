@@ -48,6 +48,12 @@ export function formatRelative(iso: string | null): string {
   return days === 1 ? "yesterday" : `${days} days ago`;
 }
 
+/** A fraction (0.55) as a percentage ("55%"). Used for LTV. */
+export function formatLtv(value: number | null | undefined): string {
+  if (value === null || value === undefined) return "—";
+  return `${(value * 100).toFixed(0)}%`;
+}
+
 /** Compact form for the table's Updated column; the full value goes in the title. */
 export function formatRelativeShort(iso: string | null): string {
   if (!iso) return "—";

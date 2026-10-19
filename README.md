@@ -1,8 +1,9 @@
 # StockAPY
 
-An independent comparison of every place a tokenized stock can earn yield — across chains,
-issuers, DeFi protocols and CeFi platforms. Base interest, token incentives and points are
-shown separately, with a source and a timestamp on every number.
+An independent comparison of what you can do with a tokenized stock — **earn** on it, or post
+it as **collateral and borrow** against it — across chains, issuers, DeFi protocols and CeFi
+platforms. Base interest, token incentives and points are shown separately, with a source and
+a timestamp on every number.
 
 Live at [stockapy.xyz](https://stockapy.xyz).
 
@@ -28,6 +29,7 @@ npm run build       # production build (fails on a broken seed)
 npm run typecheck   # tsc --noEmit
 npm run fetch       # run the fetchers, write data/snapshots/
 npm run discover    # also list equity pools DefiLlama has that the seed does not
+npm run logos       # fetch any missing stock logos into public/logos
 ```
 
 ## Adding an opportunity
@@ -37,8 +39,13 @@ npm run discover    # also list equity pools DefiLlama has that the seed does no
    - If DefiLlama covers it, run `npm run discover` to find the pool UUID and set
      `data_source: defillama` with `external_id: <uuid>`.
    - If not, use `data_source: manual` and fill in the `manual:` block with a `checked_at` date.
-3. Open the URL, confirm it is live, and set `verified: true`.
-4. `npm run build` — the seed loader fails the build on a broken reference or a missing
+3. If the stock can be posted as collateral there, add a `borrow:` block with the
+   `loan_asset`. In an isolated market (Jupiter, Morpho) the opportunity's own pool carries
+   the borrow rate. In a pooled market (Kamino) it does not — the stock reserve's borrow APR
+   is the cost of borrowing *the stock*, so set `rate_pool` to the stablecoin reserve in that
+   market instead.
+4. Open the URL, confirm it is live, and set `verified: true`.
+5. `npm run build` — the seed loader fails the build on a broken reference or a missing
    `external_id`.
 
 Never type an APY you did not read from a source. Leave it `null`; the UI says "not collected"

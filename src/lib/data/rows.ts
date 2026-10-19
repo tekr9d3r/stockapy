@@ -54,6 +54,15 @@ export function getRows(): Row[] {
         source: snap?.source ?? opp.data_source,
         fetchedAt,
         unmeasured: apyTotal === null,
+        borrow: opp.borrow
+          ? {
+              loanAsset: opp.borrow.loan_asset,
+              // A hand-entered LTV is a fallback, never an override of live data.
+              ltv: snap?.ltv ?? opp.borrow.manual_ltv ?? null,
+              borrowApr: snap?.borrowApr ?? null,
+              note: opp.borrow.note,
+            }
+          : null,
         stale:
           fetchedAt !== null &&
           Number.isFinite(Date.parse(fetchedAt)) &&
@@ -71,6 +80,39 @@ export function sortRows(rows: Row[]): Row[] {
     if (a.apyTotal !== b.apyTotal) return (b.apyTotal ?? 0) - (a.apyTotal ?? 0);
     return (b.tvlUsd ?? 0) - (a.tvlUsd ?? 0);
   });
+}
+
+/** Rows where the stock can be posted as collateral to borrow something else. */
+export function borrowRows(rows: Row[] = getRows()): Row[] {
+  return rows
+    .filter((r) => r.borrow !== null)
+    .sort((a, b) => {
+      const al = a.borrow?.ltv ?? -1;
+      const bl = b.borrow?.ltv ?? -1;
+      if (al !== bl) return bl - al;
+      return (a.borrow?.borrowApr ?? Infinity) - (b.borrow?.borrowApr ?? Infinity);
+    });
+}
+
+/** Headline numbers for the borrow side. */
+export function borrowStats(rows: Row[] = borrowRows()) {
+  const withLtv = rows.filter((r) => (r.borrow?.ltv ?? null) !== null);
+  const withApr = rows.filter((r) => (r.borrow?.borrowApr ?? null) !== null);
+  const aprs = withApr.map((r) => r.borrow!.borrowApr!).sort((a, b) => a - b);
+
+  return {
+    count: rows.length,
+    maxLtv: withLtv.length ? Math.max(...withLtv.map((r) => r.borrow!.ltv!)) : null,
+    cheapest: withApr.length
+      ? withApr.reduce((a, b) => (b.borrow!.borrowApr! < a.borrow!.borrowApr! ? b : a))
+      : null,
+    medianApr: aprs.length
+      ? aprs.length % 2
+        ? aprs[(aprs.length - 1) / 2]
+        : (aprs[aprs.length / 2 - 1] + aprs[aprs.length / 2]) / 2
+      : null,
+    loanAssets: [...new Set(rows.map((r) => r.borrow!.loanAsset))].sort(),
+  };
 }
 
 export function rowsForTicker(ticker: string): Row[] {

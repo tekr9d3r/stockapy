@@ -67,6 +67,22 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
+      <Section title="Borrow terms">
+        <p>
+          Maximum loan-to-value comes from DefiLlama&rsquo;s lendBorrow endpoint, read from the
+          collateral market itself. The borrow cost is the rate on the asset you would actually
+          borrow, which is not always the same pool: in a pooled market such as Kamino&rsquo;s
+          xStocks Market, the stock reserve&rsquo;s own borrow rate is the cost of borrowing the
+          stock, so we point at the stablecoin reserve in that market instead and record which
+          pool each rate came from.
+        </p>
+        <p>
+          We do not publish available borrowing liquidity. Supply, borrowed amounts and debt
+          ceilings mean different things in a pooled market and an isolated one, and a single
+          &ldquo;available&rdquo; column would imply a comparability that is not there.
+        </p>
+      </Section>
+
       <Section title="Base, rewards and points are never added up silently">
         <p>
           Base APY is interest paid by borrowers. Reward APY is a token incentive the protocol is
