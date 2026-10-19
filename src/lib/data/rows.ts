@@ -48,6 +48,12 @@ export function getRows(): Row[] {
         lockup: opp.lockup,
         withdrawalDelayDays: opp.withdrawal_delay_days,
         url: opp.url,
+        deepLink: opp.deep_link ?? opp.url,
+        deepLinkIsSpecific: Boolean(opp.deep_link),
+        chartUrl:
+          opp.data_source === "defillama" && opp.external_id
+            ? `https://defillama.com/yields/pool/${opp.external_id}`
+            : null,
         verified: opp.verified,
         eligibilityNote: opp.eligibility_note,
         riskNotes: opp.risk_notes,

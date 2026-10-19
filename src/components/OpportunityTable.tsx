@@ -153,12 +153,20 @@ export function OpportunityTable({
                 <td className="px-2 py-2.5 whitespace-nowrap">
                   <div className="flex items-center gap-1.5">
                     <a
-                      href={row.url}
+                      href={row.deepLink}
                       target="_blank"
                       rel="noopener nofollow"
+                      title={
+                        row.deepLinkIsSpecific
+                          ? `Open this market on ${row.platform.name}`
+                          : `${row.platform.name} — we have no market-specific link for this one yet`
+                      }
                       className="font-medium hover:text-accent hover:underline"
                     >
                       {hidePlatform ? (row.variant ?? "Main market") : row.platform.name}
+                      <span aria-hidden="true" className="ml-0.5 text-fg-subtle">
+                        ↗
+                      </span>
                     </a>
                     {!hidePlatform && (
                       <Badge tone={row.platform.kind === "cefi" ? "accent" : "neutral"}>
@@ -196,13 +204,27 @@ export function OpportunityTable({
                   {row.withdrawalDelayDays ? ` · ${row.withdrawalDelayDays}d` : ""}
                 </td>
                 <td className="px-2 py-2.5 pr-4 text-right text-xs whitespace-nowrap text-fg-subtle">
-                  <span
-                    title={`Collected ${formatDate(row.fetchedAt)} from ${
-                      SOURCE_LABEL[row.source] ?? row.source
-                    }`}
-                  >
-                    {formatRelativeShort(row.fetchedAt)}
-                  </span>
+                  {row.chartUrl ? (
+                    <a
+                      href={row.chartUrl}
+                      target="_blank"
+                      rel="noopener nofollow"
+                      title={`Collected ${formatDate(row.fetchedAt)} from ${
+                        SOURCE_LABEL[row.source] ?? row.source
+                      }. Opens this pool's rate history.`}
+                      className="hover:text-accent hover:underline"
+                    >
+                      {formatRelativeShort(row.fetchedAt)}
+                    </a>
+                  ) : (
+                    <span
+                      title={`Collected ${formatDate(row.fetchedAt)} from ${
+                        SOURCE_LABEL[row.source] ?? row.source
+                      }`}
+                    >
+                      {formatRelativeShort(row.fetchedAt)}
+                    </span>
+                  )}
                 </td>
               </tr>
             ))}

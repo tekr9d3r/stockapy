@@ -74,7 +74,15 @@ export type Opportunity = {
   chain: string;
   category: Category;
   variant?: string;
+  /** The platform's app, used when no market-specific page is known. */
   url: string;
+  /**
+   * The most specific page we can establish for THIS market — ideally the one
+   * with the deposit or borrow form on it. Falls back to `url` when absent.
+   * Never guessed: an URL that lands on the wrong market is worse than one that
+   * lands on the app's front door.
+   */
+  deep_link?: string;
   verified: boolean;
   lockup: Lockup;
   withdrawal_delay_days?: number;
@@ -145,6 +153,12 @@ export type Row = {
   lockup: Lockup;
   withdrawalDelayDays?: number;
   url: string;
+  /** Where "open this market" should send someone. */
+  deepLink: string;
+  /** True when deepLink is market-specific rather than the platform's app. */
+  deepLinkIsSpecific: boolean;
+  /** DefiLlama's page for this exact pool: rate and TVL history. */
+  chartUrl: string | null;
   verified: boolean;
   eligibilityNote?: string;
   riskNotes?: string;

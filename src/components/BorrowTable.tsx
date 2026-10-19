@@ -127,12 +127,20 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
                   <td className="px-2 py-2.5 whitespace-nowrap">
                     <div className="flex items-center gap-1.5">
                       <a
-                        href={row.url}
+                        href={row.deepLink}
                         target="_blank"
                         rel="noopener nofollow"
+                        title={
+                          row.deepLinkIsSpecific
+                            ? `Open this market on ${row.platform.name}`
+                            : `${row.platform.name} — no market-specific link yet`
+                        }
                         className="font-medium hover:text-accent hover:underline"
                       >
                         {row.platform.name}
+                        <span aria-hidden="true" className="ml-0.5 text-fg-subtle">
+                          ↗
+                        </span>
                       </a>
                       <Badge tone={row.platform.kind === "cefi" ? "accent" : "neutral"}>
                         {row.platform.kind === "cefi" ? "CeFi" : "DeFi"}

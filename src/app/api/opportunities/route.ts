@@ -45,7 +45,10 @@ export function GET() {
               borrowApr: row.borrow.borrowApr,
             }
           : null,
-        url: row.url,
+        url: row.deepLink,
+        platformUrl: row.url,
+        deepLinkIsMarketSpecific: row.deepLinkIsSpecific,
+        chartUrl: row.chartUrl,
         verified: row.verified,
         source: row.source,
         fetchedAt: row.fetchedAt,

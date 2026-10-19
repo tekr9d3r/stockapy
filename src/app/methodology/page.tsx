@@ -67,6 +67,28 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
+      <Section title="Where the links go">
+        <p>
+          Each market links to the most specific page we can establish for it, which for most
+          DeFi venues is the market or lending page rather than the protocol&rsquo;s front
+          door. The arrow marks an outbound link; hovering says whether it is
+          market-specific.
+        </p>
+        <p>
+          We do not guess these. Several protocols run isolated markets where the same stock
+          and the same loan asset appear more than once at the same loan-to-value, and a link
+          that lands on the wrong one of those would point at different risk parameters than
+          the row describes. Where we cannot pin the exact market, the link goes to the
+          chain-filtered market list instead, and the row is one a human still needs to
+          confirm.
+        </p>
+        <p>
+          The timestamp in the last column links to that pool&rsquo;s rate and TVL history on
+          DefiLlama, where we read it from. That link is always exact, because the pool id is
+          the one we query.
+        </p>
+      </Section>
+
       <Section title="Borrow terms">
         <p>
           Aave V4 reserves come from{" "}

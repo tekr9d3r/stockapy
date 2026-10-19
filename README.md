@@ -46,8 +46,12 @@ npm run logos       # fetch any missing stock logos into public/logos
    the borrow rate. In a pooled market (Kamino) it does not — the stock reserve's borrow APR
    is the cost of borrowing *the stock*, so set `rate_pool` to the stablecoin reserve in that
    market instead.
-4. Open the URL, confirm it is live, and set `verified: true`.
-5. `npm run build` — the seed loader fails the build on a broken reference or a missing
+4. Open the market on the platform and paste the address bar into `deep_link` — the page
+   with the deposit or borrow form, not the app's front door. Leave it out rather than
+   guessing: several protocols run duplicate markets for the same stock and loan asset at
+   the same LTV, and a link to the wrong one misrepresents the row's risk.
+5. Confirm the market is live and set `verified: true`.
+6. `npm run build` — the seed loader fails the build on a broken reference or a missing
    `external_id`.
 
 Never type an APY you did not read from a source. Leave it `null`; the UI says "not collected"

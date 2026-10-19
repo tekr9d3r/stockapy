@@ -330,6 +330,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
+    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
     verified: false
     lockup: none
     data_source: defillama
@@ -350,6 +351,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
+    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
     verified: false
     lockup: none
     data_source: defillama
@@ -370,6 +372,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
+    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
     verified: false
     lockup: none
     data_source: defillama
@@ -390,6 +393,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
+    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
     verified: false
     lockup: none
     data_source: defillama
@@ -410,6 +414,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
+    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
     verified: false
     lockup: none
     data_source: defillama
@@ -430,6 +435,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
+    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
     verified: false
     lockup: none
     data_source: defillama
@@ -450,6 +456,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
+    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
     verified: false
     lockup: none
     data_source: defillama
@@ -470,6 +477,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
+    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
     verified: false
     lockup: none
     data_source: defillama
@@ -490,6 +498,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
+    deep_link: https://app.kamino.finance/lending/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua
     verified: false
     lockup: none
     data_source: defillama
@@ -510,6 +519,7 @@ opportunities:
     category: earn
     variant: Sentora xStocks Market
     url: https://app.kamino.finance/lending
+    deep_link: https://app.kamino.finance/lending/8BNUWRSibVasaAmhYpBCFpGgMisGKfVAf9ho3Cmf6vjr
     verified: false
     lockup: none
     data_source: defillama
@@ -530,6 +540,7 @@ opportunities:
     category: earn
     variant: Sentora xStocks Market
     url: https://app.kamino.finance/lending
+    deep_link: https://app.kamino.finance/lending/8BNUWRSibVasaAmhYpBCFpGgMisGKfVAf9ho3Cmf6vjr
     verified: false
     lockup: none
     data_source: defillama
@@ -550,6 +561,7 @@ opportunities:
     category: earn
     variant: Sentora xStocks Market
     url: https://app.kamino.finance/lending
+    deep_link: https://app.kamino.finance/lending/8BNUWRSibVasaAmhYpBCFpGgMisGKfVAf9ho3Cmf6vjr
     verified: false
     lockup: none
     data_source: defillama
@@ -570,6 +582,7 @@ opportunities:
     category: earn
     variant: NVDAx/USDC
     url: https://jup.ag/lend
+    deep_link: https://jup.ag/lend
     verified: false
     lockup: none
     data_source: defillama
@@ -586,6 +599,7 @@ opportunities:
     category: earn
     variant: NVDAx/JupUSD
     url: https://jup.ag/lend
+    deep_link: https://jup.ag/lend
     verified: false
     lockup: none
     data_source: defillama
@@ -602,6 +616,7 @@ opportunities:
     category: earn
     variant: TSLAx/USDC
     url: https://jup.ag/lend
+    deep_link: https://jup.ag/lend
     verified: false
     lockup: none
     data_source: defillama
@@ -618,6 +633,7 @@ opportunities:
     category: earn
     variant: TSLAx/JupUSD
     url: https://jup.ag/lend
+    deep_link: https://jup.ag/lend
     verified: false
     lockup: none
     data_source: defillama
@@ -634,6 +650,7 @@ opportunities:
     category: earn
     variant: SPYx/USDC
     url: https://jup.ag/lend
+    deep_link: https://jup.ag/lend
     verified: false
     lockup: none
     data_source: defillama
@@ -650,6 +667,7 @@ opportunities:
     category: earn
     variant: SPYx/JupUSD
     url: https://jup.ag/lend
+    deep_link: https://jup.ag/lend
     verified: false
     lockup: none
     data_source: defillama
@@ -666,6 +684,7 @@ opportunities:
     category: earn
     variant: QQQx/USDC
     url: https://jup.ag/lend
+    deep_link: https://jup.ag/lend
     verified: false
     lockup: none
     data_source: defillama
@@ -682,6 +701,7 @@ opportunities:
     category: earn
     variant: QQQx/JupUSD
     url: https://jup.ag/lend
+    deep_link: https://jup.ag/lend
     verified: false
     lockup: none
     data_source: defillama
@@ -795,6 +815,7 @@ opportunities:
     chain: Ethereum
     category: collateral
     url: https://app.morpho.org
+    deep_link: https://app.morpho.org/ethereum/variable
     verified: false
     lockup: none
     data_source: defillama
@@ -810,6 +831,7 @@ opportunities:
     chain: Robinhood Chain
     category: collateral
     url: https://app.morpho.org
+    deep_link: https://app.morpho.org/robinhood-chain/variable
     verified: false
     lockup: none
     data_source: defillama
@@ -825,6 +847,7 @@ opportunities:
     chain: Robinhood Chain
     category: collateral
     url: https://app.morpho.org
+    deep_link: https://app.morpho.org/robinhood-chain/variable
     verified: false
     lockup: none
     data_source: defillama
@@ -840,6 +863,7 @@ opportunities:
     chain: Base
     category: collateral
     url: https://app.morpho.org
+    deep_link: https://app.morpho.org/base/variable
     verified: false
     lockup: none
     data_source: defillama
@@ -855,6 +879,7 @@ opportunities:
     chain: Base
     category: collateral
     url: https://app.morpho.org
+    deep_link: https://app.morpho.org/base/variable
     verified: false
     lockup: none
     data_source: defillama
@@ -875,6 +900,7 @@ opportunities:
     category: collateral
     variant: Coinbase Stocks spoke
     url: https://app.aave.com
+    deep_link: https://app.aave.com/markets/
     verified: false
     lockup: none
     data_source: aave_api
@@ -896,6 +922,7 @@ opportunities:
     category: collateral
     variant: Coinbase Stocks spoke
     url: https://app.aave.com
+    deep_link: https://app.aave.com/markets/
     verified: false
     lockup: none
     data_source: aave_api
@@ -917,6 +944,7 @@ opportunities:
     category: collateral
     variant: Coinbase Stocks spoke
     url: https://app.aave.com
+    deep_link: https://app.aave.com/markets/
     verified: false
     lockup: none
     data_source: aave_api
@@ -938,6 +966,7 @@ opportunities:
     category: collateral
     variant: Coinbase Stocks spoke
     url: https://app.aave.com
+    deep_link: https://app.aave.com/markets/
     verified: false
     lockup: none
     data_source: aave_api
@@ -959,6 +988,7 @@ opportunities:
     category: collateral
     variant: Coinbase Stocks spoke
     url: https://app.aave.com
+    deep_link: https://app.aave.com/markets/
     verified: false
     lockup: none
     data_source: aave_api
@@ -980,6 +1010,7 @@ opportunities:
     category: collateral
     variant: Coinbase Stocks spoke
     url: https://app.aave.com
+    deep_link: https://app.aave.com/markets/
     verified: false
     lockup: none
     data_source: aave_api
@@ -1001,6 +1032,7 @@ opportunities:
     category: collateral
     variant: Coinbase Stocks spoke
     url: https://app.aave.com
+    deep_link: https://app.aave.com/markets/
     verified: false
     lockup: none
     data_source: aave_api
