@@ -1,0 +1,986 @@
+# StockAPY seed data — the source of truth for WHAT EXISTS.
+# Live numbers (APY, TVL) come from data/snapshots/latest.json, never from this file,
+# except for `manual` entries where no API exists.
+#
+# Rules:
+#   - Never invent an APY, TVL or contract address. Unknown = null + a todo note.
+#   - `verified: true` means a human opened the URL and confirmed the opportunity is live.
+#   - `external_id` is the DefiLlama pool UUID. Resolved by scripts/discover.ts.
+
+underlying_assets:
+  - ticker: NVDA
+    name: NVIDIA
+    type: stock
+  - ticker: TSLA
+    name: Tesla
+    type: stock
+  - ticker: AAPL
+    name: Apple
+    type: stock
+  - ticker: GOOGL
+    name: Alphabet
+    type: stock
+  - ticker: MSFT
+    name: Microsoft
+    type: stock
+  - ticker: META
+    name: Meta Platforms
+    type: stock
+  - ticker: AMZN
+    name: Amazon
+    type: stock
+  - ticker: MSTR
+    name: Strategy
+    type: stock
+  - ticker: CRCL
+    name: Circle Internet Group
+    type: stock
+  - ticker: HOOD
+    name: Robinhood Markets
+    type: stock
+  - ticker: SPY
+    name: SPDR S&P 500 ETF Trust
+    type: etf
+  - ticker: QQQ
+    name: Invesco QQQ Trust
+    type: etf
+
+issuers:
+  - id: xstocks
+    name: xStocks
+    website: https://xstocks.com
+    structure_note: >-
+      Issued by Backed Finance (Switzerland) and distributed by Kraken. Each token is
+      backed 1:1 by the underlying share held by a custodian. Token holders have a claim
+      on the issuer, not direct share ownership, and no voting rights.
+  - id: ondo
+    name: Ondo Global Markets
+    website: https://ondo.finance
+    structure_note: >-
+      Ondo Global Markets tokens are backed 1:1 by shares held by a broker-dealer.
+      Redemption is available to verified non-US participants.
+  - id: coinbase
+    name: Coinbase
+    website: https://www.coinbase.com
+    structure_note: >-
+      Coinbase tokenized equities on Base. Backed 1:1 and redeemable through Coinbase
+      for eligible users.
+  - id: robinhood
+    name: Robinhood
+    website: https://robinhood.com
+    structure_note: >-
+      Robinhood Stock Tokens, issued to EU customers and settled on Robinhood Chain.
+      Tokens track the share price; holders are contractually exposed, not shareholders.
+  - id: binance
+    name: Binance (bStocks)
+    website: https://www.binance.com
+    structure_note: >-
+      bStocks on BNB Chain. Not yet live as a stock-earn venue; tracked on the watchlist.
+
+platforms:
+  - id: kamino
+    name: Kamino Lend
+    kind: defi
+    website: https://kamino.com
+    description: >-
+      Solana lending market. The xStocks Market is an isolated market where tokenized
+      stocks can be supplied and borrowed against.
+  - id: jupiter-lend
+    name: Jupiter Lend
+    kind: defi
+    website: https://jup.ag/lend
+    description: >-
+      Lending inside the Jupiter app on Solana. xStocks vaults are paired against a
+      single borrow asset (USDC or JupUSD).
+  - id: superform
+    name: Superform
+    kind: defi
+    website: https://app.superform.xyz
+    description: >-
+      SuperVaults wrap a strategy behind a single deposit. The SuperStocks vaults take a
+      Coinbase tokenized equity and run a leveraged loop against USDC on Aave.
+  - id: morpho
+    name: Morpho
+    kind: defi
+    website: https://app.morpho.org
+    description: >-
+      Permissionless isolated lending markets. In Morpho Blue the collateral asset is not
+      lent out, so supplying a stock as collateral earns nothing.
+  - id: aave
+    name: Aave
+    kind: defi
+    website: https://app.aave.com
+    description: >-
+      The Aave V4 Equities Hub on Base accepts Coinbase tokenized equities as collateral.
+      Interest is paid to USDC suppliers, not to equity depositors.
+  - id: euler
+    name: Euler
+    kind: defi
+    website: https://app.euler.finance
+    description: >-
+      Modular lending on Ethereum. Some vaults list tokenized equities.
+  - id: loopscale
+    name: Loopscale
+    kind: defi
+    website: https://app.loopscale.com
+    description: >-
+      Order-book style fixed-rate lending on Solana. Rates depend on a borrower matching
+      your offer, so advertised rates are often not fillable in size.
+  - id: kraken
+    name: Kraken
+    kind: cefi
+    website: https://www.kraken.com
+    description: >-
+      Kraken xStocks Vaults, built on Veda BoringVault contracts on Ink. Yield is paid
+      in kind and withdrawals take roughly three days.
+  - id: bitrue
+    name: Bitrue
+    kind: cefi
+    website: https://www.bitrue.com
+    description: Flexible staking on tokenized stocks, no lock-up.
+  - id: cryptocom
+    name: Crypto.com
+    kind: cefi
+    website: https://crypto.com
+    description: Stocks Earn, a flexible product on Crypto.com tokenized stocks.
+  - id: bybit
+    name: Bybit
+    kind: cefi
+    website: https://www.bybit.com
+    description: >-
+      Dual Asset, a fixed-term structured product. Not a simple deposit — the asset you
+      get back depends on the price at settlement.
+
+tokens:
+  # --- xStocks on Solana ---
+  - symbol: NVDAx
+    underlying: NVDA
+    issuer: xstocks
+    chain: Solana
+  - symbol: TSLAx
+    underlying: TSLA
+    issuer: xstocks
+    chain: Solana
+  - symbol: AAPLx
+    underlying: AAPL
+    issuer: xstocks
+    chain: Solana
+  - symbol: GOOGLx
+    underlying: GOOGL
+    issuer: xstocks
+    chain: Solana
+  - symbol: MSTRx
+    underlying: MSTR
+    issuer: xstocks
+    chain: Solana
+  - symbol: CRCLx
+    underlying: CRCL
+    issuer: xstocks
+    chain: Solana
+  - symbol: HOODx
+    underlying: HOOD
+    issuer: xstocks
+    chain: Solana
+  - symbol: SPYx
+    underlying: SPY
+    issuer: xstocks
+    chain: Solana
+  - symbol: QQQx
+    underlying: QQQ
+    issuer: xstocks
+    chain: Solana
+  # --- xStocks bridged to Ethereum ---
+  - symbol: wSPYx
+    underlying: SPY
+    issuer: xstocks
+    chain: Ethereum
+    note: Wrapped xStocks SPY on Ethereum.
+  # --- Coinbase on Base ---
+  - symbol: NVDAc
+    underlying: NVDA
+    issuer: coinbase
+    chain: Base
+  - symbol: TSLAc
+    underlying: TSLA
+    issuer: coinbase
+    chain: Base
+  - symbol: AAPLc
+    underlying: AAPL
+    issuer: coinbase
+    chain: Base
+  - symbol: GOOGLc
+    underlying: GOOGL
+    issuer: coinbase
+    chain: Base
+  - symbol: MSFTc
+    underlying: MSFT
+    issuer: coinbase
+    chain: Base
+  - symbol: METAc
+    underlying: META
+    issuer: coinbase
+    chain: Base
+  - symbol: AMZNc
+    underlying: AMZN
+    issuer: coinbase
+    chain: Base
+  # --- Robinhood Chain ---
+  - symbol: NVDA (Robinhood)
+    underlying: NVDA
+    issuer: robinhood
+    chain: Robinhood Chain
+  - symbol: SPY (Robinhood)
+    underlying: SPY
+    issuer: robinhood
+    chain: Robinhood Chain
+  # --- Ondo ---
+  - symbol: SPYon
+    underlying: SPY
+    issuer: ondo
+    chain: Ethereum
+  - symbol: QQQon
+    underlying: QQQ
+    issuer: ondo
+    chain: Ethereum
+  - symbol: MSFTon
+    underlying: MSFT
+    issuer: ondo
+    chain: Ethereum
+  - symbol: METAon
+    underlying: META
+    issuer: ondo
+    chain: Ethereum
+opportunities:
+  - id: kamino-xstocks-nvdax
+    token: NVDAx
+    platform: kamino
+    chain: Solana
+    category: earn
+    variant: xStocks Market
+    url: https://app.kamino.finance/lending
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 646abe53-eb33-4dbc-815d-50f571299302
+    risk_notes: >-
+      Isolated lending market. Supply APY depends entirely on borrow demand, which is thin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: kamino-xstocks-tslax
+    token: TSLAx
+    platform: kamino
+    chain: Solana
+    category: earn
+    variant: xStocks Market
+    url: https://app.kamino.finance/lending
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 96566ded-c24c-4fb1-a126-06cf49e0ce86
+    risk_notes: >-
+      Isolated lending market. Supply APY depends entirely on borrow demand, which is thin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: kamino-xstocks-aaplx
+    token: AAPLx
+    platform: kamino
+    chain: Solana
+    category: earn
+    variant: xStocks Market
+    url: https://app.kamino.finance/lending
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 69ada9f6-8d07-4b9d-8850-e2fb0a2a46e5
+    risk_notes: >-
+      Isolated lending market. Supply APY depends entirely on borrow demand, which is thin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: kamino-xstocks-googlx
+    token: GOOGLx
+    platform: kamino
+    chain: Solana
+    category: earn
+    variant: xStocks Market
+    url: https://app.kamino.finance/lending
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 1146ab17-5035-43da-b083-fd18a34de730
+    risk_notes: >-
+      Isolated lending market. Supply APY depends entirely on borrow demand, which is thin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: kamino-xstocks-mstrx
+    token: MSTRx
+    platform: kamino
+    chain: Solana
+    category: earn
+    variant: xStocks Market
+    url: https://app.kamino.finance/lending
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 9030e8a7-9223-48d6-93ae-f2e3082ffbbf
+    risk_notes: >-
+      Isolated lending market. Supply APY depends entirely on borrow demand, which is thin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: kamino-xstocks-crclx
+    token: CRCLx
+    platform: kamino
+    chain: Solana
+    category: earn
+    variant: xStocks Market
+    url: https://app.kamino.finance/lending
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: ee750b84-e4ed-4053-a8c7-d5cf15636132
+    risk_notes: >-
+      Isolated lending market. Supply APY depends entirely on borrow demand, which is thin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: kamino-xstocks-hoodx
+    token: HOODx
+    platform: kamino
+    chain: Solana
+    category: earn
+    variant: xStocks Market
+    url: https://app.kamino.finance/lending
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 925cefb8-47a2-40f0-bb4d-d191c3369c5b
+    risk_notes: >-
+      Isolated lending market. Supply APY depends entirely on borrow demand, which is thin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: kamino-xstocks-spyx
+    token: SPYx
+    platform: kamino
+    chain: Solana
+    category: earn
+    variant: xStocks Market
+    url: https://app.kamino.finance/lending
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: a0f306a6-976a-4d29-852b-eaa09e84f8b4
+    risk_notes: >-
+      Isolated lending market. Supply APY depends entirely on borrow demand, which is thin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: kamino-xstocks-qqqx
+    token: QQQx
+    platform: kamino
+    chain: Solana
+    category: earn
+    variant: xStocks Market
+    url: https://app.kamino.finance/lending
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: c776be75-2fe5-4cd3-b7da-48f60542afdd
+    risk_notes: >-
+      Isolated lending market. Supply APY depends entirely on borrow demand, which is thin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: kamino-sentora-nvdax
+    token: NVDAx
+    platform: kamino
+    chain: Solana
+    category: earn
+    variant: Sentora xStocks Market
+    url: https://app.kamino.finance/lending
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: f16ae11f-6bd6-51ba-92c7-6baab9f6af04
+    risk_notes: >-
+      Isolated lending market. Supply APY depends entirely on borrow demand, which is thin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: kamino-sentora-spyx
+    token: SPYx
+    platform: kamino
+    chain: Solana
+    category: earn
+    variant: Sentora xStocks Market
+    url: https://app.kamino.finance/lending
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 8e6bbc93-6386-5aa9-91f4-88f5115ef73d
+    risk_notes: >-
+      Isolated lending market. Supply APY depends entirely on borrow demand, which is thin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: kamino-sentora-qqqx
+    token: QQQx
+    platform: kamino
+    chain: Solana
+    category: earn
+    variant: Sentora xStocks Market
+    url: https://app.kamino.finance/lending
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 0a922689-20a7-50dc-b3ab-6da52b613ad7
+    risk_notes: >-
+      Isolated lending market. Supply APY depends entirely on borrow demand, which is thin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: jupiter-nvdax-usdc
+    token: NVDAx
+    platform: jupiter-lend
+    chain: Solana
+    category: earn
+    variant: NVDAx/USDC
+    url: https://jup.ag/lend
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: f4effa22-e824-43f7-9a12-e315ce374d37
+    risk_notes: >-
+      Supply APY depends on borrow demand against a single stablecoin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: jupiter-nvdax-jupusd
+    token: NVDAx
+    platform: jupiter-lend
+    chain: Solana
+    category: earn
+    variant: NVDAx/JupUSD
+    url: https://jup.ag/lend
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: c4a2e337-9541-43ca-9d85-c8296653e4e7
+    risk_notes: >-
+      Supply APY depends on borrow demand against a single stablecoin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: jupiter-tslax-usdc
+    token: TSLAx
+    platform: jupiter-lend
+    chain: Solana
+    category: earn
+    variant: TSLAx/USDC
+    url: https://jup.ag/lend
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: f5268625-ac8f-4498-99b5-f2e1a08c7230
+    risk_notes: >-
+      Supply APY depends on borrow demand against a single stablecoin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: jupiter-tslax-jupusd
+    token: TSLAx
+    platform: jupiter-lend
+    chain: Solana
+    category: earn
+    variant: TSLAx/JupUSD
+    url: https://jup.ag/lend
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 0611005f-0834-422f-b819-49a116e9cc51
+    risk_notes: >-
+      Supply APY depends on borrow demand against a single stablecoin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: jupiter-spyx-usdc
+    token: SPYx
+    platform: jupiter-lend
+    chain: Solana
+    category: earn
+    variant: SPYx/USDC
+    url: https://jup.ag/lend
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 6e0a7124-be02-4460-bbbe-a6dc6719e017
+    risk_notes: >-
+      Supply APY depends on borrow demand against a single stablecoin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: jupiter-spyx-jupusd
+    token: SPYx
+    platform: jupiter-lend
+    chain: Solana
+    category: earn
+    variant: SPYx/JupUSD
+    url: https://jup.ag/lend
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: f70ced93-ac20-4619-a86a-834cae2f9a46
+    risk_notes: >-
+      Supply APY depends on borrow demand against a single stablecoin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: jupiter-qqqx-usdc
+    token: QQQx
+    platform: jupiter-lend
+    chain: Solana
+    category: earn
+    variant: QQQx/USDC
+    url: https://jup.ag/lend
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 00bae807-a7dc-4fb5-995d-b579f0eb1455
+    risk_notes: >-
+      Supply APY depends on borrow demand against a single stablecoin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: jupiter-qqqx-jupusd
+    token: QQQx
+    platform: jupiter-lend
+    chain: Solana
+    category: earn
+    variant: QQQx/JupUSD
+    url: https://jup.ag/lend
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 3988eb46-4d83-4d26-9878-655a4a6b4e1a
+    risk_notes: >-
+      Supply APY depends on borrow demand against a single stablecoin. Oracle prices stocks outside US market hours.
+    active: true
+  - id: superform-supernvda
+    token: NVDAc
+    platform: superform
+    chain: Base
+    category: earn
+    variant: superNVDA SuperVault
+    url: https://app.superform.xyz
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: bc128d75-8019-5d5c-9e6c-2ab94b03b642
+    risk_notes: >-
+      The vault borrows USDC on Aave against your stock and loops. Liquidation risk is real and the headline APY is almost entirely token incentives, which can stop at any time.
+    active: true
+  - id: superform-supertsla
+    token: TSLAc
+    platform: superform
+    chain: Base
+    category: earn
+    variant: superTSLA SuperVault
+    url: https://app.superform.xyz
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 048dcabb-8c0d-598e-9249-858698e72498
+    risk_notes: >-
+      The vault borrows USDC on Aave against your stock and loops. Liquidation risk is real and the headline APY is almost entirely token incentives, which can stop at any time.
+    active: true
+  - id: superform-supergoogl
+    token: GOOGLc
+    platform: superform
+    chain: Base
+    category: earn
+    variant: superGOOGL SuperVault
+    url: https://app.superform.xyz
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 6a9a0fe1-962e-5393-9be6-811022d51e8a
+    risk_notes: >-
+      The vault borrows USDC on Aave against your stock and loops. Liquidation risk is real and the headline APY is almost entirely token incentives, which can stop at any time.
+    active: true
+  - id: superform-superaapl
+    token: AAPLc
+    platform: superform
+    chain: Base
+    category: earn
+    variant: superAAPL SuperVault
+    url: https://app.superform.xyz
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: af6e6de5-5fe1-5146-b8b6-e1f6112932a6
+    risk_notes: >-
+      The vault borrows USDC on Aave against your stock and loops. Liquidation risk is real and the headline APY is almost entirely token incentives, which can stop at any time.
+    active: true
+  - id: superform-supermeta
+    token: METAc
+    platform: superform
+    chain: Base
+    category: earn
+    variant: superMETA SuperVault
+    url: https://app.superform.xyz
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 717e98da-5997-5024-9834-5a308705da93
+    risk_notes: >-
+      The vault borrows USDC on Aave against your stock and loops. Liquidation risk is real and the headline APY is almost entirely token incentives, which can stop at any time.
+    active: true
+  - id: superform-superamzn
+    token: AMZNc
+    platform: superform
+    chain: Base
+    category: earn
+    variant: superAMZN SuperVault
+    url: https://app.superform.xyz
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 3b519f39-0bb2-5d9e-bade-49bad3dac0a4
+    risk_notes: >-
+      The vault borrows USDC on Aave against your stock and loops. Liquidation risk is real and the headline APY is almost entirely token incentives, which can stop at any time.
+    active: true
+  - id: superform-supermsft
+    token: MSFTc
+    platform: superform
+    chain: Base
+    category: earn
+    variant: superMSFT SuperVault
+    url: https://app.superform.xyz
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 3ce855c8-aede-5ebf-abf7-800fae05d2a2
+    risk_notes: >-
+      The vault borrows USDC on Aave against your stock and loops. Liquidation risk is real and the headline APY is almost entirely token incentives, which can stop at any time.
+    active: true
+  - id: morpho-wspyx-eth
+    token: wSPYx
+    platform: morpho
+    chain: Ethereum
+    category: collateral
+    url: https://app.morpho.org
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 28dc189e-6789-4dec-b17d-f009df035c6a
+    risk_notes: >-
+      Morpho Blue does not lend out collateral, so the stock side earns nothing by design. Supplying it exposes you to liquidation if you then borrow.
+    active: true
+  - id: morpho-nvda-hood
+    token: NVDA (Robinhood)
+    platform: morpho
+    chain: Robinhood Chain
+    category: collateral
+    url: https://app.morpho.org
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: d7439dd7-0aed-556e-adbe-53312988bcbe
+    risk_notes: >-
+      Morpho Blue does not lend out collateral, so the stock side earns nothing by design. Supplying it exposes you to liquidation if you then borrow.
+    active: true
+  - id: morpho-spy-hood
+    token: SPY (Robinhood)
+    platform: morpho
+    chain: Robinhood Chain
+    category: collateral
+    url: https://app.morpho.org
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: a5b34dae-2781-5d64-b265-a15f872b2303
+    risk_notes: >-
+      Morpho Blue does not lend out collateral, so the stock side earns nothing by design. Supplying it exposes you to liquidation if you then borrow.
+    active: true
+  - id: morpho-aaplc-base
+    token: AAPLc
+    platform: morpho
+    chain: Base
+    category: collateral
+    url: https://app.morpho.org
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: 41d7b195-ec03-5e3a-b235-497995d6bdca
+    risk_notes: >-
+      Morpho Blue does not lend out collateral, so the stock side earns nothing by design. Supplying it exposes you to liquidation if you then borrow.
+    active: true
+  - id: morpho-googlc-base
+    token: GOOGLc
+    platform: morpho
+    chain: Base
+    category: collateral
+    url: https://app.morpho.org
+    verified: false
+    lockup: none
+    data_source: defillama
+    external_id: dfcf7386-fcb9-58bd-9bdd-9436744dc160
+    risk_notes: >-
+      Morpho Blue does not lend out collateral, so the stock side earns nothing by design. Supplying it exposes you to liquidation if you then borrow.
+    active: true
+
+  # --- Manual entries: no API covers these yet ---
+  # Aave V4 Equities Hub. Collateral-only by design: interest accrues to USDC suppliers,
+  # the equity side earns nothing. apy 0 here is structural, not a missing measurement.
+  - id: aave-v4-nvdac
+    token: NVDAc
+    platform: aave
+    chain: Base
+    category: collateral
+    variant: Equities Hub
+    url: https://app.aave.com
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: 0
+      apy_reward: 0
+      apy_total: 0
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: Collateral only by design. Not a measurement.
+    risk_notes: >-
+      Your stock earns nothing here. It only unlocks USDC borrowing power, and that
+      borrowing carries liquidation risk against an equity price that gaps between
+      market sessions.
+    active: true
+  - id: aave-v4-tslac
+    token: TSLAc
+    platform: aave
+    chain: Base
+    category: collateral
+    variant: Equities Hub
+    url: https://app.aave.com
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: 0
+      apy_reward: 0
+      apy_total: 0
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: Collateral only by design. Not a measurement.
+    risk_notes: >-
+      Your stock earns nothing here. It only unlocks USDC borrowing power, and that
+      borrowing carries liquidation risk against an equity price that gaps between
+      market sessions.
+    active: true
+  - id: aave-v4-aaplc
+    token: AAPLc
+    platform: aave
+    chain: Base
+    category: collateral
+    variant: Equities Hub
+    url: https://app.aave.com
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: 0
+      apy_reward: 0
+      apy_total: 0
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: Collateral only by design. Not a measurement.
+    risk_notes: >-
+      Your stock earns nothing here. It only unlocks USDC borrowing power, and that
+      borrowing carries liquidation risk against an equity price that gaps between
+      market sessions.
+    active: true
+  - id: aave-v4-googlc
+    token: GOOGLc
+    platform: aave
+    chain: Base
+    category: collateral
+    variant: Equities Hub
+    url: https://app.aave.com
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: 0
+      apy_reward: 0
+      apy_total: 0
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: Collateral only by design. Not a measurement.
+    risk_notes: >-
+      Your stock earns nothing here. It only unlocks USDC borrowing power, and that
+      borrowing carries liquidation risk against an equity price that gaps between
+      market sessions.
+    active: true
+  - id: aave-v4-msftc
+    token: MSFTc
+    platform: aave
+    chain: Base
+    category: collateral
+    variant: Equities Hub
+    url: https://app.aave.com
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: 0
+      apy_reward: 0
+      apy_total: 0
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: Collateral only by design. Not a measurement.
+    risk_notes: >-
+      Your stock earns nothing here. It only unlocks USDC borrowing power, and that
+      borrowing carries liquidation risk against an equity price that gaps between
+      market sessions.
+    active: true
+  - id: aave-v4-metac
+    token: METAc
+    platform: aave
+    chain: Base
+    category: collateral
+    variant: Equities Hub
+    url: https://app.aave.com
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: 0
+      apy_reward: 0
+      apy_total: 0
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: Collateral only by design. Not a measurement.
+    risk_notes: >-
+      Your stock earns nothing here. It only unlocks USDC borrowing power, and that
+      borrowing carries liquidation risk against an equity price that gaps between
+      market sessions.
+    active: true
+  - id: aave-v4-amznc
+    token: AMZNc
+    platform: aave
+    chain: Base
+    category: collateral
+    variant: Equities Hub
+    url: https://app.aave.com
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: 0
+      apy_reward: 0
+      apy_total: 0
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: Collateral only by design. Not a measurement.
+    risk_notes: >-
+      Your stock earns nothing here. It only unlocks USDC borrowing power, and that
+      borrowing carries liquidation risk against an equity price that gaps between
+      market sessions.
+    active: true
+
+  # Kraken xStocks Vaults. Real product, but the rate is not published through any API we
+  # can read yet. Left null on purpose — see the Ink on-chain reader TODO.
+  - id: kraken-vault-nvdax
+    token: NVDAx
+    platform: kraken
+    chain: Ink
+    category: earn
+    variant: xStocks Vault
+    url: https://www.kraken.com/features/xstocks
+    verified: false
+    lockup: days
+    withdrawal_delay_days: 3
+    data_source: manual
+    manual:
+      apy_base: null
+      apy_reward: null
+      apy_total: null
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: >-
+        Rate not collected yet. Needs an on-chain reader for the Veda BoringVault share
+        price on Ink, or the Kraken private Earn API.
+    eligibility_note: Kraken Earn availability depends on your country of residence.
+    risk_notes: >-
+      Custodial. Withdrawals take about three days, so you cannot exit quickly if the
+      underlying moves against you.
+    active: true
+  - id: kraken-vault-spyx
+    token: SPYx
+    platform: kraken
+    chain: Ink
+    category: earn
+    variant: xStocks Vault
+    url: https://www.kraken.com/features/xstocks
+    verified: false
+    lockup: days
+    withdrawal_delay_days: 3
+    data_source: manual
+    manual:
+      apy_base: null
+      apy_reward: null
+      apy_total: null
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: >-
+        Rate not collected yet. Needs an on-chain reader for the Veda BoringVault share
+        price on Ink, or the Kraken private Earn API.
+    eligibility_note: Kraken Earn availability depends on your country of residence.
+    risk_notes: >-
+      Custodial. Withdrawals take about three days, so you cannot exit quickly if the
+      underlying moves against you.
+    active: true
+  - id: kraken-vault-qqqx
+    token: QQQx
+    platform: kraken
+    chain: Ink
+    category: earn
+    variant: xStocks Vault
+    url: https://www.kraken.com/features/xstocks
+    verified: false
+    lockup: days
+    withdrawal_delay_days: 3
+    data_source: manual
+    manual:
+      apy_base: null
+      apy_reward: null
+      apy_total: null
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: >-
+        Rate not collected yet. Needs an on-chain reader for the Veda BoringVault share
+        price on Ink, or the Kraken private Earn API.
+    eligibility_note: Kraken Earn availability depends on your country of residence.
+    risk_notes: >-
+      Custodial. Withdrawals take about three days, so you cannot exit quickly if the
+      underlying moves against you.
+    active: true
+
+# Venues named in research that we have NOT been able to confirm as live stock-earn
+# opportunities. Shown on the site as a watchlist, never as a row with a number next to it.
+watchlist:
+  - platform: Euler
+    chain: Ethereum
+    status: Unconfirmed
+    note: >-
+      Listed as carrying xStocks and Ondo vaults. As of 19 Oct 2026 DefiLlama reports no
+      tokenized-equity pools under euler-v2, so we cannot confirm a supply-side rate.
+    url: https://app.euler.finance
+  - platform: Loopscale
+    chain: Solana
+    status: Unconfirmed
+    note: >-
+      Fixed-rate order-book lending. No tokenized-equity markets visible in DefiLlama's
+      loopscale-lending pools as of 19 Oct 2026.
+    url: https://app.loopscale.com
+  - platform: Bybit
+    chain: CeFi
+    status: Not available
+    note: >-
+      Dual Asset was expected to carry xStocks. Bybit's public earn API returns 260
+      flexible-savings products as of 19 Oct 2026 and none of them is a tokenized stock.
+    url: https://www.bybit.com/en/earn
+  - platform: Bitrue
+    chain: CeFi
+    status: Unconfirmed
+    note: >-
+      Advertises flexible staking on Ondo tokens and tokenized Apple, Nvidia and Tesla.
+      No public API, so rates need manual checking before we publish them.
+    url: https://www.bitrue.com
+  - platform: Crypto.com
+    chain: CeFi
+    status: Unconfirmed
+    note: >-
+      Stocks Earn is marketed as paying "up to 4%". That is a marketing ceiling, not a
+      measured rate, so it is not in the table.
+    url: https://crypto.com
+  - platform: Venus
+    chain: BNB Chain
+    status: Collateral only
+    note: Launched with bStocks as collateral and borrowing paused.
+    url: https://app.venus.io
+  - platform: Lista DAO
+    chain: BNB Chain
+    status: Unconfirmed
+    note: Tracked for bStocks support.
+    url: https://lista.org
+  - platform: Aster
+    chain: BNB Chain
+    status: Trading collateral
+    note: bStocks usable as trading collateral, not an earn product.
+    url: https://www.asterdex.com

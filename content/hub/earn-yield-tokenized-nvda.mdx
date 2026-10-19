@@ -1,0 +1,63 @@
+---
+title: "How to earn yield on tokenized NVDA"
+description: "There are several tokenized NVDA tokens on three different chains, and the venues that accept them pay very different things. A walk through all of them, with the catch for each."
+datePublished: "2026-10-19"
+dateModified: "2026-10-19"
+author: "StockAPY"
+tags: ["guide", "NVDA"]
+faq:
+  - question: "Can you earn yield on tokenized NVDA?"
+    answer: "Yes, but read the split before you deposit. The highest rate comes from a leveraged vault where essentially all of the yield is token incentives, while plain lending markets pay close to zero because almost nobody borrows tokenized NVDA."
+  - question: "Which tokenized NVDA token should you hold?"
+    answer: "It depends on which chain and which venue you want. NVDAx from xStocks lives on Solana and is accepted by Kamino and Jupiter Lend. NVDAc from Coinbase lives on Base and is what Superform's superNVDA vault and the Aave V4 Equities Hub take. Robinhood's NVDA token sits on Robinhood Chain with a Morpho market. They are not interchangeable."
+---
+
+NVDA is the most widely tokenized stock onchain, which means there are several different NVDA
+tokens and they do not go to the same places. Here is the current map.
+
+<LiveTable ticker="NVDA" />
+
+## The tokens are not interchangeable
+
+Four issuers wrap the same share, and your choice of wrapper decides which venues you can reach:
+
+- **NVDAx** (xStocks, Solana) — the most liquid wrapper. Accepted by Kamino's xStocks Market and
+  Jupiter Lend.
+- **NVDAc** (Coinbase, Base) — the deposit asset for Superform's superNVDA vault and for the
+  Aave V4 Equities Hub.
+- **NVDA** (Robinhood, Robinhood Chain) — has a Morpho market, collateral only.
+
+Moving between them means selling one and buying another. There is no bridge between wrappers.
+
+## What each venue actually does with it
+
+**Kamino and Jupiter Lend** lend it out. That is the only category here that can pay real
+interest — and it currently pays almost none, because tokenized NVDA borrow demand is
+negligible. On 19 October 2026, Kamino's NVDAx market paid 0.02% and Jupiter's paid 0.00%.
+
+**Superform's superNVDA** deposits your NVDAc, borrows USDC against it on Aave and loops. On
+19 October 2026 it showed 16.97%, of which 0.17 percentage points was interest and 16.80 was
+token incentives. It is the highest number on the page and also the only one with a liquidation
+price.
+
+**Aave V4's Equities Hub and the Morpho markets** take NVDA as collateral and never lend it.
+They pay 0%. What you get is USDC borrowing power, not yield.
+
+## The risks that are specific to this asset
+
+- **Oracle gaps.** NVDA trades on Nasdaq during market hours; the token trades always. Any
+  leveraged position has to survive whatever the oracle quotes over a weekend and the reopening
+  gap on Monday.
+- **Issuer structure.** You hold a claim on an issuer, not a share. Redemption rules differ by
+  issuer and by your country of residence.
+- **Thin markets.** Several of these pools hold low six figures. A rate on a small pool is not a
+  rate you can get in size.
+
+## The short version
+
+If you want interest on tokenized NVDA, there is barely any to be had. If you want the incentive
+yield, understand that you are taking leverage and a liquidation price to get it. If someone
+quotes you a number, ask which part is base.
+
+See the [full comparison](/stock/nvda) for the live numbers, or read our
+[methodology](/methodology) for where they come from.

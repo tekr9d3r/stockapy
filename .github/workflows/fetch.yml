@@ -1,0 +1,43 @@
+name: Refresh yield data
+
+on:
+  schedule:
+    # Hourly. Keep in sync with REFRESH_INTERVAL_SECONDS in src/config.ts.
+    - cron: "7 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-data
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Exits non-zero if every source failed, which leaves the last good
+      # snapshot in place rather than committing an empty one.
+      - run: npm run fetch
+
+      - name: Commit the snapshot
+        run: |
+          git config user.name "stockapy-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/snapshots
+          if git diff --staged --quiet; then
+            echo "No change in the data."
+          else
+            git commit -m "data: refresh $(date -u +'%Y-%m-%dT%H:%MZ')"
+            git push
+          fi

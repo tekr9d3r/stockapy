@@ -1,0 +1,80 @@
+---
+title: "Almost nobody is paying you to hold a tokenized stock"
+description: "We checked every venue that accepts a tokenized stock. The median pays 0%, and 99.7% of all the yield on offer is token incentives rather than interest. Here is the full picture, with the data behind it."
+datePublished: "2026-10-19"
+dateModified: "2026-10-19"
+author: "StockAPY"
+tags: ["research", "yield", "monthly report"]
+faq:
+  - question: "What is the average yield on a tokenized stock?"
+    answer: "As of 19 October 2026 the median earn opportunity across the venues we track pays 0.00% APY. The mean is dragged upward by a handful of incentivised vaults, which is why we publish the median and the base/reward split rather than an average."
+  - question: "Why is the base APY on tokenized stocks so low?"
+    answer: "Base APY is interest paid by borrowers. Almost nobody borrows against a tokenized share: there is no established shorting flow, the collateral gaps between market sessions, and the markets are small. With no borrow demand there is no interest to pay out, so supply-side rates sit at or near zero."
+  - question: "Are the 15-24% APYs on tokenized stocks real?"
+    answer: "They are really being paid, but they are not interest. The highest rates we track come from Superform's SuperVaults on Base, where essentially the entire rate is token incentives paid out of a protocol budget, and the vault borrows USDC against your stock to amplify it. That adds a liquidation price to a position that would otherwise just be a share."
+---
+
+We built a comparison table of every place a tokenized stock can earn, then looked at what it
+said. The answer is unflattering for the whole category, so it is worth stating plainly.
+
+<LiveStats />
+
+## The median tokenized stock earns nothing
+
+Across every lending market that accepts a tokenized stock on the supply side, the median rate
+is zero. Not "low" — zero. On 19 October 2026, Kamino's xStocks Market paid 0.19% on QQQx,
+0.08% on SPYx, 0.02% on NVDAx and exactly 0.00% on everything else. Jupiter Lend's eight xStocks
+vaults all read 0.00%.
+
+This is not a data problem. It is what a lending market looks like when nobody borrows. Base APY
+is interest that borrowers pay; with no borrow demand there is no interest. Tokenized equities
+have very little borrow demand because there is no established shorting flow, the collateral
+gaps between market sessions, and the pools are small.
+
+## The big numbers are incentives wearing a yield costume
+
+The headline rates in the table — 15% to 24% — all come from one place: Superform's SuperVaults
+on Base. Take superTSLA, which showed 23.90% on 19 October 2026. Its base APY was **0.00%**. The
+entire rate was token incentives.
+
+Those vaults also do something a lending deposit does not: they borrow USDC against your stock
+on Aave and loop the position. That amplifies the incentive, and it attaches a liquidation price
+to an asset that, held directly, simply cannot be liquidated.
+
+Both facts can be true at once. The yield is really being paid today, and it is a marketing
+budget with a liquidation risk attached. Our table splits every rate into base and reward so the
+difference is visible before you click through.
+
+## Collateral venues are not earning venues
+
+A second group of venues — Aave V4's Equities Hub, the Morpho Blue equity markets — accept
+tokenized stocks and pay nothing by design. Your position is collateral; it is never lent out,
+so there is no interest to receive. The interest in those markets flows to whoever supplied the
+USDC on the other side.
+
+We show these rows at 0% rather than hiding them, because "this venue exists and pays you
+nothing" is useful information. It is also the single most common misunderstanding we ran into
+while building this.
+
+## The whole table
+
+<LiveTable />
+
+## What would have to change
+
+For a tokenized stock to pay real interest, somebody has to want to borrow it. The plausible
+paths are an onchain shorting market, basis trades against perpetual futures, or issuers passing
+dividend economics through to token holders. None of those is meaningfully live today.
+
+Until one of them is, the honest summary of this category is: tokenized stocks are a way to hold
+equity exposure onchain, not a way to earn on it. Anyone quoting you a number above about 1%
+should be asked which part is interest.
+
+## Method
+
+Every figure here comes from our own table, which is rebuilt hourly from the DefiLlama yields
+API matched by pool ID, plus hand-checked entries where no API exists. The underlying data is
+free to download as [JSON](/api/opportunities) or [CSV](/api/opportunities.csv), and the
+[methodology page](/methodology) lists what we refuse to publish and where our coverage has
+holes. The embedded table and statistics above update with the site, so they may have moved
+since this was written.

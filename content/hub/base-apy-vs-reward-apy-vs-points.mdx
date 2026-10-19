@@ -1,0 +1,59 @@
+---
+title: "Base APY, reward APY and points: which yield is actually yours"
+description: "Three numbers get added together and quoted as one APY. Only one of them is interest. Here is how to tell them apart in about ten seconds."
+datePublished: "2026-10-19"
+dateModified: "2026-10-19"
+author: "StockAPY"
+tags: ["explainer", "glossary"]
+faq:
+  - question: "What is the difference between base APY and reward APY?"
+    answer: "Base APY is interest that borrowers pay to depositors. Reward APY is a protocol paying you in its own token out of an incentive budget. Base APY persists as long as borrow demand does; reward APY stops whenever the protocol decides to stop it, often with no notice."
+  - question: "Should points count as yield?"
+    answer: "No. Points are a tally that may convert into a future airdrop with no stated rate, value or date. Any APY figure that includes a valuation of points is a guess presented as a measurement. We show points as a label, never folded into a rate."
+---
+
+Nearly every yield figure you see quoted is a sum of up to three things that behave completely
+differently. Pulling them apart is the whole skill.
+
+## Base APY: interest
+
+Base APY is money that borrowers pay. Someone wanted to borrow against your deposit, they are
+paying a rate for it, and a share of that rate reaches you. It exists for as long as borrow
+demand exists, and it needs no budget from anyone.
+
+On tokenized stock markets, base APY is currently close to zero nearly everywhere, because
+there is almost no borrow demand for tokenized equities.
+
+## Reward APY: a marketing budget
+
+Reward APY is the protocol paying you in its own token to attract deposits. It is an expense on
+someone's budget, and it ends when the budget ends or the token price falls. A 20% reward APY
+and a 20% base APY are not comparable products — one is a trade with a borrower, the other is a
+promotion.
+
+Two questions make the difference concrete:
+
+1. **Who is paying, and out of what?** If the answer is "the protocol, out of its treasury,"
+   you are being paid to show up, not to lend.
+2. **What happens if the programme stops tomorrow?** For base APY, nothing. For reward APY,
+   your yield goes to zero that day.
+
+## Points: a lottery ticket
+
+Points are a tally of your deposits that may convert into a future airdrop. No rate, no
+valuation, no date. There is nothing wrong with farming them deliberately, but a points
+programme cannot be expressed as an APY without inventing a number, so we never do.
+
+## How to read any rate in ten seconds
+
+- Find the base/reward split. If a site will not show it, that is itself the answer.
+- Ask whether the venue lends your asset out at all. Collateral-only venues pay 0% by design —
+  see our [glossary](/glossary#collateral-only).
+- Check whether the strategy borrows. A vault that borrows against your deposit has a
+  liquidation price; a plain deposit does not.
+- Check the TVL. A high rate on a tiny pool usually will not survive your deposit arriving.
+
+Our table shows base and reward in separate columns for exactly this reason, and flags any row
+where more than half the rate is incentives.
+
+<LiveTable />
