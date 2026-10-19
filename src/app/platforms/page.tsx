@@ -4,6 +4,7 @@ import { getRows } from "@/lib/data/rows";
 import { loadSeed } from "@/lib/data/seed";
 import { formatApy, formatUsd } from "@/lib/format";
 import { Badge } from "@/components/Badge";
+import { PlatformLogo } from "@/components/PlatformLogo";
 
 export const revalidate = 3600;
 
@@ -23,9 +24,12 @@ export default function PlatformsPage() {
     <>
       <h1 className="text-3xl font-semibold tracking-tight">Platforms</h1>
       <p className="mt-3 max-w-3xl text-[17px] leading-relaxed text-fg-muted">
-        {seed.platforms.length} venues accept a tokenized stock. They do very different things
-        with it: some lend it out, some only hold it as collateral, and some borrow against it on
-        your behalf. The difference matters more than the rate.
+        {seed.platforms.filter((p) => rows.some((r) => r.platform.id === p.id)).length} venues
+        take a tokenized stock today, and {seed.platforms.length -
+          seed.platforms.filter((p) => rows.some((r) => r.platform.id === p.id)).length}{" "}
+        more are tracked but not confirmed. They do very different things with the token: some
+        lend it out, some only hold it as collateral, and some borrow against it on your
+        behalf. The difference matters more than the rate.
       </p>
 
       <div className="mt-8 space-y-4">
@@ -40,7 +44,8 @@ export default function PlatformsPage() {
           return (
             <section key={platform.id} className="rounded-lg border bg-bg-raised p-5">
               <div className="flex flex-wrap items-baseline justify-between gap-3">
-                <h2 className="text-lg font-semibold">
+                <h2 className="flex items-center gap-2.5 text-lg font-semibold">
+                  <PlatformLogo id={platform.id} name={platform.name} size={26} />
                   <a
                     href={platform.website}
                     target="_blank"

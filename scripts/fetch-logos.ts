@@ -15,6 +15,31 @@ import { loadSeed } from "../src/lib/data/seed";
 
 const OUT_DIR = path.join(process.cwd(), "public", "logos");
 const MANIFEST = path.join(process.cwd(), "data", "logos.json");
+const PLATFORM_DIR = path.join(OUT_DIR, "platforms");
+const PLATFORM_MANIFEST = path.join(process.cwd(), "data", "platform-logos.json");
+
+/**
+ * Platform marks. No ticker CDN covers protocols, so these come from each
+ * platform's own favicon. Google's service normalises them all to 128px, which
+ * DuckDuckGo's does not.
+ */
+const faviconUrl = (domain: string) =>
+  `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+
+/** The domain to read each platform's mark from, keyed by seed platform id. */
+const PLATFORM_DOMAINS: Record<string, string> = {
+  kamino: "kamino.finance",
+  "jupiter-lend": "jup.ag",
+  superform: "superform.xyz",
+  morpho: "morpho.org",
+  aave: "aave.com",
+  euler: "euler.finance",
+  loopscale: "loopscale.com",
+  kraken: "kraken.com",
+  bitrue: "bitrue.com",
+  cryptocom: "crypto.com",
+  bybit: "bybit.com",
+};
 
 /** Tried in order. SVG first: it is smaller and stays sharp at any size. */
 const SOURCES = [
@@ -55,6 +80,44 @@ async function tryFetch(ticker: string) {
   return null;
 }
 
+async function fetchPlatformLogos(force: boolean) {
+  fs.mkdirSync(PLATFORM_DIR, { recursive: true });
+  const manifest: Record<string, string> = fs.existsSync(PLATFORM_MANIFEST)
+    ? JSON.parse(fs.readFileSync(PLATFORM_MANIFEST, "utf8"))
+    : {};
+
+  console.log("\nPlatforms:");
+  for (const platform of loadSeed().platforms) {
+    const domain = PLATFORM_DOMAINS[platform.id];
+    if (!domain) {
+      console.warn(`  ${platform.id}: no domain mapped, will render a monogram`);
+      continue;
+    }
+    const existing = manifest[platform.id];
+    if (!force && existing && fs.existsSync(path.join(PLATFORM_DIR, existing))) {
+      console.log(`  ${platform.id}: already have ${existing}`);
+      continue;
+    }
+
+    try {
+      const res = await fetch(faviconUrl(domain));
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const buffer = Buffer.from(await res.arrayBuffer());
+      if (buffer.byteLength < 200) throw new Error("suspiciously small");
+
+      const fileName = `${platform.id}.png`;
+      fs.writeFileSync(path.join(PLATFORM_DIR, fileName), buffer);
+      manifest[platform.id] = fileName;
+      console.log(`  ${platform.id}: ${fileName} (${buffer.byteLength} bytes, ${domain})`);
+    } catch (err) {
+      console.warn(`  ${platform.id}: FAILED (${err})`);
+    }
+  }
+
+  fs.writeFileSync(PLATFORM_MANIFEST, JSON.stringify(manifest, null, 2) + "\n");
+  console.log(`${Object.keys(manifest).length} platform logos in the manifest`);
+}
+
 async function main() {
   const force = process.argv.includes("--force");
   fs.mkdirSync(OUT_DIR, { recursive: true });
@@ -90,9 +153,11 @@ async function main() {
 
   fs.writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + "\n");
   console.log(
-    `\n${Object.keys(manifest).length} logos in the manifest` +
+    `\n${Object.keys(manifest).length} stock logos in the manifest` +
       (missing.length ? `, ${missing.length} missing: ${missing.join(", ")}` : ""),
   );
+
+  await fetchPlatformLogos(force);
 }
 
 main();

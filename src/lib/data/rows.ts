@@ -1,7 +1,7 @@
 import { REFRESH_INTERVAL_SECONDS } from "@/config";
 import { loadSeed } from "./seed";
 import { snapshotsById } from "./snapshot";
-import type { Row } from "./types";
+import type { Platform, Row } from "./types";
 
 const STALE_AFTER_MS = REFRESH_INTERVAL_SECONDS * 2 * 1000;
 
@@ -113,6 +113,78 @@ export function borrowStats(rows: Row[] = borrowRows()) {
       : null,
     loanAssets: [...new Set(rows.map((r) => r.borrow!.loanAsset))].sort(),
   };
+}
+
+export type PlatformGroup = {
+  platform: Platform;
+  rows: Row[];
+  /** Highest APY on offer here. The range is what people should actually read. */
+  topApy: number | null;
+  lowApy: number | null;
+  /** True when every measured row pays the same, so a range would be noise. */
+  flatApy: boolean;
+  /** Sum across the platform's markets. Null when nothing discloses a TVL. */
+  tvlUsd: number | null;
+  marketCount: number;
+  chains: string[];
+  stocks: string[];
+  /** Best borrow terms available here, if any. */
+  maxLtv: number | null;
+  cheapestBorrowApr: number | null;
+  /** True when no market here pays anything on the stock itself. */
+  collateralOnly: boolean;
+  unmeasuredCount: number;
+};
+
+/**
+ * One entry per platform, with its markets rolled up. This is the top level of
+ * the home page: 11 platforms is a list someone can actually read, where 53
+ * individual markets is not.
+ */
+export function platformGroups(rows: Row[] = getRows()): PlatformGroup[] {
+  const seed = loadSeed();
+
+  const groups = seed.platforms
+    .map((platform): PlatformGroup => {
+      const own = rows.filter((r) => r.platform.id === platform.id);
+      const measured = own.filter((r) => !r.unmeasured);
+      const apys = measured.map((r) => r.apyTotal ?? 0);
+      const withTvl = own.filter((r) => r.tvlUsd !== null);
+      const borrowable = own.filter((r) => r.borrow?.ltv != null);
+      const borrowApRs = own
+        .map((r) => r.borrow?.borrowApr)
+        .filter((v): v is number => v != null);
+
+      const topApy = apys.length ? Math.max(...apys) : null;
+      const lowApy = apys.length ? Math.min(...apys) : null;
+
+      return {
+        platform,
+        rows: sortRows(own),
+        topApy,
+        lowApy,
+        flatApy: topApy !== null && topApy === lowApy,
+        tvlUsd: withTvl.length
+          ? withTvl.reduce((sum, r) => sum + (r.tvlUsd ?? 0), 0)
+          : null,
+        marketCount: own.length,
+        chains: [...new Set(own.map((r) => r.chain))].sort(),
+        stocks: [...new Set(own.map((r) => r.underlying.ticker))].sort(),
+        maxLtv: borrowable.length
+          ? Math.max(...borrowable.map((r) => r.borrow!.ltv!))
+          : null,
+        cheapestBorrowApr: borrowApRs.length ? Math.min(...borrowApRs) : null,
+        collateralOnly: measured.length > 0 && apys.every((a) => a === 0),
+        unmeasuredCount: own.filter((r) => r.unmeasured).length,
+      };
+    })
+    .filter((g) => g.marketCount > 0);
+
+  // Platforms that actually pay something first, then by size.
+  return groups.sort((a, b) => {
+    if ((a.topApy ?? -1) !== (b.topApy ?? -1)) return (b.topApy ?? -1) - (a.topApy ?? -1);
+    return (b.tvlUsd ?? 0) - (a.tvlUsd ?? 0);
+  });
 }
 
 export function rowsForTicker(ticker: string): Row[] {

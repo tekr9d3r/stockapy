@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
-import { OpportunityTable } from "@/components/OpportunityTable";
+import { PlatformList } from "@/components/PlatformList";
 import { Stat, StatStrip } from "@/components/Stat";
-import { getRows, marketStats } from "@/lib/data/rows";
+import { getRows, marketStats, platformGroups } from "@/lib/data/rows";
 import { loadSeed } from "@/lib/data/seed";
 import { loadLatestSnapshot } from "@/lib/data/snapshot";
 import { formatApy, formatDate, formatUsd } from "@/lib/format";
@@ -14,6 +14,7 @@ export const revalidate = 3600;
 export default function Home() {
   const rows = getRows();
   const stats = marketStats(rows);
+  const groups = platformGroups(rows);
   const seed = loadSeed();
   const snapshot = loadLatestSnapshot();
   const asOf = formatDate(snapshot?.fetchedAt ?? null);
@@ -46,7 +47,7 @@ export default function Home() {
         <p className="mt-4 text-[17px] leading-relaxed text-fg-muted">
           {BRAND_NAME} tracks {stats.opportunityCount} places to put a tokenized stock to work,
           across {new Set(rows.map((r) => r.chain)).size} chains and{" "}
-          {seed.platforms.length} platforms. As of {asOf}, the highest advertised rate is{" "}
+          {groups.length} platforms. As of {asOf}, the highest advertised rate is{" "}
           <strong className="text-fg">{formatApy(stats.maxApy)}</strong>
           {stats.best && (
             <>
@@ -91,7 +92,9 @@ export default function Home() {
 
       <section id="table" className="mb-12 scroll-mt-20">
         <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-          <h2 className="text-lg font-semibold">Every opportunity we track</h2>
+          <h2 className="text-lg font-semibold">
+            {groups.length} platforms take a tokenized stock
+          </h2>
           <p className="text-xs text-fg-subtle">
             Refreshed hourly · last run {asOf} ·{" "}
             <Link href="/methodology" className="underline hover:text-fg">
@@ -99,7 +102,19 @@ export default function Home() {
             </Link>
           </p>
         </div>
-        <OpportunityTable rows={rows} />
+        <p className="mb-4 max-w-3xl text-sm leading-relaxed text-fg-muted">
+          Each row is a platform, with its best rate and the total deposited across its
+          markets. Open one to see every individual market behind those numbers. &ldquo;Up
+          to&rdquo; is the highest rate on offer there, not what a typical deposit earns.
+        </p>
+        <PlatformList groups={groups} />
+        <p className="mt-3 text-xs text-fg-subtle">
+          Prefer one flat table?{" "}
+          <Link href="/opportunities" className="underline hover:text-fg">
+            See all {rows.length} markets
+          </Link>
+          .
+        </p>
       </section>
 
       <section className="mb-12 grid gap-6 md:grid-cols-3">

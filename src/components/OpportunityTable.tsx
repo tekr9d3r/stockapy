@@ -21,7 +21,17 @@ type SortKey = "apy" | "tvl" | "stock";
  * Every row is rendered on the server and shipped in the HTML; the filters only
  * hide rows client-side. Crawlers and AI fetchers see the complete table.
  */
-export function OpportunityTable({ rows, compact = false }: { rows: Row[]; compact?: boolean }) {
+export function OpportunityTable({
+  rows,
+  compact = false,
+  /** Inside a platform's own section the platform name is on every row, so swap
+   *  that column for the market name instead of repeating it 12 times. */
+  hidePlatform = false,
+}: {
+  rows: Row[];
+  compact?: boolean;
+  hidePlatform?: boolean;
+}) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<string>("all");
   const [kind, setKind] = useState<string>("all");
@@ -101,7 +111,7 @@ export function OpportunityTable({ rows, compact = false }: { rows: Row[]; compa
       )}
 
       <div className="overflow-x-auto rounded-lg border bg-bg-raised">
-        <table className="w-full min-w-[960px] border-collapse text-sm">
+        <table className={`w-full border-collapse text-sm ${hidePlatform ? "min-w-[840px]" : "min-w-[960px]"}`}>
           <caption className="sr-only">
             Yield opportunities on tokenized stocks, with base interest and token incentives
             shown separately.
@@ -110,7 +120,7 @@ export function OpportunityTable({ rows, compact = false }: { rows: Row[]; compa
             <tr className="border-b bg-bg-subtle text-left text-[11px] uppercase tracking-wide text-fg-muted">
               <Th className="pl-4">Stock</Th>
               <Th>Token</Th>
-              <Th>Platform</Th>
+              <Th>{hidePlatform ? "Market" : "Platform"}</Th>
               <Th>Chain</Th>
               <Th className="text-right">APY</Th>
               <Th className="text-right" title="Interest actually paid by borrowers.">
@@ -148,11 +158,13 @@ export function OpportunityTable({ rows, compact = false }: { rows: Row[]; compa
                       rel="noopener nofollow"
                       className="font-medium hover:text-accent hover:underline"
                     >
-                      {row.platform.name}
+                      {hidePlatform ? (row.variant ?? "Main market") : row.platform.name}
                     </a>
-                    <Badge tone={row.platform.kind === "cefi" ? "accent" : "neutral"}>
-                      {row.platform.kind === "cefi" ? "CeFi" : "DeFi"}
-                    </Badge>
+                    {!hidePlatform && (
+                      <Badge tone={row.platform.kind === "cefi" ? "accent" : "neutral"}>
+                        {row.platform.kind === "cefi" ? "CeFi" : "DeFi"}
+                      </Badge>
+                    )}
                     {row.category !== "earn" && (
                       <Badge
                         tone="warn"
@@ -162,7 +174,7 @@ export function OpportunityTable({ rows, compact = false }: { rows: Row[]; compa
                       </Badge>
                     )}
                   </div>
-                  {row.variant && (
+                  {!hidePlatform && row.variant && (
                     <div className="mt-0.5 text-xs text-fg-subtle">{row.variant}</div>
                   )}
                 </td>
