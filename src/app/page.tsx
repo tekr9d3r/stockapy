@@ -55,12 +55,14 @@ export default function Home() {
             </>
           )}
           , but the median earn opportunity pays{" "}
-          <strong className="text-fg">{formatApy(stats.medianApy)}</strong> and only{" "}
+          <strong className="text-fg">{formatApy(stats.medianApy)}</strong>. Across the{" "}
+          {stats.splitKnownCount} venues that disclose where their yield comes from, only{" "}
           <strong className="text-fg">
             {organicPct === null ? "—" : `${organicPct.toFixed(1)}%`}
           </strong>{" "}
-          of all the yield on offer is interest paid by borrowers. The rest is token incentives
-          that can stop at any time.
+          of it is interest paid by borrowers; the rest is token incentives that can stop at
+          any time. A further {stats.splitUnknownCount} venues pay a rate without saying what
+          funds it.
         </p>
       </section>
 
@@ -80,7 +82,7 @@ export default function Home() {
           <Stat
             label="Yield that is real interest"
             value={organicPct === null ? "—" : `${organicPct.toFixed(1)}%`}
-            note="The rest is incentives"
+            note={`Of ${stats.splitKnownCount} venues that disclose it`}
             tone="warn"
           />
           <Stat label="Total value in these venues" value={formatUsd(stats.tvlUsd)} note={`As of ${asOf}`} />
@@ -111,6 +113,13 @@ export default function Home() {
           stablecoin against it and loop. That multiplies an incentive programme — and it adds a
           liquidation price that an ordinary share has never had.
         </Explainer>
+        <Explainer title="A rate with no stated source is not interest">
+          Centralised platforms publish a flat number — Crypto.com pays 2% to 4% on its
+          tokenized stocks — without saying whether it is interest, a marketing budget or
+          revenue share. We show the rate and leave the split blank rather than guessing, and
+          those venues are excluded from the figure above.
+        </Explainer>
+
         <Explainer title="Collateral is not earning">
           Several venues accept tokenized stocks but never lend them out. Your position unlocks
           borrowing power and nothing else. Those rows say 0% because 0% is the truth, not

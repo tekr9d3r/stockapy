@@ -1,13 +1,13 @@
 ---
 title: "Almost nobody is paying you to hold a tokenized stock"
-description: "We checked every venue that accepts a tokenized stock. The median pays 0%, and 99.7% of all the yield on offer is token incentives rather than interest. Here is the full picture, with the data behind it."
+description: "We checked every venue that accepts a tokenized stock. Across the venues that disclose where their yield comes from, 99.7% of it is token incentives rather than interest. The only steady rates are 2-4% on a custodial platform that will not say what funds them."
 datePublished: "2026-10-19"
 dateModified: "2026-10-19"
 author: "StockAPY"
 tags: ["research", "yield", "monthly report"]
 faq:
   - question: "What is the average yield on a tokenized stock?"
-    answer: "As of 19 October 2026 the median earn opportunity across the venues we track pays 0.00% APY. The mean is dragged upward by a handful of incentivised vaults, which is why we publish the median and the base/reward split rather than an average."
+    answer: "As of 19 October 2026 the median earn opportunity across the venues we track pays about 0.13% APY, and every on-chain lending market sits at or near 0.00%. The mean is dragged upward by a handful of incentivised vaults, which is why we publish the median and the base/reward split rather than an average."
   - question: "Why is the base APY on tokenized stocks so low?"
     answer: "Base APY is interest paid by borrowers. Almost nobody borrows against a tokenized share: there is no established shorting flow, the collateral gaps between market sessions, and the markets are small. With no borrow demand there is no interest to pay out, so supply-side rates sit at or near zero."
   - question: "Are the 15-24% APYs on tokenized stocks real?"
@@ -45,6 +45,27 @@ Both facts can be true at once. The yield is really being paid today, and it is 
 budget with a liquidation risk attached. Our table splits every rate into base and reward so the
 difference is visible before you click through.
 
+## The steadiest rates are centralised, and unexplained
+
+The one place paying a consistent, non-leveraged rate is a centralised exchange. Crypto.com's
+Stocks Earn pays a published 2% on AAPL, NVDA, TSLA, META, AMZN, GOOGL and MSFT, 3% on AMD and
+PLTR, and 4% on MSTR and its SpaceX token — weekly, in kind, with no lock-up.
+
+That is more than any on-chain lending market pays on the same exposure. The catch is that
+Crypto.com does not say where the money comes from. It could be interest from lending your
+shares out, it could be a customer-acquisition budget, it could be revenue share. Without a
+stated source there is no way to judge whether it survives next quarter, so we publish the
+total and leave the base/reward split blank rather than inventing one.
+
+It is also custodial. Your stock sits on Crypto.com's balance sheet and cannot be withdrawn
+on-chain, which is a different risk from a smart contract, not a smaller one.
+
+Two other exchanges came up repeatedly in research and neither belongs in the table. Bybit
+lists nine xStocks for spot trading and pays nothing on any of them. Bitrue lists tokenized
+stocks from Ondo, xStocks and bStocks, including 3x leveraged versions, and its Power Piggy
+savings product does not cover them. Listing a tokenized stock and paying yield on one are
+different businesses, and most venues only do the first.
+
 ## Collateral venues are not earning venues
 
 A second group of venues — Aave V4's Equities Hub, the Morpho Blue equity markets — accept
@@ -62,7 +83,8 @@ while building this.
 
 ## What would have to change
 
-For a tokenized stock to pay real interest, somebody has to want to borrow it. The plausible
+For a tokenized stock to pay real *interest* — as opposed to a platform's marketing budget —
+somebody has to want to borrow it. The plausible
 paths are an onchain shorting market, basis trades against perpetual futures, or issuers passing
 dividend economics through to token holders. None of those is meaningfully live today.
 

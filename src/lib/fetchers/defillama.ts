@@ -39,11 +39,21 @@ export async function fetchDefiLlama(): Promise<Snapshot[]> {
       continue;
     }
 
+    // DefiLlama sends apyReward: null for a pool with no incentive programme, which
+    // is a measured zero, not a gap. Only when the base is also missing do we genuinely
+    // not know the split. Getting this wrong would let pure-interest pools drop out of
+    // the "how much of this yield is real" figure.
+    const apyReward =
+      pool.apyReward ??
+      (pool.apy !== null && pool.apyBase !== null
+        ? Math.max(0, Number((pool.apy - pool.apyBase).toFixed(5)))
+        : null);
+
     snapshots.push({
       opportunityId: opp.id,
       apyTotal: pool.apy,
       apyBase: pool.apyBase,
-      apyReward: pool.apyReward,
+      apyReward,
       tvlUsd: pool.tvlUsd,
       source: "defillama",
       fetchedAt,

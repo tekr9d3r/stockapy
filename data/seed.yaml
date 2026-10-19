@@ -38,6 +38,15 @@ underlying_assets:
   - ticker: HOOD
     name: Robinhood Markets
     type: stock
+  - ticker: AMD
+    name: Advanced Micro Devices
+    type: stock
+  - ticker: PLTR
+    name: Palantir Technologies
+    type: stock
+  - ticker: SPCX
+    name: SpaceX
+    type: private
   - ticker: SPY
     name: SPDR S&P 500 ETF Trust
     type: etf
@@ -71,6 +80,14 @@ issuers:
     structure_note: >-
       Robinhood Stock Tokens, issued to EU customers and settled on Robinhood Chain.
       Tokens track the share price; holders are contractually exposed, not shareholders.
+  - id: cryptocom-issuer
+    name: Crypto.com (Foris Capital)
+    website: https://crypto.com
+    structure_note: >-
+      Tokenized stocks issued by Foris Capital MU Ltd, 1:1 collateralised with shares held
+      in regulated US custody. Crypto.com does not disclose a public blockchain for them,
+      so treat them as custodial balances inside the app rather than tokens you can
+      withdraw on-chain. They confer no ownership or shareholder rights.
   - id: binance
     name: Binance (bStocks)
     website: https://www.binance.com
@@ -233,6 +250,61 @@ tokens:
     underlying: SPY
     issuer: robinhood
     chain: Robinhood Chain
+  - symbol: NVDA (Crypto.com)
+    underlying: NVDA
+    issuer: cryptocom-issuer
+    chain: Crypto.com
+    note: Custodial balance. No public chain disclosed by the issuer.
+  - symbol: TSLA (Crypto.com)
+    underlying: TSLA
+    issuer: cryptocom-issuer
+    chain: Crypto.com
+    note: Custodial balance. No public chain disclosed by the issuer.
+  - symbol: AAPL (Crypto.com)
+    underlying: AAPL
+    issuer: cryptocom-issuer
+    chain: Crypto.com
+    note: Custodial balance. No public chain disclosed by the issuer.
+  - symbol: GOOGL (Crypto.com)
+    underlying: GOOGL
+    issuer: cryptocom-issuer
+    chain: Crypto.com
+    note: Custodial balance. No public chain disclosed by the issuer.
+  - symbol: MSFT (Crypto.com)
+    underlying: MSFT
+    issuer: cryptocom-issuer
+    chain: Crypto.com
+    note: Custodial balance. No public chain disclosed by the issuer.
+  - symbol: META (Crypto.com)
+    underlying: META
+    issuer: cryptocom-issuer
+    chain: Crypto.com
+    note: Custodial balance. No public chain disclosed by the issuer.
+  - symbol: AMZN (Crypto.com)
+    underlying: AMZN
+    issuer: cryptocom-issuer
+    chain: Crypto.com
+    note: Custodial balance. No public chain disclosed by the issuer.
+  - symbol: MSTR (Crypto.com)
+    underlying: MSTR
+    issuer: cryptocom-issuer
+    chain: Crypto.com
+    note: Custodial balance. No public chain disclosed by the issuer.
+  - symbol: AMD (Crypto.com)
+    underlying: AMD
+    issuer: cryptocom-issuer
+    chain: Crypto.com
+    note: Custodial balance. No public chain disclosed by the issuer.
+  - symbol: PLTR (Crypto.com)
+    underlying: PLTR
+    issuer: cryptocom-issuer
+    chain: Crypto.com
+    note: Custodial balance. No public chain disclosed by the issuer.
+  - symbol: SPCX (Crypto.com)
+    underlying: SPCX
+    issuer: cryptocom-issuer
+    chain: Crypto.com
+    note: Custodial balance. No public chain disclosed by the issuer.
   # --- Ondo ---
   - symbol: SPYon
     underlying: SPY
@@ -853,6 +925,318 @@ opportunities:
       market sessions.
     active: true
 
+  # Crypto.com Stocks Earn. Rates are published per stock in Crypto.com's help centre
+  # (checked by hand). Crypto.com does not say where the yield comes from, so the
+  # base/reward split is left null rather than guessed.
+  - id: cryptocom-earn-spcx
+    token: SPCX (Crypto.com)
+    platform: cryptocom
+    chain: Crypto.com
+    category: earn
+    variant: Stocks Earn
+    url: https://help.crypto.com/en/articles/15030608-earn-rewards-on-eligible-tokenized-stocks
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: null
+      apy_reward: null
+      apy_total: 4
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: >-
+        Published rate from Crypto.com's help centre, paid weekly in the same tokenized
+        stock. Crypto.com does not disclose whether this is interest or a platform-funded
+        reward, so the split is unknown rather than zero.
+    eligibility_note: >-
+      Subject to jurisdictional availability. Minimum US$10 per deposit, programme
+      allocation capped at US$50,000.
+    risk_notes: >-
+      Custodial: your stock sits on Crypto.com's balance sheet, not in your wallet, and
+      cannot be withdrawn on-chain. The rate can be amended, suspended or withdrawn at
+      any time without notice.
+    active: true
+  - id: cryptocom-earn-mstr
+    token: MSTR (Crypto.com)
+    platform: cryptocom
+    chain: Crypto.com
+    category: earn
+    variant: Stocks Earn
+    url: https://help.crypto.com/en/articles/15030608-earn-rewards-on-eligible-tokenized-stocks
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: null
+      apy_reward: null
+      apy_total: 4
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: >-
+        Published rate from Crypto.com's help centre, paid weekly in the same tokenized
+        stock. Crypto.com does not disclose whether this is interest or a platform-funded
+        reward, so the split is unknown rather than zero.
+    eligibility_note: >-
+      Subject to jurisdictional availability. Minimum US$10 per deposit, programme
+      allocation capped at US$50,000.
+    risk_notes: >-
+      Custodial: your stock sits on Crypto.com's balance sheet, not in your wallet, and
+      cannot be withdrawn on-chain. The rate can be amended, suspended or withdrawn at
+      any time without notice.
+    active: true
+  - id: cryptocom-earn-amd
+    token: AMD (Crypto.com)
+    platform: cryptocom
+    chain: Crypto.com
+    category: earn
+    variant: Stocks Earn
+    url: https://help.crypto.com/en/articles/15030608-earn-rewards-on-eligible-tokenized-stocks
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: null
+      apy_reward: null
+      apy_total: 3
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: >-
+        Published rate from Crypto.com's help centre, paid weekly in the same tokenized
+        stock. Crypto.com does not disclose whether this is interest or a platform-funded
+        reward, so the split is unknown rather than zero.
+    eligibility_note: >-
+      Subject to jurisdictional availability. Minimum US$10 per deposit, programme
+      allocation capped at US$50,000.
+    risk_notes: >-
+      Custodial: your stock sits on Crypto.com's balance sheet, not in your wallet, and
+      cannot be withdrawn on-chain. The rate can be amended, suspended or withdrawn at
+      any time without notice.
+    active: true
+  - id: cryptocom-earn-pltr
+    token: PLTR (Crypto.com)
+    platform: cryptocom
+    chain: Crypto.com
+    category: earn
+    variant: Stocks Earn
+    url: https://help.crypto.com/en/articles/15030608-earn-rewards-on-eligible-tokenized-stocks
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: null
+      apy_reward: null
+      apy_total: 3
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: >-
+        Published rate from Crypto.com's help centre, paid weekly in the same tokenized
+        stock. Crypto.com does not disclose whether this is interest or a platform-funded
+        reward, so the split is unknown rather than zero.
+    eligibility_note: >-
+      Subject to jurisdictional availability. Minimum US$10 per deposit, programme
+      allocation capped at US$50,000.
+    risk_notes: >-
+      Custodial: your stock sits on Crypto.com's balance sheet, not in your wallet, and
+      cannot be withdrawn on-chain. The rate can be amended, suspended or withdrawn at
+      any time without notice.
+    active: true
+  - id: cryptocom-earn-amzn
+    token: AMZN (Crypto.com)
+    platform: cryptocom
+    chain: Crypto.com
+    category: earn
+    variant: Stocks Earn
+    url: https://help.crypto.com/en/articles/15030608-earn-rewards-on-eligible-tokenized-stocks
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: null
+      apy_reward: null
+      apy_total: 2
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: >-
+        Published rate from Crypto.com's help centre, paid weekly in the same tokenized
+        stock. Crypto.com does not disclose whether this is interest or a platform-funded
+        reward, so the split is unknown rather than zero.
+    eligibility_note: >-
+      Subject to jurisdictional availability. Minimum US$10 per deposit, programme
+      allocation capped at US$50,000.
+    risk_notes: >-
+      Custodial: your stock sits on Crypto.com's balance sheet, not in your wallet, and
+      cannot be withdrawn on-chain. The rate can be amended, suspended or withdrawn at
+      any time without notice.
+    active: true
+  - id: cryptocom-earn-nvda
+    token: NVDA (Crypto.com)
+    platform: cryptocom
+    chain: Crypto.com
+    category: earn
+    variant: Stocks Earn
+    url: https://help.crypto.com/en/articles/15030608-earn-rewards-on-eligible-tokenized-stocks
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: null
+      apy_reward: null
+      apy_total: 2
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: >-
+        Published rate from Crypto.com's help centre, paid weekly in the same tokenized
+        stock. Crypto.com does not disclose whether this is interest or a platform-funded
+        reward, so the split is unknown rather than zero.
+    eligibility_note: >-
+      Subject to jurisdictional availability. Minimum US$10 per deposit, programme
+      allocation capped at US$50,000.
+    risk_notes: >-
+      Custodial: your stock sits on Crypto.com's balance sheet, not in your wallet, and
+      cannot be withdrawn on-chain. The rate can be amended, suspended or withdrawn at
+      any time without notice.
+    active: true
+  - id: cryptocom-earn-tsla
+    token: TSLA (Crypto.com)
+    platform: cryptocom
+    chain: Crypto.com
+    category: earn
+    variant: Stocks Earn
+    url: https://help.crypto.com/en/articles/15030608-earn-rewards-on-eligible-tokenized-stocks
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: null
+      apy_reward: null
+      apy_total: 2
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: >-
+        Published rate from Crypto.com's help centre, paid weekly in the same tokenized
+        stock. Crypto.com does not disclose whether this is interest or a platform-funded
+        reward, so the split is unknown rather than zero.
+    eligibility_note: >-
+      Subject to jurisdictional availability. Minimum US$10 per deposit, programme
+      allocation capped at US$50,000.
+    risk_notes: >-
+      Custodial: your stock sits on Crypto.com's balance sheet, not in your wallet, and
+      cannot be withdrawn on-chain. The rate can be amended, suspended or withdrawn at
+      any time without notice.
+    active: true
+  - id: cryptocom-earn-meta
+    token: META (Crypto.com)
+    platform: cryptocom
+    chain: Crypto.com
+    category: earn
+    variant: Stocks Earn
+    url: https://help.crypto.com/en/articles/15030608-earn-rewards-on-eligible-tokenized-stocks
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: null
+      apy_reward: null
+      apy_total: 2
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: >-
+        Published rate from Crypto.com's help centre, paid weekly in the same tokenized
+        stock. Crypto.com does not disclose whether this is interest or a platform-funded
+        reward, so the split is unknown rather than zero.
+    eligibility_note: >-
+      Subject to jurisdictional availability. Minimum US$10 per deposit, programme
+      allocation capped at US$50,000.
+    risk_notes: >-
+      Custodial: your stock sits on Crypto.com's balance sheet, not in your wallet, and
+      cannot be withdrawn on-chain. The rate can be amended, suspended or withdrawn at
+      any time without notice.
+    active: true
+  - id: cryptocom-earn-aapl
+    token: AAPL (Crypto.com)
+    platform: cryptocom
+    chain: Crypto.com
+    category: earn
+    variant: Stocks Earn
+    url: https://help.crypto.com/en/articles/15030608-earn-rewards-on-eligible-tokenized-stocks
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: null
+      apy_reward: null
+      apy_total: 2
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: >-
+        Published rate from Crypto.com's help centre, paid weekly in the same tokenized
+        stock. Crypto.com does not disclose whether this is interest or a platform-funded
+        reward, so the split is unknown rather than zero.
+    eligibility_note: >-
+      Subject to jurisdictional availability. Minimum US$10 per deposit, programme
+      allocation capped at US$50,000.
+    risk_notes: >-
+      Custodial: your stock sits on Crypto.com's balance sheet, not in your wallet, and
+      cannot be withdrawn on-chain. The rate can be amended, suspended or withdrawn at
+      any time without notice.
+    active: true
+  - id: cryptocom-earn-googl
+    token: GOOGL (Crypto.com)
+    platform: cryptocom
+    chain: Crypto.com
+    category: earn
+    variant: Stocks Earn
+    url: https://help.crypto.com/en/articles/15030608-earn-rewards-on-eligible-tokenized-stocks
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: null
+      apy_reward: null
+      apy_total: 2
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: >-
+        Published rate from Crypto.com's help centre, paid weekly in the same tokenized
+        stock. Crypto.com does not disclose whether this is interest or a platform-funded
+        reward, so the split is unknown rather than zero.
+    eligibility_note: >-
+      Subject to jurisdictional availability. Minimum US$10 per deposit, programme
+      allocation capped at US$50,000.
+    risk_notes: >-
+      Custodial: your stock sits on Crypto.com's balance sheet, not in your wallet, and
+      cannot be withdrawn on-chain. The rate can be amended, suspended or withdrawn at
+      any time without notice.
+    active: true
+  - id: cryptocom-earn-msft
+    token: MSFT (Crypto.com)
+    platform: cryptocom
+    chain: Crypto.com
+    category: earn
+    variant: Stocks Earn
+    url: https://help.crypto.com/en/articles/15030608-earn-rewards-on-eligible-tokenized-stocks
+    verified: false
+    lockup: none
+    data_source: manual
+    manual:
+      apy_base: null
+      apy_reward: null
+      apy_total: 2
+      tvl_usd: null
+      checked_at: 2026-10-19
+      note: >-
+        Published rate from Crypto.com's help centre, paid weekly in the same tokenized
+        stock. Crypto.com does not disclose whether this is interest or a platform-funded
+        reward, so the split is unknown rather than zero.
+    eligibility_note: >-
+      Subject to jurisdictional availability. Minimum US$10 per deposit, programme
+      allocation capped at US$50,000.
+    risk_notes: >-
+      Custodial: your stock sits on Crypto.com's balance sheet, not in your wallet, and
+      cannot be withdrawn on-chain. The rate can be amended, suspended or withdrawn at
+      any time without notice.
+    active: true
+
   # Kraken xStocks Vaults. Real product, but the rate is not published through any API we
   # can read yet. Left null on purpose — see the Ink on-chain reader TODO.
   - id: kraken-vault-nvdax
@@ -950,25 +1334,21 @@ watchlist:
     url: https://app.loopscale.com
   - platform: Bybit
     chain: CeFi
-    status: Not available
+    status: Trading only
     note: >-
-      Dual Asset was expected to carry xStocks. Bybit's public earn API returns 260
-      flexible-savings products as of 19 Oct 2026 and none of them is a tokenized stock.
+      Bybit lists nine xStocks for spot trading (NVDAX, AAPLX, TSLAX, METAX, GOOGLX,
+      AMZNX, COINX, CRCLX, HOODX) but does not pay yield on any of them. Its public earn
+      API returned 260 flexible-savings products on 19 Oct 2026 and not one is a
+      tokenized stock.
     url: https://www.bybit.com/en/earn
   - platform: Bitrue
     chain: CeFi
-    status: Unconfirmed
+    status: Trading only
     note: >-
-      Advertises flexible staking on Ondo tokens and tokenized Apple, Nvidia and Tesla.
-      No public API, so rates need manual checking before we publish them.
+      Bitrue lists tokenized stocks from Ondo, xStocks and bStocks, plus 3x leveraged
+      versions. Its Power Piggy savings product covers crypto such as XRP, and we found
+      no evidence on 19 Oct 2026 that any tokenized stock is eligible for it.
     url: https://www.bitrue.com
-  - platform: Crypto.com
-    chain: CeFi
-    status: Unconfirmed
-    note: >-
-      Stocks Earn is marketed as paying "up to 4%". That is a marketing ceiling, not a
-      measured rate, so it is not in the table.
-    url: https://crypto.com
   - platform: Venus
     chain: BNB Chain
     status: Collateral only

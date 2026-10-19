@@ -1,4 +1,4 @@
-export type AssetType = "stock" | "etf";
+export type AssetType = "stock" | "etf" | "private";
 export type PlatformKind = "defi" | "cefi";
 export type Category = "earn" | "collateral" | "structured";
 export type Lockup = "none" | "days" | "fixed_term";

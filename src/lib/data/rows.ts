@@ -94,7 +94,6 @@ export function rowsForIssuer(issuerId: string): Row[] {
 export function marketStats(rows: Row[] = getRows()) {
   const earn = rows.filter((r) => r.category === "earn" && !r.unmeasured);
   const apys = earn.map((r) => r.apyTotal ?? 0).sort((a, b) => a - b);
-  const base = earn.map((r) => r.apyBase ?? 0);
 
   const median = apys.length
     ? apys.length % 2
@@ -102,16 +101,23 @@ export function marketStats(rows: Row[] = getRows()) {
       : (apys[apys.length / 2 - 1] + apys[apys.length / 2]) / 2
     : null;
 
-  const totalApy = earn.reduce((sum, r) => sum + (r.apyTotal ?? 0), 0);
-  const totalBase = base.reduce((sum, v) => sum + v, 0);
+  // Only rows where we actually know the split can answer "how much is interest".
+  // A venue that pays 2% without saying where it comes from is not evidence of
+  // incentives, so counting its base as 0 would overstate the point we are making.
+  const split = earn.filter((r) => r.apyBase !== null && r.apyReward !== null);
+  const totalApy = split.reduce((sum, r) => sum + (r.apyTotal ?? 0), 0);
+  const totalBase = split.reduce((sum, r) => sum + (r.apyBase ?? 0), 0);
 
   return {
     opportunityCount: rows.length,
     earnCount: earn.length,
     medianApy: median,
     maxApy: apys.length ? apys[apys.length - 1] : null,
-    /** Share of all yield on offer that is interest rather than incentives. */
+    /** Share of yield that is interest rather than incentives, over disclosed rows only. */
     organicShare: totalApy > 0 ? totalBase / totalApy : null,
+    /** How many earn rows back the organicShare figure, and how many do not disclose. */
+    splitKnownCount: split.length,
+    splitUnknownCount: earn.length - split.length,
     zeroCount: earn.filter((r) => (r.apyTotal ?? 0) === 0).length,
     tvlUsd: rows.reduce((sum, r) => sum + (r.tvlUsd ?? 0), 0),
     best: earn.length ? earn.reduce((a, b) => ((b.apyTotal ?? 0) > (a.apyTotal ?? 0) ? b : a)) : null,

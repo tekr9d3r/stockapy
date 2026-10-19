@@ -100,6 +100,16 @@ export default function MethodologyPage() {
       <Section title="Known gaps">
         <ul className="list-disc space-y-1.5 pl-5">
           <li>
+            Crypto.com publishes a per-stock rate table but does not say whether the yield is
+            interest, an incentive or revenue share. We record the total and leave the split
+            null, and those rows are excluded from the &ldquo;yield that is real
+            interest&rdquo; figure rather than counted as incentives.
+          </li>
+          <li>
+            Bybit and Bitrue both list tokenized stocks for spot trading but pay nothing on
+            them. They stay on the watchlist so the absence is documented rather than implied.
+          </li>
+          <li>
             CeFi has no usable public API for tokenized stock earn products. Kraken&rsquo;s vault
             rates need an on-chain reader we have not built yet; Bitrue and Crypto.com need
             manual checks.
