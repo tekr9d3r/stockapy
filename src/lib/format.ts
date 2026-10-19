@@ -48,6 +48,19 @@ export function formatRelative(iso: string | null): string {
   return days === 1 ? "yesterday" : `${days} days ago`;
 }
 
+/** Compact form for the table's Updated column; the full value goes in the title. */
+export function formatRelativeShort(iso: string | null): string {
+  if (!iso) return "—";
+  const then = Date.parse(iso);
+  if (Number.isNaN(then)) return "?";
+  const minutes = Math.round((Date.now() - then) / 60000);
+  if (minutes < 2) return "now";
+  if (minutes < 60) return `${minutes}m`;
+  const hours = Math.round(minutes / 60);
+  if (hours < 24) return `${hours}h`;
+  return `${Math.round(hours / 24)}d`;
+}
+
 export const CATEGORY_LABEL: Record<string, string> = {
   earn: "Earn",
   collateral: "Collateral only",

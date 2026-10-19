@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { OpportunityTable } from "@/components/OpportunityTable";
+import { StockLogo } from "@/components/StockLogo";
 import { Stat, StatStrip } from "@/components/Stat";
 import { getRows, marketStats, rowsForTicker } from "@/lib/data/rows";
 import { loadSeed } from "@/lib/data/seed";
@@ -98,9 +99,12 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
         <span>{asset.ticker}</span>
       </nav>
 
-      <h1 className="text-3xl font-semibold tracking-tight">
-        Earn yield on tokenized {asset.ticker}
-      </h1>
+      <div className="flex items-center gap-3">
+        <StockLogo ticker={asset.ticker} name={asset.name} size={40} />
+        <h1 className="text-3xl font-semibold tracking-tight">
+          Earn yield on tokenized {asset.ticker}
+        </h1>
+      </div>
       <p className="mt-1 text-sm text-fg-subtle">
         {asset.name} · {asset.type === "etf" ? "ETF" : "Stock"} · {rows.length} venues tracked
       </p>

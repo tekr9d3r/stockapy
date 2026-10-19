@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={`${sans.variable} ${mono.variable} flex min-h-screen flex-col`}>
         <header className="sticky top-0 z-20 border-b bg-bg/85 backdrop-blur">
-          <div className="mx-auto flex h-14 max-w-6xl items-center gap-6 px-4">
+          <div className="mx-auto flex h-14 max-w-7xl items-center gap-6 px-4">
             <Link href="/" className="font-semibold tracking-tight">
               {BRAND_NAME}
             </Link>
@@ -44,10 +44,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </header>
 
-        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8">{children}</main>
+        <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8">{children}</main>
 
         <footer className="mt-12 border-t bg-bg-subtle">
-          <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-fg-muted">
+          <div className="mx-auto max-w-7xl px-4 py-8 text-sm text-fg-muted">
             <div className="flex flex-wrap gap-x-6 gap-y-2">
               {NAV.map((item) => (
                 <Link key={item.href} href={item.href} className="hover:text-fg">

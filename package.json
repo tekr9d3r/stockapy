@@ -9,7 +9,8 @@
     "lint": "eslint",
     "fetch": "tsx scripts/run-fetchers.ts",
     "discover": "tsx scripts/run-fetchers.ts --discover",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "logos": "tsx scripts/fetch-logos.ts"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

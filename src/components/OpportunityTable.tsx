@@ -4,11 +4,13 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ApyCell } from "./ApyCell";
 import { Badge } from "./Badge";
+import { StockLogo } from "./StockLogo";
 import {
   CATEGORY_LABEL,
   LOCKUP_LABEL,
   SOURCE_LABEL,
-  formatRelative,
+  formatDate,
+  formatRelativeShort,
   formatUsd,
 } from "@/lib/format";
 import type { Row } from "@/lib/data/types";
@@ -99,7 +101,7 @@ export function OpportunityTable({ rows, compact = false }: { rows: Row[]; compa
       )}
 
       <div className="overflow-x-auto rounded-lg border bg-bg-raised">
-        <table className="w-full min-w-[920px] border-collapse text-sm">
+        <table className="w-full min-w-[960px] border-collapse text-sm">
           <caption className="sr-only">
             Yield opportunities on tokenized stocks, with base interest and token incentives
             shown separately.
@@ -119,37 +121,35 @@ export function OpportunityTable({ rows, compact = false }: { rows: Row[]; compa
               </Th>
               <Th className="text-right">TVL</Th>
               <Th>Lockup</Th>
-              <Th className="pr-4">Updated</Th>
+              <Th className="pr-4 text-right">Updated</Th>
             </tr>
           </thead>
           <tbody>
             {visible.map((row) => (
               <tr key={row.id} className="border-b last:border-0 hover:bg-bg-subtle">
-                <td className="py-2.5 pl-4">
+                <td className="px-2 py-2.5 pl-4">
                   <Link
                     href={`/stock/${row.underlying.ticker.toLowerCase()}`}
-                    className="font-medium hover:text-accent hover:underline"
+                    className="flex items-center gap-2 font-medium hover:text-accent hover:underline"
                   >
+                    <StockLogo ticker={row.underlying.ticker} name={row.underlying.name} />
                     {row.underlying.ticker}
                   </Link>
                 </td>
-                <td className="py-2.5">
-                  <span className="font-medium">{row.token.symbol}</span>
-                  <span className="ml-1.5 text-xs text-fg-subtle">{row.issuer.name}</span>
+                <td className="px-2 py-2.5 whitespace-nowrap">
+                  <div className="font-medium">{row.token.symbol}</div>
+                  <div className="text-xs text-fg-subtle">{row.issuer.name}</div>
                 </td>
-                <td className="py-2.5">
-                  <a
-                    href={row.url}
-                    target="_blank"
-                    rel="noopener nofollow"
-                    className="hover:text-accent hover:underline"
-                  >
-                    {row.platform.name}
-                  </a>
-                  {row.variant && (
-                    <span className="ml-1.5 text-xs text-fg-subtle">{row.variant}</span>
-                  )}
-                  <div className="mt-0.5 flex gap-1">
+                <td className="px-2 py-2.5 whitespace-nowrap">
+                  <div className="flex items-center gap-1.5">
+                    <a
+                      href={row.url}
+                      target="_blank"
+                      rel="noopener nofollow"
+                      className="font-medium hover:text-accent hover:underline"
+                    >
+                      {row.platform.name}
+                    </a>
                     <Badge tone={row.platform.kind === "cefi" ? "accent" : "neutral"}>
                       {row.platform.kind === "cefi" ? "CeFi" : "DeFi"}
                     </Badge>
@@ -162,27 +162,34 @@ export function OpportunityTable({ rows, compact = false }: { rows: Row[]; compa
                       </Badge>
                     )}
                   </div>
+                  {row.variant && (
+                    <div className="mt-0.5 text-xs text-fg-subtle">{row.variant}</div>
+                  )}
                 </td>
-                <td className="py-2.5 text-fg-muted">{row.chain}</td>
-                <td className="py-2.5 text-right">
+                <td className="px-2 py-2.5 whitespace-nowrap text-fg-muted">{row.chain}</td>
+                <td className="px-2 py-2.5 text-right">
                   <ApyCell row={row} />
                 </td>
-                <td className="tnum py-2.5 text-right text-fg-muted">
+                <td className="tnum px-2 py-2.5 text-right text-fg-muted">
                   {row.apyBase === null ? "—" : `${row.apyBase.toFixed(2)}`}
                 </td>
-                <td className="tnum py-2.5 text-right text-fg-muted">
+                <td className="tnum px-2 py-2.5 text-right text-fg-muted">
                   {row.apyReward === null ? "—" : `${row.apyReward.toFixed(2)}`}
                 </td>
-                <td className="tnum py-2.5 text-right text-fg-muted">
+                <td className="tnum px-2 py-2.5 text-right whitespace-nowrap text-fg-muted">
                   {formatUsd(row.tvlUsd)}
                 </td>
-                <td className="py-2.5 text-fg-muted">
+                <td className="px-2 py-2.5 whitespace-nowrap text-fg-muted">
                   {LOCKUP_LABEL[row.lockup]}
                   {row.withdrawalDelayDays ? ` · ${row.withdrawalDelayDays}d` : ""}
                 </td>
-                <td className="py-2.5 pr-4 text-xs text-fg-subtle">
-                  <span title={`Source: ${SOURCE_LABEL[row.source] ?? row.source}`}>
-                    {formatRelative(row.fetchedAt)}
+                <td className="px-2 py-2.5 pr-4 text-right text-xs whitespace-nowrap text-fg-subtle">
+                  <span
+                    title={`Collected ${formatDate(row.fetchedAt)} from ${
+                      SOURCE_LABEL[row.source] ?? row.source
+                    }`}
+                  >
+                    {formatRelativeShort(row.fetchedAt)}
                   </span>
                 </td>
               </tr>
