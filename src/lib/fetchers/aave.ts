@@ -17,6 +17,12 @@ const CHAIN_IDS: Record<string, number> = {
  */
 type PercentNumber = { value: string; normalized: string };
 
+/** A token amount with its fiat valuation alongside. */
+type Erc20Amount = {
+  amount: { value: string };
+  exchange: { value: string; symbol: string } | null;
+};
+
 type AaveReserve = {
   asset: { underlying: { info: { symbol: string } | null } };
   canBorrow: boolean;
@@ -27,6 +33,7 @@ type AaveReserve = {
     collateral: boolean;
   };
   summary: {
+    supplied: Erc20Amount;
     supplyApy: PercentNumber;
     borrowApy: PercentNumber;
     /** Merkl incentive programmes. Not included in supplyApy. */
@@ -46,6 +53,7 @@ const QUERY = `query Reserves($chainIds: [ChainId!]) {
       collateral
     }
     summary {
+      supplied { amount { value } exchange { value symbol } }
       supplyApy { value normalized }
       borrowApy { value normalized }
       rewards { ... on MerklSupplyReward { extraApy { value normalized } endDate } }
@@ -131,7 +139,9 @@ export async function fetchAave(): Promise<Snapshot[]> {
       apyTotal: supplyApy === null ? null : supplyApy + rewardApy,
       apyBase: supplyApy,
       apyReward: supplyApy === null ? null : hasRewards ? rewardApy : 0,
-      tvlUsd: null,
+      // Aave reports a fiat valuation next to the token amount, so these reserves
+      // were never "not disclosed" -- we simply were not reading the field.
+      tvlUsd: num(reserve.summary.supplied?.exchange?.value),
       ltv: reserve.canUseAsCollateral ? num(reserve.settings.collateralFactor.value) : null,
       borrowApr: loan ? num(loan.summary.borrowApy.normalized) : null,
       source: "aave_api",
