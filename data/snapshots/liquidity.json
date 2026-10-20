@@ -1,0 +1,7822 @@
+{
+ "fetchedAt": "2026-10-20T11:47:45.756Z",
+ "pools": [
+  {
+   "id": "e480f2c3-9422-441c-8901-9c32ab359447",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "CRCLX-USDC",
+   "legs": [
+    {
+     "symbol": "CRCLX",
+     "address": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1",
+     "stock": {
+      "symbol": "CRCLx",
+      "underlying": "CRCL",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "CRCL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.1,
+   "apyBase": 29.29,
+   "apyReward": 0,
+   "apyBase7d": 26.93,
+   "tvlUsd": 3285257,
+   "volumeUsd1d": 2636314,
+   "volumeUsd7d": 29491368,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "6f7708a9-58d0-4941-a06a-b83e91b06903",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "NVDAX-USDC",
+   "legs": [
+    {
+     "symbol": "NVDAX",
+     "address": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
+     "stock": {
+      "symbol": "NVDAx",
+      "underlying": "NVDA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.1,
+   "apyBase": 21.62,
+   "apyReward": 0,
+   "apyBase7d": 16.41,
+   "tvlUsd": 3148909,
+   "volumeUsd1d": 1865169,
+   "volumeUsd7d": 17224739,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "314c6cb3-b2d1-4262-9b16-1c1db245b262",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "TSLAX-USDC",
+   "legs": [
+    {
+     "symbol": "TSLAX",
+     "address": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+     "stock": {
+      "symbol": "TSLAx",
+      "underlying": "TSLA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.1,
+   "apyBase": 27.94,
+   "apyReward": 0,
+   "apyBase7d": 24.36,
+   "tvlUsd": 2405329,
+   "volumeUsd1d": 1840906,
+   "volumeUsd7d": 19531299,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "318d20fb-417b-492f-aeb9-d0709b0d3d58",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "QQQX-USDC",
+   "legs": [
+    {
+     "symbol": "QQQX",
+     "address": "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ",
+     "stock": {
+      "symbol": "QQQx",
+      "underlying": "QQQ",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "QQQ"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.1,
+   "apyBase": 5.85,
+   "apyReward": 0,
+   "apyBase7d": 3.73,
+   "tvlUsd": 2179281,
+   "volumeUsd1d": 349327,
+   "volumeUsd7d": 2709325,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "5ccd0074-df46-49d8-8f6d-de221b60672c",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPYX-USDC",
+   "legs": [
+    {
+     "symbol": "SPYX",
+     "address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+     "stock": {
+      "symbol": "SPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.1,
+   "apyBase": 1.73,
+   "apyReward": 0,
+   "apyBase7d": 1.32,
+   "tvlUsd": 2106948,
+   "volumeUsd1d": 100099,
+   "volumeUsd7d": 923597,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "9e36fb91-c96a-54e8-aa6c-34d68a7afdab",
+   "project": "aerodrome-slipstream",
+   "venueId": "aerodrome",
+   "chain": "Base",
+   "symbol": "USDC-AMZNC",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "stock": null
+    },
+    {
+     "symbol": "AMZNC",
+     "address": "0xb200000000000000000000d9192b6B456483C2E8",
+     "stock": {
+      "symbol": "AMZNc",
+      "underlying": "AMZN",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "AMZN"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 59.7241,
+   "apyReward": 924.549,
+   "apyBase7d": 46.5106,
+   "tvlUsd": 2063956,
+   "volumeUsd1d": 6754408,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "f07ec582-f302-5fab-9531-eabc3f8f291c",
+   "project": "aerodrome-slipstream",
+   "venueId": "aerodrome",
+   "chain": "Base",
+   "symbol": "USDC-NVDAC",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "stock": null
+    },
+    {
+     "symbol": "NVDAC",
+     "address": "0xb20000000000000000000078ee7ce2fE4908108C",
+     "stock": {
+      "symbol": "NVDAc",
+      "underlying": "NVDA",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 64.7314,
+   "apyReward": 644.2309,
+   "apyBase7d": 80.1765,
+   "tvlUsd": 1501603,
+   "volumeUsd1d": 5326072,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "06ae14ef-c2e3-5e30-9876-3e06c8b2f9a9",
+   "project": "aerodrome-slipstream",
+   "venueId": "aerodrome",
+   "chain": "Base",
+   "symbol": "USDC-MSTRC",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "stock": null
+    },
+    {
+     "symbol": "MSTRC",
+     "address": "0xb2000000000000000000004884b426556b92883d",
+     "stock": {
+      "symbol": "MSTRc",
+      "underlying": "MSTR",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "MSTR"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 113.039,
+   "apyReward": 5844.805,
+   "apyBase7d": 125.4783,
+   "tvlUsd": 1481759,
+   "volumeUsd1d": 9177893,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "f37649e7-52ac-46ae-bf1c-7ff1921c3cf7",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "GOOGLX-USDC",
+   "legs": [
+    {
+     "symbol": "GOOGLX",
+     "address": "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN",
+     "stock": {
+      "symbol": "GOOGLx",
+      "underlying": "GOOGL",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "GOOGL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 17.13,
+   "apyReward": 0,
+   "apyBase7d": 42.5,
+   "tvlUsd": 1390849,
+   "volumeUsd1d": 261151,
+   "volumeUsd7d": 7880964,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "d791dc1b-88d8-5e0e-99e6-fa4041b6e340",
+   "project": "aerodrome-slipstream",
+   "venueId": "aerodrome",
+   "chain": "Base",
+   "symbol": "USDC-METAC",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "stock": null
+    },
+    {
+     "symbol": "METAC",
+     "address": "0xb2000000000000000000008bC8786B856E61707C",
+     "stock": {
+      "symbol": "METAc",
+      "underlying": "META",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "META"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 78.9526,
+   "apyReward": 181.0871,
+   "apyBase7d": 104.4152,
+   "tvlUsd": 1337427,
+   "volumeUsd1d": 5785933,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "c8a9a79e-6cc9-4360-b207-1a4ed437beac",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "HOODX-USDC",
+   "legs": [
+    {
+     "symbol": "HOODX",
+     "address": "XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg",
+     "stock": {
+      "symbol": "HOODx",
+      "underlying": "HOOD",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "HOOD"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 17.38,
+   "apyReward": 0,
+   "apyBase7d": 24.81,
+   "tvlUsd": 1273844,
+   "volumeUsd1d": 60659,
+   "volumeUsd7d": 1053358,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "93f4aaea-5905-52ab-8e2b-926490246614",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPYX-STONK",
+   "legs": [
+    {
+     "symbol": "SPYX",
+     "address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+     "stock": {
+      "symbol": "SPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "STONK",
+     "address": "6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 44.66,
+   "apyReward": 0,
+   "apyBase7d": 36.8,
+   "tvlUsd": 1255595,
+   "volumeUsd1d": 153643,
+   "volumeUsd7d": 1540340,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "383917ff-e71c-5d60-888e-e817b06f5436",
+   "project": "aerodrome-slipstream",
+   "venueId": "aerodrome",
+   "chain": "Base",
+   "symbol": "USDC-GOOGLC",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "stock": null
+    },
+    {
+     "symbol": "GOOGLC",
+     "address": "0xb2000000000000000000002D0BA3164cc74f58B7",
+     "stock": {
+      "symbol": "GOOGLc",
+      "underlying": "GOOGL",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "GOOGL"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 109.0537,
+   "apyReward": 713.4451,
+   "apyBase7d": 112.6493,
+   "tvlUsd": 1252117,
+   "volumeUsd1d": 7482081,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "8feb7ee9-2530-4168-860a-ee444c809da7",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPCXX-USDC",
+   "legs": [
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.8,
+   "apyBase": 75.15,
+   "apyReward": 0,
+   "apyBase7d": 52.14,
+   "tvlUsd": 1038232,
+   "volumeUsd1d": 267211,
+   "volumeUsd7d": 2255439,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "8e1479a4-5561-5291-a1ff-6debfda30c6e",
+   "project": "aerodrome-slipstream",
+   "venueId": "aerodrome",
+   "chain": "Base",
+   "symbol": "USDC-AAPLC",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "stock": null
+    },
+    {
+     "symbol": "AAPLC",
+     "address": "0xb200000000000000000000C2e324d24d7eEcd1fb",
+     "stock": {
+      "symbol": "AAPLc",
+      "underlying": "AAPL",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "AAPL"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 76.0749,
+   "apyReward": 89.9483,
+   "apyBase7d": 103.1233,
+   "tvlUsd": 973260,
+   "volumeUsd1d": 4057024,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "c8947f06-3856-4c9c-88de-1fd1b9f4db0b",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "WSOL-SPYX",
+   "legs": [
+    {
+     "symbol": "WSOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "SPYX",
+     "address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+     "stock": {
+      "symbol": "SPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 39.77,
+   "apyReward": 0,
+   "apyBase7d": 27.88,
+   "tvlUsd": 940746,
+   "volumeUsd1d": 410024,
+   "volumeUsd7d": 3497597,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "9c9c6c56-8fa4-505d-8e4d-a1c94f2eb771",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "WSOL-SPCXX",
+   "legs": [
+    {
+     "symbol": "WSOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.8,
+   "apyBase": 58.87,
+   "apyReward": 0,
+   "apyBase7d": 44.28,
+   "tvlUsd": 895879,
+   "volumeUsd1d": 180623,
+   "volumeUsd7d": 1652939,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "e4f9a318-eb01-44dc-8f0f-60cb29c64128",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "METAX-USDC",
+   "legs": [
+    {
+     "symbol": "METAX",
+     "address": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu",
+     "stock": {
+      "symbol": "METAx",
+      "underlying": "META",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "META"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 57.05,
+   "apyReward": 0,
+   "apyBase7d": 32.51,
+   "tvlUsd": 878002,
+   "volumeUsd1d": 548884,
+   "volumeUsd7d": 3805800,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "340cf7b7-9654-4f2c-9d30-e519dbde849d",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "WSOL-MSTRX",
+   "legs": [
+    {
+     "symbol": "WSOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "MSTRX",
+     "address": "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ",
+     "stock": {
+      "symbol": "MSTRx",
+      "underlying": "MSTR",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "MSTR"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 26.86,
+   "apyReward": 0,
+   "apyBase7d": 23.62,
+   "tvlUsd": 823896,
+   "volumeUsd1d": 242505,
+   "volumeUsd7d": 2594785,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "f3990eac-d0e2-545c-a52b-3304804ab529",
+   "project": "aerodrome-slipstream",
+   "venueId": "aerodrome",
+   "chain": "Base",
+   "symbol": "USDC-SPCXC",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "stock": null
+    },
+    {
+     "symbol": "SPCXC",
+     "address": "0xb2000000000000000000007b9fcbd005511aCBd5",
+     "stock": {
+      "symbol": "SPCXc",
+      "underlying": "SPCX",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 102.1289,
+   "apyReward": 2238.638,
+   "apyBase7d": 126.5753,
+   "tvlUsd": 785183,
+   "volumeUsd1d": 4393964,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "c786e58b-dd65-5cb6-b93a-a34d64c9fe90",
+   "project": "uniswap-v3",
+   "venueId": "uniswap",
+   "chain": "BSC",
+   "symbol": "USDT-SPCXB",
+   "legs": [
+    {
+     "symbol": "USDT",
+     "address": "0x55d398326f99059ff775485246999027b3197955",
+     "stock": null
+    },
+    {
+     "symbol": "SPCXB",
+     "address": "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1",
+     "stock": {
+      "symbol": "SPCXB",
+      "underlying": "SPCX",
+      "issuer": "binance"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "binance"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 43.7951,
+   "apyReward": null,
+   "apyBase7d": 28.1982,
+   "tvlUsd": 771103,
+   "volumeUsd1d": 1850442,
+   "volumeUsd7d": 12765667,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "2619cf7a-535e-43a6-8163-a0d1265611a6",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "CRCLX-USDC",
+   "legs": [
+    {
+     "symbol": "CRCLX",
+     "address": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1",
+     "stock": {
+      "symbol": "CRCLx",
+      "underlying": "CRCL",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "CRCL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 23.47,
+   "apyReward": 0,
+   "apyBase7d": 32.34,
+   "tvlUsd": 724750,
+   "volumeUsd1d": 186433,
+   "volumeUsd7d": 3125519,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "e72ac43f-66a2-4f2b-a08c-6280cd5fe45b",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "MSTRX-USDC",
+   "legs": [
+    {
+     "symbol": "MSTRX",
+     "address": "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ",
+     "stock": {
+      "symbol": "MSTRx",
+      "underlying": "MSTR",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "MSTR"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 43.64,
+   "apyReward": 0,
+   "apyBase7d": 35.53,
+   "tvlUsd": 707214,
+   "volumeUsd1d": 338218,
+   "volumeUsd7d": 3349881,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "95ee4f0c-a9de-5cf7-a4b6-81adab1a20d5",
+   "project": "aerodrome-slipstream",
+   "venueId": "aerodrome",
+   "chain": "Base",
+   "symbol": "USDC-MSFTC",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "stock": null
+    },
+    {
+     "symbol": "MSFTC",
+     "address": "0xB200000000000000000000Ab99cFa739E253872B",
+     "stock": {
+      "symbol": "MSFTc",
+      "underlying": "MSFT",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "MSFT"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 81.4159,
+   "apyReward": 1719.6122,
+   "apyBase7d": 115.3426,
+   "tvlUsd": 578549,
+   "volumeUsd1d": 2580993,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "62175cdc-208b-500c-9e91-ea08ec34d281",
+   "project": "uniswap-v3",
+   "venueId": "uniswap",
+   "chain": "BSC",
+   "symbol": "QQQB-USDC",
+   "legs": [
+    {
+     "symbol": "QQQB",
+     "address": "0x205812cdbed920aff76c6580abd681a46d11efc7",
+     "stock": {
+      "symbol": "QQQB",
+      "underlying": "QQQ",
+      "issuer": "binance"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "QQQ"
+   ],
+   "issuers": [
+    "binance"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.3,
+   "apyBase": 12.9554,
+   "apyReward": null,
+   "apyBase7d": 4.8905,
+   "tvlUsd": 570317,
+   "volumeUsd1d": 67476,
+   "volumeUsd7d": 733016,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "087d7f6a-e646-5119-9390-bf28ec79adde",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "NVDAX-SI",
+   "legs": [
+    {
+     "symbol": "NVDAX",
+     "address": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
+     "stock": {
+      "symbol": "NVDAx",
+      "underlying": "NVDA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "SI",
+     "address": "DEW9dSN6QpWyNthphCpMmAbZP1Q4cEKR9xQXAri98WDP",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 54.49,
+   "apyReward": 0,
+   "apyBase7d": 57,
+   "tvlUsd": 528111,
+   "volumeUsd1d": 315334,
+   "volumeUsd7d": 4013997,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "c83d36b0-bfaf-55f9-9c63-a265d53facf7",
+   "project": "aerodrome-slipstream",
+   "venueId": "aerodrome",
+   "chain": "Base",
+   "symbol": "USDC-TSLAC",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "stock": null
+    },
+    {
+     "symbol": "TSLAC",
+     "address": "0xb2000000000000000000001e800a7f5189430cD0",
+     "stock": {
+      "symbol": "TSLAc",
+      "underlying": "TSLA",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 103.7437,
+   "apyReward": 739.1585,
+   "apyBase7d": 97.453,
+   "tvlUsd": 516789,
+   "volumeUsd1d": 2937732,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "f5be6f43-4e18-4bc4-9e96-f64abc62b201",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPYX-USDC",
+   "legs": [
+    {
+     "symbol": "SPYX",
+     "address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+     "stock": {
+      "symbol": "SPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.01,
+   "apyBase": 14.01,
+   "apyReward": 0,
+   "apyBase7d": 10,
+   "tvlUsd": 470465,
+   "volumeUsd1d": 1806215,
+   "volumeUsd7d": 15682040,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "9347eff9-909c-435d-8fb2-1dced04f5831",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "WSOL-NVDAX",
+   "legs": [
+    {
+     "symbol": "WSOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "NVDAX",
+     "address": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
+     "stock": {
+      "symbol": "NVDAx",
+      "underlying": "NVDA",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 110.49,
+   "apyReward": 0,
+   "apyBase7d": 99.58,
+   "tvlUsd": 464326,
+   "volumeUsd1d": 562203,
+   "volumeUsd7d": 6165241,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "7a2d3931-0c0a-4e99-9e4b-4c647f532363",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "MSFTX-USDC",
+   "legs": [
+    {
+     "symbol": "MSFTX",
+     "address": "XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX",
+     "stock": {
+      "symbol": "MSFTx",
+      "underlying": "MSFT",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "MSFT"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 184.15,
+   "apyReward": 0,
+   "apyBase7d": 58.17,
+   "tvlUsd": 420373,
+   "volumeUsd1d": 848329,
+   "volumeUsd7d": 3260592,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "d2282635-76a7-5ab3-b5f2-a638832ef327",
+   "project": "aerodrome-slipstream",
+   "venueId": "aerodrome",
+   "chain": "Base",
+   "symbol": "USDC-PLTRC",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+     "stock": null
+    },
+    {
+     "symbol": "PLTRC",
+     "address": "0xb2000000000000000000007d16372840dF4dAbbe",
+     "stock": {
+      "symbol": "PLTRc",
+      "underlying": "PLTR",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "PLTR"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 122.4601,
+   "apyReward": 3716.4109,
+   "apyBase7d": 226.2425,
+   "tvlUsd": 394988,
+   "volumeUsd1d": 2650423,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "17d0defb-9cdc-5c4e-8416-47b9ee1d9428",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "MSFTX-USDC",
+   "legs": [
+    {
+     "symbol": "MSFTX",
+     "address": "XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX",
+     "stock": {
+      "symbol": "MSFTx",
+      "underlying": "MSFT",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "MSFT"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.1,
+   "apyBase": 25.96,
+   "apyReward": 0,
+   "apyBase7d": 10.23,
+   "tvlUsd": 370688,
+   "volumeUsd1d": 263597,
+   "volumeUsd7d": 1263629,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "37cd8913-83bd-4d9d-a28b-b354ee1743b4",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "TSLAX-USDC",
+   "legs": [
+    {
+     "symbol": "TSLAX",
+     "address": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+     "stock": {
+      "symbol": "TSLAx",
+      "underlying": "TSLA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 11.66,
+   "apyReward": 0,
+   "apyBase7d": 6.67,
+   "tvlUsd": 363651,
+   "volumeUsd1d": 46485,
+   "volumeUsd7d": 323457,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "0a6a2caf-6c34-4452-893c-74d07c3348c0",
+   "project": "uniswap-v4",
+   "venueId": "uniswap",
+   "chain": "Ethereum",
+   "symbol": "USDT-TSLAON",
+   "legs": [
+    {
+     "symbol": "USDT",
+     "address": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+     "stock": null
+    },
+    {
+     "symbol": "TSLAON",
+     "address": "0xf6b1117ec07684d3958cad8beb1b302bfd21103f",
+     "stock": {
+      "symbol": "TSLAon",
+      "underlying": "TSLA",
+      "issuer": "ondo"
+     }
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "ondo"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 0,
+   "apyReward": null,
+   "apyBase7d": null,
+   "tvlUsd": 349564,
+   "volumeUsd1d": 0,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "688fdee4-325a-4e86-904c-7d9ca92d1f45",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "AMZNX-USDC",
+   "legs": [
+    {
+     "symbol": "AMZNX",
+     "address": "Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg",
+     "stock": {
+      "symbol": "AMZNx",
+      "underlying": "AMZN",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "AMZN"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 23.03,
+   "apyReward": 0,
+   "apyBase7d": 13.83,
+   "tvlUsd": 348125,
+   "volumeUsd1d": 87848,
+   "volumeUsd7d": 641771,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "d841f4d5-34a3-4671-809e-47ed34fd9bcf",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "NVDAX-USDC",
+   "legs": [
+    {
+     "symbol": "NVDAX",
+     "address": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
+     "stock": {
+      "symbol": "NVDAx",
+      "underlying": "NVDA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 27.3484,
+   "apyReward": 0,
+   "apyBase7d": 44.6749,
+   "tvlUsd": 335439,
+   "volumeUsd1d": 995317,
+   "volumeUsd7d": 9209871,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "ce3c9f5d-8185-52bd-900a-6cba1f5a71d1",
+   "project": "uniswap-v4",
+   "venueId": "uniswap",
+   "chain": "Base",
+   "symbol": "NVDAC-BLUECHIP",
+   "legs": [
+    {
+     "symbol": "NVDAC",
+     "address": "0xb20000000000000000000078ee7ce2fe4908108c",
+     "stock": {
+      "symbol": "NVDAc",
+      "underlying": "NVDA",
+      "issuer": "coinbase"
+     }
+    },
+    {
+     "symbol": "BLUECHIP",
+     "address": "0xb200000000000000000000cfbdf64a8706a94a01",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 0,
+   "apyBase": 0,
+   "apyReward": null,
+   "apyBase7d": null,
+   "tvlUsd": 308599,
+   "volumeUsd1d": 0,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "112aecd5-7776-518c-bd7a-6ffff5995926",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "AAPLX-USDC",
+   "legs": [
+    {
+     "symbol": "AAPLX",
+     "address": "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp",
+     "stock": {
+      "symbol": "AAPLx",
+      "underlying": "AAPL",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "AAPL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.1,
+   "apyBase": 10.02,
+   "apyReward": 0,
+   "apyBase7d": 33.91,
+   "tvlUsd": 276015,
+   "volumeUsd1d": 75797,
+   "volumeUsd7d": 3119403,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "6d7b4eee-e991-57ca-8263-d3d76a91b766",
+   "project": "uniswap-v4",
+   "venueId": "uniswap",
+   "chain": "Base",
+   "symbol": "IPOD-AAPL",
+   "legs": [
+    {
+     "symbol": "IPOD",
+     "address": "0xa6af0cea8fbc93e1eccc00f1fdd9a0bba251fee1",
+     "stock": null
+    },
+    {
+     "symbol": "AAPL",
+     "address": "0xb200000000000000000000c2e324d24d7eecd1fb",
+     "stock": {
+      "symbol": "AAPLc",
+      "underlying": "AAPL",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "AAPL"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 0,
+   "apyBase": 0,
+   "apyReward": null,
+   "apyBase7d": null,
+   "tvlUsd": 267137,
+   "volumeUsd1d": 0,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "57629bc6-da85-4eac-904e-d64a939102db",
+   "project": "uniswap-v4",
+   "venueId": "uniswap",
+   "chain": "Ethereum",
+   "symbol": "USDC-TSLAON",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+     "stock": null
+    },
+    {
+     "symbol": "TSLAON",
+     "address": "0xf6b1117ec07684d3958cad8beb1b302bfd21103f",
+     "stock": {
+      "symbol": "TSLAon",
+      "underlying": "TSLA",
+      "issuer": "ondo"
+     }
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "ondo"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 0,
+   "apyReward": null,
+   "apyBase7d": null,
+   "tvlUsd": 258470,
+   "volumeUsd1d": 0,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "dd3a85f8-0963-40d1-bf6e-fa3a5c9f9507",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPCX-SPCXX",
+   "legs": [
+    {
+     "symbol": "SPCX",
+     "address": "SPCXxcqXj6e5dJDVNovHN8744zkbhM2bYudU45BimGb",
+     "stock": null
+    },
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 0.01,
+   "apyBase": 7.26,
+   "apyReward": 0,
+   "apyBase7d": 4.63,
+   "tvlUsd": 255579,
+   "volumeUsd1d": 507312,
+   "volumeUsd7d": 3934087,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "9462784c-c0e5-4539-914e-ac006e5b3097",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "AAPLX-USDC",
+   "legs": [
+    {
+     "symbol": "AAPLX",
+     "address": "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp",
+     "stock": {
+      "symbol": "AAPLx",
+      "underlying": "AAPL",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "AAPL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 40.82,
+   "apyReward": 0,
+   "apyBase7d": 94.9,
+   "tvlUsd": 235456,
+   "volumeUsd1d": 105335,
+   "volumeUsd7d": 2979160,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "d58b2d86-df88-56b9-9212-930d8a164095",
+   "project": "uniswap-v3",
+   "venueId": "uniswap",
+   "chain": "BSC",
+   "symbol": "NVDAB-USDT",
+   "legs": [
+    {
+     "symbol": "NVDAB",
+     "address": "0x02fca66c1d1afb4e2a7884261eb00f63598a7436",
+     "stock": {
+      "symbol": "NVDAB",
+      "underlying": "NVDA",
+      "issuer": "binance"
+     }
+    },
+    {
+     "symbol": "USDT",
+     "address": "0x55d398326f99059ff775485246999027b3197955",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "binance"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 79.7689,
+   "apyReward": null,
+   "apyBase7d": 24.5487,
+   "tvlUsd": 233138,
+   "volumeUsd1d": 1019022,
+   "volumeUsd7d": 8367372,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "ede76535-ee34-5723-bfcb-f48732cac28a",
+   "project": "uniswap-v4",
+   "venueId": "uniswap",
+   "chain": "Base",
+   "symbol": "USDC-NVDAC",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+     "stock": null
+    },
+    {
+     "symbol": "NVDAC",
+     "address": "0xb20000000000000000000078ee7ce2fe4908108c",
+     "stock": {
+      "symbol": "NVDAc",
+      "underlying": "NVDA",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 3.1,
+   "apyBase": 119.5617,
+   "apyReward": null,
+   "apyBase7d": null,
+   "tvlUsd": 230492,
+   "volumeUsd1d": 24379,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "06244737-82e1-41f3-b178-80a17165219c",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "PLTRX-USDC",
+   "legs": [
+    {
+     "symbol": "PLTRX",
+     "address": "XsoBhf2ufR8fTyNSjqfU71DYGaE6Z3SUGAidpzriAA4",
+     "stock": {
+      "symbol": "PLTRx",
+      "underlying": "PLTR",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "PLTR"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 125.0977,
+   "apyReward": 0,
+   "apyBase7d": 222.1499,
+   "tvlUsd": 197641,
+   "volumeUsd1d": 99094,
+   "volumeUsd7d": 1213560,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "e03b2380-b1c3-5ae3-9df3-925fb89cfc72",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "SPCXX-USDC",
+   "legs": [
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 100.4328,
+   "apyReward": 0,
+   "apyBase7d": 100.4298,
+   "tvlUsd": 193558,
+   "volumeUsd1d": 886683,
+   "volumeUsd7d": 6117294,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "62d12119-752e-4978-b96e-d5d6ecbc44ba",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "WSOL-CRCLX",
+   "legs": [
+    {
+     "symbol": "WSOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "CRCLX",
+     "address": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1",
+     "stock": {
+      "symbol": "CRCLx",
+      "underlying": "CRCL",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "CRCL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 13.09,
+   "apyReward": 0,
+   "apyBase7d": 17.15,
+   "tvlUsd": 193402,
+   "volumeUsd1d": 27742,
+   "volumeUsd7d": 442337,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "6643a374-6d88-515f-b558-55d1bc837638",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "SOL-NVDAX",
+   "legs": [
+    {
+     "symbol": "SOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "NVDAX",
+     "address": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
+     "stock": {
+      "symbol": "NVDAx",
+      "underlying": "NVDA",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 159.0104,
+   "apyReward": 0,
+   "apyBase7d": 175.7305,
+   "tvlUsd": 185528,
+   "volumeUsd1d": 491126,
+   "volumeUsd7d": 3753463,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "119990a9-9784-4203-b72d-70fa7bcd6769",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "SPYX-USDC",
+   "legs": [
+    {
+     "symbol": "SPYX",
+     "address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+     "stock": {
+      "symbol": "SPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 3.1027,
+   "apyReward": 0,
+   "apyBase7d": 3.8345,
+   "tvlUsd": 184285,
+   "volumeUsd1d": 73474,
+   "volumeUsd7d": 622676,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "036a5d36-9d52-5616-9acb-cb54d34939a3",
+   "project": "nest-cl",
+   "venueId": "nest",
+   "chain": "Hyperliquid L1",
+   "symbol": "WNVDAX-USDC",
+   "legs": [
+    {
+     "symbol": "WNVDAX",
+     "address": "0xa8ddb5cd96b5222afe198316e9a57caa642850d5",
+     "stock": {
+      "symbol": "wNVDAx",
+      "underlying": "NVDA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "0xb88339cb7199b77e23db6e890353e22632ba630f",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.3,
+   "apyBase": null,
+   "apyReward": 23.9384,
+   "apyBase7d": null,
+   "tvlUsd": 160291,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "1c31bd0c-2835-5ea5-9848-c65531372bd0",
+   "project": "uniswap-v4",
+   "venueId": "uniswap",
+   "chain": "Base",
+   "symbol": "ETH-NVDAC",
+   "legs": [
+    {
+     "symbol": "ETH",
+     "address": "0x0000000000000000000000000000000000000000",
+     "stock": null
+    },
+    {
+     "symbol": "NVDAC",
+     "address": "0xb20000000000000000000078ee7ce2fe4908108c",
+     "stock": {
+      "symbol": "NVDAc",
+      "underlying": "NVDA",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0,
+   "apyBase": 0,
+   "apyReward": null,
+   "apyBase7d": null,
+   "tvlUsd": 146628,
+   "volumeUsd1d": 0,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "0d7ffd2b-257e-4066-95be-35fb37bc748b",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "WSOL-QQQX",
+   "legs": [
+    {
+     "symbol": "WSOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "QQQX",
+     "address": "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ",
+     "stock": {
+      "symbol": "QQQx",
+      "underlying": "QQQ",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "QQQ"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 23.36,
+   "apyReward": 0,
+   "apyBase7d": 23.01,
+   "tvlUsd": 138428,
+   "volumeUsd1d": 35444,
+   "volumeUsd7d": 424634,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "48e32e47-91db-5c36-a141-6e52c1c85fb3",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "GOOGLX-USDC",
+   "legs": [
+    {
+     "symbol": "GOOGLX",
+     "address": "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN",
+     "stock": {
+      "symbol": "GOOGLx",
+      "underlying": "GOOGL",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "GOOGL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 35.7223,
+   "apyReward": 0,
+   "apyBase7d": 96.8456,
+   "tvlUsd": 124692,
+   "volumeUsd1d": 226705,
+   "volumeUsd7d": 4274430,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "53162d28-dfd0-46d4-b42e-9c761abf3272",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "WSOL-TSLAX",
+   "legs": [
+    {
+     "symbol": "WSOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "TSLAX",
+     "address": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+     "stock": {
+      "symbol": "TSLAx",
+      "underlying": "TSLA",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 101.34,
+   "apyReward": 0,
+   "apyBase7d": 98.03,
+   "tvlUsd": 120967,
+   "volumeUsd1d": 134339,
+   "volumeUsd7d": 1581047,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "aa262208-c77c-5877-9f46-a2ec7a3a4aea",
+   "project": "alandale-v3",
+   "venueId": "alandale",
+   "chain": "Robinhood Chain",
+   "symbol": "WETH-SPY",
+   "legs": [
+    {
+     "symbol": "WETH",
+     "address": "0x0bd7d308f8e1639fab988df18a8011f41eacad73",
+     "stock": null
+    },
+    {
+     "symbol": "SPY",
+     "address": "0x117cc2133c37b721f49de2a7a74833232b3b4c0c",
+     "stock": {
+      "symbol": "SPY (Robinhood)",
+      "underlying": "SPY",
+      "issuer": "robinhood"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "robinhood"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.01,
+   "apyBase": 0,
+   "apyReward": 12.7666,
+   "apyBase7d": null,
+   "tvlUsd": 117576,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "3beb57d9-04a7-4d5a-b54b-632ca22d8558",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "SOL-SPCXX",
+   "legs": [
+    {
+     "symbol": "SOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 127.8959,
+   "apyReward": 0,
+   "apyBase7d": 137.2341,
+   "tvlUsd": 117341,
+   "volumeUsd1d": 236150,
+   "volumeUsd7d": 1758574,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "3b6b75cf-adb5-4fb4-bbcd-8f75c6879c9d",
+   "project": "fluxion-network",
+   "venueId": "fluxion",
+   "chain": "Mantle",
+   "symbol": "USDC-WAAPLX",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x09bc4e0d864854c6afb6eb9a9cdf58ac190d0df9",
+     "stock": null
+    },
+    {
+     "symbol": "WAAPLX",
+     "address": "0x5aa7649fdbda47de64a07ac81d64b682af9c0724",
+     "stock": {
+      "symbol": "wAAPLx",
+      "underlying": "AAPL",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "AAPL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "unknown",
+   "feeTier": 0.3,
+   "apyBase": 0.378,
+   "apyReward": null,
+   "apyBase7d": 0.4874,
+   "tvlUsd": 117023,
+   "volumeUsd1d": 404,
+   "volumeUsd7d": 3656,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "3b91d3b1-4086-58cf-bc03-e914055bf562",
+   "project": "uniswap-v3",
+   "venueId": "uniswap",
+   "chain": "Base",
+   "symbol": "AMZNC-DGUY",
+   "legs": [
+    {
+     "symbol": "AMZNC",
+     "address": "0xb200000000000000000000d9192b6b456483c2e8",
+     "stock": {
+      "symbol": "AMZNc",
+      "underlying": "AMZN",
+      "issuer": "coinbase"
+     }
+    },
+    {
+     "symbol": "DGUY",
+     "address": "0xe34356dcd3d7bb991248f322e4ec31b5d60bc54e",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "AMZN"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 314.2327,
+   "apyReward": null,
+   "apyBase7d": 214.0271,
+   "tvlUsd": 116670,
+   "volumeUsd1d": 100442,
+   "volumeUsd7d": 482635,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "30836422-c578-4f77-8f81-861c509c5d4c",
+   "project": "fluxion-network",
+   "venueId": "fluxion",
+   "chain": "Mantle",
+   "symbol": "USDC-WHOODX",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x09bc4e0d864854c6afb6eb9a9cdf58ac190d0df9",
+     "stock": null
+    },
+    {
+     "symbol": "WHOODX",
+     "address": "0x953707d7a1cb30cc5c636bda8eaebe410341eb14",
+     "stock": {
+      "symbol": "wHOODx",
+      "underlying": "HOOD",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "HOOD"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "unknown",
+   "feeTier": 0.3,
+   "apyBase": 0.3657,
+   "apyReward": null,
+   "apyBase7d": 1.761,
+   "tvlUsd": 116566,
+   "volumeUsd1d": 389,
+   "volumeUsd7d": 13158,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "a8e25ac4-f4d0-412a-a211-62a4e513eca0",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "NVDAX-USDC",
+   "legs": [
+    {
+     "symbol": "NVDAX",
+     "address": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
+     "stock": {
+      "symbol": "NVDAx",
+      "underlying": "NVDA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 17.25,
+   "apyReward": 0,
+   "apyBase7d": 14.06,
+   "tvlUsd": 113821,
+   "volumeUsd1d": 21521,
+   "volumeUsd7d": 213324,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "b8d50460-5237-4601-9250-4f2d3a6b569b",
+   "project": "fluxion-network",
+   "venueId": "fluxion",
+   "chain": "Mantle",
+   "symbol": "USDC-WMETAX",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x09bc4e0d864854c6afb6eb9a9cdf58ac190d0df9",
+     "stock": null
+    },
+    {
+     "symbol": "WMETAX",
+     "address": "0x4e41a262caa93c6575d336e0a4eb79f3c67caa06",
+     "stock": {
+      "symbol": "wMETAx",
+      "underlying": "META",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "META"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "unknown",
+   "feeTier": 0.3,
+   "apyBase": 0.4942,
+   "apyReward": null,
+   "apyBase7d": 1.1467,
+   "tvlUsd": 112393,
+   "volumeUsd1d": 507,
+   "volumeUsd7d": 8262,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "2a510869-6356-4486-8bb5-d5a808634496",
+   "project": "fluxion-network",
+   "venueId": "fluxion",
+   "chain": "Mantle",
+   "symbol": "USDC-WNVDAX",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x09bc4e0d864854c6afb6eb9a9cdf58ac190d0df9",
+     "stock": null
+    },
+    {
+     "symbol": "WNVDAX",
+     "address": "0x93e62845c1dd5822ebc807ab71a5fb750decd15a",
+     "stock": {
+      "symbol": "wNVDAx",
+      "underlying": "NVDA",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "unknown",
+   "feeTier": 0.3,
+   "apyBase": 0.0276,
+   "apyReward": null,
+   "apyBase7d": 0.4873,
+   "tvlUsd": 112011,
+   "volumeUsd1d": 28,
+   "volumeUsd7d": 3499,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "2364dd66-69d3-44ef-9e85-4d5217a57b57",
+   "project": "fluxion-network",
+   "venueId": "fluxion",
+   "chain": "Mantle",
+   "symbol": "USDC-WQQQX",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x09bc4e0d864854c6afb6eb9a9cdf58ac190d0df9",
+     "stock": null
+    },
+    {
+     "symbol": "WQQQX",
+     "address": "0xdbd9232fee15351068fe02f0683146e16d9f2cea",
+     "stock": {
+      "symbol": "wQQQx",
+      "underlying": "QQQ",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "QQQ"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "unknown",
+   "feeTier": 0.3,
+   "apyBase": 0.0196,
+   "apyReward": null,
+   "apyBase7d": 0.3002,
+   "tvlUsd": 110574,
+   "volumeUsd1d": 20,
+   "volumeUsd7d": 2128,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "227e8492-33e9-4953-8beb-28973c9fdb8a",
+   "project": "fluxion-network",
+   "venueId": "fluxion",
+   "chain": "Mantle",
+   "symbol": "USDC-WGOOGLX",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x09bc4e0d864854c6afb6eb9a9cdf58ac190d0df9",
+     "stock": null
+    },
+    {
+     "symbol": "WGOOGLX",
+     "address": "0x1630f08370917e79df0b7572395a5e907508bbbc",
+     "stock": {
+      "symbol": "wGOOGLx",
+      "underlying": "GOOGL",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "GOOGL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "unknown",
+   "feeTier": 0.3,
+   "apyBase": 0.3544,
+   "apyReward": null,
+   "apyBase7d": 0.2848,
+   "tvlUsd": 109917,
+   "volumeUsd1d": 356,
+   "volumeUsd7d": 2007,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "9707453e-63a2-4d7c-8311-ca71f5cad17c",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "TSLAX-USDC",
+   "legs": [
+    {
+     "symbol": "TSLAX",
+     "address": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+     "stock": {
+      "symbol": "TSLAx",
+      "underlying": "TSLA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 67.6368,
+   "apyReward": 0,
+   "apyBase7d": 109.0329,
+   "tvlUsd": 109595,
+   "volumeUsd1d": 591135,
+   "volumeUsd7d": 7643113,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "913ce101-55b1-4230-93c7-d523f0d9ca03",
+   "project": "fluxion-network",
+   "venueId": "fluxion",
+   "chain": "Mantle",
+   "symbol": "USDC-WSPYX",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x09bc4e0d864854c6afb6eb9a9cdf58ac190d0df9",
+     "stock": null
+    },
+    {
+     "symbol": "WSPYX",
+     "address": "0xc88fcd8b874fdb3256e8b55b3decb8c24eab4c02",
+     "stock": {
+      "symbol": "wSPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "unknown",
+   "feeTier": 0.3,
+   "apyBase": 0.0067,
+   "apyReward": null,
+   "apyBase7d": 0.05,
+   "tvlUsd": 109216,
+   "volumeUsd1d": 7,
+   "volumeUsd7d": 350,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "7412e390-87f6-5edb-af13-5a71ec5a7eb0",
+   "project": "uniswap-v3",
+   "venueId": "uniswap",
+   "chain": "BSC",
+   "symbol": "AAPLB-USDT",
+   "legs": [
+    {
+     "symbol": "AAPLB",
+     "address": "0x431a3bee82e2ca41e49895cbece5bb0f76a89b7a",
+     "stock": {
+      "symbol": "AAPLB",
+      "underlying": "AAPL",
+      "issuer": "binance"
+     }
+    },
+    {
+     "symbol": "USDT",
+     "address": "0x55d398326f99059ff775485246999027b3197955",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "AAPL"
+   ],
+   "issuers": [
+    "binance"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 24.695,
+   "apyReward": null,
+   "apyBase7d": 5.0997,
+   "tvlUsd": 108031,
+   "volumeUsd1d": 146182,
+   "volumeUsd7d": 1132468,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "b838b4af-2464-57b5-92f9-3161f675c118",
+   "project": "nest-cl",
+   "venueId": "nest",
+   "chain": "Hyperliquid L1",
+   "symbol": "USDC-WSPYX",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0xb88339cb7199b77e23db6e890353e22632ba630f",
+     "stock": null
+    },
+    {
+     "symbol": "WSPYX",
+     "address": "0xe7e553cd128f0011777323a0b44a7b96ea1cb540",
+     "stock": {
+      "symbol": "wSPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": null,
+   "apyReward": 34.01,
+   "apyBase7d": null,
+   "tvlUsd": 106221,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "3a94d317-15cc-5bc1-be68-a5ad8c2c92a2",
+   "project": "uniswap-v4",
+   "venueId": "uniswap",
+   "chain": "Base",
+   "symbol": "USDC-NVDAC",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+     "stock": null
+    },
+    {
+     "symbol": "NVDAC",
+     "address": "0xb20000000000000000000078ee7ce2fe4908108c",
+     "stock": {
+      "symbol": "NVDAc",
+      "underlying": "NVDA",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 1.09,
+   "apyBase": 25.6617,
+   "apyReward": null,
+   "apyBase7d": null,
+   "tvlUsd": 104183,
+   "volumeUsd1d": 6725,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "2b46cbe2-0ddd-4d43-8b7b-da9b25df264b",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "WSOL-GOOGLX",
+   "legs": [
+    {
+     "symbol": "WSOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "GOOGLX",
+     "address": "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN",
+     "stock": {
+      "symbol": "GOOGLx",
+      "underlying": "GOOGL",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "GOOGL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 41.45,
+   "apyReward": 0,
+   "apyBase7d": 60.72,
+   "tvlUsd": 101749,
+   "volumeUsd1d": 11556,
+   "volumeUsd7d": 205955,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "a4ff3d7c-a117-4b24-a9f9-6af46cd276c0",
+   "project": "fluxion-network",
+   "venueId": "fluxion",
+   "chain": "Mantle",
+   "symbol": "USDC-WTSLAX",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x09bc4e0d864854c6afb6eb9a9cdf58ac190d0df9",
+     "stock": null
+    },
+    {
+     "symbol": "WTSLAX",
+     "address": "0x43680abf18cf54898be84c6ef78237cfbd441883",
+     "stock": {
+      "symbol": "wTSLAx",
+      "underlying": "TSLA",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "unknown",
+   "feeTier": 0.3,
+   "apyBase": 0.0285,
+   "apyReward": null,
+   "apyBase7d": 0.9935,
+   "tvlUsd": 101533,
+   "volumeUsd1d": 26,
+   "volumeUsd7d": 6466,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "ebec73de-fd1e-4f97-8287-d9cb01c7d352",
+   "project": "fluxion-network",
+   "venueId": "fluxion",
+   "chain": "Mantle",
+   "symbol": "USDC-WMSTRX",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x09bc4e0d864854c6afb6eb9a9cdf58ac190d0df9",
+     "stock": null
+    },
+    {
+     "symbol": "WMSTRX",
+     "address": "0x266e5923f6118f8b340ca5a23ae7f71897361476",
+     "stock": {
+      "symbol": "wMSTRx",
+      "underlying": "MSTR",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "MSTR"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "unknown",
+   "feeTier": 0.3,
+   "apyBase": 0.5901,
+   "apyReward": null,
+   "apyBase7d": 1.9504,
+   "tvlUsd": 101336,
+   "volumeUsd1d": 546,
+   "volumeUsd7d": 12669,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "f6f4ab63-9a82-5ea6-a79c-28484454865d",
+   "project": "aerodrome-slipstream",
+   "venueId": "aerodrome",
+   "chain": "Base",
+   "symbol": "WETH-NVDAC",
+   "legs": [
+    {
+     "symbol": "WETH",
+     "address": "0x4200000000000000000000000000000000000006",
+     "stock": null
+    },
+    {
+     "symbol": "NVDAC",
+     "address": "0xb20000000000000000000078ee7ce2fE4908108C",
+     "stock": {
+      "symbol": "NVDAc",
+      "underlying": "NVDA",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 108.5437,
+   "apyReward": 172.8039,
+   "apyBase7d": 98.5548,
+   "tvlUsd": 98599,
+   "volumeUsd1d": 586429,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "a7e2f58e-1c93-4592-acd6-8e40e6cb26ff",
+   "project": "fluxion-network",
+   "venueId": "fluxion",
+   "chain": "Mantle",
+   "symbol": "USDC-WCRCLX",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x09bc4e0d864854c6afb6eb9a9cdf58ac190d0df9",
+     "stock": null
+    },
+    {
+     "symbol": "WCRCLX",
+     "address": "0xa90872aca656ebe47bdebf3b19ec9dd9c5adc7f8",
+     "stock": {
+      "symbol": "wCRCLx",
+      "underlying": "CRCL",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "CRCL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "unknown",
+   "feeTier": 0.3,
+   "apyBase": 0.2158,
+   "apyReward": null,
+   "apyBase7d": 2.2232,
+   "tvlUsd": 92363,
+   "volumeUsd1d": 182,
+   "volumeUsd7d": 13163,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "ec0821ef-179f-5c09-af7b-ae8cc181c85a",
+   "project": "uniswap-v3",
+   "venueId": "uniswap",
+   "chain": "BSC",
+   "symbol": "USDT-TSLAB",
+   "legs": [
+    {
+     "symbol": "USDT",
+     "address": "0x55d398326f99059ff775485246999027b3197955",
+     "stock": null
+    },
+    {
+     "symbol": "TSLAB",
+     "address": "0x5b1910eaad6450e50f816082aa078c41f10c292f",
+     "stock": {
+      "symbol": "TSLAB",
+      "underlying": "TSLA",
+      "issuer": "binance"
+     }
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "binance"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 121.2678,
+   "apyReward": null,
+   "apyBase7d": 38.5637,
+   "tvlUsd": 80995,
+   "volumeUsd1d": 538199,
+   "volumeUsd7d": 7221076,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "a829d5d9-dbd7-5dca-b0c1-d2844df6e287",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPCXX-OWL",
+   "legs": [
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "OWL",
+     "address": "68AGsjomsgTtiTaDhF6XGCeVJDnFeh415ngYYgVxGzns",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 64.47,
+   "apyReward": 0,
+   "apyBase7d": 72.66,
+   "tvlUsd": 77018,
+   "volumeUsd1d": 54416,
+   "volumeUsd7d": 746162,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "adf2b916-f780-584f-91bc-ae274e16c5ac",
+   "project": "uniswap-v3",
+   "venueId": "uniswap",
+   "chain": "BSC",
+   "symbol": "USDT-METAB",
+   "legs": [
+    {
+     "symbol": "USDT",
+     "address": "0x55d398326f99059ff775485246999027b3197955",
+     "stock": null
+    },
+    {
+     "symbol": "METAB",
+     "address": "0x7425889fe94f9d693e8daefe88bcced6acfef4c0",
+     "stock": {
+      "symbol": "METAB",
+      "underlying": "META",
+      "issuer": "binance"
+     }
+    }
+   ],
+   "underlyings": [
+    "META"
+   ],
+   "issuers": [
+    "binance"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.3,
+   "apyBase": 55.3103,
+   "apyReward": null,
+   "apyBase7d": 7.3624,
+   "tvlUsd": 76349,
+   "volumeUsd1d": 38565,
+   "volumeUsd7d": 236443,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "08d2e596-9360-5b4b-8156-370f3a5210f3",
+   "project": "uniswap-v3",
+   "venueId": "uniswap",
+   "chain": "BSC",
+   "symbol": "USDT-MSFTB",
+   "legs": [
+    {
+     "symbol": "USDT",
+     "address": "0x55d398326f99059ff775485246999027b3197955",
+     "stock": null
+    },
+    {
+     "symbol": "MSFTB",
+     "address": "0x80106cb3ead06659a5ad19df39d9b4733863b9b0",
+     "stock": {
+      "symbol": "MSFTB",
+      "underlying": "MSFT",
+      "issuer": "binance"
+     }
+    }
+   ],
+   "underlyings": [
+    "MSFT"
+   ],
+   "issuers": [
+    "binance"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.3,
+   "apyBase": 14.2809,
+   "apyReward": null,
+   "apyBase7d": 3.3949,
+   "tvlUsd": 76037,
+   "volumeUsd1d": 9917,
+   "volumeUsd7d": 89120,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "6aa05e90-d969-53ac-b264-7f02b42006ce",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "METAX-USDC",
+   "legs": [
+    {
+     "symbol": "METAX",
+     "address": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu",
+     "stock": {
+      "symbol": "METAx",
+      "underlying": "META",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "META"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 22.5847,
+   "apyReward": 0,
+   "apyBase7d": 28.3792,
+   "tvlUsd": 74904,
+   "volumeUsd1d": 27636,
+   "volumeUsd7d": 231642,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "124d25b1-784a-5ef8-8e70-41d95f8e51fe",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "MSTR-MSTRX",
+   "legs": [
+    {
+     "symbol": "MSTR",
+     "address": "MSTRdWXMeZxdE8osAQy3fA4rvTY5rgummDSMEx6U7Nz",
+     "stock": null
+    },
+    {
+     "symbol": "MSTRX",
+     "address": "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ",
+     "stock": {
+      "symbol": "MSTRx",
+      "underlying": "MSTR",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "MSTR"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 9.76,
+   "apyReward": 0,
+   "apyBase7d": 11.01,
+   "tvlUsd": 74211,
+   "volumeUsd1d": 39675,
+   "volumeUsd7d": 544552,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "88938cc8-7f67-55d0-9665-835096a53bb0",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "SOL-GOOGLX",
+   "legs": [
+    {
+     "symbol": "SOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "GOOGLX",
+     "address": "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN",
+     "stock": {
+      "symbol": "GOOGLx",
+      "underlying": "GOOGL",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "GOOGL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 154.5169,
+   "apyReward": 0,
+   "apyBase7d": 193.1268,
+   "tvlUsd": 73157,
+   "volumeUsd1d": 184649,
+   "volumeUsd7d": 1607197,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "54ebfb95-4991-53f2-a556-f7985935a53e",
+   "project": "alandale-v3",
+   "venueId": "alandale",
+   "chain": "Robinhood Chain",
+   "symbol": "USDG-NVDA",
+   "legs": [
+    {
+     "symbol": "USDG",
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "stock": null
+    },
+    {
+     "symbol": "NVDA",
+     "address": "0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec",
+     "stock": {
+      "symbol": "NVDA (Robinhood)",
+      "underlying": "NVDA",
+      "issuer": "robinhood"
+     }
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "robinhood"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.01,
+   "apyBase": 0,
+   "apyReward": 45.1414,
+   "apyBase7d": null,
+   "tvlUsd": 71335,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "e5825524-92c3-55ae-8f6f-8226b8ee0088",
+   "project": "uniswap-v3",
+   "venueId": "uniswap",
+   "chain": "Base",
+   "symbol": "USDC-GOOGLC",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+     "stock": null
+    },
+    {
+     "symbol": "GOOGLC",
+     "address": "0xb2000000000000000000002d0ba3164cc74f58b7",
+     "stock": {
+      "symbol": "GOOGLc",
+      "underlying": "GOOGL",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "GOOGL"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 8.7426,
+   "apyReward": null,
+   "apyBase7d": 7.222,
+   "tvlUsd": 66529,
+   "volumeUsd1d": 1594,
+   "volumeUsd7d": 52481,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "5c6999ac-540d-5aaf-9646-9d12cdbc139c",
+   "project": "uniswap-v4",
+   "venueId": "uniswap",
+   "chain": "Base",
+   "symbol": "USDC-GOOGLC",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+     "stock": null
+    },
+    {
+     "symbol": "GOOGLC",
+     "address": "0xb2000000000000000000002d0ba3164cc74f58b7",
+     "stock": {
+      "symbol": "GOOGLc",
+      "underlying": "GOOGL",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "GOOGL"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 3.1,
+   "apyBase": 14.5585,
+   "apyReward": null,
+   "apyBase7d": null,
+   "tvlUsd": 63767,
+   "volumeUsd1d": 821,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "0edeabc6-94d1-5432-b927-23306b925a64",
+   "project": "uniswap-v4",
+   "venueId": "uniswap",
+   "chain": "Base",
+   "symbol": "USDC-GOOGLC",
+   "legs": [
+    {
+     "symbol": "USDC",
+     "address": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+     "stock": null
+    },
+    {
+     "symbol": "GOOGLC",
+     "address": "0xb2000000000000000000002d0ba3164cc74f58b7",
+     "stock": {
+      "symbol": "GOOGLc",
+      "underlying": "GOOGL",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "GOOGL"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 0,
+   "apyReward": null,
+   "apyBase7d": null,
+   "tvlUsd": 62620,
+   "volumeUsd1d": 0,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "74c4b7e4-8202-4df6-ba8f-8dc0e0d36530",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "TQQQX-SPYX",
+   "legs": [
+    {
+     "symbol": "TQQQX",
+     "address": "XsjQP3iMAaQ3kQScQKthQpx9ALRbjKAjQtHg6TFomoc",
+     "stock": null
+    },
+    {
+     "symbol": "SPYX",
+     "address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+     "stock": {
+      "symbol": "SPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 6.1457,
+   "apyReward": 0,
+   "apyBase7d": 7.2705,
+   "tvlUsd": 62119,
+   "volumeUsd1d": 931,
+   "volumeUsd7d": 8498,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "51a012d7-5876-5949-ab84-33d6041e88b4",
+   "project": "alandale-v3",
+   "venueId": "alandale",
+   "chain": "Robinhood Chain",
+   "symbol": "SPY-USDG",
+   "legs": [
+    {
+     "symbol": "SPY",
+     "address": "0x117cc2133c37b721f49de2a7a74833232b3b4c0c",
+     "stock": {
+      "symbol": "SPY (Robinhood)",
+      "underlying": "SPY",
+      "issuer": "robinhood"
+     }
+    },
+    {
+     "symbol": "USDG",
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "robinhood"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.008,
+   "apyBase": 0,
+   "apyReward": 84.503,
+   "apyBase7d": null,
+   "tvlUsd": 61731,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "87d9e488-456a-5745-8b31-5484481292f5",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPYX-CAT",
+   "legs": [
+    {
+     "symbol": "SPYX",
+     "address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+     "stock": {
+      "symbol": "SPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "CAT",
+     "address": "8erE7RkkoiGYJtCyQdfwMpnNA8cAkY14Xe6RYjjHAdKP",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 7.41,
+   "apyReward": 0,
+   "apyBase7d": 3.53,
+   "tvlUsd": 59292,
+   "volumeUsd1d": 4816,
+   "volumeUsd7d": 27928,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "b2d1cf33-b99b-50e5-ae1d-61482d838d64",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "HOODX-USDC",
+   "legs": [
+    {
+     "symbol": "HOODX",
+     "address": "XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg",
+     "stock": {
+      "symbol": "HOODx",
+      "underlying": "HOOD",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "HOOD"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 31.4849,
+   "apyReward": 0,
+   "apyBase7d": 81.5042,
+   "tvlUsd": 53096,
+   "volumeUsd1d": 25931,
+   "volumeUsd7d": 455193,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "c22fceca-18bb-580f-b0a9-dece5e92d5a2",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "AAPLX-USDC",
+   "legs": [
+    {
+     "symbol": "AAPLX",
+     "address": "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp",
+     "stock": {
+      "symbol": "AAPLx",
+      "underlying": "AAPL",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "AAPL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 113.9134,
+   "apyReward": 0,
+   "apyBase7d": 214.9613,
+   "tvlUsd": 53038,
+   "volumeUsd1d": 206929,
+   "volumeUsd7d": 2733838,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "5847d350-19d3-5dfd-bc77-1171eaa8edca",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "TSLAX-FTR",
+   "legs": [
+    {
+     "symbol": "TSLAX",
+     "address": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+     "stock": {
+      "symbol": "TSLAx",
+      "underlying": "TSLA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "FTR",
+     "address": "3w5cKpkfz2TAS22oXhMSZGjpsK6URL5d5db2thvwMtVx",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 392.55,
+   "apyReward": 0,
+   "apyBase7d": 2283.37,
+   "tvlUsd": 52092,
+   "volumeUsd1d": 55734,
+   "volumeUsd7d": 3944798,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "a1265a82-835c-533c-bbad-18cca93bec6e",
+   "project": "aerodrome-slipstream",
+   "venueId": "aerodrome",
+   "chain": "Base",
+   "symbol": "WETH-GOOGLC",
+   "legs": [
+    {
+     "symbol": "WETH",
+     "address": "0x4200000000000000000000000000000000000006",
+     "stock": null
+    },
+    {
+     "symbol": "GOOGLC",
+     "address": "0xb2000000000000000000002D0BA3164cc74f58B7",
+     "stock": {
+      "symbol": "GOOGLc",
+      "underlying": "GOOGL",
+      "issuer": "coinbase"
+     }
+    }
+   ],
+   "underlyings": [
+    "GOOGL"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 100.7839,
+   "apyReward": 277.8579,
+   "apyBase7d": 124.4944,
+   "tvlUsd": 51406,
+   "volumeUsd1d": 283887,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "f3db4f24-581c-568b-bfc1-fed1f8812eeb",
+   "project": "uniswap-v4",
+   "venueId": "uniswap",
+   "chain": "Ethereum",
+   "symbol": "NVDAON-USDC",
+   "legs": [
+    {
+     "symbol": "NVDAON",
+     "address": "0x2d1f7226bd1f780af6b9a49dcc0ae00e8df4bdee",
+     "stock": {
+      "symbol": "NVDAon",
+      "underlying": "NVDA",
+      "issuer": "ondo"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "ondo"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.51,
+   "apyBase": 39.923,
+   "apyReward": null,
+   "apyBase7d": 51.3977,
+   "tvlUsd": 51101,
+   "volumeUsd1d": 9291,
+   "volumeUsd7d": 99037,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "cfd679d5-4a51-5001-800f-7342f96a0f4e",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "SOL-SPYX",
+   "legs": [
+    {
+     "symbol": "SOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "SPYX",
+     "address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+     "stock": {
+      "symbol": "SPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 59.0145,
+   "apyReward": 0,
+   "apyBase7d": 96.6533,
+   "tvlUsd": 48028,
+   "volumeUsd1d": 11404,
+   "volumeUsd7d": 130841,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "6776f075-0097-5c83-85ff-4e9f532761ad",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPCXX-GROK",
+   "legs": [
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "GROK",
+     "address": "6HU4CmRb15C2nQDx8Ld2f2W2wTdmog6aZiiXdrT5Pzi8",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 22.47,
+   "apyReward": 0,
+   "apyBase7d": 27.07,
+   "tvlUsd": 47988,
+   "volumeUsd1d": 11815,
+   "volumeUsd7d": 173212,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "9194f823-f517-5714-a584-78db07e0678f",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "WSOL-METAX",
+   "legs": [
+    {
+     "symbol": "WSOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "METAX",
+     "address": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu",
+     "stock": {
+      "symbol": "METAx",
+      "underlying": "META",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "META"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.18,
+   "apyBase": 146.84,
+   "apyReward": 0,
+   "apyBase7d": 166.25,
+   "tvlUsd": 46798,
+   "volumeUsd1d": 100209,
+   "volumeUsd7d": 1379223,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "2fc223aa-2a28-427c-ae87-71988d31a7c0",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "MSTRX-CBBTC",
+   "legs": [
+    {
+     "symbol": "MSTRX",
+     "address": "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ",
+     "stock": {
+      "symbol": "MSTRx",
+      "underlying": "MSTR",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "CBBTC",
+     "address": "cbbtcf3aa214zXHbiAZQwf4122FBYbraNdFqgw4iMij",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "MSTR"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 24.19,
+   "apyReward": 0,
+   "apyBase7d": 23.45,
+   "tvlUsd": 46518,
+   "volumeUsd1d": 12323,
+   "volumeUsd7d": 145374,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "07d0c756-5122-5890-8403-21e072fc73e1",
+   "project": "arrowfarm",
+   "venueId": "arrowfarm",
+   "chain": "Robinhood Chain",
+   "symbol": "GOOGL-USDG",
+   "legs": [
+    {
+     "symbol": "GOOGL",
+     "address": "0x2e0847E8910a9732eB3fb1bb4b70a580ADAD4FE3",
+     "stock": {
+      "symbol": "GOOGL (Robinhood)",
+      "underlying": "GOOGL",
+      "issuer": "robinhood"
+     }
+    },
+    {
+     "symbol": "USDG",
+     "address": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "GOOGL"
+   ],
+   "issuers": [
+    "robinhood"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 40.98,
+   "apyReward": 15.07,
+   "apyBase7d": null,
+   "tvlUsd": 45075,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "6d7311ae-f64a-4e2b-b4ff-69e1f7c63f9d",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "WSOL-MSFTX",
+   "legs": [
+    {
+     "symbol": "WSOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "MSFTX",
+     "address": "XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX",
+     "stock": {
+      "symbol": "MSFTx",
+      "underlying": "MSFT",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "MSFT"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 296.95,
+   "apyReward": 0,
+   "apyBase7d": 108.47,
+   "tvlUsd": 44723,
+   "volumeUsd1d": 145539,
+   "volumeUsd7d": 646796,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "4632d5c5-9d40-5a73-ac47-fe4e4a201414",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "METAX-USDC",
+   "legs": [
+    {
+     "symbol": "METAX",
+     "address": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu",
+     "stock": {
+      "symbol": "METAx",
+      "underlying": "META",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "META"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.15,
+   "apyBase": 135.06,
+   "apyReward": 0,
+   "apyBase7d": 63.69,
+   "tvlUsd": 42681,
+   "volumeUsd1d": 105283,
+   "volumeUsd7d": 604047,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "5009ebf5-ba92-400a-940f-cfda55c92a15",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "WSOL-HOODX",
+   "legs": [
+    {
+     "symbol": "WSOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "HOODX",
+     "address": "XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg",
+     "stock": {
+      "symbol": "HOODx",
+      "underlying": "HOOD",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "HOOD"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 33.76,
+   "apyReward": 0,
+   "apyBase7d": 36.59,
+   "tvlUsd": 42238,
+   "volumeUsd1d": 3907,
+   "volumeUsd7d": 51510,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "0ec22e12-1c0b-5110-9620-017d0a1da90c",
+   "project": "aerodrome-slipstream",
+   "venueId": "aerodrome",
+   "chain": "Base",
+   "symbol": "MSTRC-CBBTC",
+   "legs": [
+    {
+     "symbol": "MSTRC",
+     "address": "0xb2000000000000000000004884b426556b92883d",
+     "stock": {
+      "symbol": "MSTRc",
+      "underlying": "MSTR",
+      "issuer": "coinbase"
+     }
+    },
+    {
+     "symbol": "CBBTC",
+     "address": "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "MSTR"
+   ],
+   "issuers": [
+    "coinbase"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 35.2347,
+   "apyReward": 444.3571,
+   "apyBase7d": 25.3764,
+   "tvlUsd": 41975,
+   "volumeUsd1d": 81039,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "52b8d993-fe7e-5ca8-88c9-00872c01f73e",
+   "project": "ekubo",
+   "venueId": "ekubo",
+   "chain": "Robinhood Chain",
+   "symbol": "SPY-USDG",
+   "legs": [
+    {
+     "symbol": "SPY",
+     "address": "0x117cc2133c37b721f49de2a7a74833232b3b4c0c",
+     "stock": {
+      "symbol": "SPY (Robinhood)",
+      "underlying": "SPY",
+      "issuer": "robinhood"
+     }
+    },
+    {
+     "symbol": "USDG",
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "robinhood"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0,
+   "apyBase": 0,
+   "apyReward": 48.8388,
+   "apyBase7d": null,
+   "tvlUsd": 41291,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "426d6bda-5088-51cd-ad8a-8918df29052d",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "GOOGLX-USDC",
+   "legs": [
+    {
+     "symbol": "GOOGLX",
+     "address": "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN",
+     "stock": {
+      "symbol": "GOOGLx",
+      "underlying": "GOOGL",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "GOOGL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 24.4417,
+   "apyReward": 0,
+   "apyBase7d": 45.9147,
+   "tvlUsd": 39061,
+   "volumeUsd1d": 15487,
+   "volumeUsd7d": 206854,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "30ad6014-2c3f-5175-a6f7-c3f4e272f155",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "MSFTX-LINKEDINU",
+   "legs": [
+    {
+     "symbol": "MSFTX",
+     "address": "XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX",
+     "stock": {
+      "symbol": "MSFTx",
+      "underlying": "MSFT",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "LINKEDINU",
+     "address": "FvhorDts9M8uJekzs3pBcYUPUjWtCTrGLhdv3ADHyeRY",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "MSFT"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 17.17,
+   "apyReward": 0,
+   "apyBase7d": 14.62,
+   "tvlUsd": 39029,
+   "volumeUsd1d": 7344,
+   "volumeUsd7d": 76075,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "da8d875a-515d-5e4e-91e2-2cb3c7559fc0",
+   "project": "nest-cl",
+   "venueId": "nest",
+   "chain": "Hyperliquid L1",
+   "symbol": "WQQQX-USDC",
+   "legs": [
+    {
+     "symbol": "WQQQX",
+     "address": "0x4c1ae29c159838fc1b224636e28e086eb69101f7",
+     "stock": {
+      "symbol": "wQQQx",
+      "underlying": "QQQ",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "0xb88339cb7199b77e23db6e890353e22632ba630f",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "QQQ"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": null,
+   "apyReward": 14.5932,
+   "apyBase7d": null,
+   "tvlUsd": 37909,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "86cc94a1-b387-5e72-8214-c4688ec6387b",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPCXX-URANUS",
+   "legs": [
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "URANUS",
+     "address": "CTMV7yXV1mpucM7svPEtmVFBB8g6hqHGVPczmbYrj9Jb",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 4,
+   "apyBase": 99.62,
+   "apyReward": 0,
+   "apyBase7d": 43.42,
+   "tvlUsd": 36678,
+   "volumeUsd1d": 2481,
+   "volumeUsd7d": 13020,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "8c033cbe-75cc-5d21-9284-360b9ca1b0a1",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "MSTRX-USDC",
+   "legs": [
+    {
+     "symbol": "MSTRX",
+     "address": "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ",
+     "stock": {
+      "symbol": "MSTRx",
+      "underlying": "MSTR",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "MSTR"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 5.3337,
+   "apyReward": 0,
+   "apyBase7d": 7.5404,
+   "tvlUsd": 35421,
+   "volumeUsd1d": 1606,
+   "volumeUsd7d": 14701,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "d3d573d4-6dc6-48e2-8ec7-685e55e0f48d",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "PLTRX-USDC",
+   "legs": [
+    {
+     "symbol": "PLTRX",
+     "address": "XsoBhf2ufR8fTyNSjqfU71DYGaE6Z3SUGAidpzriAA4",
+     "stock": {
+      "symbol": "PLTRx",
+      "underlying": "PLTR",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "PLTR"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 76.17,
+   "apyReward": 0,
+   "apyBase7d": 24.82,
+   "tvlUsd": 35103,
+   "volumeUsd1d": 7325,
+   "volumeUsd7d": 29044,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "a7c454bf-d9f7-43e7-aa65-2440a8e8188d",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "QQQX-USDC",
+   "legs": [
+    {
+     "symbol": "QQQX",
+     "address": "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ",
+     "stock": {
+      "symbol": "QQQx",
+      "underlying": "QQQ",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "QQQ"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 5.46,
+   "apyReward": 0,
+   "apyBase7d": 2.89,
+   "tvlUsd": 34941,
+   "volumeUsd1d": 2091,
+   "volumeUsd7d": 13465,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "8e8c2498-d2b6-5327-9aa4-cbbb071d95be",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPYX-BUNNY",
+   "legs": [
+    {
+     "symbol": "SPYX",
+     "address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+     "stock": {
+      "symbol": "SPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "BUNNY",
+     "address": "CHsC7xqDLrTy8NMizomPUx3sNKxJzXGDaswc9Zs9DeLn",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 6.2,
+   "apyReward": 0,
+   "apyBase7d": 2.83,
+   "tvlUsd": 34907,
+   "volumeUsd1d": 2373,
+   "volumeUsd7d": 13185,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "c47812b9-3142-58d8-a726-a53bee3c237a",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "GOOGLX-USDC",
+   "legs": [
+    {
+     "symbol": "GOOGLX",
+     "address": "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN",
+     "stock": {
+      "symbol": "GOOGLx",
+      "underlying": "GOOGL",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "GOOGL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.16,
+   "apyBase": 21.1,
+   "apyReward": 0,
+   "apyBase7d": 53.08,
+   "tvlUsd": 32941,
+   "volumeUsd1d": 11901,
+   "volumeUsd7d": 364264,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "ba318068-4e0a-5ad0-9c25-678c64e6ebaa",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPCXX-SPACEXSI",
+   "legs": [
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "SPACEXSI",
+     "address": "2GYMvnSv37djKecDshE8bYe2sRypcETeAF8G9h6un4J2",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 34.7,
+   "apyReward": 0,
+   "apyBase7d": 31.77,
+   "tvlUsd": 31011,
+   "volumeUsd1d": 11792,
+   "volumeUsd7d": 131378,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "6d5f1697-9f11-5fa2-afd7-5c4ccd6864e5",
+   "project": "arrowfarm",
+   "venueId": "arrowfarm",
+   "chain": "Robinhood Chain",
+   "symbol": "WETH-SPY",
+   "legs": [
+    {
+     "symbol": "WETH",
+     "address": "0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73",
+     "stock": null
+    },
+    {
+     "symbol": "SPY",
+     "address": "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+     "stock": {
+      "symbol": "SPY (Robinhood)",
+      "underlying": "SPY",
+      "issuer": "robinhood"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "robinhood"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 26.34,
+   "apyReward": 21.91,
+   "apyBase7d": null,
+   "tvlUsd": 30947,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "81afcbbf-c7e7-5728-b76a-8b42608bc9f7",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPCXX-USDC",
+   "legs": [
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.16,
+   "apyBase": 47.7,
+   "apyReward": 0,
+   "apyBase7d": 29.54,
+   "tvlUsd": 30489,
+   "volumeUsd1d": 24901,
+   "volumeUsd7d": 187616,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "30a4e88c-2da5-56df-bab2-4d697e2d0e26",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "CRCLX-USDC",
+   "legs": [
+    {
+     "symbol": "CRCLX",
+     "address": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1",
+     "stock": {
+      "symbol": "CRCLx",
+      "underlying": "CRCL",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "CRCL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 8.3327,
+   "apyReward": 0,
+   "apyBase7d": 36.0014,
+   "tvlUsd": 30435,
+   "volumeUsd1d": 2068,
+   "volumeUsd7d": 62057,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "83fdd9e5-4cef-5fe2-a2a5-056153040217",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPCXX-BOT",
+   "legs": [
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "BOT",
+     "address": "4WPn1oGVE7rza6PjFJwYpEXZn6qtjwxEKkCV9EtAxhUU",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 14.87,
+   "apyReward": 0,
+   "apyBase7d": 17.38,
+   "tvlUsd": 30402,
+   "volumeUsd1d": 4955,
+   "volumeUsd7d": 70433,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "0b2934bc-86c2-55d6-a793-6c38c95783ad",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "MSFTX-USDC",
+   "legs": [
+    {
+     "symbol": "MSFTX",
+     "address": "XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX",
+     "stock": {
+      "symbol": "MSFTx",
+      "underlying": "MSFT",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "MSFT"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 14.0166,
+   "apyReward": 0,
+   "apyBase7d": 21.6949,
+   "tvlUsd": 29536,
+   "volumeUsd1d": 6562,
+   "volumeUsd7d": 72739,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "b5ca4c43-4da4-40e5-a6ad-a807ad135d66",
+   "project": "uniswap-v3",
+   "venueId": "uniswap",
+   "chain": "BSC",
+   "symbol": "USDT-SPCXB",
+   "legs": [
+    {
+     "symbol": "USDT",
+     "address": "0x55d398326f99059ff775485246999027b3197955",
+     "stock": null
+    },
+    {
+     "symbol": "SPCXB",
+     "address": "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1",
+     "stock": {
+      "symbol": "SPCXB",
+      "underlying": "SPCX",
+      "issuer": "binance"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "binance"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.3,
+   "apyBase": 42.1893,
+   "apyReward": null,
+   "apyBase7d": 6.8722,
+   "tvlUsd": 28802,
+   "volumeUsd1d": 11097,
+   "volumeUsd7d": 61917,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "ee247ac1-5953-5550-a443-53416def67be",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "NVDAX-ROUTER",
+   "legs": [
+    {
+     "symbol": "NVDAX",
+     "address": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
+     "stock": {
+      "symbol": "NVDAx",
+      "underlying": "NVDA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "ROUTER",
+     "address": "6SjVTj1VGwFSXn7wEjwFm77LvACeTqB7sQUebYKX8Ds5",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 67.94,
+   "apyReward": 0,
+   "apyBase7d": 41.23,
+   "tvlUsd": 28245,
+   "volumeUsd1d": 5257,
+   "volumeUsd7d": 38815,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "faf96b5b-71c4-5112-8ade-f42fe495f199",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "NVDAX-XSTOK",
+   "legs": [
+    {
+     "symbol": "NVDAX",
+     "address": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
+     "stock": {
+      "symbol": "NVDAx",
+      "underlying": "NVDA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "XSTOK",
+     "address": "nPD9vif19C2oY1jhHRrAJSSpMu9tJQtibfxoZ4qcxph",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 0.3,
+   "apyBase": 64.8,
+   "apyReward": 0,
+   "apyBase7d": 127.34,
+   "tvlUsd": 27888,
+   "volumeUsd1d": 19804,
+   "volumeUsd7d": 473505,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "cb4120db-f770-4ee5-bace-f4f95613ecf0",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "SOL-MSTRX",
+   "legs": [
+    {
+     "symbol": "SOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "MSTRX",
+     "address": "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ",
+     "stock": {
+      "symbol": "MSTRx",
+      "underlying": "MSTR",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "MSTR"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 13.4455,
+   "apyReward": 0,
+   "apyBase7d": 15.6928,
+   "tvlUsd": 27120,
+   "volumeUsd1d": 981,
+   "volumeUsd7d": 7911,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "caa97830-1841-57d8-9115-d2d64d4dca6b",
+   "project": "arrowfarm",
+   "venueId": "arrowfarm",
+   "chain": "Robinhood Chain",
+   "symbol": "SPCX-USDG",
+   "legs": [
+    {
+     "symbol": "SPCX",
+     "address": "0x4a0E65A3EcceC6dBe60AE065F2e7bb85Fae35eEa",
+     "stock": {
+      "symbol": "SPCX (Robinhood)",
+      "underlying": "SPCX",
+      "issuer": "robinhood"
+     }
+    },
+    {
+     "symbol": "USDG",
+     "address": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "robinhood"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 60.5,
+   "apyReward": 5.05,
+   "apyBase7d": null,
+   "tvlUsd": 26893,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "4cb206b0-f103-5f54-9051-5a225c631cd2",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "SOL-AAPLX",
+   "legs": [
+    {
+     "symbol": "SOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "AAPLX",
+     "address": "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp",
+     "stock": {
+      "symbol": "AAPLx",
+      "underlying": "AAPL",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "AAPL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 225.5106,
+   "apyReward": 0,
+   "apyBase7d": 312.1062,
+   "tvlUsd": 26139,
+   "volumeUsd1d": 49816,
+   "volumeUsd7d": 457940,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "3921d461-a530-5a0b-b71d-248ef9206b1c",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "SOL-AAPLX",
+   "legs": [
+    {
+     "symbol": "SOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "AAPLX",
+     "address": "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp",
+     "stock": {
+      "symbol": "AAPLx",
+      "underlying": "AAPL",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "AAPL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 47.4153,
+   "apyReward": 0,
+   "apyBase7d": 95.1079,
+   "tvlUsd": 25844,
+   "volumeUsd1d": 5159,
+   "volumeUsd7d": 67554,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "2eaf5f17-440b-46b6-ad9b-e7d747df17ab",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "CRCLX-IDLE",
+   "legs": [
+    {
+     "symbol": "CRCLX",
+     "address": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1",
+     "stock": {
+      "symbol": "CRCLx",
+      "underlying": "CRCL",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "IDLE",
+     "address": "BjcRmwm8e25RgjkyaFE56fc7bxRgGPw96JUkXRJFEroT",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "CRCL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 30.23,
+   "apyReward": 0,
+   "apyBase7d": 30.03,
+   "tvlUsd": 25427,
+   "volumeUsd1d": 2106,
+   "volumeUsd7d": 25451,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "e1d04ccc-1b7b-56d8-bbdf-4c1a4329f14d",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "QQQX-ETHICS",
+   "legs": [
+    {
+     "symbol": "QQQX",
+     "address": "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ",
+     "stock": {
+      "symbol": "QQQx",
+      "underlying": "QQQ",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "ETHICS",
+     "address": "3SXQSMVWTf6rZaJiXn3tHNpNEKLeTK1FShFR3s4fxSUR",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "QQQ"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 37.54,
+   "apyReward": 0,
+   "apyBase7d": 17.32,
+   "tvlUsd": 24333,
+   "volumeUsd1d": 2503,
+   "volumeUsd7d": 14049,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "5f7d700e-41d0-5d13-b328-9f85afe71266",
+   "project": "ekubo",
+   "venueId": "ekubo",
+   "chain": "Robinhood Chain",
+   "symbol": "SPCX-USDG",
+   "legs": [
+    {
+     "symbol": "SPCX",
+     "address": "0x4a0e65a3eccec6dbe60ae065f2e7bb85fae35eea",
+     "stock": {
+      "symbol": "SPCX (Robinhood)",
+      "underlying": "SPCX",
+      "issuer": "robinhood"
+     }
+    },
+    {
+     "symbol": "USDG",
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "robinhood"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0,
+   "apyBase": 0,
+   "apyReward": 299.3622,
+   "apyBase7d": null,
+   "tvlUsd": 24103,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "e5afd9b4-946b-5de5-9805-34a6c10857b8",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SÍ-SPCXX",
+   "legs": [
+    {
+     "symbol": "SÍ",
+     "address": "1BYFCLiArGnZA6GHXro8WhGX4n1hWk2mwrxbnMY9emN",
+     "stock": null
+    },
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 34.3,
+   "apyReward": 0,
+   "apyBase7d": 34.24,
+   "tvlUsd": 23719,
+   "volumeUsd1d": 8915,
+   "volumeUsd7d": 108275,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "7b433e39-8594-4701-96c6-d04ac161cece",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "WSOL-SPCXX",
+   "legs": [
+    {
+     "symbol": "WSOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 53.23,
+   "apyReward": 0,
+   "apyBase7d": 44.57,
+   "tvlUsd": 23213,
+   "volumeUsd1d": 3385,
+   "volumeUsd7d": 34485,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "62b10b87-fb1d-5da2-a9b7-3f43a5546276",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "PLTRX-USDC",
+   "legs": [
+    {
+     "symbol": "PLTRX",
+     "address": "XsoBhf2ufR8fTyNSjqfU71DYGaE6Z3SUGAidpzriAA4",
+     "stock": {
+      "symbol": "PLTRx",
+      "underlying": "PLTR",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "PLTR"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 66.5548,
+   "apyReward": 0,
+   "apyBase7d": 207.2359,
+   "tvlUsd": 22509,
+   "volumeUsd1d": 23458,
+   "volumeUsd7d": 481649,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "23bd932f-235a-5df8-8e74-2dfb0127d5dc",
+   "project": "nest-cl",
+   "venueId": "nest",
+   "chain": "Hyperliquid L1",
+   "symbol": "NEST-WNVDAX",
+   "legs": [
+    {
+     "symbol": "NEST",
+     "address": "0x07c57e32a3c29d5659bda1d3efc2e7bf004e3035",
+     "stock": null
+    },
+    {
+     "symbol": "WNVDAX",
+     "address": "0xa8ddb5cd96b5222afe198316e9a57caa642850d5",
+     "stock": {
+      "symbol": "wNVDAx",
+      "underlying": "NVDA",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 2,
+   "apyBase": null,
+   "apyReward": 0,
+   "apyBase7d": null,
+   "tvlUsd": 22278,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "9c320023-ae82-56ab-9cd3-e83c5a74bd31",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "SPYX-GLDX",
+   "legs": [
+    {
+     "symbol": "SPYX",
+     "address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+     "stock": {
+      "symbol": "SPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "GLDX",
+     "address": "Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 6.7574,
+   "apyReward": 0,
+   "apyBase7d": 14.9215,
+   "tvlUsd": 21738,
+   "volumeUsd1d": 1268,
+   "volumeUsd7d": 20357,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "aa9fb5dd-bc49-537a-a557-e2a914a840eb",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "AAPLX-USDC",
+   "legs": [
+    {
+     "symbol": "AAPLX",
+     "address": "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp",
+     "stock": {
+      "symbol": "AAPLx",
+      "underlying": "AAPL",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "AAPL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 35.6754,
+   "apyReward": 0,
+   "apyBase7d": 42.6189,
+   "tvlUsd": 20419,
+   "volumeUsd1d": 11749,
+   "volumeUsd7d": 95553,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "855e350b-d774-4a65-9add-f217d34b1ea9",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "SOL-TSLAX",
+   "legs": [
+    {
+     "symbol": "SOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "TSLAX",
+     "address": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+     "stock": {
+      "symbol": "TSLAx",
+      "underlying": "TSLA",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 129.8723,
+   "apyReward": 0,
+   "apyBase7d": 277.1538,
+   "tvlUsd": 20380,
+   "volumeUsd1d": 3626,
+   "volumeUsd7d": 53799,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "3790ad59-dc9a-5e3d-9b4c-8700751ae83d",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "TSLAX-OPTIMUS",
+   "legs": [
+    {
+     "symbol": "TSLAX",
+     "address": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+     "stock": {
+      "symbol": "TSLAx",
+      "underlying": "TSLA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "OPTIMUS",
+     "address": "CzWAZ8yV9jX6CocTFtmhExwCzhXX8mCH6fjm7YN4ZHdP",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 40.86,
+   "apyReward": 0,
+   "apyBase7d": 21.82,
+   "tvlUsd": 20296,
+   "volumeUsd1d": 2261,
+   "volumeUsd7d": 14698,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "cd4dfa55-195c-5e1a-9ff8-145f0aa04234",
+   "project": "ekubo",
+   "venueId": "ekubo",
+   "chain": "Robinhood Chain",
+   "symbol": "USDG-META",
+   "legs": [
+    {
+     "symbol": "USDG",
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "stock": null
+    },
+    {
+     "symbol": "META",
+     "address": "0xc0d6457c16cc70d6790dd43521c899c87ce02f35",
+     "stock": {
+      "symbol": "META (Robinhood)",
+      "underlying": "META",
+      "issuer": "robinhood"
+     }
+    }
+   ],
+   "underlyings": [
+    "META"
+   ],
+   "issuers": [
+    "robinhood"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0,
+   "apyBase": 0,
+   "apyReward": 48.0313,
+   "apyBase7d": null,
+   "tvlUsd": 20263,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "fb824d66-86bc-556a-bede-6c4e2d1d4116",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPYX-SP500",
+   "legs": [
+    {
+     "symbol": "SPYX",
+     "address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+     "stock": {
+      "symbol": "SPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "SP500",
+     "address": "8U2tRCQZunwjEnEEtLtoKBSnmYPJ7nBodkg6pmqUdcca",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 59,
+   "apyReward": 0,
+   "apyBase7d": 12.37,
+   "tvlUsd": 18896,
+   "volumeUsd1d": 3055,
+   "volumeUsd7d": 7791,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "450f9ca3-5865-5dca-b211-eba8df2f1bd2",
+   "project": "nest-cl",
+   "venueId": "nest",
+   "chain": "Hyperliquid L1",
+   "symbol": "NEST-WQQQX",
+   "legs": [
+    {
+     "symbol": "NEST",
+     "address": "0x07c57e32a3c29d5659bda1d3efc2e7bf004e3035",
+     "stock": null
+    },
+    {
+     "symbol": "WQQQX",
+     "address": "0x4c1ae29c159838fc1b224636e28e086eb69101f7",
+     "stock": {
+      "symbol": "wQQQx",
+      "underlying": "QQQ",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "QQQ"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 2,
+   "apyBase": null,
+   "apyReward": 0,
+   "apyBase7d": null,
+   "tvlUsd": 18120,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "64af0bb1-598b-55fd-822a-32422cadc306",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPCXX-URCOIN",
+   "legs": [
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "URCOIN",
+     "address": "CGMVxtvLpjMarSRRq6adrx7px4ducKqSp1yhf94ZA847",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 4,
+   "apyBase": 141.75,
+   "apyReward": 0,
+   "apyBase7d": 49.5,
+   "tvlUsd": 17624,
+   "volumeUsd1d": 1711,
+   "volumeUsd7d": 7270,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "f63e1cc5-3254-4ab0-8bd4-5acca59959a8",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "CRCLX-USDC",
+   "legs": [
+    {
+     "symbol": "CRCLX",
+     "address": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1",
+     "stock": {
+      "symbol": "CRCLx",
+      "underlying": "CRCL",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "CRCL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 1.8765,
+   "apyReward": 0,
+   "apyBase7d": 53.499,
+   "tvlUsd": 17453,
+   "volumeUsd1d": 1978,
+   "volumeUsd7d": 367005,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "217fb494-3763-54e0-adb3-094f9d73e5ab",
+   "project": "ekubo",
+   "venueId": "ekubo",
+   "chain": "Robinhood Chain",
+   "symbol": "SPY-USDG",
+   "legs": [
+    {
+     "symbol": "SPY",
+     "address": "0x117cc2133c37b721f49de2a7a74833232b3b4c0c",
+     "stock": {
+      "symbol": "SPY (Robinhood)",
+      "underlying": "SPY",
+      "issuer": "robinhood"
+     }
+    },
+    {
+     "symbol": "USDG",
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "robinhood"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.05,
+   "apyBase": 0,
+   "apyReward": 0,
+   "apyBase7d": null,
+   "tvlUsd": 17361,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "718fa5c9-9d6e-51eb-8175-01dfb30fd11e",
+   "project": "alandale-v3",
+   "venueId": "alandale",
+   "chain": "Robinhood Chain",
+   "symbol": "TSLA-USDG",
+   "legs": [
+    {
+     "symbol": "TSLA",
+     "address": "0x322f0929c4625ed5bad873c95208d54e1c003b2d",
+     "stock": {
+      "symbol": "TSLA (Robinhood)",
+      "underlying": "TSLA",
+      "issuer": "robinhood"
+     }
+    },
+    {
+     "symbol": "USDG",
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "robinhood"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.35,
+   "apyBase": 0,
+   "apyReward": 23.5083,
+   "apyBase7d": null,
+   "tvlUsd": 17185,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "4f4f8680-0740-55fc-b0b5-dd49f530f9f5",
+   "project": "ekubo",
+   "venueId": "ekubo",
+   "chain": "Robinhood Chain",
+   "symbol": "USDG-NVDA",
+   "legs": [
+    {
+     "symbol": "USDG",
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "stock": null
+    },
+    {
+     "symbol": "NVDA",
+     "address": "0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec",
+     "stock": {
+      "symbol": "NVDA (Robinhood)",
+      "underlying": "NVDA",
+      "issuer": "robinhood"
+     }
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "robinhood"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0,
+   "apyBase": 0,
+   "apyReward": 13.2672,
+   "apyBase7d": null,
+   "tvlUsd": 16343,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "c310b01e-a228-4330-91d5-66fe231bc4a7",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "GOOGLX-IDLE",
+   "legs": [
+    {
+     "symbol": "GOOGLX",
+     "address": "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN",
+     "stock": {
+      "symbol": "GOOGLx",
+      "underlying": "GOOGL",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "IDLE",
+     "address": "BjcRmwm8e25RgjkyaFE56fc7bxRgGPw96JUkXRJFEroT",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "GOOGL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 73.03,
+   "apyReward": 0,
+   "apyBase7d": 22.81,
+   "tvlUsd": 15815,
+   "volumeUsd1d": 3164,
+   "volumeUsd7d": 12026,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "86e743dc-4411-54fe-a4a1-fb44d69dd0a1",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPCXX-SXSI",
+   "legs": [
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "SXSI",
+     "address": "DQysBW79uHzZAWd2ahVQrf89CuSFqVzuNA3ijHbjVJfG",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 13.62,
+   "apyReward": 0,
+   "apyBase7d": 20.82,
+   "tvlUsd": 15731,
+   "volumeUsd1d": 2348,
+   "volumeUsd7d": 43666,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "ee118e51-a8fa-4da3-97d2-86e171fcca77",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "WSOL-AMZNX",
+   "legs": [
+    {
+     "symbol": "WSOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "AMZNX",
+     "address": "Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg",
+     "stock": {
+      "symbol": "AMZNx",
+      "underlying": "AMZN",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "AMZN"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 82.63,
+   "apyReward": 0,
+   "apyBase7d": 158.84,
+   "tvlUsd": 15568,
+   "volumeUsd1d": 14097,
+   "volumeUsd7d": 329718,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "68d801cf-7998-530b-a85b-4bf8d96f2652",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "METAX-MUSE",
+   "legs": [
+    {
+     "symbol": "METAX",
+     "address": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu",
+     "stock": {
+      "symbol": "METAx",
+      "underlying": "META",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "MUSE",
+     "address": "AUZrzyaejPs4zqGQ7xpPrSz9qs2rq4WhvtKANXvaWupT",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "META"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 10.02,
+   "apyReward": 0,
+   "apyBase7d": 10.65,
+   "tvlUsd": 15509,
+   "volumeUsd1d": 1703,
+   "volumeUsd7d": 22026,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "7c8de64f-70c6-5b5b-92bd-3bd8e1bfbf78",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "NVDAX-CHONK",
+   "legs": [
+    {
+     "symbol": "NVDAX",
+     "address": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
+     "stock": {
+      "symbol": "NVDAx",
+      "underlying": "NVDA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "CHONK",
+     "address": "FeAWY9L9hr82TvTuEyi328V9FP7GxVuGLx7xNg6kzWVa",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 10.28,
+   "apyReward": 0,
+   "apyBase7d": 12.06,
+   "tvlUsd": 15416,
+   "volumeUsd1d": 1736,
+   "volumeUsd7d": 24783,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "52521ef7-36f8-568c-9aca-c494acda2249",
+   "project": "ekubo",
+   "venueId": "ekubo",
+   "chain": "Robinhood Chain",
+   "symbol": "TSLA-USDG",
+   "legs": [
+    {
+     "symbol": "TSLA",
+     "address": "0x322f0929c4625ed5bad873c95208d54e1c003b2d",
+     "stock": {
+      "symbol": "TSLA (Robinhood)",
+      "underlying": "TSLA",
+      "issuer": "robinhood"
+     }
+    },
+    {
+     "symbol": "USDG",
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "robinhood"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0,
+   "apyBase": 0,
+   "apyReward": 85.955,
+   "apyBase7d": null,
+   "tvlUsd": 14806,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "a34674ca-4078-5279-a86a-ac3f0b867f72",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "MSFTX-MINECOIN",
+   "legs": [
+    {
+     "symbol": "MSFTX",
+     "address": "XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX",
+     "stock": {
+      "symbol": "MSFTx",
+      "underlying": "MSFT",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "MINECOIN",
+     "address": "44J1LiJu17k25UDCjoJ3H2EMbbne5dmqn576J4ZNyBYT",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "MSFT"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 15.85,
+   "apyReward": 0,
+   "apyBase7d": 7.29,
+   "tvlUsd": 14723,
+   "volumeUsd1d": 2558,
+   "volumeUsd7d": 14311,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "699b924d-763e-4447-89bd-9bd0f7387328",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "TSLAX-IDLE",
+   "legs": [
+    {
+     "symbol": "TSLAX",
+     "address": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+     "stock": {
+      "symbol": "TSLAx",
+      "underlying": "TSLA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "IDLE",
+     "address": "BjcRmwm8e25RgjkyaFE56fc7bxRgGPw96JUkXRJFEroT",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 51.03,
+   "apyReward": 0,
+   "apyBase7d": 28.79,
+   "tvlUsd": 14510,
+   "volumeUsd1d": 8114,
+   "volumeUsd7d": 55701,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "55a4473e-c458-56e5-9171-0cd88eab2cfd",
+   "project": "uniswap-v3",
+   "venueId": "uniswap",
+   "chain": "BSC",
+   "symbol": "AMZNB-USDT",
+   "legs": [
+    {
+     "symbol": "AMZNB",
+     "address": "0x1a4b499833a79a09ad7cf1d42d7dacf71e92eb00",
+     "stock": {
+      "symbol": "AMZNB",
+      "underlying": "AMZN",
+      "issuer": "binance"
+     }
+    },
+    {
+     "symbol": "USDT",
+     "address": "0x55d398326f99059ff775485246999027b3197955",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "AMZN"
+   ],
+   "issuers": [
+    "binance"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0.3,
+   "apyBase": 20.6813,
+   "apyReward": null,
+   "apyBase7d": 1.908,
+   "tvlUsd": 14150,
+   "volumeUsd1d": 2672,
+   "volumeUsd7d": 21255,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "814822fe-eea3-4f80-853d-5cd236db96ab",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "MSTRX-IDLE",
+   "legs": [
+    {
+     "symbol": "MSTRX",
+     "address": "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ",
+     "stock": {
+      "symbol": "MSTRx",
+      "underlying": "MSTR",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "IDLE",
+     "address": "BjcRmwm8e25RgjkyaFE56fc7bxRgGPw96JUkXRJFEroT",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "MSTR"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 1,
+   "apyBase": 79.78,
+   "apyReward": 0,
+   "apyBase7d": 29.64,
+   "tvlUsd": 13548,
+   "volumeUsd1d": 2961,
+   "volumeUsd7d": 13384,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "ccfe9bf2-dac3-4487-95a6-af9b0863ac50",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "QQQX-USDC",
+   "legs": [
+    {
+     "symbol": "QQQX",
+     "address": "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ",
+     "stock": {
+      "symbol": "QQQx",
+      "underlying": "QQQ",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "QQQ"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 12.3373,
+   "apyReward": 0,
+   "apyBase7d": 9.5081,
+   "tvlUsd": 13401,
+   "volumeUsd1d": 2744,
+   "volumeUsd7d": 14944,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "7b52fad7-7a43-5bac-97d3-faecb410c71d",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "HOODX-HOOD",
+   "legs": [
+    {
+     "symbol": "HOODX",
+     "address": "XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg",
+     "stock": {
+      "symbol": "HOODx",
+      "underlying": "HOOD",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "HOOD",
+     "address": "HooDYv5RewLRiMLnEVq3VJqdqxhuE6c5eYvqejMC3e9A",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "HOOD"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 0.25,
+   "apyBase": 16.95,
+   "apyReward": 0,
+   "apyBase7d": 21.95,
+   "tvlUsd": 13359,
+   "volumeUsd1d": 2473,
+   "volumeUsd7d": 38842,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "5ea28667-664e-5373-baea-ee0412f58b8e",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "AMZNX-PRIMECAT",
+   "legs": [
+    {
+     "symbol": "AMZNX",
+     "address": "Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg",
+     "stock": {
+      "symbol": "AMZNx",
+      "underlying": "AMZN",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "PRIMECAT",
+     "address": "6fbgUAM323YmfyA9cE3wozr7UKHhgquW4qBCgGhxHLDt",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "AMZN"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 11.84,
+   "apyReward": 0,
+   "apyBase7d": 5.8,
+   "tvlUsd": 13249,
+   "volumeUsd1d": 1720,
+   "volumeUsd7d": 10240,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "2f476585-3585-5127-8f64-76f15146d9e8",
+   "project": "project-x",
+   "venueId": "project-x",
+   "chain": "Hyperliquid L1",
+   "symbol": "WHYPE-WNVDAX",
+   "legs": [
+    {
+     "symbol": "WHYPE",
+     "address": "0x5555555555555555555555555555555555555555",
+     "stock": null
+    },
+    {
+     "symbol": "WNVDAX",
+     "address": "0xa8ddb5cd96b5222afe198316e9a57caa642850d5",
+     "stock": {
+      "symbol": "wNVDAx",
+      "underlying": "NVDA",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "unknown",
+   "feeTier": 1,
+   "apyBase": 2.7576,
+   "apyReward": null,
+   "apyBase7d": null,
+   "tvlUsd": 12749,
+   "volumeUsd1d": 112,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "ef82f1ee-dde1-42f4-a334-5ce5aee642b9",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "SPYX-USDC",
+   "legs": [
+    {
+     "symbol": "SPYX",
+     "address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+     "stock": {
+      "symbol": "SPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "USDC",
+     "address": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 1.995,
+   "apyReward": 0,
+   "apyBase7d": 1.8438,
+   "tvlUsd": 11859,
+   "volumeUsd1d": 5281,
+   "volumeUsd7d": 33757,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "b3970c01-4bb3-5609-ab7e-3a69b0da2155",
+   "project": "ekubo",
+   "venueId": "ekubo",
+   "chain": "Robinhood Chain",
+   "symbol": "USDG-AMD",
+   "legs": [
+    {
+     "symbol": "USDG",
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "stock": null
+    },
+    {
+     "symbol": "AMD",
+     "address": "0x86923f96303d656e4aa86d9d42d1e57ad2023fdc",
+     "stock": {
+      "symbol": "AMD (Robinhood)",
+      "underlying": "AMD",
+      "issuer": "robinhood"
+     }
+    }
+   ],
+   "underlyings": [
+    "AMD"
+   ],
+   "issuers": [
+    "robinhood"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0,
+   "apyBase": 0,
+   "apyReward": 61.5821,
+   "apyBase7d": null,
+   "tvlUsd": 11763,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "eda82094-a90b-509d-bc0e-52d907989522",
+   "project": "nest-cl",
+   "venueId": "nest",
+   "chain": "Hyperliquid L1",
+   "symbol": "NEST-WSPYX",
+   "legs": [
+    {
+     "symbol": "NEST",
+     "address": "0x07c57e32a3c29d5659bda1d3efc2e7bf004e3035",
+     "stock": null
+    },
+    {
+     "symbol": "WSPYX",
+     "address": "0xe7e553cd128f0011777323a0b44a7b96ea1cb540",
+     "stock": {
+      "symbol": "wSPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "concentrated",
+   "feeTier": 2,
+   "apyBase": null,
+   "apyReward": 0,
+   "apyBase7d": null,
+   "tvlUsd": 11461,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "e186b05e-e897-5490-9e75-1fadf086a98e",
+   "project": "orca-dex",
+   "venueId": "orca",
+   "chain": "Solana",
+   "symbol": "QQQX-SPYX",
+   "legs": [
+    {
+     "symbol": "QQQX",
+     "address": "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ",
+     "stock": {
+      "symbol": "QQQx",
+      "underlying": "QQQ",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "SPYX",
+     "address": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+     "stock": {
+      "symbol": "SPYx",
+      "underlying": "SPY",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "QQQ",
+    "SPY"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-stock",
+   "poolType": "concentrated",
+   "feeTier": null,
+   "apyBase": 12.6241,
+   "apyReward": 0,
+   "apyBase7d": 13.8078,
+   "tvlUsd": 11419,
+   "volumeUsd1d": 7449,
+   "volumeUsd7d": 56882,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "06a5137e-7084-5a11-8e55-3ef7d254a86a",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPCXX-SXSI",
+   "legs": [
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "SXSI",
+     "address": "6kLQP6SpZWY2281u8oWdKBPnTjgoAA6ZJSXZczt2gkwm",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 17.95,
+   "apyReward": 0,
+   "apyBase7d": 13.24,
+   "tvlUsd": 11077,
+   "volumeUsd1d": 2179,
+   "volumeUsd7d": 19554,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "d78f6efa-5334-5be6-b31e-24a2e6fda24a",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPCXX-GROK5",
+   "legs": [
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "GROK5",
+     "address": "FWJoGKnygVcboAWMERxBGBiM1wz5JWbGFVcLjFfqFiwb",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 21.51,
+   "apyReward": 0,
+   "apyBase7d": 4.44,
+   "tvlUsd": 10849,
+   "volumeUsd1d": 2558,
+   "volumeUsd7d": 6427,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "92bd2035-6cbc-5165-8ed4-8f9604eb753a",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "SPCXX-SPACEXSI",
+   "legs": [
+    {
+     "symbol": "SPCXX",
+     "address": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+     "stock": {
+      "symbol": "SPCXx",
+      "underlying": "SPCX",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "SPACEXSI",
+     "address": "5oNiMwMhG6WWqUjzru5s94FBDivddTPhGU294FicnfiC",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "SPCX"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 14.63,
+   "apyReward": 0,
+   "apyBase7d": 17.59,
+   "tvlUsd": 10756,
+   "volumeUsd1d": 1725,
+   "volumeUsd7d": 25228,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "3f6a4492-aceb-5648-bcb8-c56d740d142b",
+   "project": "project-x",
+   "venueId": "project-x",
+   "chain": "Hyperliquid L1",
+   "symbol": "MAX-WNVDAX",
+   "legs": [
+    {
+     "symbol": "MAX",
+     "address": "0x95015033483deb3ccfa8bcef48bcbdbd48210999",
+     "stock": null
+    },
+    {
+     "symbol": "WNVDAX",
+     "address": "0xa8ddb5cd96b5222afe198316e9a57caa642850d5",
+     "stock": {
+      "symbol": "wNVDAx",
+      "underlying": "NVDA",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "unknown",
+   "feeTier": 1,
+   "apyBase": 0,
+   "apyReward": null,
+   "apyBase7d": null,
+   "tvlUsd": 10590,
+   "volumeUsd1d": 0,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "1195b85b-a4c5-4a16-827b-07f25955d929",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "WSOL-AAPLX",
+   "legs": [
+    {
+     "symbol": "WSOL",
+     "address": "So11111111111111111111111111111111111111112",
+     "stock": null
+    },
+    {
+     "symbol": "AAPLX",
+     "address": "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp",
+     "stock": {
+      "symbol": "AAPLx",
+      "underlying": "AAPL",
+      "issuer": "xstocks"
+     }
+    }
+   ],
+   "underlyings": [
+    "AAPL"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-crypto",
+   "poolType": "concentrated",
+   "feeTier": 0.8,
+   "apyBase": 159.89,
+   "apyReward": 0,
+   "apyBase7d": 73.81,
+   "tvlUsd": 10489,
+   "volumeUsd1d": 5743,
+   "volumeUsd7d": 32257,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "137c1d49-552b-5caf-8288-bebbb1dccafb",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "NVDAX-SGI",
+   "legs": [
+    {
+     "symbol": "NVDAX",
+     "address": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
+     "stock": {
+      "symbol": "NVDAx",
+      "underlying": "NVDA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "SGI",
+     "address": "Cb2pMbsRRvaeZoxpRqnTP6k6hLziSUf5pnqW9Jx5T3Wz",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "NVDA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 19.78,
+   "apyReward": 0,
+   "apyBase7d": 21.37,
+   "tvlUsd": 10380,
+   "volumeUsd1d": 2250,
+   "volumeUsd7d": 29578,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "74ebfc59-56b9-56a9-8a91-5fcc9e94ac33",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "TSLAX-ELON-SAN",
+   "legs": [
+    {
+     "symbol": "TSLAx",
+     "address": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+     "stock": {
+      "symbol": "TSLAx",
+      "underlying": "TSLA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "ELON-SAN",
+     "address": "EkFhh66qoKydSLwWp7XUSuN6rDp7CpEXKmAzR1Yufy9u",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 50.31,
+   "apyReward": 0,
+   "apyBase7d": 150.87,
+   "tvlUsd": 10285,
+   "volumeUsd1d": 5670,
+   "volumeUsd7d": 206897,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "4d7dca2c-7190-5415-abea-9a099d3dc863",
+   "project": "raydium-amm",
+   "venueId": "raydium",
+   "chain": "Solana",
+   "symbol": "TSLAX-UHI",
+   "legs": [
+    {
+     "symbol": "TSLAX",
+     "address": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+     "stock": {
+      "symbol": "TSLAx",
+      "underlying": "TSLA",
+      "issuer": "xstocks"
+     }
+    },
+    {
+     "symbol": "UHI",
+     "address": "2NdgMAFbWVHvXJcoAwuRkTfYn1j97THVCThWATKHSTNK",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "TSLA"
+   ],
+   "issuers": [
+    "xstocks"
+   ],
+   "pairType": "stock-other",
+   "poolType": "full-range",
+   "feeTier": 1.25,
+   "apyBase": 806.95,
+   "apyReward": 0,
+   "apyBase7d": 129.57,
+   "tvlUsd": 10264,
+   "volumeUsd1d": 90767,
+   "volumeUsd7d": 177328,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  },
+  {
+   "id": "51af1d00-2c25-570a-a872-a0b0ffb2d86c",
+   "project": "ekubo",
+   "venueId": "ekubo",
+   "chain": "Robinhood Chain",
+   "symbol": "GOOGL-USDG",
+   "legs": [
+    {
+     "symbol": "GOOGL",
+     "address": "0x2e0847e8910a9732eb3fb1bb4b70a580adad4fe3",
+     "stock": {
+      "symbol": "GOOGL (Robinhood)",
+      "underlying": "GOOGL",
+      "issuer": "robinhood"
+     }
+    },
+    {
+     "symbol": "USDG",
+     "address": "0x5fc5360d0400a0fd4f2af552add042d716f1d168",
+     "stock": null
+    }
+   ],
+   "underlyings": [
+    "GOOGL"
+   ],
+   "issuers": [
+    "robinhood"
+   ],
+   "pairType": "stock-stable",
+   "poolType": "concentrated",
+   "feeTier": 0,
+   "apyBase": 0,
+   "apyReward": 69.5921,
+   "apyBase7d": null,
+   "tvlUsd": 10074,
+   "volumeUsd1d": null,
+   "volumeUsd7d": null,
+   "ilRisk": "yes",
+   "matchedBy": "address",
+   "source": "defillama",
+   "fetchedAt": "2026-10-20T11:47:45.756Z",
+   "firstSeen": "2026-10-20",
+   "status": "live",
+   "endedOn": null
+  }
+ ],
+ "skipped": [
+  {
+   "id": "b4f72891-010f-5393-ae20-6beea07dc1c1",
+   "project": "beefy",
+   "chain": "Base",
+   "symbol": "GOOGL-USDC",
+   "reason": "Yield Aggregator in DefiLlama's taxonomy. It wraps a pool on another venue, so listing it would count that pool twice."
+  },
+  {
+   "id": "19b4b7b3-7495-5511-abe3-288c0cae753f",
+   "project": "beefy",
+   "chain": "Base",
+   "symbol": "AAPL-USDC",
+   "reason": "Yield Aggregator in DefiLlama's taxonomy. It wraps a pool on another venue, so listing it would count that pool twice."
+  },
+  {
+   "id": "11eb5bd0-0c27-5db4-835e-de733b4d1e2a",
+   "project": "beefy",
+   "chain": "Base",
+   "symbol": "NVDA-USDC",
+   "reason": "Yield Aggregator in DefiLlama's taxonomy. It wraps a pool on another venue, so listing it would count that pool twice."
+  },
+  {
+   "id": "161bdd70-ab04-58ce-ae5f-bbf10688e32c",
+   "project": "beefy",
+   "chain": "Base",
+   "symbol": "SPCX-USDC",
+   "reason": "Yield Aggregator in DefiLlama's taxonomy. It wraps a pool on another venue, so listing it would count that pool twice."
+  },
+  {
+   "id": "00f48094-a1f2-5db1-acdb-0e8a34d82535",
+   "project": "beefy",
+   "chain": "Base",
+   "symbol": "META-USDC",
+   "reason": "Yield Aggregator in DefiLlama's taxonomy. It wraps a pool on another venue, so listing it would count that pool twice."
+  },
+  {
+   "id": "356ef048-48c6-5f41-9928-12b27a8afa40",
+   "project": "beefy",
+   "chain": "Base",
+   "symbol": "MSFT-USDC",
+   "reason": "Yield Aggregator in DefiLlama's taxonomy. It wraps a pool on another venue, so listing it would count that pool twice."
+  },
+  {
+   "id": "c1e73eeb-9667-58dd-a2a0-1ceeeb439cdc",
+   "project": "beefy",
+   "chain": "Base",
+   "symbol": "AMZN-USDC",
+   "reason": "Yield Aggregator in DefiLlama's taxonomy. It wraps a pool on another venue, so listing it would count that pool twice."
+  },
+  {
+   "id": "b62ab3d6-d503-5a52-a900-3d78628f330f",
+   "project": "beefy",
+   "chain": "Base",
+   "symbol": "TSLA-USDC",
+   "reason": "Yield Aggregator in DefiLlama's taxonomy. It wraps a pool on another venue, so listing it would count that pool twice."
+  },
+  {
+   "id": "f19dbb1c-233e-5ec5-85d0-b149681ef184",
+   "project": "ripe-protocol",
+   "chain": "Robinhood Chain",
+   "symbol": "RIPE-NVDA",
+   "reason": "Lending protocol in DefiLlama's taxonomy. Its matching pool is governance staking, not a pool traders swap through."
+  },
+  {
+   "id": "8ee3b1a7-7925-5678-bd40-dbf43f2dd7f4",
+   "project": "beefy",
+   "chain": "Base",
+   "symbol": "MSTR-USDC",
+   "reason": "Yield Aggregator in DefiLlama's taxonomy. It wraps a pool on another venue, so listing it would count that pool twice."
+  },
+  {
+   "id": "83a89c1f-1592-556c-a453-5e1840d663e5",
+   "project": "beefy",
+   "chain": "Base",
+   "symbol": "SPCX-USDC",
+   "reason": "Yield Aggregator in DefiLlama's taxonomy. It wraps a pool on another venue, so listing it would count that pool twice."
+  },
+  {
+   "id": "b65e20a9-28f4-5c47-8a70-dad4710f61be",
+   "project": "beefy",
+   "chain": "BSC",
+   "symbol": "NVDAB-USDT",
+   "reason": "Yield Aggregator in DefiLlama's taxonomy. It wraps a pool on another venue, so listing it would count that pool twice."
+  },
+  {
+   "id": "ee58e17b-e905-5c2a-ac6e-a9959180d69f",
+   "project": "beefy",
+   "chain": "Base",
+   "symbol": "AAPL-USDC",
+   "reason": "Yield Aggregator in DefiLlama's taxonomy. It wraps a pool on another venue, so listing it would count that pool twice."
+  },
+  {
+   "id": "62f8e030-13c1-58c9-a8a6-0ec9f33bb297",
+   "project": "beefy",
+   "chain": "Base",
+   "symbol": "MSTR-USDC",
+   "reason": "Yield Aggregator in DefiLlama's taxonomy. It wraps a pool on another venue, so listing it would count that pool twice."
+  },
+  {
+   "id": "b5e38ea2-f871-57dd-a63f-a264bb973c57",
+   "project": "beefy",
+   "chain": "Base",
+   "symbol": "NVDA-USDC",
+   "reason": "Yield Aggregator in DefiLlama's taxonomy. It wraps a pool on another venue, so listing it would count that pool twice."
+  }
+ ],
+ "review": [
+  {
+   "id": "a3670132-8801-5a33-a2fe-0de6c25acc02",
+   "project": "orca-dex",
+   "chain": "Solana",
+   "symbol": "AMDC-USDT",
+   "tvlUsd": 12224,
+   "reason": "symbol AMDC looks like a stock but its address is not in the registry"
+  }
+ ]
+}

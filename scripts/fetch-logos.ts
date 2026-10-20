@@ -12,6 +12,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { loadSeed } from "../src/lib/data/seed";
+import { VENUES } from "../src/lib/liquidity/venues";
 
 const OUT_DIR = path.join(process.cwd(), "public", "logos");
 const MANIFEST = path.join(process.cwd(), "data", "logos.json");
@@ -39,6 +40,19 @@ const PLATFORM_DOMAINS: Record<string, string> = {
   bitrue: "bitrue.com",
   cryptocom: "crypto.com",
   bybit: "bybit.com",
+  // Liquidity venues, keyed by venue id.
+  raydium: "raydium.io",
+  orca: "orca.so",
+  aerodrome: "aerodrome.finance",
+  uniswap: "uniswap.org",
+  pancakeswap: "pancakeswap.finance",
+  curve: "curve.fi",
+  ekubo: "ekubo.org",
+  alandale: "alandale.xyz",
+  fluxion: "fluxion.network",
+  nest: "usenest.xyz",
+  "project-x": "prjx.com",
+  arrowfarm: "arrowfarm.io",
 };
 
 /** Tried in order. SVG first: it is smaller and stays sharp at any size. */
@@ -86,8 +100,9 @@ async function fetchPlatformLogos(force: boolean) {
     ? JSON.parse(fs.readFileSync(PLATFORM_MANIFEST, "utf8"))
     : {};
 
-  console.log("\nPlatforms:");
-  for (const platform of loadSeed().platforms) {
+  console.log("\nPlatforms and liquidity venues:");
+  const venues = [...new Map(Object.values(VENUES).map((v) => [v.id, v])).values()];
+  for (const platform of [...loadSeed().platforms, ...venues]) {
     const domain = PLATFORM_DOMAINS[platform.id];
     if (!domain) {
       console.warn(`  ${platform.id}: no domain mapped, will render a monogram`);

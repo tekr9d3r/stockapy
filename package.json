@@ -10,7 +10,8 @@
     "fetch": "tsx scripts/run-fetchers.ts",
     "discover": "tsx scripts/run-fetchers.ts --discover",
     "typecheck": "tsc --noEmit",
-    "logos": "tsx scripts/fetch-logos.ts"
+    "logos": "tsx scripts/fetch-logos.ts",
+    "test": "tsx --test \"src/**/*.test.ts\""
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

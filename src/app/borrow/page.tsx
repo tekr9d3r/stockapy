@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BorrowTable } from "@/components/BorrowTable";
+import { CategoryTabs } from "@/components/CategoryTabs";
 import { JsonLd } from "@/components/JsonLd";
 import { Stat, StatStrip } from "@/components/Stat";
 import { borrowRows, borrowStats } from "@/lib/data/rows";
@@ -78,6 +79,8 @@ export default function BorrowPage() {
           ]),
         ]}
       />
+
+      <CategoryTabs active="borrow" />
 
       <section className="mb-8 max-w-3xl">
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">

@@ -595,7 +595,7 @@ opportunities:
     token: NVDAx
     platform: jupiter-lend
     chain: Solana
-    category: earn
+    category: collateral
     variant: NVDAx/USDC
     url: https://jup.ag/lend
     deep_link: https://jup.ag/lend/borrow/80
@@ -613,7 +613,7 @@ opportunities:
     token: NVDAx
     platform: jupiter-lend
     chain: Solana
-    category: earn
+    category: collateral
     variant: NVDAx/JupUSD
     url: https://jup.ag/lend
     deep_link: https://jup.ag/lend/borrow/84
@@ -631,7 +631,7 @@ opportunities:
     token: TSLAx
     platform: jupiter-lend
     chain: Solana
-    category: earn
+    category: collateral
     variant: TSLAx/USDC
     url: https://jup.ag/lend
     deep_link: https://jup.ag/lend/borrow/77
@@ -649,7 +649,7 @@ opportunities:
     token: TSLAx
     platform: jupiter-lend
     chain: Solana
-    category: earn
+    category: collateral
     variant: TSLAx/JupUSD
     url: https://jup.ag/lend
     deep_link: https://jup.ag/lend/borrow/81
@@ -667,7 +667,7 @@ opportunities:
     token: SPYx
     platform: jupiter-lend
     chain: Solana
-    category: earn
+    category: collateral
     variant: SPYx/USDC
     url: https://jup.ag/lend
     deep_link: https://jup.ag/lend/borrow/78
@@ -685,7 +685,7 @@ opportunities:
     token: SPYx
     platform: jupiter-lend
     chain: Solana
-    category: earn
+    category: collateral
     variant: SPYx/JupUSD
     url: https://jup.ag/lend
     deep_link: https://jup.ag/lend/borrow/82
@@ -703,7 +703,7 @@ opportunities:
     token: QQQx
     platform: jupiter-lend
     chain: Solana
-    category: earn
+    category: collateral
     variant: QQQx/USDC
     url: https://jup.ag/lend
     deep_link: https://jup.ag/lend/borrow/79
@@ -721,7 +721,7 @@ opportunities:
     token: QQQx
     platform: jupiter-lend
     chain: Solana
-    category: earn
+    category: collateral
     variant: QQQx/JupUSD
     url: https://jup.ag/lend
     deep_link: https://jup.ag/lend/borrow/83

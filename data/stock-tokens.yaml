@@ -1,0 +1,336 @@
+# Verified tokenized-stock contract addresses, used to match liquidity pools.
+#
+# Every entry was checked against the token's own on-chain NAME, not its symbol:
+# symbols are free to copy, and DefiLlama's pool list contains copies. Solana
+# xStocks were also checked to share mint and update authority with a known-good
+# xStock; Binance bStocks were checked to share runtime bytecode with each other.
+#
+# Rejected while building this list:
+#   Solana 87T62igEvezN… symbol AMDC, on-chain name "美元稳定币" ("USD stablecoin").
+#
+# Regenerate: see scripts/build-stock-registry.md
+
+- chain: BSC
+  address: "0x431a3bee82e2ca41e49895cbece5bb0f76a89b7a"
+  symbol: AAPLB
+  underlying: AAPL
+  issuer: binance
+  name: "Apple"
+- chain: BSC
+  address: "0x1a4b499833a79a09ad7cf1d42d7dacf71e92eb00"
+  symbol: AMZNB
+  underlying: AMZN
+  issuer: binance
+  name: "Amazon"
+- chain: BSC
+  address: "0x7425889fe94f9d693e8daefe88bcced6acfef4c0"
+  symbol: METAB
+  underlying: META
+  issuer: binance
+  name: "Meta Platforms"
+- chain: BSC
+  address: "0x80106cb3ead06659a5ad19df39d9b4733863b9b0"
+  symbol: MSFTB
+  underlying: MSFT
+  issuer: binance
+  name: "Microsoft"
+- chain: BSC
+  address: "0x02fca66c1d1afb4e2a7884261eb00f63598a7436"
+  symbol: NVDAB
+  underlying: NVDA
+  issuer: binance
+  name: "NVIDIA Corp"
+- chain: BSC
+  address: "0x205812cdbed920aff76c6580abd681a46d11efc7"
+  symbol: QQQB
+  underlying: QQQ
+  issuer: binance
+  name: "Invesqo QQQ"
+- chain: BSC
+  address: "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1"
+  symbol: SPCXB
+  underlying: SPCX
+  issuer: binance
+  name: "SpaceX"
+- chain: BSC
+  address: "0x5b1910eaad6450e50f816082aa078c41f10c292f"
+  symbol: TSLAB
+  underlying: TSLA
+  issuer: binance
+  name: "Tesla, Inc. "
+- chain: Base
+  address: "0xb200000000000000000000c2e324d24d7eecd1fb"
+  symbol: AAPLc
+  underlying: AAPL
+  issuer: coinbase
+  name: "Apple Inc."
+- chain: Base
+  address: "0xb200000000000000000000d9192b6b456483c2e8"
+  symbol: AMZNc
+  underlying: AMZN
+  issuer: coinbase
+  name: "Amazon.com Inc."
+- chain: Base
+  address: "0xb2000000000000000000002d0ba3164cc74f58b7"
+  symbol: GOOGLc
+  underlying: GOOGL
+  issuer: coinbase
+  name: "Alphabet Inc."
+- chain: Base
+  address: "0xb2000000000000000000008bc8786b856e61707c"
+  symbol: METAc
+  underlying: META
+  issuer: coinbase
+  name: "Meta Platforms Inc."
+- chain: Base
+  address: "0xb200000000000000000000ab99cfa739e253872b"
+  symbol: MSFTc
+  underlying: MSFT
+  issuer: coinbase
+  name: "Microsoft Corporation"
+- chain: Base
+  address: "0xb2000000000000000000004884b426556b92883d"
+  symbol: MSTRc
+  underlying: MSTR
+  issuer: coinbase
+  name: "Strategy Inc."
+- chain: Base
+  address: "0xb20000000000000000000078ee7ce2fe4908108c"
+  symbol: NVDAc
+  underlying: NVDA
+  issuer: coinbase
+  name: "NVIDIA Corporation"
+- chain: Base
+  address: "0xb2000000000000000000007d16372840df4dabbe"
+  symbol: PLTRc
+  underlying: PLTR
+  issuer: coinbase
+  name: "Palantir Technologies Inc."
+- chain: Base
+  address: "0xb2000000000000000000007b9fcbd005511acbd5"
+  symbol: SPCXc
+  underlying: SPCX
+  issuer: coinbase
+  name: "Space Exploration Technologies Corp."
+- chain: Base
+  address: "0xb2000000000000000000001e800a7f5189430cd0"
+  symbol: TSLAc
+  underlying: TSLA
+  issuer: coinbase
+  name: "Tesla Inc."
+- chain: Ethereum
+  address: "0x2d1f7226bd1f780af6b9a49dcc0ae00e8df4bdee"
+  symbol: NVDAon
+  underlying: NVDA
+  issuer: ondo
+  name: "NVIDIA (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0xf6b1117ec07684d3958cad8beb1b302bfd21103f"
+  symbol: TSLAon
+  underlying: TSLA
+  issuer: ondo
+  name: "Tesla (Ondo Tokenized)"
+- chain: Hyperliquid L1
+  address: "0xa8ddb5cd96b5222afe198316e9a57caa642850d5"
+  symbol: wNVDAx
+  underlying: NVDA
+  issuer: xstocks
+  name: "Wrapped NVIDIA xStock"
+- chain: Hyperliquid L1
+  address: "0x4c1ae29c159838fc1b224636e28e086eb69101f7"
+  symbol: wQQQx
+  underlying: QQQ
+  issuer: xstocks
+  name: "Wrapped Nasdaq xStock"
+- chain: Hyperliquid L1
+  address: "0xe7e553cd128f0011777323a0b44a7b96ea1cb540"
+  symbol: wSPYx
+  underlying: SPY
+  issuer: xstocks
+  name: "Wrapped SP500 xStock"
+- chain: Mantle
+  address: "0x5aa7649fdbda47de64a07ac81d64b682af9c0724"
+  symbol: wAAPLx
+  underlying: AAPL
+  issuer: xstocks
+  name: "Wrapped Apple xStock"
+- chain: Mantle
+  address: "0xa90872aca656ebe47bdebf3b19ec9dd9c5adc7f8"
+  symbol: wCRCLx
+  underlying: CRCL
+  issuer: xstocks
+  name: "Wrapped Circle xStock"
+- chain: Mantle
+  address: "0x1630f08370917e79df0b7572395a5e907508bbbc"
+  symbol: wGOOGLx
+  underlying: GOOGL
+  issuer: xstocks
+  name: "Wrapped Alphabet xStock"
+- chain: Mantle
+  address: "0x953707d7a1cb30cc5c636bda8eaebe410341eb14"
+  symbol: wHOODx
+  underlying: HOOD
+  issuer: xstocks
+  name: "Wrapped Robinhood xStock"
+- chain: Mantle
+  address: "0x4e41a262caa93c6575d336e0a4eb79f3c67caa06"
+  symbol: wMETAx
+  underlying: META
+  issuer: xstocks
+  name: "Wrapped Meta xStock"
+- chain: Mantle
+  address: "0x266e5923f6118f8b340ca5a23ae7f71897361476"
+  symbol: wMSTRx
+  underlying: MSTR
+  issuer: xstocks
+  name: "Wrapped MicroStrategy xStock"
+- chain: Mantle
+  address: "0x93e62845c1dd5822ebc807ab71a5fb750decd15a"
+  symbol: wNVDAx
+  underlying: NVDA
+  issuer: xstocks
+  name: "Wrapped NVIDIA xStock"
+- chain: Mantle
+  address: "0xdbd9232fee15351068fe02f0683146e16d9f2cea"
+  symbol: wQQQx
+  underlying: QQQ
+  issuer: xstocks
+  name: "Wrapped Nasdaq xStock"
+- chain: Mantle
+  address: "0xc88fcd8b874fdb3256e8b55b3decb8c24eab4c02"
+  symbol: wSPYx
+  underlying: SPY
+  issuer: xstocks
+  name: "Wrapped SP500 xStock"
+- chain: Mantle
+  address: "0x43680abf18cf54898be84c6ef78237cfbd441883"
+  symbol: wTSLAx
+  underlying: TSLA
+  issuer: xstocks
+  name: "Wrapped Tesla xStock"
+- chain: Robinhood Chain
+  address: "0x86923f96303d656e4aa86d9d42d1e57ad2023fdc"
+  symbol: AMD (Robinhood)
+  underlying: AMD
+  issuer: robinhood
+  name: "AMD • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x2e0847e8910a9732eb3fb1bb4b70a580adad4fe3"
+  symbol: GOOGL (Robinhood)
+  underlying: GOOGL
+  issuer: robinhood
+  name: "Alphabet Class A • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xc0d6457c16cc70d6790dd43521c899c87ce02f35"
+  symbol: META (Robinhood)
+  underlying: META
+  issuer: robinhood
+  name: "Meta Platforms • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec"
+  symbol: NVDA (Robinhood)
+  underlying: NVDA
+  issuer: robinhood
+  name: "NVIDIA • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x4a0e65a3eccec6dbe60ae065f2e7bb85fae35eea"
+  symbol: SPCX (Robinhood)
+  underlying: SPCX
+  issuer: robinhood
+  name: "Space Exploration Technologies Corp. Class A Common Stock • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x117cc2133c37b721f49de2a7a74833232b3b4c0c"
+  symbol: SPY (Robinhood)
+  underlying: SPY
+  issuer: robinhood
+  name: "SPDR S&P 500 ETF Trust • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x322f0929c4625ed5bad873c95208d54e1c003b2d"
+  symbol: TSLA (Robinhood)
+  underlying: TSLA
+  issuer: robinhood
+  name: "Tesla • Robinhood Token"
+- chain: Solana
+  address: "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp"
+  symbol: AAPLx
+  underlying: AAPL
+  issuer: xstocks
+  name: "Apple xStock"
+- chain: Solana
+  address: "Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg"
+  symbol: AMZNx
+  underlying: AMZN
+  issuer: xstocks
+  name: "Amazon.com xStock"
+- chain: Solana
+  address: "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1"
+  symbol: CRCLx
+  underlying: CRCL
+  issuer: xstocks
+  name: "Circle xStock"
+- chain: Solana
+  address: "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN"
+  symbol: GOOGLx
+  underlying: GOOGL
+  issuer: xstocks
+  name: "Alphabet xStock"
+- chain: Solana
+  address: "XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg"
+  symbol: HOODx
+  underlying: HOOD
+  issuer: xstocks
+  name: "Robinhood xStock"
+- chain: Solana
+  address: "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu"
+  symbol: METAx
+  underlying: META
+  issuer: xstocks
+  name: "Meta xStock"
+- chain: Solana
+  address: "XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX"
+  symbol: MSFTx
+  underlying: MSFT
+  issuer: xstocks
+  name: "Microsoft xStock"
+- chain: Solana
+  address: "XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ"
+  symbol: MSTRx
+  underlying: MSTR
+  issuer: xstocks
+  name: "MicroStrategy xStock"
+- chain: Solana
+  address: "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh"
+  symbol: NVDAx
+  underlying: NVDA
+  issuer: xstocks
+  name: "NVIDIA xStock"
+- chain: Solana
+  address: "XsoBhf2ufR8fTyNSjqfU71DYGaE6Z3SUGAidpzriAA4"
+  symbol: PLTRx
+  underlying: PLTR
+  issuer: xstocks
+  name: "Palantir xStock"
+- chain: Solana
+  address: "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ"
+  symbol: QQQx
+  underlying: QQQ
+  issuer: xstocks
+  name: "Nasdaq xStock"
+- chain: Solana
+  address: "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8"
+  symbol: SPCXx
+  underlying: SPCX
+  issuer: xstocks
+  name: "SpaceX xStock"
+- chain: Solana
+  address: "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W"
+  symbol: SPYx
+  underlying: SPY
+  issuer: xstocks
+  name: "SP500 xStock"
+- chain: Solana
+  address: "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB"
+  symbol: TSLAx
+  underlying: TSLA
+  issuer: xstocks
+  name: "Tesla xStock"

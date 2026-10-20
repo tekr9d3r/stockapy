@@ -19,8 +19,8 @@ export const metadata: Metadata = {
 
 const NAV = [
   { href: "/", label: "Earn" },
+  { href: "/liquidity", label: "Liquidity" },
   { href: "/borrow", label: "Borrow" },
-  { href: "/opportunities", label: "All markets" },
   { href: "/hub", label: "Hub" },
   { href: "/platforms", label: "Platforms" },
   { href: "/issuers", label: "Issuers" },
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {BRAND_NAME}
             </Link>
             <nav className="flex flex-1 items-center gap-4 overflow-x-auto text-sm text-fg-muted">
-              {NAV.slice(1).map((item) => (
+              {NAV.map((item) => (
                 <Link key={item.href} href={item.href} className="whitespace-nowrap hover:text-fg">
                   {item.label}
                 </Link>
@@ -56,6 +56,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   {item.label}
                 </Link>
               ))}
+              <Link href="/opportunities" className="hover:text-fg">
+                All earn &amp; borrow markets
+              </Link>
               <Link href="/glossary" className="hover:text-fg">
                 Glossary
               </Link>

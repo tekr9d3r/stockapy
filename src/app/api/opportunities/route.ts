@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getRows } from "@/lib/data/rows";
+import { getLiquidityRows } from "@/lib/data/liquidity";
 import { loadLatestSnapshot } from "@/lib/data/snapshot";
 import { BRAND_NAME, SITE_URL } from "@/config";
 
@@ -11,6 +12,7 @@ export const revalidate = 3600;
  */
 export function GET() {
   const rows = getRows();
+  const liquidity = getLiquidityRows();
 
   return NextResponse.json(
     {
@@ -19,7 +21,7 @@ export function GET() {
       license: "CC BY 4.0",
       disclaimer: "Information only, not financial advice. Verify on the platform.",
       fetchedAt: loadLatestSnapshot()?.fetchedAt ?? null,
-      count: rows.length,
+      count: rows.length + liquidity.length,
       opportunities: rows.map((row) => ({
         id: row.id,
         underlyingTicker: row.underlying.ticker,
@@ -60,6 +62,36 @@ export function GET() {
         fetchedAt: row.fetchedAt,
         unmeasured: row.unmeasured,
         stale: row.stale,
+      })),
+      liquidity: liquidity.map((r) => ({
+        id: r.id,
+        category: "liquidity",
+        underlyingTickers: r.underlyings,
+        issuers: r.issuers,
+        pair: r.legs.map((l) => l.stock?.symbol ?? l.symbol),
+        pairType: r.pairType,
+        venue: r.venue.name,
+        venueVariant: r.variant,
+        chain: r.chain,
+        feeTier: r.feeTier,
+        /** Trading fees, paid by traders. */
+        apyBase: r.apyBase,
+        /** Incentives. */
+        apyReward: r.apyReward,
+        apyTotal: r.apyTotal,
+        apyBase7d: r.apyBase7d,
+        tvlUsd: r.tvlUsd,
+        volumeUsd1d: r.volumeUsd1d,
+        volumeUsd7d: r.volumeUsd7d,
+        poolType: r.poolType,
+        ilRisk: r.ilRisk,
+        status: r.status,
+        endedOn: r.endedOn,
+        url: r.url,
+        chartUrl: r.chartUrl,
+        source: r.source,
+        fetchedAt: r.fetchedAt,
+        note: "Rates are before impermanent loss.",
       })),
     },
     {

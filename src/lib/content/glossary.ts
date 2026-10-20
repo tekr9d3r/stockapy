@@ -65,6 +65,38 @@ export const GLOSSARY: Term[] = [
       "can trigger liquidations before anyone can react.",
   },
   {
+    term: "Impermanent loss",
+    slug: "impermanent-loss",
+    definition:
+      "What a liquidity provider gives up when prices move, compared with simply holding. The " +
+      "pool keeps its two sides equal in value, so as a stock rises it sells the stock and you " +
+      "end with fewer shares. With NVDA up 30% in a 50/50 pool you hold about 12% fewer shares " +
+      "and roughly 0.85% less value than if you had held. Trading fees have to cover it.",
+  },
+  {
+    term: "Concentrated liquidity",
+    slug: "concentrated-liquidity",
+    definition:
+      "A pool design (Uniswap v3/v4, Orca, Raydium CLMM, Aerodrome Slipstream) where you choose a " +
+      "price range. Inside it your capital earns far more fees; outside it you earn nothing and " +
+      "hold only the side that lost. Quoted APYs assume you stay in range.",
+  },
+  {
+    term: "Fee tier",
+    slug: "fee-tier",
+    definition:
+      "The share of each swap a pool pays its liquidity providers, such as 0.05%, 0.3% or 1%. " +
+      "Higher tiers earn more per trade but attract fewer trades.",
+  },
+  {
+    term: "Volume / TVL",
+    slug: "volume-tvl",
+    definition:
+      "A day's trading volume divided by the value in the pool: how hard each dollar of " +
+      "liquidity is working. A high ratio on a small pool often means a rate that will not " +
+      "survive more liquidity arriving.",
+  },
+  {
     term: "In-kind yield",
     slug: "in-kind-yield",
     definition:

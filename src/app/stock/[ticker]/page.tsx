@@ -3,12 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/JsonLd";
 import { BorrowTable } from "@/components/BorrowTable";
+import { LiquidityTable } from "@/components/LiquidityTable";
 import { OpportunityTable } from "@/components/OpportunityTable";
 import { StockLogo } from "@/components/StockLogo";
 import { Stat, StatStrip } from "@/components/Stat";
 import { borrowRows, borrowStats, getRows, marketStats, rowsForTicker } from "@/lib/data/rows";
 import { loadSeed } from "@/lib/data/seed";
 import { loadLatestSnapshot } from "@/lib/data/snapshot";
+import { liquidityRowsForTicker } from "@/lib/data/liquidity";
 import { formatApy, formatDate, formatLtv, formatPp, formatUsd } from "@/lib/format";
 import { breadcrumbLd, datasetLd, faqLd, itemListLd, stockFaq } from "@/lib/seo/jsonld";
 import { BRAND_NAME } from "@/config";
@@ -68,6 +70,12 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
   const byIssuer = Object.groupBy(rows, (r) => r.issuer.name);
   const borrow = borrowRows(rows);
   const borrowSummary = borrowStats(borrow);
+  // Default view on a stock page: live, non-speculative pools of at least $10k.
+  const allPools = liquidityRowsForTicker(asset.ticker);
+  const pools = allPools.filter(
+    (r) => (r.tvlUsd ?? 0) >= 10_000 && r.pairType !== "stock-other" && r.status === "live",
+  );
+  const hiddenPools = allPools.length - pools.length;
   const organicPct = stats.organicShare === null ? null : stats.organicShare * 100;
 
   const faq = stockFaq(asset, rows);
@@ -180,6 +188,28 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
             )}
           </p>
           <BorrowTable rows={borrow} compact />
+        </section>
+      )}
+
+      {pools.length > 0 && (
+        <section className="mt-10">
+          <h2 className="mb-2 text-lg font-semibold">Provide liquidity with {asset.ticker}</h2>
+          <p className="mb-4 max-w-3xl text-sm leading-relaxed text-fg-muted">
+            {pools.length} {pools.length === 1 ? "pool pairs" : "pools pair"} a tokenized{" "}
+            {asset.ticker} with another asset. Fee APY is paid by traders; every rate is before
+            impermanent loss, and concentrated pools only earn while the price is in range.
+            {hiddenPools > 0 && (
+              <>
+                {" "}
+                {hiddenPools} speculative or thin pools are hidden here;{" "}
+                <Link href="/liquidity" className="text-accent underline underline-offset-2">
+                  see all
+                </Link>
+                .
+              </>
+            )}
+          </p>
+          <LiquidityTable rows={pools} />
         </section>
       )}
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CategoryTabs } from "@/components/CategoryTabs";
 import { JsonLd } from "@/components/JsonLd";
 import { PlatformList } from "@/components/PlatformList";
 import { Stat, StatStrip } from "@/components/Stat";
@@ -14,7 +15,12 @@ export const revalidate = 3600;
 export default function Home() {
   const rows = getRows();
   const stats = marketStats(rows);
-  const groups = platformGroups(rows);
+  // Earn is where the stock itself is paid. Collateral-only venues are on Borrow.
+  const earnRows = rows.filter((r) => r.category === "earn");
+  const groups = platformGroups(earnRows);
+  const earnTvl = earnRows
+    .filter((r) => r.status === "live")
+    .reduce((sum, r) => sum + (r.tvlUsd ?? 0), 0);
   const seed = loadSeed();
   const snapshot = loadLatestSnapshot();
   const asOf = formatDate(snapshot?.fetchedAt ?? null);
@@ -38,6 +44,8 @@ export default function Home() {
         ]}
       />
 
+      <CategoryTabs active="earn" />
+
       <section className="mb-8 max-w-3xl">
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
           Where tokenized stocks actually earn
@@ -45,9 +53,9 @@ export default function Home() {
 
         {/* Answer-first: the one paragraph a search engine or an AI assistant should lift. */}
         <p className="mt-4 text-[17px] leading-relaxed text-fg-muted">
-          {BRAND_NAME} tracks {stats.opportunityCount} places to put a tokenized stock to work,
-          across {new Set(rows.map((r) => r.chain)).size} chains and{" "}
-          {groups.length} platforms. As of {asOf}, the highest advertised rate is{" "}
+          {BRAND_NAME} tracks {stats.earnCount} places that pay you to deposit a tokenized
+          stock, across {new Set(earnRows.map((r) => r.chain)).size} chains and {groups.length}{" "}
+          platforms. As of {asOf}, the highest advertised rate is{" "}
           <strong className="text-fg">{formatApy(stats.maxApy)}</strong>
           {stats.best && (
             <>
@@ -81,12 +89,12 @@ export default function Home() {
       <section className="mb-8">
         <StatStrip>
           <Stat
-            label="Live opportunities"
-            value={String(stats.opportunityCount)}
+            label="Live earn opportunities"
+            value={String(stats.earnCount)}
             note={
               stats.endedCount > 0
-                ? `${stats.earnCount} earn · ${stats.endedCount} ended, kept on record`
-                : `${stats.earnCount} earn, rest collateral`
+                ? `${stats.endedCount} ended, kept on record`
+                : `across ${groups.length} platforms`
             }
           />
           <Stat
@@ -101,14 +109,14 @@ export default function Home() {
             note={`Of ${stats.splitKnownCount} venues that disclose it`}
             tone="warn"
           />
-          <Stat label="Total value in these venues" value={formatUsd(stats.tvlUsd)} note={`As of ${asOf}`} />
+          <Stat label="Total value in these venues" value={formatUsd(earnTvl)} note={`As of ${asOf}`} />
         </StatStrip>
       </section>
 
       <section id="table" className="mb-12 scroll-mt-20">
         <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
           <h2 className="text-lg font-semibold">
-            {groups.length} platforms take a tokenized stock
+            {groups.length} platforms pay you to deposit a tokenized stock
           </h2>
           <p className="text-xs text-fg-subtle">
             Refreshed hourly · last run {asOf} ·{" "}
@@ -139,9 +147,10 @@ export default function Home() {
           everywhere, because very few people want to borrow against a tokenized share.
         </Explainer>
         <Explainer title="A big number usually means borrowed risk">
-          The highest rates on this page come from vaults that deposit your stock, borrow a
-          stablecoin against it and loop. That multiplies an incentive programme — and it adds a
-          liquidation price that an ordinary share has never had.
+          The highest rates on this page come from vaults that can deposit your stock, borrow a
+          stablecoin against it and loop. Where they do, that multiplies an incentive programme —
+          and adds a liquidation price an ordinary share has never had. Check each vault&rsquo;s
+          allocation: some hold the stock and nothing else.
         </Explainer>
         <Explainer title="Borrowing is the bigger opportunity">
           Lending a tokenized stock out pays almost nothing, but posting it as collateral and

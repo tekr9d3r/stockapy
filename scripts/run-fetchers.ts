@@ -4,6 +4,10 @@
  * Each source is isolated: one failing API must not empty the others. On a total
  * failure nothing is written, so the site keeps serving the last good snapshot.
  *
+ * Liquidity is a separate step writing its own file (data/snapshots/liquidity.json,
+ * latest only — no hourly archive, it is ~10x larger). Earn/Borrow and Liquidity
+ * succeed or fail independently of each other.
+ *
  *   npx tsx scripts/run-fetchers.ts            fetch and write
  *   npx tsx scripts/run-fetchers.ts --discover also list unseeded equity pools
  */
@@ -13,7 +17,9 @@ import { fetchAave } from "../src/lib/fetchers/aave";
 import { fetchKrakenInk } from "../src/lib/fetchers/krakenInk";
 import { fetchMorpho } from "../src/lib/fetchers/morpho";
 import { fetchDefiLlama, findUnseededPools } from "../src/lib/fetchers/defillama";
+import { fetchLiquidity } from "../src/lib/fetchers/liquidity";
 import type { Snapshot, SnapshotFile } from "../src/lib/data/types";
+import type { LiquidityFile } from "../src/lib/liquidity/types";
 
 const SNAPSHOT_DIR = path.join(process.cwd(), "data", "snapshots");
 
@@ -41,21 +47,20 @@ async function main() {
     }
   }
 
-  if (snapshots.length === 0) {
-    console.error("No source returned anything. Keeping the previous snapshot.");
-    process.exit(1);
+  fs.mkdirSync(SNAPSHOT_DIR, { recursive: true });
+  const earnOk = snapshots.length > 0;
+  if (earnOk) {
+    const file: SnapshotFile = { fetchedAt, sources, snapshots };
+    fs.writeFileSync(path.join(SNAPSHOT_DIR, "latest.json"), JSON.stringify(file, null, 2) + "\n");
+    const stamp = fetchedAt.slice(0, 13).replace(/[:T]/g, "-");
+    fs.writeFileSync(path.join(SNAPSHOT_DIR, `${stamp}.json`), JSON.stringify(file, null, 2) + "\n");
+    console.log(`Wrote latest.json and ${stamp}.json (${snapshots.length} snapshots)`);
+  } else {
+    console.error("No earn/borrow source returned anything. Keeping the previous snapshot.");
   }
 
-  const file: SnapshotFile = { fetchedAt, sources, snapshots };
-  fs.mkdirSync(SNAPSHOT_DIR, { recursive: true });
-  fs.writeFileSync(path.join(SNAPSHOT_DIR, "latest.json"), JSON.stringify(file, null, 2) + "\n");
-
-  const stamp = fetchedAt.slice(0, 13).replace(/[:T]/g, "-");
-  fs.writeFileSync(
-    path.join(SNAPSHOT_DIR, `${stamp}.json`),
-    JSON.stringify(file, null, 2) + "\n",
-  );
-  console.log(`Wrote latest.json and ${stamp}.json (${snapshots.length} snapshots)`);
+  const liquidityOk = await runLiquidity();
+  if (!earnOk && !liquidityOk) process.exit(1);
 
   if (process.argv.includes("--discover")) {
     const unseeded = await findUnseededPools();
@@ -66,6 +71,29 @@ async function main() {
           `tvl=${Math.round(p.tvlUsd ?? 0)} apy=${p.apy} ${p.pool}`,
       );
     }
+  }
+}
+
+async function runLiquidity(): Promise<boolean> {
+  const file = path.join(SNAPSHOT_DIR, "liquidity.json");
+  let previous: LiquidityFile | null = null;
+  try {
+    previous = JSON.parse(fs.readFileSync(file, "utf8")) as LiquidityFile;
+  } catch {
+    // First run: nothing to carry forward.
+  }
+  try {
+    const result = await fetchLiquidity(previous);
+    fs.writeFileSync(file, JSON.stringify(result, null, 1) + "\n");
+    const live = result.pools.filter((p) => p.status === "live").length;
+    console.log(
+      `[liquidity] ok, ${live} live pools, ${result.pools.length - live} ended, ` +
+        `${result.skipped.length} skipped, ${result.review.length} for review`,
+    );
+    return true;
+  } catch (err) {
+    console.error(`[liquidity] FAILED: ${err}. Keeping the previous liquidity file.`);
+    return false;
   }
 }
 

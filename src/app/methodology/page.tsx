@@ -96,6 +96,36 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
+      <section id="liquidity" className="scroll-mt-20">
+        <Section title="Liquidity pools">
+          <p>
+            Pools come from the DefiLlama yields API. A pool is listed only if one of its tokens
+            matches our registry of tokenized-stock contracts by <strong className="text-fg">address</strong>.
+            Every address in that registry was checked against the token&rsquo;s own on-chain name,
+            because symbols are free to copy: building it turned up a Solana token called AMDC whose
+            on-chain name is a USD stablecoin. Pools whose symbol looks like a stock but whose address
+            is not registered go to a review list, not onto the site.
+          </p>
+          <p>
+            We list pools on venues DefiLlama classes as DEXs or liquidity managers. Yield aggregators
+            are left out because they wrap a pool already listed elsewhere, and counting both would
+            double the pool.
+          </p>
+          <p>
+            Fee APY is DefiLlama&rsquo;s base APY for the pool — trading fees paid by traders.
+            Incentive APY is its reward APY. We never add points or estimate missing figures. The
+            headline share of yield that is fees is weighted by pool size, so a single thin pool with
+            an enormous emission rate cannot dominate it. All rates are before impermanent loss.
+          </p>
+          <p>
+            Pools under $10k of TVL are hidden by default, and pairs against small or speculative
+            tokens are flagged and hidden behind a toggle. A pool that empties or disappears stays
+            listed with its last figures, marked Ended. Pool type and fee tier are parsed from the
+            venue&rsquo;s own pool description and left blank where it does not say.
+          </p>
+        </Section>
+      </section>
+
       <Section title="Borrow terms">
         <p>
           Aave V4 reserves come from{" "}

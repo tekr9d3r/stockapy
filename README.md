@@ -21,6 +21,18 @@ Pages read both at build time and revalidate hourly, so every number ships insid
 HTML. Nothing in the comparison table is fetched by the browser — crawlers and AI fetchers see
 the complete dataset.
 
+## Three categories
+
+- **Earn** (`/`) — deposit the stock and get paid. Driven by `data/seed.yaml`.
+- **Liquidity** (`/liquidity`) — pair the stock in a DEX pool and earn trading fees.
+  Auto-discovered from DefiLlama each run, matched by contract address against
+  `data/stock-tokens.yaml` (see `scripts/build-stock-registry.md`), written to
+  `data/snapshots/liquidity.json`. Pools that empty or vanish stay listed as Ended.
+- **Borrow** (`/borrow`) — post the stock as collateral. Seed rows with a `borrow:` block.
+
+The liquidity step runs independently of the earn/borrow fetchers: either can fail
+without taking the other down.
+
 ## Commands
 
 ```bash
@@ -29,7 +41,8 @@ npm run build       # production build (fails on a broken seed)
 npm run typecheck   # tsc --noEmit
 npm run fetch       # run the fetchers, write data/snapshots/
 npm run discover    # also list equity pools DefiLlama has that the seed does not
-npm run logos       # fetch any missing stock logos into public/logos
+npm run logos       # fetch any missing stock and venue logos into public/logos
+npm test            # pool matching and classification tests
 ```
 
 ## Adding an opportunity

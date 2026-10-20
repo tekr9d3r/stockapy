@@ -1,6 +1,7 @@
 import { borrowRows, borrowStats, getRows, marketStats } from "@/lib/data/rows";
 import { loadLatestSnapshot } from "@/lib/data/snapshot";
 import { listPosts } from "@/lib/content/posts";
+import { liquidityStats } from "@/lib/data/liquidity";
 import { formatApy, formatDate, formatLtv } from "@/lib/format";
 import { BRAND_NAME, SITE_DESCRIPTION, SITE_URL } from "@/config";
 
@@ -17,6 +18,7 @@ export function GET() {
   const asOf = formatDate(loadLatestSnapshot()?.fetchedAt ?? null);
   const tickers = [...new Set(rows.map((r) => r.underlying.ticker))].sort();
   const borrow = borrowRows(rows);
+  const lq = liquidityStats();
   const bs = borrowStats(borrow);
   const organic = stats.organicShare === null ? "unknown" : `${(stats.organicShare * 100).toFixed(1)}%`;
 
@@ -33,6 +35,8 @@ export function GET() {
 - ${stats.zeroCount} of ${stats.earnCount} earn opportunities pay exactly 0%.
 - Borrowing is the larger opportunity: ${borrow.length} markets accept a tokenized stock as collateral, with a maximum loan-to-value of ${formatLtv(bs.maxLtv)} and a median borrow cost of ${bs.medianApr === null ? "unknown" : `${bs.medianApr.toFixed(2)}%`}${bs.cheapest ? `, the cheapest being ${bs.cheapest.borrow!.borrowApr?.toFixed(2)}% on ${bs.cheapest.platform.name}` : ""}.
 
+- Liquidity is the one category with meaningful real yield: across ${lq.poolCount} stock/stablecoin pools of at least $10k, the median trading-fee APY is ${formatApy(lq.medianFeeApy)}, and ${lq.feeShare === null ? "an unknown share" : `${(lq.feeShare * 100).toFixed(1)}%`} of LP yield (weighted by pool size) is trading fees rather than incentives. All before impermanent loss.
+
 ## Data
 
 - [Full dataset, JSON](${SITE_URL}/api/opportunities): every opportunity with base/reward split, TVL, source and timestamp. CC BY 4.0.
@@ -42,6 +46,7 @@ export function GET() {
 ## Pages
 
 - [Comparison table](${SITE_URL}/): every tracked earn opportunity.
+- [Provide liquidity with tokenized stocks](${SITE_URL}/liquidity): DEX pools with fee and incentive APY shown separately, volume, TVL and LP risks.
 - [Borrow against tokenized stocks](${SITE_URL}/borrow): max LTV, loan asset and borrow cost per venue.
 - [Glossary](${SITE_URL}/glossary): base APY, reward APY, points, collateral-only venues, looped vaults, oracle gap risk.
 - [Platforms](${SITE_URL}/platforms)

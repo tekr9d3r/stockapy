@@ -185,6 +185,14 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
                   </td>
                   <td className="tnum px-2 py-2.5 text-right whitespace-nowrap text-fg-muted">
                     {row.unmeasured ? "—" : formatApy(row.apyTotal)}
+                    {row.pointsLabel && (
+                      <span
+                        className="ml-1 text-[10px] font-medium uppercase tracking-wide text-accent"
+                        title={`Also earns ${row.pointsLabel}. Points have no stated rate, value or date, so they are not part of the APY.`}
+                      >
+                        + {row.pointsLabel}
+                      </span>
+                    )}
                   </td>
                   <td className="tnum px-2 py-2.5 text-right whitespace-nowrap">
                     {row.borrow!.lendApy === null ? (
