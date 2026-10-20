@@ -1736,12 +1736,14 @@ opportunities:
     manual:
       apy_base: null
       apy_reward: null
-      apy_total: null
+      apy_total: 2.24
       tvl_usd: null
-      checked_at: 2026-10-19
+      checked_at: 2026-10-20
       note: >-
-        Rate not collected yet. Needs an on-chain reader for the Veda BoringVault share
-        price on Ink, or the Kraken private Earn API.
+        Rate read from Kraken's own xStocks Earn page on 20 Oct 2026. Kraken has no
+        public earn API — its Earn endpoint needs an authenticated key — so this is
+        hand-entered and will go stale between checks. Kraken does not split it into
+        interest and incentive, so the split is unknown rather than zero.
     eligibility_note: Kraken Earn availability depends on your country of residence.
     risk_notes: >-
       Custodial. Withdrawals take about three days, so you cannot exit quickly if the
@@ -1761,12 +1763,14 @@ opportunities:
     manual:
       apy_base: null
       apy_reward: null
-      apy_total: null
+      apy_total: 2.65
       tvl_usd: null
-      checked_at: 2026-10-19
+      checked_at: 2026-10-20
       note: >-
-        Rate not collected yet. Needs an on-chain reader for the Veda BoringVault share
-        price on Ink, or the Kraken private Earn API.
+        Rate read from Kraken's own xStocks Earn page on 20 Oct 2026. Kraken has no
+        public earn API — its Earn endpoint needs an authenticated key — so this is
+        hand-entered and will go stale between checks. Kraken does not split it into
+        interest and incentive, so the split is unknown rather than zero.
     eligibility_note: Kraken Earn availability depends on your country of residence.
     risk_notes: >-
       Custodial. Withdrawals take about three days, so you cannot exit quickly if the
@@ -1786,12 +1790,14 @@ opportunities:
     manual:
       apy_base: null
       apy_reward: null
-      apy_total: null
+      apy_total: 2.42
       tvl_usd: null
-      checked_at: 2026-10-19
+      checked_at: 2026-10-20
       note: >-
-        Rate not collected yet. Needs an on-chain reader for the Veda BoringVault share
-        price on Ink, or the Kraken private Earn API.
+        Rate read from Kraken's own xStocks Earn page on 20 Oct 2026. Kraken has no
+        public earn API — its Earn endpoint needs an authenticated key — so this is
+        hand-entered and will go stale between checks. Kraken does not split it into
+        interest and incentive, so the split is unknown rather than zero.
     eligibility_note: Kraken Earn availability depends on your country of residence.
     risk_notes: >-
       Custodial. Withdrawals take about three days, so you cannot exit quickly if the

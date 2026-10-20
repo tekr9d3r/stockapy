@@ -44,8 +44,12 @@ export default function MethodologyPage() {
           Ethereum — so a symbol match would quietly mix up two different products.
         </p>
         <p>
-          Anything DefiLlama does not cover is entered by hand and labelled as such. Rows sourced
-          by hand carry the date a human last checked them.
+          Aave V4 and Morpho come from their own GraphQL APIs, which cover markets DefiLlama
+          does not index, and Kraken&rsquo;s vaults are read directly from Ink, Kraken&rsquo;s
+          own L2. Anything no API covers is entered by hand and labelled as such, and rows
+          sourced by hand carry the date a human last checked them. A single row can draw on
+          more than one source: Kraken&rsquo;s vaults take their size from the chain and their
+          rate from a human reading Kraken&rsquo;s page, because no one source has both.
         </p>
         <dl className="mt-3 grid grid-cols-2 gap-2 text-sm sm:grid-cols-3">
           {Object.entries(bySource).map(([source, count]) => (
@@ -224,8 +228,12 @@ export default function MethodologyPage() {
             them. They stay on the watchlist so the absence is documented rather than implied.
           </li>
           <li>
-            Kraken&rsquo;s xStocks Vault rates are still uncollected: they need an on-chain
-            reader for the Veda vault share price on Ink.
+            Kraken&rsquo;s vault sizes are read from the Veda BoringVault contracts on Ink,
+            valued at the vault&rsquo;s share supply times the price of the underlying xStock.
+            The exact share rate lives in an Accountant contract whose address we could not
+            find, so this understates each vault by roughly the yield it has accrued since
+            launch — on the order of a percent. The rates themselves are hand-entered from
+            Kraken&rsquo;s site, because their Earn API needs an authenticated key.
           </li>
           <li>
             CeFi has no usable public API for tokenized stock earn products. Kraken&rsquo;s vault

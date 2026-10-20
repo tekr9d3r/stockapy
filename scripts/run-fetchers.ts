@@ -10,6 +10,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fetchAave } from "../src/lib/fetchers/aave";
+import { fetchKrakenInk } from "../src/lib/fetchers/krakenInk";
 import { fetchMorpho } from "../src/lib/fetchers/morpho";
 import { fetchDefiLlama, findUnseededPools } from "../src/lib/fetchers/defillama";
 import type { Snapshot, SnapshotFile } from "../src/lib/data/types";
@@ -20,6 +21,7 @@ const SOURCES: Record<string, () => Promise<Snapshot[]>> = {
   defillama: fetchDefiLlama,
   aave: fetchAave,
   morpho: fetchMorpho,
+  krakenInk: fetchKrakenInk,
 };
 
 async function main() {

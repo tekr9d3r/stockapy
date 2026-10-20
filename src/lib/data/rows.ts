@@ -26,10 +26,12 @@ export function getRows(): Row[] {
       const snap = snaps.get(opp.id);
       const manual = opp.manual;
 
-      const apyTotal = snap ? snap.apyTotal : (manual?.apy_total ?? null);
-      const apyBase = snap ? snap.apyBase : (manual?.apy_base ?? null);
-      const apyReward = snap ? snap.apyReward : (manual?.apy_reward ?? null);
-      const fetchedAt = snap ? snap.fetchedAt : (manual?.checked_at ?? null);
+      // Per-field, not per-source: a fetcher that reads only TVL on-chain must not
+      // blank out an APY that was entered by hand.
+      const apyTotal = snap?.apyTotal ?? manual?.apy_total ?? null;
+      const apyBase = snap?.apyBase ?? manual?.apy_base ?? null;
+      const apyReward = snap?.apyReward ?? manual?.apy_reward ?? null;
+      const fetchedAt = snap?.fetchedAt ?? manual?.checked_at ?? null;
 
       return {
         id: opp.id,
@@ -44,7 +46,7 @@ export function getRows(): Row[] {
         apyBase,
         apyReward,
         pointsLabel: snap?.pointsLabel ?? opp.points_label ?? manual?.points_label ?? null,
-        tvlUsd: snap ? snap.tvlUsd : (manual?.tvl_usd ?? null),
+        tvlUsd: snap?.tvlUsd ?? manual?.tvl_usd ?? null,
         lockup: opp.lockup,
         withdrawalDelayDays: opp.withdrawal_delay_days,
         url: opp.url,
