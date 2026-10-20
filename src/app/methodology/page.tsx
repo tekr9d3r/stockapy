@@ -76,7 +76,7 @@ export default function MethodologyPage() {
         </p>
         <p>
           These are resolved from each protocol&rsquo;s own identifiers, not guessed: Kamino
-          token mints and Jupiter vault ids from their APIs, Morpho market ids cross-checked
+          market and reserve addresses and Jupiter vault ids from their APIs, Morpho market ids cross-checked
           against the markets listed in their sitemap, and Aave reserves by symbol. Where two
           markets shared a collateral, loan asset and LLTV, we used on-chain activity to tell
           them apart rather than picking one.

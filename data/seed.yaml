@@ -334,7 +334,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://kamino.com/borrow?collateralFilter=Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh
+    deep_link: https://kamino.com/borrow/reserve/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua/7B66Az3tJhAo4bLkX8PzTixQ9ZGyHkkjxfVLhF26sP5q
     verified: false
     lockup: none
     data_source: defillama
@@ -355,7 +355,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://kamino.com/borrow?collateralFilter=XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB
+    deep_link: https://kamino.com/borrow/reserve/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua/5iTiczqgUegqA3PpoNpotizMbY9n1sRWr3oL6igKvWuf
     verified: false
     lockup: none
     data_source: defillama
@@ -376,7 +376,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://kamino.com/borrow?collateralFilter=XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp
+    deep_link: https://kamino.com/borrow/reserve/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua/CKJbqakbPGyhziowm19LPYz636UszuezfkitmpRtcLSH
     verified: false
     lockup: none
     data_source: defillama
@@ -397,7 +397,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://kamino.com/borrow?collateralFilter=XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN
+    deep_link: https://kamino.com/borrow/reserve/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua/4wg6rEkGgHaEuxMduP46C1xFZ24Lnp5YgdNkZAHxFzsN
     verified: false
     lockup: none
     data_source: defillama
@@ -418,7 +418,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://kamino.com/borrow?collateralFilter=XsP7xzNPvEHS1m6qfanPUGjNmdnmsLKEoNAnHjdxxyZ
+    deep_link: https://kamino.com/borrow/reserve/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua/Cwy2WJoswCMyfPtWTrmiaDLXC3phz3qwr1TaT4kaSAyD
     verified: false
     lockup: none
     data_source: defillama
@@ -439,7 +439,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://kamino.com/borrow?collateralFilter=XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1
+    deep_link: https://kamino.com/borrow/reserve/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua/57qagnQFuWw1seEqi6Z5JBvkm5xH5svdmq9dtqxG1rYy
     verified: false
     lockup: none
     data_source: defillama
@@ -460,7 +460,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://kamino.com/borrow?collateralFilter=XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg
+    deep_link: https://kamino.com/borrow/reserve/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua/4UBJu5Xp1aziV9frBQBhc1RnKrgXHAWHYejQytkYr8gq
     verified: false
     lockup: none
     data_source: defillama
@@ -481,7 +481,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://kamino.com/borrow?collateralFilter=XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W
+    deep_link: https://kamino.com/borrow/reserve/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua/UvXjBuC7YZYaGB9Rn1PpBD1GySmjzunXgE8Zev9ua8d
     verified: false
     lockup: none
     data_source: defillama
@@ -502,7 +502,7 @@ opportunities:
     category: earn
     variant: xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://kamino.com/borrow?collateralFilter=Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ
+    deep_link: https://kamino.com/borrow/reserve/5wJeMrUYECGq41fxRESKALVcHnNX26TAWy4W98yULsua/2jerdAXR8r2B6z3P7P6VgSiePQX7wqcpbEqdDbm8mgeB
     verified: false
     lockup: none
     data_source: defillama
@@ -523,7 +523,7 @@ opportunities:
     category: earn
     variant: Sentora xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://kamino.com/borrow?collateralFilter=Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh
+    deep_link: https://kamino.com/borrow/reserve/8BNUWRSibVasaAmhYpBCFpGgMisGKfVAf9ho3Cmf6vjr/4WqQtjQbewk7ptnXsX3E3Tf3M4pa9YiBsgAqjsJDkspH
     verified: false
     lockup: none
     data_source: defillama
@@ -544,7 +544,7 @@ opportunities:
     category: earn
     variant: Sentora xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://kamino.com/borrow?collateralFilter=XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W
+    deep_link: https://kamino.com/borrow/reserve/8BNUWRSibVasaAmhYpBCFpGgMisGKfVAf9ho3Cmf6vjr/7Yh74hEtP75acqhQ5f2FqoHQny5TYiYBPVxkwN35rCSi
     verified: false
     lockup: none
     data_source: defillama
@@ -565,7 +565,7 @@ opportunities:
     category: earn
     variant: Sentora xStocks Market
     url: https://app.kamino.finance/lending
-    deep_link: https://kamino.com/borrow?collateralFilter=Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ
+    deep_link: https://kamino.com/borrow/reserve/8BNUWRSibVasaAmhYpBCFpGgMisGKfVAf9ho3Cmf6vjr/w6diwHyXhRzmhRWwnz3jQPqTt35qFbBDcQP7T2VdgSm
     verified: false
     lockup: none
     data_source: defillama
