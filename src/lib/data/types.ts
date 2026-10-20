@@ -98,6 +98,11 @@ export type Opportunity = {
   external_id?: string;
   manual?: ManualRate;
   borrow?: BorrowConfig;
+  /**
+   * A points programme the venue runs on this market. Shown as a label, never
+   * folded into an APY: nobody can honestly price a future airdrop.
+   */
+  points_label?: string;
   /** Defaults to "live" when absent. */
   status?: Status;
   /** The date we recorded it as ended. */

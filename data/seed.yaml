@@ -586,7 +586,8 @@ opportunities:
     category: earn
     variant: NVDAx/USDC
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend/borrow/80/deposit
+    deep_link: https://jup.ag/lend/borrow/80
+    points_label: xPoints
     verified: false
     lockup: none
     data_source: defillama
@@ -603,7 +604,8 @@ opportunities:
     category: earn
     variant: NVDAx/JupUSD
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend/borrow/84/deposit
+    deep_link: https://jup.ag/lend/borrow/84
+    points_label: xPoints
     verified: false
     lockup: none
     data_source: defillama
@@ -620,7 +622,8 @@ opportunities:
     category: earn
     variant: TSLAx/USDC
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend/borrow/77/deposit
+    deep_link: https://jup.ag/lend/borrow/77
+    points_label: xPoints
     verified: false
     lockup: none
     data_source: defillama
@@ -637,7 +640,8 @@ opportunities:
     category: earn
     variant: TSLAx/JupUSD
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend/borrow/81/deposit
+    deep_link: https://jup.ag/lend/borrow/81
+    points_label: xPoints
     verified: false
     lockup: none
     data_source: defillama
@@ -654,7 +658,8 @@ opportunities:
     category: earn
     variant: SPYx/USDC
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend/borrow/78/deposit
+    deep_link: https://jup.ag/lend/borrow/78
+    points_label: xPoints
     verified: false
     lockup: none
     data_source: defillama
@@ -671,7 +676,8 @@ opportunities:
     category: earn
     variant: SPYx/JupUSD
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend/borrow/82/deposit
+    deep_link: https://jup.ag/lend/borrow/82
+    points_label: xPoints
     verified: false
     lockup: none
     data_source: defillama
@@ -688,7 +694,8 @@ opportunities:
     category: earn
     variant: QQQx/USDC
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend/borrow/79/deposit
+    deep_link: https://jup.ag/lend/borrow/79
+    points_label: xPoints
     verified: false
     lockup: none
     data_source: defillama
@@ -705,7 +712,8 @@ opportunities:
     category: earn
     variant: QQQx/JupUSD
     url: https://jup.ag/lend
-    deep_link: https://jup.ag/lend/borrow/83/deposit
+    deep_link: https://jup.ag/lend/borrow/83
+    points_label: xPoints
     verified: false
     lockup: none
     data_source: defillama

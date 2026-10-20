@@ -54,6 +54,14 @@ export function ApyCell({ row }: { row: Row }) {
           incentive
         </span>
       )}
+      {row.pointsLabel && (
+        <span
+          className="text-[10px] font-medium uppercase tracking-wide text-accent"
+          title={`This market also earns ${row.pointsLabel}. Points have no stated rate, value or date, so they are not part of the APY.`}
+        >
+          + {row.pointsLabel}
+        </span>
+      )}
     </span>
   );
 }

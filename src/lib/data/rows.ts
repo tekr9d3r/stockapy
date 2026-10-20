@@ -43,7 +43,7 @@ export function getRows(): Row[] {
         apyTotal,
         apyBase,
         apyReward,
-        pointsLabel: snap?.pointsLabel ?? manual?.points_label ?? null,
+        pointsLabel: snap?.pointsLabel ?? opp.points_label ?? manual?.points_label ?? null,
         tvlUsd: snap ? snap.tvlUsd : (manual?.tvl_usd ?? null),
         lockup: opp.lockup,
         withdrawalDelayDays: opp.withdrawal_delay_days,
