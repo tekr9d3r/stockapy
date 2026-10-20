@@ -152,6 +152,14 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
                       <Badge tone={row.platform.kind === "cefi" ? "accent" : "neutral"}>
                         {row.platform.kind === "cefi" ? "CeFi" : "DeFi"}
                       </Badge>
+                      {!row.listed && (
+                        <Badge
+                          tone="warn"
+                          title="Not listed in the venue's own interface: reachable only by direct link, and not curated by them."
+                        >
+                          Unlisted
+                        </Badge>
+                      )}
                     </div>
                     {row.variant && (
                       <div className="mt-0.5 text-xs text-fg-subtle">{row.variant}</div>

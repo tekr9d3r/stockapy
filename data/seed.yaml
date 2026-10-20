@@ -896,185 +896,274 @@ opportunities:
       almost entirely sUP emissions, not interest.
     active: true
 
-  - id: morpho-nvda-hood
+
+  - id: morpho-nvda-usdg-robinhood
     token: NVDA (Robinhood)
     platform: morpho
     chain: Robinhood Chain
     category: collateral
-    variant: NVDA / USDG
+    variant: NVDA / USDG 62.5% LLTV
     url: https://app.morpho.org
     deep_link: https://app.morpho.org/robinhood-chain/variable/0x8b16891f032a93b771347c9cb470a780e6699dd701553d3402aa3cdba6189c3e/usdg-nvda
     verified: false
+    listed: false
     lockup: none
     data_source: morpho_api
     external_id: "0x8b16891f032a93b771347c9cb470a780e6699dd701553d3402aa3cdba6189c3e"
     borrow:
       loan_asset: USDG
     risk_notes: >-
-      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
-      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
-      not your shares. Posting the stock unlocks borrowing and a liquidation price
-      against an equity that gaps between market sessions.
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here — the
+      Lend rate is what a supplier of USDG earns, not your shares. Posting the stock
+      unlocks borrowing and a liquidation price against an equity that gaps between market
+      sessions.
+      Morpho does not list this market in its own interface, so it is not vetted the way
+      a listed market is and you can only reach it by direct link. It is on-chain and
+      holds real collateral, which is why it is here, but treat its oracle and its rates
+      with more suspicion than a listed market's.
     active: true
-  - id: morpho-spcx-hood
+  - id: morpho-spcx-usdg-robinhood
     token: SPCX (Robinhood)
     platform: morpho
     chain: Robinhood Chain
     category: collateral
-    variant: SPCX / USDG
+    variant: SPCX / USDG 62.5% LLTV
     url: https://app.morpho.org
     deep_link: https://app.morpho.org/robinhood-chain/variable/0x9b4b47cdf7e295341c6c6cdfd3efb9805c4a5b3d580dba0c0c39d3a4232b297b/usdg-spcx
     verified: false
+    listed: false
     lockup: none
     data_source: morpho_api
     external_id: "0x9b4b47cdf7e295341c6c6cdfd3efb9805c4a5b3d580dba0c0c39d3a4232b297b"
     borrow:
       loan_asset: USDG
     risk_notes: >-
-      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
-      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
-      not your shares. Posting the stock unlocks borrowing and a liquidation price
-      against an equity that gaps between market sessions.
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here — the
+      Lend rate is what a supplier of USDG earns, not your shares. Posting the stock
+      unlocks borrowing and a liquidation price against an equity that gaps between market
+      sessions.
+      Morpho does not list this market in its own interface, so it is not vetted the way
+      a listed market is and you can only reach it by direct link. It is on-chain and
+      holds real collateral, which is why it is here, but treat its oracle and its rates
+      with more suspicion than a listed market's.
     active: true
-  - id: morpho-googl-hood
+  - id: morpho-googl-usdg-robinhood
     token: GOOGL (Robinhood)
     platform: morpho
     chain: Robinhood Chain
     category: collateral
-    variant: GOOGL / USDG
+    variant: GOOGL / USDG 62.5% LLTV
     url: https://app.morpho.org
     deep_link: https://app.morpho.org/robinhood-chain/variable/0x7fa81b10e5d21b2e4c571f862442bc11aff2ed14f02335868d0ff933fd40d0ba/usdg-googl
     verified: false
+    listed: false
     lockup: none
     data_source: morpho_api
     external_id: "0x7fa81b10e5d21b2e4c571f862442bc11aff2ed14f02335868d0ff933fd40d0ba"
     borrow:
       loan_asset: USDG
     risk_notes: >-
-      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
-      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
-      not your shares. Posting the stock unlocks borrowing and a liquidation price
-      against an equity that gaps between market sessions.
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here — the
+      Lend rate is what a supplier of USDG earns, not your shares. Posting the stock
+      unlocks borrowing and a liquidation price against an equity that gaps between market
+      sessions.
+      Morpho does not list this market in its own interface, so it is not vetted the way
+      a listed market is and you can only reach it by direct link. It is on-chain and
+      holds real collateral, which is why it is here, but treat its oracle and its rates
+      with more suspicion than a listed market's.
     active: true
-  - id: morpho-aapl-hood
-    token: AAPL (Robinhood)
-    platform: morpho
-    chain: Robinhood Chain
-    category: collateral
-    variant: AAPL / USDG
-    url: https://app.morpho.org
-    deep_link: https://app.morpho.org/robinhood-chain/variable/0xdeb4782d012d5fd3b24962538c2f6559049d70bda4dabd2e4212dacb96c28d45/usdg-aapl
-    verified: false
-    lockup: none
-    data_source: morpho_api
-    external_id: "0xdeb4782d012d5fd3b24962538c2f6559049d70bda4dabd2e4212dacb96c28d45"
-    borrow:
-      loan_asset: USDG
-    risk_notes: >-
-      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
-      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
-      not your shares. Posting the stock unlocks borrowing and a liquidation price
-      against an equity that gaps between market sessions.
-    active: true
-  - id: morpho-spy-hood
-    token: SPY (Robinhood)
-    platform: morpho
-    chain: Robinhood Chain
-    category: collateral
-    variant: SPY / USDG
-    url: https://app.morpho.org
-    deep_link: https://app.morpho.org/robinhood-chain/variable/0x50bc39b5722fb5634c436d74c6787f3c125b879e7b73cf9e9ecc01bbb57b8e55/usdg-spy
-    verified: false
-    lockup: none
-    data_source: morpho_api
-    external_id: "0x50bc39b5722fb5634c436d74c6787f3c125b879e7b73cf9e9ecc01bbb57b8e55"
-    borrow:
-      loan_asset: USDG
-    risk_notes: >-
-      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
-      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
-      not your shares. Posting the stock unlocks borrowing and a liquidation price
-      against an equity that gaps between market sessions.
-    active: true
-  - id: morpho-wspyx-eth
+  - id: morpho-wspyx-ausd-ethereum
     token: wSPYx
     platform: morpho
     chain: Ethereum
     category: collateral
-    variant: WSPYX / AUSD
+    variant: wSPYx / AUSD 86.0% LLTV
     url: https://app.morpho.org
     deep_link: https://app.morpho.org/ethereum/variable/0xbf0432567b44ef5ce013ffcd7dd756c522252503f7986a406e780715b32c74fc/ausd-wspyx
     verified: false
+    listed: true
     lockup: none
     data_source: morpho_api
     external_id: "0xbf0432567b44ef5ce013ffcd7dd756c522252503f7986a406e780715b32c74fc"
     borrow:
       loan_asset: AUSD
     risk_notes: >-
-      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
-      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
-      not your shares. Posting the stock unlocks borrowing and a liquidation price
-      against an equity that gaps between market sessions.
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here — the
+      Lend rate is what a supplier of AUSD earns, not your shares. Posting the stock
+      unlocks borrowing and a liquidation price against an equity that gaps between market
+      sessions.
     active: true
-  - id: morpho-googlc-base
-    token: GOOGLc
+  - id: morpho-aapl-usdg-robinhood
+    token: AAPL (Robinhood)
     platform: morpho
-    chain: Base
+    chain: Robinhood Chain
     category: collateral
-    variant: GOOGLC / USDC
+    variant: AAPL / USDG 62.5% LLTV
     url: https://app.morpho.org
-    deep_link: https://app.morpho.org/base/variable/0xa3913d896b7e9c0e0a84f1be27d376cf2065616101cb7c44674af8a154e684cc/usdc-googlc
+    deep_link: https://app.morpho.org/robinhood-chain/variable/0xdeb4782d012d5fd3b24962538c2f6559049d70bda4dabd2e4212dacb96c28d45/usdg-aapl
     verified: false
+    listed: false
     lockup: none
     data_source: morpho_api
-    external_id: "0xa3913d896b7e9c0e0a84f1be27d376cf2065616101cb7c44674af8a154e684cc"
+    external_id: "0xdeb4782d012d5fd3b24962538c2f6559049d70bda4dabd2e4212dacb96c28d45"
     borrow:
-      loan_asset: USDC
+      loan_asset: USDG
     risk_notes: >-
-      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
-      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
-      not your shares. Posting the stock unlocks borrowing and a liquidation price
-      against an equity that gaps between market sessions.
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here — the
+      Lend rate is what a supplier of USDG earns, not your shares. Posting the stock
+      unlocks borrowing and a liquidation price against an equity that gaps between market
+      sessions.
+      Morpho does not list this market in its own interface, so it is not vetted the way
+      a listed market is and you can only reach it by direct link. It is on-chain and
+      holds real collateral, which is why it is here, but treat its oracle and its rates
+      with more suspicion than a listed market's.
     active: true
-  - id: morpho-aaplc-base
-    token: AAPLc
+  - id: morpho-nvda-usdg-robinhood-2
+    token: NVDA (Robinhood)
     platform: morpho
-    chain: Base
+    chain: Robinhood Chain
     category: collateral
-    variant: AAPLC / USDC
+    variant: NVDA / USDG 62.5% LLTV
     url: https://app.morpho.org
-    deep_link: https://app.morpho.org/base/variable/0xae1a30486234bf7e7ac166c7c03d9bc5f2cd8a39be2c48e73c665ac7148c3c28/usdc-aaplc
+    deep_link: https://app.morpho.org/robinhood-chain/variable/0x66306c087add8907752320b309934abcc354d21626de8115c79df49d9c214edc/usdg-nvda
     verified: false
+    listed: true
     lockup: none
     data_source: morpho_api
-    external_id: "0xae1a30486234bf7e7ac166c7c03d9bc5f2cd8a39be2c48e73c665ac7148c3c28"
+    external_id: "0x66306c087add8907752320b309934abcc354d21626de8115c79df49d9c214edc"
     borrow:
-      loan_asset: USDC
+      loan_asset: USDG
     risk_notes: >-
-      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
-      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
-      not your shares. Posting the stock unlocks borrowing and a liquidation price
-      against an equity that gaps between market sessions.
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here — the
+      Lend rate is what a supplier of USDG earns, not your shares. Posting the stock
+      unlocks borrowing and a liquidation price against an equity that gaps between market
+      sessions.
     active: true
-  - id: morpho-spcxc-base
+  - id: morpho-spy-usdg-robinhood
+    token: SPY (Robinhood)
+    platform: morpho
+    chain: Robinhood Chain
+    category: collateral
+    variant: SPY / USDG 62.5% LLTV
+    url: https://app.morpho.org
+    deep_link: https://app.morpho.org/robinhood-chain/variable/0x50bc39b5722fb5634c436d74c6787f3c125b879e7b73cf9e9ecc01bbb57b8e55/usdg-spy
+    verified: false
+    listed: true
+    lockup: none
+    data_source: morpho_api
+    external_id: "0x50bc39b5722fb5634c436d74c6787f3c125b879e7b73cf9e9ecc01bbb57b8e55"
+    borrow:
+      loan_asset: USDG
+    risk_notes: >-
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here — the
+      Lend rate is what a supplier of USDG earns, not your shares. Posting the stock
+      unlocks borrowing and a liquidation price against an equity that gaps between market
+      sessions.
+    active: true
+  - id: morpho-spcxc-usdc-base
     token: SPCXc
     platform: morpho
     chain: Base
     category: collateral
-    variant: SPCXC / USDC
+    variant: SPCXc / USDC 62.5% LLTV
     url: https://app.morpho.org
     deep_link: https://app.morpho.org/base/variable/0xce983b9ee6344e16ebbcc66812f23caafc63ae83fcc14fa29b66c7e69e9cecf6/usdc-spcxc
     verified: false
+    listed: true
     lockup: none
     data_source: morpho_api
     external_id: "0xce983b9ee6344e16ebbcc66812f23caafc63ae83fcc14fa29b66c7e69e9cecf6"
     borrow:
       loan_asset: USDC
     risk_notes: >-
-      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
-      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
-      not your shares. Posting the stock unlocks borrowing and a liquidation price
-      against an equity that gaps between market sessions.
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here — the
+      Lend rate is what a supplier of USDC earns, not your shares. Posting the stock
+      unlocks borrowing and a liquidation price against an equity that gaps between market
+      sessions.
+    active: true
+  - id: morpho-aaplc-usdc-base
+    token: AAPLc
+    platform: morpho
+    chain: Base
+    category: collateral
+    variant: AAPLc / USDC 62.5% LLTV
+    url: https://app.morpho.org
+    deep_link: https://app.morpho.org/base/variable/0xae1a30486234bf7e7ac166c7c03d9bc5f2cd8a39be2c48e73c665ac7148c3c28/usdc-aaplc
+    verified: false
+    listed: true
+    lockup: none
+    data_source: morpho_api
+    external_id: "0xae1a30486234bf7e7ac166c7c03d9bc5f2cd8a39be2c48e73c665ac7148c3c28"
+    borrow:
+      loan_asset: USDC
+    risk_notes: >-
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here — the
+      Lend rate is what a supplier of USDC earns, not your shares. Posting the stock
+      unlocks borrowing and a liquidation price against an equity that gaps between market
+      sessions.
+    active: true
+  - id: morpho-googlc-usdc-base
+    token: GOOGLc
+    platform: morpho
+    chain: Base
+    category: collateral
+    variant: GOOGLc / USDC 77.0% LLTV
+    url: https://app.morpho.org
+    deep_link: https://app.morpho.org/base/variable/0xa3913d896b7e9c0e0a84f1be27d376cf2065616101cb7c44674af8a154e684cc/usdc-googlc
+    verified: false
+    listed: true
+    lockup: none
+    data_source: morpho_api
+    external_id: "0xa3913d896b7e9c0e0a84f1be27d376cf2065616101cb7c44674af8a154e684cc"
+    borrow:
+      loan_asset: USDC
+    risk_notes: >-
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here — the
+      Lend rate is what a supplier of USDC earns, not your shares. Posting the stock
+      unlocks borrowing and a liquidation price against an equity that gaps between market
+      sessions.
+    active: true
+  - id: morpho-nvda-usdg-robinhood-3
+    token: NVDA (Robinhood)
+    platform: morpho
+    chain: Robinhood Chain
+    category: collateral
+    variant: NVDA / USDG 62.5% LLTV
+    url: https://app.morpho.org
+    deep_link: https://app.morpho.org/robinhood-chain/variable/0xf5ff7d546af5e72f3912d2aa723088fd0bf66fddc158714995637714d9db6e4c/usdg-nvda
+    verified: false
+    listed: true
+    lockup: none
+    data_source: morpho_api
+    external_id: "0xf5ff7d546af5e72f3912d2aa723088fd0bf66fddc158714995637714d9db6e4c"
+    borrow:
+      loan_asset: USDG
+    risk_notes: >-
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here — the
+      Lend rate is what a supplier of USDG earns, not your shares. Posting the stock
+      unlocks borrowing and a liquidation price against an equity that gaps between market
+      sessions.
+    active: true
+  - id: morpho-nvdac-usdc-base
+    token: NVDAc
+    platform: morpho
+    chain: Base
+    category: collateral
+    variant: NVDAc / USDC 62.5% LLTV
+    url: https://app.morpho.org
+    deep_link: https://app.morpho.org/base/variable/0xb4b42dd66cef25614b94510a910d54b2c148e7621d22b4271566724beda63d13/usdc-nvdac
+    verified: false
+    listed: true
+    lockup: none
+    data_source: morpho_api
+    external_id: "0xb4b42dd66cef25614b94510a910d54b2c148e7621d22b4271566724beda63d13"
+    borrow:
+      loan_asset: USDC
+    risk_notes: >-
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here — the
+      Lend rate is what a supplier of USDC earns, not your shares. Posting the stock
+      unlocks borrowing and a liquidation price against an equity that gaps between market
+      sessions.
     active: true
 
   # --- Manual entries: no API covers these yet ---

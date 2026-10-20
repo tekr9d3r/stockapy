@@ -192,6 +192,14 @@ export function OpportunityTable({
                         {row.platform.kind === "cefi" ? "CeFi" : "DeFi"}
                       </Badge>
                     )}
+                    {!row.listed && (
+                      <Badge
+                        tone="warn"
+                        title="The venue does not list this market in its own interface. It is reachable only by direct link and has not been through their curation."
+                      >
+                        Unlisted
+                      </Badge>
+                    )}
                     {row.status === "ended" && (
                       <Badge
                         tone="ended"

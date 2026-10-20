@@ -30,6 +30,7 @@ export function GET() {
         platformKind: row.platform.kind,
         chain: row.chain,
         category: row.category,
+        listed: row.listed,
         status: row.status,
         endedOn: row.endedOn,
         endedNote: row.endedNote ?? null,

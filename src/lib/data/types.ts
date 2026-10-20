@@ -104,6 +104,11 @@ export type Opportunity = {
    * folded into an APY: nobody can honestly price a future airdrop.
    */
   points_label?: string;
+  /**
+   * Whether the venue lists this market in its own interface. False means it is
+   * reachable only by direct link and has not been through the venue's curation.
+   */
+  listed?: boolean;
   /** Defaults to "live" when absent. */
   status?: Status;
   /** The date we recorded it as ended. */
@@ -189,6 +194,8 @@ export type Row = {
   unmeasured: boolean;
   /** True when the measurement is older than twice the refresh interval. */
   stale: boolean;
+  /** False when the venue hides this market from its own interface. */
+  listed: boolean;
   status: Status;
   endedOn: string | null;
   endedNote?: string;

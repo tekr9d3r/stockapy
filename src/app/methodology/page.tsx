@@ -139,6 +139,23 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
+      <Section title="Listed and unlisted markets">
+        <p>
+          Anyone can create a Morpho Blue market, and Morpho only surfaces curated ones in
+          its own interface. Several of the largest tokenized-stock markets are{" "}
+          <strong className="text-fg">not</strong> listed there: one NVDA market holds about
+          $1.4m of collateral and pays a 39% borrow rate, and you will not find it by
+          browsing. It is reachable by direct link and the collateral is real, so we list
+          it — flagged <strong className="text-fg">Unlisted</strong>, because an uncurated
+          market&rsquo;s oracle and parameters have had nobody&rsquo;s eyes on them.
+        </p>
+        <p>
+          Where several markets exist for the same stock and loan asset, we show each as its
+          own row rather than picking one. They are genuinely different markets with
+          different rates, sizes and risk.
+        </p>
+      </Section>
+
       <Section title="Lend rate is not the stock&rsquo;s rate">
         <p>
           Morpho lists a &ldquo;Lend Rate&rdquo; against markets whose collateral is a

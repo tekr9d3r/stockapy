@@ -59,6 +59,7 @@ export function getRows(): Row[] {
         riskNotes: opp.risk_notes,
         source: snap?.source ?? opp.data_source,
         fetchedAt,
+        listed: opp.listed ?? true,
         status: opp.status ?? "live",
         endedOn: opp.ended_on ?? null,
         endedNote: opp.ended_note,
