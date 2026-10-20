@@ -139,6 +139,25 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
+      <Section title="Lend rate is not the stock&rsquo;s rate">
+        <p>
+          Morpho lists a &ldquo;Lend Rate&rdquo; against markets whose collateral is a
+          tokenized stock, and on some of them it is very high — over 50% on one Robinhood
+          Chain market as we write. It is easy to read that as yield on the stock. It is not.
+          Morpho&rsquo;s documentation is explicit that{" "}
+          <a href="https://docs.morpho.org/learn/concepts/market/" target="_blank" rel="noopener" className="underline">
+            lenders deposit the loan asset
+          </a>{" "}
+          and that collateral is posted by borrowers and never lent out, so that rate belongs
+          to whoever supplies the USDG or USDC.
+        </p>
+        <p>
+          We show it in the borrow table as &ldquo;Lend side&rdquo;, clearly separated from
+          what the stock earns, which on Morpho is zero. Folding it into the stock&rsquo;s APY
+          would make this site exactly as misleading as the pages it is meant to clarify.
+        </p>
+      </Section>
+
       <Section title="A measured zero is not a missing number">
         <p>
           Several venues accept tokenized stocks as collateral but never lend them out. Those

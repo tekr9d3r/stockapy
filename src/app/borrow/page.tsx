@@ -149,6 +149,15 @@ export default function BorrowPage() {
           </p>
         </div>
         <div>
+          <h3 className="mb-1.5 font-medium">The lend side is a different trade</h3>
+          <p className="text-sm leading-relaxed text-fg-muted">
+            Morpho&rsquo;s interface shows a &ldquo;Lend Rate&rdquo; on each of these markets,
+            and some are high. It is not yield on your stock: in a Morpho Blue market the
+            lender supplies the loan asset and the collateral is never lent out. To earn it
+            you deposit USDG or USDC, not shares.
+          </p>
+        </div>
+        <div>
           <h3 className="mb-1.5 font-medium">A cheap rate usually means a quiet market</h3>
           <p className="text-sm leading-relaxed text-fg-muted">
             Borrow rates fall when nobody is borrowing. The lowest numbers here sit in markets

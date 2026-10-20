@@ -82,7 +82,7 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
       )}
 
       <div className="overflow-x-auto rounded-lg border bg-bg-raised">
-        <table className="w-full min-w-[920px] border-collapse text-sm">
+        <table className="w-full min-w-[1040px] border-collapse text-sm">
           <caption className="sr-only">
             Tokenized stocks accepted as collateral, with the maximum loan-to-value and the
             cost of borrowing against them.
@@ -102,6 +102,13 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
               </th>
               <th scope="col" className="px-2 py-2 text-right font-medium" title="What the stock itself earns while posted as collateral.">
                 Stock earns
+              </th>
+              <th
+                scope="col"
+                className="px-2 py-2 text-right font-medium"
+                title="The other side of the market: what you earn by supplying the loan asset here, instead of the stock."
+              >
+                Lend side
               </th>
               <th scope="col" className="px-2 py-2 pr-4 text-right font-medium">Updated</th>
             </tr>
@@ -171,6 +178,18 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
                   <td className="tnum px-2 py-2.5 text-right whitespace-nowrap text-fg-muted">
                     {row.unmeasured ? "—" : formatApy(row.apyTotal)}
                   </td>
+                  <td className="tnum px-2 py-2.5 text-right whitespace-nowrap">
+                    {row.borrow!.lendApy === null ? (
+                      <span className="text-fg-subtle">—</span>
+                    ) : (
+                      <span
+                        className={row.borrow!.lendApy > 10 ? "text-warn" : "text-positive"}
+                        title={`Supply ${loanAsset} into this market to earn ${row.borrow!.lendApy.toFixed(2)}%. This is yield on ${loanAsset}, not on your stock.`}
+                      >
+                        {row.borrow!.lendApy.toFixed(2)}%
+                      </span>
+                    )}
+                  </td>
                   <td className="px-2 py-2.5 pr-4 text-right text-xs whitespace-nowrap text-fg-subtle">
                     <span
                       title={`Collected ${formatDate(row.fetchedAt)} from ${
@@ -185,7 +204,7 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
             })}
             {visible.length === 0 && (
               <tr>
-                <td colSpan={9} className="px-4 py-10 text-center text-fg-muted">
+                <td colSpan={10} className="px-4 py-10 text-center text-fg-muted">
                   Nothing matches those filters.
                 </td>
               </tr>
@@ -197,6 +216,8 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
       <p className="mt-2 text-xs text-fg-subtle">
         Showing {visible.length} of {rows.length} borrow markets. Max LTV is the most you can
         draw against $100 of the stock; you will be liquidated well before reaching it.
+        &ldquo;Lend side&rdquo; is what a lender earns supplying the loan asset into the same
+        market — yield on that stablecoin, not on your shares.
       </p>
     </div>
   );

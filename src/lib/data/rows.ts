@@ -69,6 +69,7 @@ export function getRows(): Row[] {
               // A hand-entered LTV is a fallback, never an override of live data.
               ltv: snap?.ltv ?? opp.borrow.manual_ltv ?? null,
               borrowApr: snap?.borrowApr ?? null,
+              lendApy: snap?.lendApy ?? null,
               note: opp.borrow.note,
             }
           : null,

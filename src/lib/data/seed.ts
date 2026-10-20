@@ -41,8 +41,17 @@ export function loadSeed(): Seed {
     if (!platformIds.has(opp.platform)) {
       problems.push(`opportunity ${opp.id} -> unknown platform ${opp.platform}`);
     }
-    if ((opp.data_source === "defillama" || opp.data_source === "aave_api") && !opp.external_id) {
+    const needsExternalId = ["defillama", "aave_api", "morpho_api"];
+    if (needsExternalId.includes(opp.data_source) && !opp.external_id) {
       problems.push(`opportunity ${opp.id} is sourced from ${opp.data_source} but has no external_id`);
+    }
+    // An unquoted 0x… id is parsed by YAML as a number and silently loses all
+    // precision, which the API then rejects. Catch it here rather than at runtime.
+    if (opp.external_id !== undefined && typeof opp.external_id !== "string") {
+      problems.push(
+        `opportunity ${opp.id} has a non-string external_id (${typeof opp.external_id}) — ` +
+          `quote it in the YAML if it looks like 0x…`,
+      );
     }
   }
 

@@ -11,6 +11,7 @@ export type Status = "live" | "ended";
 export type DataSource =
   | "defillama"
   | "aave_api"
+  | "morpho_api"
   | "onchain"
   | "bybit_api"
   | "kraken_api"
@@ -142,6 +143,8 @@ export type Snapshot = {
   ltv?: number | null;
   /** Cost of borrowing the loan asset against it, APR. */
   borrowApr?: number | null;
+  /** What a lender earns supplying the LOAN asset into this market. */
+  lendApy?: number | null;
   source: string;
   fetchedAt: string;
 };
@@ -194,6 +197,11 @@ export type Row = {
     loanAsset: string;
     ltv: number | null;
     borrowApr: number | null;
+    /**
+     * What you earn by supplying the loan asset here. A different trade from
+     * depositing the stock: you supply USDC/USDG, not your shares.
+     */
+    lendApy: number | null;
     note?: string;
   } | null;
 };

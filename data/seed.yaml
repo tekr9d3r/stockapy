@@ -309,6 +309,18 @@ tokens:
     issuer: cryptocom-issuer
     chain: Crypto.com
     note: Custodial balance. No public chain disclosed by the issuer.
+  - symbol: SPCX (Robinhood)
+    underlying: SPCX
+    issuer: robinhood
+    chain: Robinhood Chain
+  - symbol: GOOGL (Robinhood)
+    underlying: GOOGL
+    issuer: robinhood
+    chain: Robinhood Chain
+  - symbol: AAPL (Robinhood)
+    underlying: AAPL
+    issuer: robinhood
+    chain: Robinhood Chain
   # --- Ondo ---
   - symbol: SPYon
     underlying: SPY
@@ -883,85 +895,186 @@ opportunities:
       leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
       almost entirely sUP emissions, not interest.
     active: true
-  - id: morpho-wspyx-eth
-    token: wSPYx
-    platform: morpho
-    chain: Ethereum
-    category: collateral
-    url: https://app.morpho.org
-    deep_link: https://app.morpho.org/ethereum/variable/0xbf0432567b44ef5ce013ffcd7dd756c522252503f7986a406e780715b32c74fc/ausd-wspyx
-    verified: false
-    lockup: none
-    data_source: defillama
-    external_id: 28dc189e-6789-4dec-b17d-f009df035c6a
-    risk_notes: >-
-      Morpho Blue does not lend out collateral, so the stock side earns nothing by design. Supplying it exposes you to liquidation if you then borrow.
-    borrow:
-      loan_asset: AUSD
-    active: true
+
   - id: morpho-nvda-hood
     token: NVDA (Robinhood)
     platform: morpho
     chain: Robinhood Chain
     category: collateral
+    variant: NVDA / USDG
     url: https://app.morpho.org
-    deep_link: https://app.morpho.org/robinhood-chain/variable/0xf5ff7d546af5e72f3912d2aa723088fd0bf66fddc158714995637714d9db6e4c/usdg-nvda
+    deep_link: https://app.morpho.org/robinhood-chain/variable/0x8b16891f032a93b771347c9cb470a780e6699dd701553d3402aa3cdba6189c3e/usdg-nvda
     verified: false
     lockup: none
-    data_source: defillama
-    external_id: d7439dd7-0aed-556e-adbe-53312988bcbe
-    risk_notes: >-
-      Morpho Blue does not lend out collateral, so the stock side earns nothing by design. Supplying it exposes you to liquidation if you then borrow.
+    data_source: morpho_api
+    external_id: "0x8b16891f032a93b771347c9cb470a780e6699dd701553d3402aa3cdba6189c3e"
     borrow:
       loan_asset: USDG
+    risk_notes: >-
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
+      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
+      not your shares. Posting the stock unlocks borrowing and a liquidation price
+      against an equity that gaps between market sessions.
+    active: true
+  - id: morpho-spcx-hood
+    token: SPCX (Robinhood)
+    platform: morpho
+    chain: Robinhood Chain
+    category: collateral
+    variant: SPCX / USDG
+    url: https://app.morpho.org
+    deep_link: https://app.morpho.org/robinhood-chain/variable/0x9b4b47cdf7e295341c6c6cdfd3efb9805c4a5b3d580dba0c0c39d3a4232b297b/usdg-spcx
+    verified: false
+    lockup: none
+    data_source: morpho_api
+    external_id: "0x9b4b47cdf7e295341c6c6cdfd3efb9805c4a5b3d580dba0c0c39d3a4232b297b"
+    borrow:
+      loan_asset: USDG
+    risk_notes: >-
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
+      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
+      not your shares. Posting the stock unlocks borrowing and a liquidation price
+      against an equity that gaps between market sessions.
+    active: true
+  - id: morpho-googl-hood
+    token: GOOGL (Robinhood)
+    platform: morpho
+    chain: Robinhood Chain
+    category: collateral
+    variant: GOOGL / USDG
+    url: https://app.morpho.org
+    deep_link: https://app.morpho.org/robinhood-chain/variable/0x7fa81b10e5d21b2e4c571f862442bc11aff2ed14f02335868d0ff933fd40d0ba/usdg-googl
+    verified: false
+    lockup: none
+    data_source: morpho_api
+    external_id: "0x7fa81b10e5d21b2e4c571f862442bc11aff2ed14f02335868d0ff933fd40d0ba"
+    borrow:
+      loan_asset: USDG
+    risk_notes: >-
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
+      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
+      not your shares. Posting the stock unlocks borrowing and a liquidation price
+      against an equity that gaps between market sessions.
+    active: true
+  - id: morpho-aapl-hood
+    token: AAPL (Robinhood)
+    platform: morpho
+    chain: Robinhood Chain
+    category: collateral
+    variant: AAPL / USDG
+    url: https://app.morpho.org
+    deep_link: https://app.morpho.org/robinhood-chain/variable/0xdeb4782d012d5fd3b24962538c2f6559049d70bda4dabd2e4212dacb96c28d45/usdg-aapl
+    verified: false
+    lockup: none
+    data_source: morpho_api
+    external_id: "0xdeb4782d012d5fd3b24962538c2f6559049d70bda4dabd2e4212dacb96c28d45"
+    borrow:
+      loan_asset: USDG
+    risk_notes: >-
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
+      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
+      not your shares. Posting the stock unlocks borrowing and a liquidation price
+      against an equity that gaps between market sessions.
     active: true
   - id: morpho-spy-hood
     token: SPY (Robinhood)
     platform: morpho
     chain: Robinhood Chain
     category: collateral
+    variant: SPY / USDG
     url: https://app.morpho.org
     deep_link: https://app.morpho.org/robinhood-chain/variable/0x50bc39b5722fb5634c436d74c6787f3c125b879e7b73cf9e9ecc01bbb57b8e55/usdg-spy
     verified: false
     lockup: none
-    data_source: defillama
-    external_id: a5b34dae-2781-5d64-b265-a15f872b2303
-    risk_notes: >-
-      Morpho Blue does not lend out collateral, so the stock side earns nothing by design. Supplying it exposes you to liquidation if you then borrow.
+    data_source: morpho_api
+    external_id: "0x50bc39b5722fb5634c436d74c6787f3c125b879e7b73cf9e9ecc01bbb57b8e55"
     borrow:
       loan_asset: USDG
+    risk_notes: >-
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
+      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
+      not your shares. Posting the stock unlocks borrowing and a liquidation price
+      against an equity that gaps between market sessions.
     active: true
-  - id: morpho-aaplc-base
-    token: AAPLc
+  - id: morpho-wspyx-eth
+    token: wSPYx
     platform: morpho
-    chain: Base
+    chain: Ethereum
     category: collateral
+    variant: WSPYX / AUSD
     url: https://app.morpho.org
-    deep_link: https://app.morpho.org/base/variable/0xae1a30486234bf7e7ac166c7c03d9bc5f2cd8a39be2c48e73c665ac7148c3c28/usdc-aaplc
+    deep_link: https://app.morpho.org/ethereum/variable/0xbf0432567b44ef5ce013ffcd7dd756c522252503f7986a406e780715b32c74fc/ausd-wspyx
     verified: false
     lockup: none
-    data_source: defillama
-    external_id: 41d7b195-ec03-5e3a-b235-497995d6bdca
-    risk_notes: >-
-      Morpho Blue does not lend out collateral, so the stock side earns nothing by design. Supplying it exposes you to liquidation if you then borrow.
+    data_source: morpho_api
+    external_id: "0xbf0432567b44ef5ce013ffcd7dd756c522252503f7986a406e780715b32c74fc"
     borrow:
-      loan_asset: USDC
+      loan_asset: AUSD
+    risk_notes: >-
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
+      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
+      not your shares. Posting the stock unlocks borrowing and a liquidation price
+      against an equity that gaps between market sessions.
     active: true
   - id: morpho-googlc-base
     token: GOOGLc
     platform: morpho
     chain: Base
     category: collateral
+    variant: GOOGLC / USDC
     url: https://app.morpho.org
     deep_link: https://app.morpho.org/base/variable/0xa3913d896b7e9c0e0a84f1be27d376cf2065616101cb7c44674af8a154e684cc/usdc-googlc
     verified: false
     lockup: none
-    data_source: defillama
-    external_id: dfcf7386-fcb9-58bd-9bdd-9436744dc160
-    risk_notes: >-
-      Morpho Blue does not lend out collateral, so the stock side earns nothing by design. Supplying it exposes you to liquidation if you then borrow.
+    data_source: morpho_api
+    external_id: "0xa3913d896b7e9c0e0a84f1be27d376cf2065616101cb7c44674af8a154e684cc"
     borrow:
       loan_asset: USDC
+    risk_notes: >-
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
+      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
+      not your shares. Posting the stock unlocks borrowing and a liquidation price
+      against an equity that gaps between market sessions.
+    active: true
+  - id: morpho-aaplc-base
+    token: AAPLc
+    platform: morpho
+    chain: Base
+    category: collateral
+    variant: AAPLC / USDC
+    url: https://app.morpho.org
+    deep_link: https://app.morpho.org/base/variable/0xae1a30486234bf7e7ac166c7c03d9bc5f2cd8a39be2c48e73c665ac7148c3c28/usdc-aaplc
+    verified: false
+    lockup: none
+    data_source: morpho_api
+    external_id: "0xae1a30486234bf7e7ac166c7c03d9bc5f2cd8a39be2c48e73c665ac7148c3c28"
+    borrow:
+      loan_asset: USDC
+    risk_notes: >-
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
+      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
+      not your shares. Posting the stock unlocks borrowing and a liquidation price
+      against an equity that gaps between market sessions.
+    active: true
+  - id: morpho-spcxc-base
+    token: SPCXc
+    platform: morpho
+    chain: Base
+    category: collateral
+    variant: SPCXC / USDC
+    url: https://app.morpho.org
+    deep_link: https://app.morpho.org/base/variable/0xce983b9ee6344e16ebbcc66812f23caafc63ae83fcc14fa29b66c7e69e9cecf6/usdc-spcxc
+    verified: false
+    lockup: none
+    data_source: morpho_api
+    external_id: "0xce983b9ee6344e16ebbcc66812f23caafc63ae83fcc14fa29b66c7e69e9cecf6"
+    borrow:
+      loan_asset: USDC
+    risk_notes: >-
+      Morpho Blue never lends collateral out, so the stock itself earns nothing here —
+      the Lend rate in Morpho's interface is what you earn by supplying the loan asset,
+      not your shares. Posting the stock unlocks borrowing and a liquidation price
+      against an equity that gaps between market sessions.
     active: true
 
   # --- Manual entries: no API covers these yet ---

@@ -46,6 +46,8 @@ export function GET() {
               loanAsset: row.borrow.loanAsset,
               maxLtv: row.borrow.ltv,
               borrowApr: row.borrow.borrowApr,
+              /** Yield on the LOAN asset supplied here, not on the stock. */
+              lendApy: row.borrow.lendApy,
             }
           : null,
         url: row.deepLink,
