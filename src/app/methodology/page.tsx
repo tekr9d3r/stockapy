@@ -123,6 +123,22 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
+      <Section title="Programmes that have ended">
+        <p>
+          Incentive programmes stop. When one does, we mark the opportunity{" "}
+          <strong className="text-fg">Ended</strong> rather than deleting it: the row keeps
+          the last rate we recorded, shown struck through, with the date and what we
+          observed. Ended rows are excluded from every headline figure — the median, the
+          best rate, the totals and the borrow tables — so a programme that no longer pays
+          cannot flatter the numbers.
+        </p>
+        <p>
+          We keep them because a venue that paid for a while and then stopped is the most
+          direct evidence this site has for its own argument. A yield aggregator that
+          quietly removes the rows loses that history.
+        </p>
+      </Section>
+
       <Section title="A measured zero is not a missing number">
         <p>
           Several venues accept tokenized stocks as collateral but never lend them out. Those

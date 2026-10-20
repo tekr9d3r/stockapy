@@ -37,6 +37,8 @@ export function OpportunityTable({
   const [kind, setKind] = useState<string>("all");
   const [chain, setChain] = useState<string>("all");
   const [sort, setSort] = useState<SortKey>("apy");
+  const [showEnded, setShowEnded] = useState(true);
+  const endedCount = rows.filter((r) => r.status === "ended").length;
 
   const chains = useMemo(
     () => [...new Set(rows.map((r) => r.chain))].sort(),
@@ -46,6 +48,7 @@ export function OpportunityTable({
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
     const filtered = rows.filter((row) => {
+      if (!showEnded && row.status === "ended") return false;
       if (category !== "all" && row.category !== category) return false;
       if (kind !== "all" && row.platform.kind !== kind) return false;
       if (chain !== "all" && row.chain !== chain) return false;
@@ -69,7 +72,7 @@ export function OpportunityTable({
       if (a.unmeasured !== b.unmeasured) return a.unmeasured ? 1 : -1;
       return (b.apyTotal ?? 0) - (a.apyTotal ?? 0);
     });
-  }, [rows, query, category, kind, chain, sort]);
+  }, [rows, query, category, kind, chain, sort, showEnded]);
 
   return (
     <div>
@@ -107,6 +110,17 @@ export function OpportunityTable({
             <option value="tvl">Sort: TVL</option>
             <option value="stock">Sort: Stock</option>
           </Select>
+          {endedCount > 0 && (
+            <label className="flex h-9 cursor-pointer items-center gap-1.5 rounded-md border bg-bg-raised px-2.5 text-sm">
+              <input
+                type="checkbox"
+                checked={showEnded}
+                onChange={(e) => setShowEnded(e.target.checked)}
+                className="accent-accent"
+              />
+              Show ended ({endedCount})
+            </label>
+          )}
         </div>
       )}
 
@@ -136,7 +150,12 @@ export function OpportunityTable({
           </thead>
           <tbody>
             {visible.map((row) => (
-              <tr key={row.id} className="border-b last:border-0 hover:bg-bg-subtle">
+              <tr
+                key={row.id}
+                className={`border-b last:border-0 hover:bg-bg-subtle ${
+                  row.status === "ended" ? "opacity-60" : ""
+                }`}
+              >
                 <td className="px-2 py-2.5 pl-4">
                   <Link
                     href={`/stock/${row.underlying.ticker.toLowerCase()}`}
@@ -173,7 +192,18 @@ export function OpportunityTable({
                         {row.platform.kind === "cefi" ? "CeFi" : "DeFi"}
                       </Badge>
                     )}
-                    {row.category !== "earn" && (
+                    {row.status === "ended" && (
+                      <Badge
+                        tone="ended"
+                        title={
+                          row.endedNote ??
+                          `This programme ended${row.endedOn ? ` on ${row.endedOn}` : ""}.`
+                        }
+                      >
+                        Ended
+                      </Badge>
+                    )}
+                    {row.category !== "earn" && row.status === "live" && (
                       <Badge
                         tone="warn"
                         title="Your stock is only collateral here. It earns nothing."
@@ -242,6 +272,10 @@ export function OpportunityTable({
       <p className="mt-2 text-xs text-fg-subtle">
         Showing {visible.length} of {rows.length} opportunities. Base and Rewards are
         percentage points of the total APY.
+        {endedCount > 0 && (
+          <> Ended programmes keep their last known rate and are excluded from every
+          headline figure.</>
+        )}
       </p>
     </div>
   );

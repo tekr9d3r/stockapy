@@ -59,6 +59,9 @@ export function getRows(): Row[] {
         riskNotes: opp.risk_notes,
         source: snap?.source ?? opp.data_source,
         fetchedAt,
+        status: opp.status ?? "live",
+        endedOn: opp.ended_on ?? null,
+        endedNote: opp.ended_note,
         unmeasured: apyTotal === null,
         borrow: opp.borrow
           ? {
@@ -82,6 +85,9 @@ export function getRows(): Row[] {
 /** Highest APY first; unmeasured rows last, so the table never leads with a blank. */
 export function sortRows(rows: Row[]): Row[] {
   return [...rows].sort((a, b) => {
+    const aEnded = a.status === "ended";
+    const bEnded = b.status === "ended";
+    if (aEnded !== bEnded) return aEnded ? 1 : -1;
     if (a.unmeasured !== b.unmeasured) return a.unmeasured ? 1 : -1;
     if (a.apyTotal !== b.apyTotal) return (b.apyTotal ?? 0) - (a.apyTotal ?? 0);
     return (b.tvlUsd ?? 0) - (a.tvlUsd ?? 0);
@@ -91,7 +97,7 @@ export function sortRows(rows: Row[]): Row[] {
 /** Rows where the stock can be posted as collateral to borrow something else. */
 export function borrowRows(rows: Row[] = getRows()): Row[] {
   return rows
-    .filter((r) => r.borrow !== null)
+    .filter((r) => r.borrow !== null && r.status === "live")
     .sort((a, b) => {
       const al = a.borrow?.ltv ?? -1;
       const bl = b.borrow?.ltv ?? -1;
@@ -132,6 +138,10 @@ export type PlatformGroup = {
   /** Sum across the platform's markets. Null when nothing discloses a TVL. */
   tvlUsd: number | null;
   marketCount: number;
+  /** Markets here whose programme has stopped. */
+  endedCount: number;
+  /** True when nothing on this platform is paying any more. */
+  allEnded: boolean;
   chains: string[];
   stocks: string[];
   /** Best borrow terms available here, if any. */
@@ -153,11 +163,12 @@ export function platformGroups(rows: Row[] = getRows()): PlatformGroup[] {
   const groups = seed.platforms
     .map((platform): PlatformGroup => {
       const own = rows.filter((r) => r.platform.id === platform.id);
-      const measured = own.filter((r) => !r.unmeasured);
+      const liveOwn = own.filter((r) => r.status === "live");
+      const measured = liveOwn.filter((r) => !r.unmeasured);
       const apys = measured.map((r) => r.apyTotal ?? 0);
-      const withTvl = own.filter((r) => r.tvlUsd !== null);
-      const borrowable = own.filter((r) => r.borrow?.ltv != null);
-      const borrowApRs = own
+      const withTvl = liveOwn.filter((r) => r.tvlUsd !== null);
+      const borrowable = liveOwn.filter((r) => r.borrow?.ltv != null);
+      const borrowApRs = liveOwn
         .map((r) => r.borrow?.borrowApr)
         .filter((v): v is number => v != null);
 
@@ -174,6 +185,8 @@ export function platformGroups(rows: Row[] = getRows()): PlatformGroup[] {
           ? withTvl.reduce((sum, r) => sum + (r.tvlUsd ?? 0), 0)
           : null,
         marketCount: own.length,
+        endedCount: own.length - liveOwn.length,
+        allEnded: own.length > 0 && liveOwn.length === 0,
         chains: [...new Set(own.map((r) => r.chain))].sort(),
         stocks: [...new Set(own.map((r) => r.underlying.ticker))].sort(),
         maxLtv: borrowable.length
@@ -181,13 +194,14 @@ export function platformGroups(rows: Row[] = getRows()): PlatformGroup[] {
           : null,
         cheapestBorrowApr: borrowApRs.length ? Math.min(...borrowApRs) : null,
         collateralOnly: measured.length > 0 && apys.every((a) => a === 0),
-        unmeasuredCount: own.filter((r) => r.unmeasured).length,
+        unmeasuredCount: liveOwn.filter((r) => r.unmeasured).length,
       };
     })
     .filter((g) => g.marketCount > 0);
 
   // Platforms that actually pay something first, then by size.
   return groups.sort((a, b) => {
+    if (a.allEnded !== b.allEnded) return a.allEnded ? 1 : -1;
     if ((a.topApy ?? -1) !== (b.topApy ?? -1)) return (b.topApy ?? -1) - (a.topApy ?? -1);
     return (b.tvlUsd ?? 0) - (a.tvlUsd ?? 0);
   });
@@ -212,7 +226,8 @@ export function rowsForIssuer(issuerId: string): Row[] {
  * mixing in collateral venues, which pay 0% by design, would understate things.
  */
 export function marketStats(rows: Row[] = getRows()) {
-  const earn = rows.filter((r) => r.category === "earn" && !r.unmeasured);
+  const live = rows.filter((r) => r.status === "live");
+  const earn = live.filter((r) => r.category === "earn" && !r.unmeasured);
   const apys = earn.map((r) => r.apyTotal ?? 0).sort((a, b) => a - b);
 
   const median = apys.length
@@ -229,7 +244,9 @@ export function marketStats(rows: Row[] = getRows()) {
   const totalBase = split.reduce((sum, r) => sum + (r.apyBase ?? 0), 0);
 
   return {
-    opportunityCount: rows.length,
+    opportunityCount: live.length,
+    /** Programmes that have stopped paying. The thesis, measured. */
+    endedCount: rows.length - live.length,
     earnCount: earn.length,
     medianApy: median,
     maxApy: apys.length ? apys[apys.length - 1] : null,
@@ -239,7 +256,7 @@ export function marketStats(rows: Row[] = getRows()) {
     splitKnownCount: split.length,
     splitUnknownCount: earn.length - split.length,
     zeroCount: earn.filter((r) => (r.apyTotal ?? 0) === 0).length,
-    tvlUsd: rows.reduce((sum, r) => sum + (r.tvlUsd ?? 0), 0),
+    tvlUsd: live.reduce((sum, r) => sum + (r.tvlUsd ?? 0), 0),
     best: earn.length ? earn.reduce((a, b) => ((b.apyTotal ?? 0) > (a.apyTotal ?? 0) ? b : a)) : null,
   };
 }

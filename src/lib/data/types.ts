@@ -2,6 +2,12 @@ export type AssetType = "stock" | "etf" | "private";
 export type PlatformKind = "defi" | "cefi";
 export type Category = "earn" | "collateral" | "structured";
 export type Lockup = "none" | "days" | "fixed_term";
+/**
+ * Lifecycle of an opportunity. An ended programme keeps its last known numbers
+ * and stays on the site: "this paid 2% until it stopped" is exactly the evidence
+ * this site exists to collect. It is excluded from every headline figure.
+ */
+export type Status = "live" | "ended";
 export type DataSource =
   | "defillama"
   | "aave_api"
@@ -92,6 +98,13 @@ export type Opportunity = {
   external_id?: string;
   manual?: ManualRate;
   borrow?: BorrowConfig;
+  /** Defaults to "live" when absent. */
+  status?: Status;
+  /** The date we recorded it as ended. */
+  ended_on?: string;
+  /** What we observed, and what the platform still claimed at the time. */
+  ended_note?: string;
+  /** False removes the row from the site entirely. Ending a programme is not this. */
   active: boolean;
 };
 
@@ -168,6 +181,9 @@ export type Row = {
   unmeasured: boolean;
   /** True when the measurement is older than twice the refresh interval. */
   stale: boolean;
+  status: Status;
+  endedOn: string | null;
+  endedNote?: string;
   /** Borrowing against this position, when the venue supports it. */
   borrow: {
     loanAsset: string;

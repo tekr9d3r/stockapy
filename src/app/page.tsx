@@ -62,17 +62,32 @@ export default function Home() {
             {organicPct === null ? "—" : `${organicPct.toFixed(1)}%`}
           </strong>{" "}
           of it is interest paid by borrowers; the rest is token incentives that can stop at
-          any time. A further {stats.splitUnknownCount} venues pay a rate without saying what
-          funds it.
+          any time.
+          {stats.splitUnknownCount > 0 && (
+            <> A further {stats.splitUnknownCount} venues pay a rate without saying what funds
+            it.</>
+          )}
+          {stats.endedCount > 0 && (
+            <>
+              {" "}
+              We have already watched{" "}
+              <strong className="text-fg">{stats.endedCount} of them stop</strong>; those are
+              kept on the site with their last known rate.
+            </>
+          )}
         </p>
       </section>
 
       <section className="mb-8">
         <StatStrip>
           <Stat
-            label="Opportunities tracked"
+            label="Live opportunities"
             value={String(stats.opportunityCount)}
-            note={`${stats.earnCount} earn, rest collateral`}
+            note={
+              stats.endedCount > 0
+                ? `${stats.earnCount} earn · ${stats.endedCount} ended, kept on record`
+                : `${stats.earnCount} earn, rest collateral`
+            }
           />
           <Stat
             label="Median earn APY"
@@ -135,6 +150,13 @@ export default function Home() {
             borrow comparison
           </Link>{" "}
           for max LTV and the cost of each loan.
+        </Explainer>
+
+        <Explainer title="Incentives stop, and we keep the receipts">
+          When a programme ends we do not delete the row. It stays with its last known rate,
+          struck through and marked Ended, and it is excluded from every figure above. A
+          venue that paid {stats.endedCount > 0 ? "2–4%" : "well"} and then stopped is the
+          clearest evidence there is that an incentive is not a yield.
         </Explainer>
 
         <Explainer title="A rate with no stated source is not interest">

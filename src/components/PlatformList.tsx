@@ -22,7 +22,8 @@ export function PlatformList({ groups }: { groups: PlatformGroup[] }) {
 
 function PlatformRow({ group }: { group: PlatformGroup }) {
   const { platform, rows, topApy, lowApy, flatApy } = group;
-  const everythingUnmeasured = group.unmeasuredCount === rows.length;
+  const liveRows = rows.filter((r) => r.status === "live");
+  const everythingUnmeasured = liveRows.length > 0 && group.unmeasuredCount === liveRows.length;
 
   return (
     <details className="group overflow-hidden rounded-lg border bg-bg-raised">
@@ -35,7 +36,12 @@ function PlatformRow({ group }: { group: PlatformGroup }) {
             <Badge tone={platform.kind === "cefi" ? "accent" : "neutral"}>
               {platform.kind === "cefi" ? "CeFi" : "DeFi"}
             </Badge>
-            {group.collateralOnly && (
+            {group.allEnded && (
+              <Badge tone="ended" title="Every programme we tracked here has stopped paying.">
+                Ended
+              </Badge>
+            )}
+            {group.collateralOnly && !group.allEnded && (
               <Badge tone="warn" title="Nothing here pays you for holding the stock.">
                 Collateral only
               </Badge>
@@ -45,6 +51,9 @@ function PlatformRow({ group }: { group: PlatformGroup }) {
             {group.marketCount} {group.marketCount === 1 ? "market" : "markets"} ·{" "}
             {group.chains.join(", ")} · {group.stocks.length}{" "}
             {group.stocks.length === 1 ? "stock" : "stocks"}
+            {group.endedCount > 0 && !group.allEnded && (
+              <> · {group.endedCount} ended</>
+            )}
           </p>
         </div>
 
@@ -63,7 +72,9 @@ function PlatformRow({ group }: { group: PlatformGroup }) {
         </div>
 
         <Metric label="APY" wide always>
-          {everythingUnmeasured ? (
+          {group.allEnded ? (
+            <span className="text-sm font-normal text-fg-subtle">no longer paying</span>
+          ) : everythingUnmeasured ? (
             <span className="text-sm font-normal text-fg-subtle">not collected</span>
           ) : (
             <>
@@ -122,6 +133,11 @@ function PlatformRow({ group }: { group: PlatformGroup }) {
         <p className="mb-3 max-w-3xl text-sm leading-relaxed text-fg-muted">
           {platform.description}
         </p>
+        {group.allEnded && rows[0]?.endedNote && (
+          <p className="mb-3 max-w-3xl rounded-md border border-border-strong bg-bg-subtle px-3 py-2 text-sm leading-relaxed text-fg-muted">
+            <strong className="text-fg">No longer paying.</strong> {rows[0].endedNote}
+          </p>
+        )}
         <OpportunityTable rows={rows} compact hidePlatform />
         <a
           href={platform.website}

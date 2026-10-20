@@ -54,6 +54,14 @@ npm run logos       # fetch any missing stock logos into public/logos
 6. `npm run build` — the seed loader fails the build on a broken reference or a missing
    `external_id`.
 
+## Retiring a programme
+
+When a platform stops paying, do not delete the rows. Set `status: ended` with `ended_on`
+and an `ended_note` saying what was observed. The row keeps its last known rate, renders
+struck through and marked Ended, and drops out of every headline figure, the borrow tables
+and the platform rollups. `active: false` is different — that removes a row from the site
+altogether, which loses the history.
+
 Never type an APY you did not read from a source. Leave it `null`; the UI says "not collected"
 rather than showing a zero.
 

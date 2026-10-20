@@ -2,6 +2,7 @@ const TONES = {
   neutral: "bg-bg-subtle text-fg-muted border-border",
   accent: "bg-accent-subtle text-accent border-accent/20",
   warn: "bg-warn-subtle text-warn border-warn/20",
+  ended: "bg-bg-subtle text-fg-subtle border-border-strong line-through decoration-fg-subtle/40",
 } as const;
 
 export function Badge({
