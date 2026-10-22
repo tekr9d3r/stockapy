@@ -1,12 +1,11 @@
 import { classifyPoolType, legsFromTokens, parseFeeTier, type RegistryToken } from "@/lib/liquidity/classify";
 import { grossFeeApy } from "@/lib/liquidity/fees";
-import { EVM_CHAINS, depositUrl, poolChartUrl, venueForDex, type VenueId } from "@/lib/liquidity/venues";
+import { EVM_CHAINS, depositUrl, poolChartUrl, venueForDex } from "@/lib/liquidity/venues";
 import type { LiquidityPool } from "@/lib/liquidity/types";
 
 /**
- * Uniswap pools, and Aero pools from before the 21 Oct 2026 merger, from
- * GeckoTerminal (CoinGecko's on-chain DEX index). Post-merger Aero pools are read
- * from Aero's Sugar contract (./aero.ts), which also gives the fee settings.
+ * Uniswap pools, from GeckoTerminal (CoinGecko's on-chain DEX index). Aero pools
+ * are read from Aero's Sugar contract instead (./aero.ts).
  *
  * Why not Uniswap's own API: its documented data path is its subgraphs on The
  * Graph, which need an API key. GeckoTerminal is free, reads the chain directly,
@@ -43,14 +42,9 @@ async function getJson(url: string, attempt = 0): Promise<unknown> {
   return res.json();
 }
 
-const FEE_NOTE: Record<Exclude<VenueId, "raydium">, string> = {
-  uniswap:
-    "Computed from 24h volume × fee tier. Before any Uniswap protocol fee, which applies to " +
-    "some pools and is not deducted here.",
-  aero:
-    "Not shown for pools from before the Aero merger: GeckoTerminal does not give their fee " +
-    "settings, and LPs who take AERO Rewards instead receive none of the fees.",
-};
+const FEE_NOTE =
+  "Computed from 24h volume × fee tier. Before any Uniswap protocol fee, which applies to " +
+  "some pools and is not deducted here.";
 
 export async function fetchGeckoTerminal(
   registry: RegistryToken[],
@@ -70,7 +64,7 @@ export async function fetchGeckoTerminal(
     const symbols = new Map((body.included ?? []).map((t) => [t.id, t]));
     for (const pool of body.data ?? []) {
       const dexId = pool.relationships.dex.data.id;
-      // Post-merger Aero pools come from Aero's own Sugar contract instead.
+      // Aero pools come from Aero's own Sugar contract instead.
       if (/^aero-/.test(dexId)) continue;
       if (!venueForDex(dexId)) {
         otherVenues++;
@@ -84,7 +78,7 @@ export async function fetchGeckoTerminal(
   const pools: LiquidityPool[] = [];
   for (const { chain, pool, symbols } of seen.values()) {
     const v = venueForDex(pool.relationships.dex.data.id)!;
-    const venue = v.venue as Exclude<VenueId, "raydium">;
+    const venue = v.venue;
     const legTokens = [pool.relationships.base_token.data.id, pool.relationships.quote_token.data.id].map((id) => {
       const t = symbols.get(id);
       return { address: t?.attributes.address ?? id.split("_").pop()!, symbol: t?.attributes.symbol ?? "?" };
@@ -98,11 +92,7 @@ export async function fetchGeckoTerminal(
     const gross = grossFeeApy(feeTier, volume, tvl);
     const dexId = pool.relationships.dex.data.id;
     // Uniswap v2 spreads liquidity over every price; v3 and v4 are concentrated.
-    // Pre-merger Aerodrome pools say which kind they are; new Aero pools do not.
-    const poolType =
-      venue === "uniswap"
-        ? classifyPoolType(/^uniswap-v2/.test(dexId) ? "uniswap-v2" : "uniswap-v3", null)
-        : /slipstream/.test(dexId) ? "concentrated" : /^aerodrome|^velodrome/.test(dexId) ? "full-range" : "unknown";
+    const poolType = classifyPoolType(/^uniswap-v2/.test(dexId) ? "uniswap-v2" : "uniswap-v3", null);
 
     pools.push({
       id: `${venue}:${chain}:${pool.attributes.address.toLowerCase()}`,
@@ -121,7 +111,7 @@ export async function fetchGeckoTerminal(
       pairType: built.pairType,
       poolType,
       feeTier,
-      apyBase: venue === "uniswap" ? gross : null,
+      apyBase: gross,
       apyBaseGross: gross,
       lpFeeShare: null,
       apyReward: null,
@@ -129,7 +119,7 @@ export async function fetchGeckoTerminal(
       tvlUsd: tvl,
       volumeUsd1d: volume,
       volumeUsd7d: null,
-      feeNote: FEE_NOTE[venue],
+      feeNote: FEE_NOTE,
       url: depositUrl(venue, chain, pool.attributes.address),
       chartUrl: poolChartUrl(chain, pool.attributes.address),
       source: "geckoterminal",

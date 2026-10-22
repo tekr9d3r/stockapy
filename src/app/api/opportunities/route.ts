@@ -76,7 +76,7 @@ export function GET() {
         pairType: r.pairType,
         poolType: r.poolType,
         feeTier: r.feeTier,
-        /** Fee APY that reaches the LP. Null where the LP share is unknown (pre-merger Aero pools). */
+        /** Fee APY that reaches the LP. Null where it cannot be worked out. */
         apyBase: r.apyBase,
         /** Fees the pool generates per year as a share of TVL, before anyone's cut. */
         apyBaseGross: r.apyBaseGross,

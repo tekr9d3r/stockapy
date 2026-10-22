@@ -67,10 +67,12 @@ describe("venueForDex: GeckoTerminal dex ids", () => {
     assert.deepEqual(venueForDex("uniswap-v3-robinhood"), { venue: "uniswap", variant: "v3" });
     assert.deepEqual(venueForDex("uniswap-v4-base"), { venue: "uniswap", variant: "v4" });
   });
-  it("counts pre-merger Aerodrome pools as Aero", () => {
-    assert.deepEqual(venueForDex("aero-base"), { venue: "aero", variant: null });
-    assert.equal(venueForDex("aerodrome-slipstream-3")?.venue, "aero");
-    assert.match(venueForDex("aerodrome-slipstream-3")?.variant ?? "", /pre-merger/);
+  it("never lists Aero or pre-merger Aerodrome/Velodrome pools from GeckoTerminal", () => {
+    // Aero comes from its own Sugar contract; leftover pools are not Aero pools.
+    assert.equal(venueForDex("aero-base"), null);
+    assert.equal(venueForDex("aerodrome-slipstream-3"), null);
+    assert.equal(venueForDex("aerodrome-base"), null);
+    assert.equal(venueForDex("velodrome-finance-v2-optimism"), null);
   });
   it("ignores venues outside the three", () => {
     assert.equal(venueForDex("ramses-v3-robinhood"), null);

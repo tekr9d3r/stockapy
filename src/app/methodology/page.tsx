@@ -131,8 +131,8 @@ export default function MethodologyPage() {
             shows a higher figure. An Aero LP takes either those fees or the AERO emissions paid to the
             pool&rsquo;s gauge, never both, so we show emissions as dollars per day beside the fee APY,
             with no total. While a pool has less than a day of on-chain history, its figures cover the
-            hours available, are flagged, and are left out of the headline median. Pools created before
-            the merger are not in Sugar; they come from GeckoTerminal with no fee APY, marked pre-merger.
+            hours available, are flagged, and are left out of the headline median. Pools left over from
+            Aerodrome and Velodrome before the merger are not Aero pools and are not listed.
           </p>
           <p>
             A pool is listed only if one of its tokens is in our registry of tokenized-stock contracts,

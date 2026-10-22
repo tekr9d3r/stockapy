@@ -15,7 +15,7 @@ export type LiquidityPool = {
   /** The pool's own address on its chain. */
   address: string;
   venueId: VenueId;
-  /** e.g. "v3", "Concentrated", "Slipstream, pre-merger". */
+  /** e.g. "v3", "Concentrated", "CL10". */
   variant: string | null;
   chain: string;
   symbol: string;

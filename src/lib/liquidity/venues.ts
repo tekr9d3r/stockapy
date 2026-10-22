@@ -21,18 +21,14 @@ export const EVM_CHAINS: Record<string, { gecko: string; uniswap: string; chainI
 };
 
 /**
- * Map a GeckoTerminal dex id to one of our venues. Aero is the October 2026
- * merger of Aerodrome and Velodrome; pools created before it still trade under
- * their old dex ids, so they count as Aero with a "pre-merger" variant.
+ * Map a GeckoTerminal dex id to one of our venues. GeckoTerminal supplies
+ * Uniswap only: Aero pools are read from Aero's own Sugar contract, and pools
+ * left over from Aerodrome and Velodrome before the October 2026 merger are not
+ * Aero pools, so they are not listed.
  */
-export function venueForDex(dexId: string): { venue: VenueId; variant: string | null } | null {
+export function venueForDex(dexId: string): { venue: "uniswap"; variant: string } | null {
   const uni = dexId.match(/^uniswap-v(\d)/);
-  if (uni) return { venue: "uniswap", variant: `v${uni[1]}` };
-  if (/^aero-/.test(dexId)) return { venue: "aero", variant: null };
-  if (/^aerodrome-slipstream/.test(dexId)) return { venue: "aero", variant: "Slipstream, pre-merger" };
-  if (/^aerodrome/.test(dexId)) return { venue: "aero", variant: "Basic, pre-merger" };
-  if (/^velodrome/.test(dexId)) return { venue: "aero", variant: "Velodrome, pre-merger" };
-  return null;
+  return uni ? { venue: "uniswap", variant: `v${uni[1]}` } : null;
 }
 
 /** The page where a user actually deposits into this pool. All three verified in a browser. */

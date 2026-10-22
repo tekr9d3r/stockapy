@@ -8,8 +8,8 @@ import type { LiquidityPool, ReviewPool } from "@/lib/liquidity/types";
  * Aero app reads to draw its pools page. One call returns every pool's reserves,
  * swap volume and fees over a trailing window, fee settings and gauge emissions.
  *
- * Sugar only knows pools created since the 21 Oct 2026 merger. Older Aerodrome
- * and Velodrome pools still come from GeckoTerminal.
+ * Sugar only knows pools created since the 21 Oct 2026 merger. Pools left over
+ * from Aerodrome and Velodrome are not Aero pools and are not listed.
  */
 const SUGAR: Record<string, { rpc: string; address: Address; llama: string; gecko: string }> = {
   Base: {

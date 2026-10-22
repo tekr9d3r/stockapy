@@ -173,7 +173,7 @@ export default function LiquidityPage() {
           liquidity providers. This gap is specific to tokenized stocks.
         </Explainer>
         <Explainer title="Concentrated liquidity">
-          On Uniswap v3 and v4, Raydium CLMM and Aero Slipstream you earn only while the price stays
+          On Uniswap v3 and v4, Raydium CLMM and Aero CL pools you earn only while the price stays
           inside the range you chose. The APY shown assumes you stay in range; out of range you earn
           nothing and hold only the losing side.
         </Explainer>
