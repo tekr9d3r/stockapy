@@ -112,16 +112,27 @@ export default function MethodologyPage() {
             We apply the cut, so our figure is what an LP actually keeps, about 16% below Raydium&rsquo;s.
           </p>
           <p>
-            <strong className="text-fg">Uniswap</strong> and <strong className="text-fg">Aero</strong>{" "}
-            pools come from GeckoTerminal, CoinGecko&rsquo;s on-chain DEX index, which gives each
-            pool&rsquo;s address, 24h volume, value and fee tier. Uniswap&rsquo;s own documented data
-            route is its subgraphs on The Graph, which need an API key; Aero, launched on 21 October 2026
-            from the merger of Aerodrome and Velodrome, publishes no pool data API. For Uniswap the fee
-            APY is 24h volume × fee tier ÷ value, before any Uniswap protocol fee, which applies to some
-            pools and is not deducted. For Aero we show no fee APY: it splits fees between LPs and sAERO
-            Token Operators, lets each LP choose AERO Rewards instead, and does not publish the LP share.
-            Pools created before the merger still trade under their Aerodrome names and are listed as
-            Aero, marked pre-merger.
+            <strong className="text-fg">Uniswap</strong> pools come from GeckoTerminal, CoinGecko&rsquo;s
+            on-chain DEX index, which gives each pool&rsquo;s address, 24h volume, value and fee tier.
+            Uniswap&rsquo;s own documented data route is its subgraphs on The Graph, which need an API
+            key. The fee APY is 24h volume × fee tier ÷ value, before any Uniswap protocol fee, which
+            applies to some pools and is not deducted.
+          </p>
+          <p>
+            <strong className="text-fg">Aero</strong>, launched on 21 October 2026 from the merger of
+            Aerodrome and Velodrome, publishes no pool data API. We read its pools on-chain from
+            Aero&rsquo;s LP Sugar contract, the same contract the Aero app reads, on Base and Robinhood
+            Chain. It returns each pool&rsquo;s reserves, the swap volume and fees over the last 24 hours,
+            its fee settings and its gauge emissions; prices come from DefiLlama, with GeckoTerminal as
+            a fallback, and a pool we cannot price is not listed. We apply Aero&rsquo;s own arithmetic
+            for value, volume and fees, then compute the fee APY the same way as for the other venues:
+            a year of fees, less the 5% Aero sends to sAERO Token Operators, divided by the pool&rsquo;s
+            whole value. Aero&rsquo;s app divides by the liquidity near the current price only, so it
+            shows a higher figure. An Aero LP takes either those fees or the AERO emissions paid to the
+            pool&rsquo;s gauge, never both, so we show emissions as dollars per day beside the fee APY,
+            with no total. While a pool has less than a day of on-chain history, its figures cover the
+            hours available, are flagged, and are left out of the headline median. Pools created before
+            the merger are not in Sugar; they come from GeckoTerminal with no fee APY, marked pre-merger.
           </p>
           <p>
             A pool is listed only if one of its tokens is in our registry of tokenized-stock contracts,

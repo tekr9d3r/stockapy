@@ -4,13 +4,13 @@ import { EVM_CHAINS, depositUrl, poolChartUrl, venueForDex, type VenueId } from 
 import type { LiquidityPool } from "@/lib/liquidity/types";
 
 /**
- * Uniswap and Aero pools, from GeckoTerminal (CoinGecko's on-chain DEX index).
+ * Uniswap pools, and Aero pools from before the 21 Oct 2026 merger, from
+ * GeckoTerminal (CoinGecko's on-chain DEX index). Post-merger Aero pools are read
+ * from Aero's Sugar contract (./aero.ts), which also gives the fee settings.
  *
- * Why not the venues' own APIs: Uniswap's documented data path is its subgraphs
- * on The Graph, which need an API key; Aero, launched 21 Oct 2026, publishes no
- * pool data API at all, and DefiLlama's Aerodrome adapter lost fee and volume
- * data at the merger. GeckoTerminal is free, reads the chain directly, and gives
- * each pool's own address, so we can link to the exact deposit page.
+ * Why not Uniswap's own API: its documented data path is its subgraphs on The
+ * Graph, which need an API key. GeckoTerminal is free, reads the chain directly,
+ * and gives each pool's own address, so we can link to the exact deposit page.
  */
 const API = "https://api.geckoterminal.com/api/v2";
 /**
@@ -48,8 +48,8 @@ const FEE_NOTE: Record<Exclude<VenueId, "raydium">, string> = {
     "Computed from 24h volume × fee tier. Before any Uniswap protocol fee, which applies to " +
     "some pools and is not deducted here.",
   aero:
-    "Not shown. Aero splits fees between LPs and sAERO Token Operators and does not publish the " +
-    "LP share; LPs who take AERO Rewards instead receive none of the fees.",
+    "Not shown for pools from before the Aero merger: GeckoTerminal does not give their fee " +
+    "settings, and LPs who take AERO Rewards instead receive none of the fees.",
 };
 
 export async function fetchGeckoTerminal(
@@ -69,7 +69,10 @@ export async function fetchGeckoTerminal(
     const body = (await getJson(url)) as { data?: GeckoPool[]; included?: GeckoToken[] };
     const symbols = new Map((body.included ?? []).map((t) => [t.id, t]));
     for (const pool of body.data ?? []) {
-      if (!venueForDex(pool.relationships.dex.data.id)) {
+      const dexId = pool.relationships.dex.data.id;
+      // Post-merger Aero pools come from Aero's own Sugar contract instead.
+      if (/^aero-/.test(dexId)) continue;
+      if (!venueForDex(dexId)) {
         otherVenues++;
         continue;
       }

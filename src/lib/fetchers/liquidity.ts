@@ -2,7 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { parse } from "yaml";
 import { buildIndex, type RegistryToken } from "@/lib/liquidity/classify";
-import type { LiquidityFile, LiquidityPool } from "@/lib/liquidity/types";
+import type { LiquidityFile, LiquidityPool, LiquiditySource, ReviewPool } from "@/lib/liquidity/types";
+import { fetchAeroSugar } from "./liquidity/aero";
 import { fetchGeckoTerminal } from "./liquidity/geckoterminal";
 import { fetchRaydium } from "./liquidity/raydium";
 
@@ -21,7 +22,7 @@ export function loadRegistry(): RegistryToken[] {
 }
 
 /**
- * Runs both sources in isolation. If one fails, its pools from the previous run
+ * Runs each source in isolation. If one fails, its pools from the previous run
  * are kept rather than dropping a whole venue off the page for an hour.
  */
 export async function fetchLiquidity(previous: LiquidityFile | null): Promise<LiquidityFile> {
@@ -30,22 +31,30 @@ export async function fetchLiquidity(previous: LiquidityFile | null): Promise<Li
   const fetchedAt = new Date().toISOString();
   const sources: LiquidityFile["sources"] = {};
   const all: LiquidityPool[] = [];
+  const review: ReviewPool[] = [];
   let otherVenues = 0;
 
-  const run = async (name: string, venues: string[], fn: () => Promise<LiquidityPool[]>) => {
+  const run = async (name: string, source: LiquiditySource, fn: () => Promise<LiquidityPool[]>) => {
     try {
       const pools = await fn();
       all.push(...pools);
       sources[name] = { ok: true, count: pools.length };
     } catch (err) {
-      const kept = (previous?.pools ?? []).filter((p) => venues.includes(p.venueId));
+      const kept = (previous?.pools ?? []).filter((p) => p.source === source);
       all.push(...kept);
       sources[name] = { ok: false, count: kept.length, error: String(err) };
     }
   };
 
-  await run("raydium", ["raydium"], async () => (await fetchRaydium(registry, index, fetchedAt)).pools);
-  await run("geckoterminal", ["uniswap", "aero"], async () => {
+  await run("raydium", "raydium-api", async () => (await fetchRaydium(registry, index, fetchedAt)).pools);
+  // Aero pools created since the merger, read on-chain from Aero's own contract.
+  await run("aero-sugar", "aero-sugar", async () => {
+    const r = await fetchAeroSugar(index, fetchedAt);
+    review.push(...r.review);
+    return r.pools;
+  });
+  // Uniswap, plus Aero pools from before the merger, which Sugar does not cover.
+  await run("geckoterminal", "geckoterminal", async () => {
     const r = await fetchGeckoTerminal(registry, index, fetchedAt);
     otherVenues = r.otherVenues;
     return r.pools;
@@ -53,13 +62,17 @@ export async function fetchLiquidity(previous: LiquidityFile | null): Promise<Li
 
   if (Object.values(sources).every((s) => !s.ok)) throw new Error("every liquidity source failed");
 
+  // A pool seen by two sources is listed once, from the first (most direct) one.
+  const seen = new Set<string>();
+  const unique = all.filter((p) => (seen.has(p.id) ? false : (seen.add(p.id), true)));
+
   let inactive = 0;
   let belowTvl = 0;
-  const pools = all.filter((p) => {
+  const pools = unique.filter((p) => {
     if (p.volumeUsd1d < ACTIVE_MIN_VOLUME_USD) return inactive++, false;
     if (p.tvlUsd < MIN_TVL_USD) return belowTvl++, false;
     return true;
   });
 
-  return { fetchedAt, sources, pools, excluded: { inactive, belowTvl, otherVenues }, review: [] };
+  return { fetchedAt, sources, pools, excluded: { inactive, belowTvl, otherVenues }, review };
 }

@@ -76,7 +76,7 @@ export function GET() {
         pairType: r.pairType,
         poolType: r.poolType,
         feeTier: r.feeTier,
-        /** Fee APY that reaches the LP. Null where the venue does not publish the LP share. */
+        /** Fee APY that reaches the LP. Null where the LP share is unknown (pre-merger Aero pools). */
         apyBase: r.apyBase,
         /** Fees the pool generates per year as a share of TVL, before anyone's cut. */
         apyBaseGross: r.apyBaseGross,
@@ -87,6 +87,10 @@ export function GET() {
         tvlUsd: r.tvlUsd,
         volumeUsd1d: r.volumeUsd1d,
         volumeUsd7d: r.volumeUsd7d,
+        /** Hours behind volumeUsd1d and apyBase when under 24 (not enough on-chain history yet). */
+        volumeWindowHours: r.volumeWindowHours ?? null,
+        /** Aero gauge emissions, paid to stakers instead of fees. Not included in apyTotal. */
+        emissions: r.emissions ?? null,
         feeNote: r.feeNote,
         url: r.url,
         chartUrl: r.chartUrl,

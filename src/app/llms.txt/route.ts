@@ -35,7 +35,7 @@ export function GET() {
 - ${stats.zeroCount} of ${stats.earnCount} earn opportunities pay exactly 0%.
 - Borrowing is the larger opportunity: ${borrow.length} markets accept a tokenized stock as collateral, with a maximum loan-to-value of ${formatLtv(bs.maxLtv)} and a median borrow cost of ${bs.medianApr === null ? "unknown" : `${bs.medianApr.toFixed(2)}%`}${bs.cheapest ? `, the cheapest being ${bs.cheapest.borrow!.borrowApr?.toFixed(2)}% on ${bs.cheapest.platform.name}` : ""}.
 
-- Liquidity is the one category with meaningful real yield: across ${lq.feePoolCount} active Raydium and Uniswap stock/stablecoin pools, the median trading-fee APY reaching LPs is ${formatApy(lq.medianFeeApy)}, before impermanent loss. Aero does not publish what share of fees LPs keep.
+- Liquidity is the one category with meaningful real yield: across ${lq.feePoolCount} active stock/stablecoin pools with a full day of trading measured, the median trading-fee APY reaching LPs is ${formatApy(lq.medianFeeApy)}, before impermanent loss. On Aero, LPs earn either trading fees or AERO emissions, not both.
 
 ## Data
 

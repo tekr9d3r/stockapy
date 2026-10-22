@@ -42,14 +42,40 @@ export type LiquidityPool = {
   tvlUsd: number;
   volumeUsd1d: number;
   volumeUsd7d: number | null;
+  /**
+   * Hours of trading behind volumeUsd1d and the fee APY, when fewer than 24 because
+   * the pool is newer than a day. Absent when the figures cover a full day.
+   */
+  volumeWindowHours?: number | null;
+  /**
+   * Venue emissions paid to LPs who stake in the gauge (Aero). Kept apart from
+   * apyReward because staking forfeits the trading fees: it is fees or this,
+   * never both.
+   */
+  emissions?: LiquidityEmissions | null;
   /** How apyBase was derived, or why it is missing. Shown beside the figure. */
   feeNote: string;
   /** The page where you deposit into this exact pool. */
   url: string;
   /** Independent page for the exact pool. */
   chartUrl: string;
-  source: "raydium-api" | "geckoterminal";
+  source: LiquiditySource;
   fetchedAt: string;
+};
+
+export type LiquiditySource = "raydium-api" | "geckoterminal" | "aero-sugar";
+
+export type LiquidityEmissions = {
+  token: string;
+  /** Emissions to the pool's gauge, in USD per day at the current token price. */
+  usdPerDay: number;
+  /** USD value of liquidity staked in the gauge, which shares those emissions. */
+  stakedUsd: number;
+  /**
+   * The venue's own APR: a year of emissions over stakedUsd. Huge when little is
+   * staked, and falls as soon as more LPs stake. Null when nothing is staked.
+   */
+  venueApr: number | null;
 };
 
 export type ReviewPool = { venue: string; chain: string; symbol: string; address: string; reason: string };

@@ -40,7 +40,7 @@ export default function LiquidityPage() {
       answer:
         `As of ${asOf} we list ${stats.allCount} active pools on Raydium, Uniswap and Aero across ` +
         `${stats.chains.length} chains — pools that traded at least $1,000 in the last 24 hours and ` +
-        `hold at least $10k. Among the Raydium and Uniswap stock/stablecoin pools, the median ` +
+        `hold at least $10k. Among the stock/stablecoin pools with a full day of trading measured, the median ` +
         `trading-fee APY reaching liquidity providers is ${formatApy(stats.medianFeeApy)}, before ` +
         `impermanent loss.`,
     },
@@ -52,12 +52,14 @@ export default function LiquidityPage() {
         "nothing, but it is earned while carrying impermanent loss, which lending does not.",
     },
     {
-      question: "Why is there no fee APY for Aero pools?",
+      question: "How do Aero pools pay liquidity providers?",
       answer:
-        "Aero splits trading fees between liquidity providers and sAERO Token Operators, and lets each " +
-        "LP choose between AERO Rewards and a share of fees. It does not publish what share an LP " +
-        "keeps, and LPs who choose rewards receive none of the fees, so any single fee figure would " +
-        "be invented. We show the pool's volume, TVL and fee tier instead.",
+        "An Aero LP picks one of two: keep the position unstaked and earn trading fees (minus the 5% " +
+        "Aero sends to sAERO Token Operators), or stake it in the pool's gauge and earn AERO emissions " +
+        "instead of fees. We show the fee APY over the pool's whole TVL, the same way as for Raydium " +
+        "and Uniswap, and the emissions as dollars per day beside it, never added together. Aero's own " +
+        "app shows higher figures because it divides fees by the liquidity near the current price only, " +
+        "and emissions by the small amount staked so far.",
     },
     {
       question: "What is the main risk of providing liquidity with a tokenized stock?",
@@ -97,7 +99,7 @@ export default function LiquidityPage() {
         <p className="mt-4 text-[17px] leading-relaxed text-fg-muted">
           This is the one category where a tokenized stock can earn real yield: traders pay a fee on
           every swap. We track the active pools on Raydium, Uniswap and Aero. As of {asOf}, the median
-          stock/stablecoin pool on Raydium and Uniswap pays liquidity providers{" "}
+          stock/stablecoin pool pays liquidity providers{" "}
           <strong className="text-fg">{formatApy(stats.medianFeeApy)}</strong> in trading fees —
           against <strong className="text-fg">{formatApy(earn.medianApy)}</strong> for the median
           venue on <Link href="/" className="text-accent underline underline-offset-2">Earn</Link>
@@ -129,7 +131,7 @@ export default function LiquidityPage() {
           <Stat
             label="Median fee APY to LPs"
             value={formatApy(stats.medianFeeApy)}
-            note={`Raydium + Uniswap · ${formatApy(earn.medianApy)} on Earn`}
+            note={`${stats.feePoolCount} pools with a full day of data · ${formatApy(earn.medianApy)} on Earn`}
           />
           <Stat label="Traded in 24h" value={formatUsd(stats.volumeUsd1d)} note="Across these pools" />
           <Stat label="Total value in these pools" value={formatUsd(stats.tvlUsd)} note={`As of ${asOf}`} />
@@ -156,8 +158,8 @@ export default function LiquidityPage() {
         <Explainer title="Who keeps the fees">
           Not always the LP. Raydium keeps 16% of every fee, and the rates here are after that cut —
           Raydium&rsquo;s own figure is not. Uniswap charges a protocol fee on some pools, not deducted
-          here. Aero lets LPs take either AERO Rewards or a share of fees it does not disclose, so we
-          show no fee rate for it at all.
+          here. Aero sends 5% of unstaked LPs&rsquo; fees to sAERO Token Operators, deducted here;
+          LPs who stake for AERO emissions give up the fees entirely.
         </Explainer>
         <Explainer title="Impermanent loss">
           Put $500 of NVDA and $500 of USDC in a pool. If NVDA rises 30%, the pool rebalances by

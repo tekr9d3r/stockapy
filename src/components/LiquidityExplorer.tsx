@@ -11,6 +11,9 @@ import type { LiquidityRow } from "@/lib/data/liquidity";
 type Sort = "fee" | "total" | "tvl" | "turnover" | "volume";
 type PairFilter = "stock-stable" | "stock-crypto" | "stock-stock" | "all";
 
+/** 0: fee APY over a full day; 1: over only a few hours; 2: no fee figure. */
+const feeRank = (r: LiquidityRow) => (r.apyBase === null ? 2 : r.volumeWindowHours != null ? 1 : 0);
+
 const ISSUER_LABEL: Record<string, string> = {
   xstocks: "xStocks", ondo: "Ondo", coinbase: "Coinbase", robinhood: "Robinhood", binance: "Binance bStocks",
 };
@@ -64,9 +67,11 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
       turnover: (r) => r.volumeToTvl,
       volume: (r) => r.volumeUsd1d,
     };
-    // Pools with no published fee figure sort after those with one, by volume.
+    // By fee: rates measured over a full day first, then rates from only a few
+    // hours of trading (too noisy to lead with), then pools with no fee figure,
+    // by volume.
     return out.sort((a, b) => {
-      if (sort === "fee" && (a.apyBase === null) !== (b.apyBase === null)) return a.apyBase === null ? 1 : -1;
+      if (sort === "fee" && feeRank(a) !== feeRank(b)) return feeRank(a) - feeRank(b);
       if (sort === "fee" && a.apyBase === null && b.apyBase === null) return b.volumeUsd1d - a.volumeUsd1d;
       return key[sort](b) - key[sort](a);
     });
@@ -77,11 +82,16 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
     for (const r of visible) m.set(r.venue.id, [...(m.get(r.venue.id) ?? []), r]);
     return [...m.values()]
       .map((pools) => {
-        const fees = pools.map((p) => p.apyBase).filter((v): v is number => v !== null);
+        const fees = (rank: number) =>
+          pools.filter((p) => feeRank(p) === rank).map((p) => p.apyBase!);
+        const fullDay = fees(0);
+        const short = fees(1);
         return {
           venue: pools[0].venue,
           pools,
-          topFee: fees.length ? Math.max(...fees) : null,
+          topFee: fullDay.length ? Math.max(...fullDay) : null,
+          /** Only shown when no pool here has a full day measured yet. */
+          topFeeShort: short.length ? Math.max(...short) : null,
           tvl: pools.reduce((s, p) => s + p.tvlUsd, 0),
           volume: pools.reduce((s, p) => s + p.volumeUsd1d, 0),
           chains: [...new Set(pools.map((p) => p.chain))].sort(),
@@ -163,7 +173,14 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
               metrics={
                 <>
                   <Metric label="Fee APY" wide always>
-                    {g.topFee === null ? (
+                    {g.topFee === null && g.topFeeShort !== null ? (
+                      <>
+                        <span className="text-positive">up to {formatApy(g.topFeeShort)}</span>
+                        <span className="block text-[11px] font-normal text-warn" title="Annualised from only a few hours of trading. Very noisy until a full day is measured.">
+                          from a few hours of trading
+                        </span>
+                      </>
+                    ) : g.topFee === null ? (
                       <span className="text-sm font-normal text-fg-subtle" title={g.pools[0]?.feeNote}>not published</span>
                     ) : g.topFee === 0 ? (
                       <span className="text-zero">0%</span>
@@ -195,7 +212,8 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
       <p className="mt-2 text-xs leading-relaxed text-fg-subtle">
         Showing {visible.length} of {rows.length} active pools (traded at least $1,000 in the last 24 hours, $10k+ in the pool). Every rate is{" "}
         <strong className="text-fg-muted">before impermanent loss</strong>, and concentrated-liquidity rates assume your position stays in range.
-        Fee APY is what reaches the liquidity provider: after Raydium&rsquo;s 16% cut, before any Uniswap protocol fee, and not published by Aero.
+        Fee APY is what reaches the liquidity provider: after Raydium&rsquo;s 16% cut and Aero&rsquo;s 5% to sAERO operators, before any Uniswap protocol fee.
+        On Aero, staking in the gauge pays AERO <em>instead</em> of fees, so its AERO column is never added to the fee APY.
       </p>
     </div>
   );

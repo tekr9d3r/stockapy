@@ -13,6 +13,12 @@ const POOL_TYPE: Record<string, { label: string; title: string }> = {
   unknown: { label: "—", title: "The venue does not say which kind of pool this is." },
 };
 
+const SOURCE_LABEL: Record<LiquidityRow["source"], string> = {
+  "raydium-api": "Raydium's API",
+  geckoterminal: "GeckoTerminal",
+  "aero-sugar": "Aero's Sugar contract on-chain",
+};
+
 const PAIR_LABEL: Record<string, string> = {
   "stock-stable": "Stock / stablecoin",
   "stock-crypto": "Stock / crypto",
@@ -41,7 +47,7 @@ export function LiquidityTable({ rows, hideVenue = false }: { rows: LiquidityRow
             <th scope="col" className="px-2 py-2 text-right font-medium" title="Trading fees that reach the liquidity provider. Hover a figure for how it was worked out.">
               Fee APY
             </th>
-            <th scope="col" className="px-2 py-2 text-right font-medium" title="Token incentives on top of fees. Can stop at any time.">
+            <th scope="col" className="px-2 py-2 text-right font-medium" title="Token incentives. Added to fees on most venues; on Aero they replace fees. Can stop at any time.">
               Incentives
             </th>
             <th scope="col" className="px-2 py-2 text-right font-medium" title="Fees plus incentives, before impermanent loss.">
@@ -109,17 +115,48 @@ export function LiquidityTable({ rows, hideVenue = false }: { rows: LiquidityRow
                   {r.apyBase === null ? (
                     <span className="text-xs text-fg-subtle underline decoration-dotted underline-offset-2">not published</span>
                   ) : (
-                    <span className={`text-[15px] font-semibold ${r.apyBase > 0 ? "text-positive" : "text-zero"}`}>
-                      {formatApy(r.apyBase)}
-                    </span>
+                    <>
+                      <span className={`text-[15px] font-semibold ${r.apyBase > 0 ? "text-positive" : "text-zero"}`}>
+                        {formatApy(r.apyBase)}
+                      </span>
+                      {r.volumeWindowHours != null && (
+                        <span className="block text-[10px] font-medium uppercase tracking-wide text-warn">
+                          {r.volumeWindowHours}h of data
+                        </span>
+                      )}
+                    </>
                   )}
                 </td>
                 <td className="tnum px-2 py-2.5 text-right whitespace-nowrap text-fg-muted">
-                  {r.apyReward === null ? "—" : formatApy(r.apyReward)}
+                  {r.emissions ? (
+                    <span
+                      title={
+                        `${formatUsd(r.emissions.usdPerDay)} a day in ${r.emissions.token}, shared by LPs who stake in the gauge, ` +
+                        `who give up the trading fees in exchange. ` +
+                        (r.emissions.venueApr === null
+                          ? "Nothing is staked yet."
+                          : `Aero shows this as ${formatApy(r.emissions.venueApr)} APR because only ${formatUsd(r.emissions.stakedUsd)} ` +
+                            `of the pool is staked; it falls as soon as more LPs stake.`)
+                      }
+                      className="underline decoration-dotted underline-offset-2"
+                    >
+                      {formatUsd(r.emissions.usdPerDay)}/day
+                      <span className="block text-[10px] text-fg-subtle">{r.emissions.token}, instead of fees</span>
+                    </span>
+                  ) : r.apyReward === null ? (
+                    "—"
+                  ) : (
+                    formatApy(r.apyReward)
+                  )}
                 </td>
                 <td className="tnum px-2 py-2.5 text-right whitespace-nowrap">
                   {r.apyTotal === null ? (
-                    <span className="text-fg-subtle">—</span>
+                    <span
+                      className="text-fg-subtle"
+                      title={r.emissions ? "No total: on Aero you take the trading fees or the AERO emissions, not both." : undefined}
+                    >
+                      —
+                    </span>
                   ) : (
                     <span className="inline-flex items-baseline gap-1">
                       <span className={r.mostlyIncentives ? "text-warn" : "text-fg"}>
@@ -136,6 +173,11 @@ export function LiquidityTable({ rows, hideVenue = false }: { rows: LiquidityRow
                 <td className="tnum px-2 py-2.5 text-right whitespace-nowrap text-fg-muted">{formatUsd(r.tvlUsd)}</td>
                 <td className="tnum px-2 py-2.5 text-right whitespace-nowrap text-fg-muted">
                   {formatUsd(r.volumeUsd1d)}
+                  {r.volumeWindowHours != null && (
+                    <span className="block text-[10px] text-fg-subtle" title="Volume over the trading history available so far, not a full day.">
+                      last {r.volumeWindowHours}h
+                    </span>
+                  )}
                 </td>
                 <td className="tnum px-2 py-2.5 text-right whitespace-nowrap text-fg-muted">
                   {`${r.volumeToTvl.toFixed(2)}×`}
@@ -148,7 +190,7 @@ export function LiquidityTable({ rows, hideVenue = false }: { rows: LiquidityRow
                     href={r.chartUrl}
                     target="_blank"
                     rel="noopener nofollow"
-                    title={`Collected ${formatDate(r.fetchedAt)} from ${r.source === "raydium-api" ? "Raydium's API" : "GeckoTerminal"}. Opens this pool on GeckoTerminal.`}
+                    title={`Collected ${formatDate(r.fetchedAt)} from ${SOURCE_LABEL[r.source]}. Opens this pool on GeckoTerminal.`}
                     className="hover:text-accent hover:underline"
                   >
                     {formatRelativeShort(r.fetchedAt)}

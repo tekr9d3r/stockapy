@@ -27,7 +27,10 @@ export function loadLiquidityFile(): LiquidityFile | null {
 }
 
 function toRow(p: LiquidityPool, now: number): LiquidityRow {
-  const apyTotal = p.apyBase === null ? null : p.apyBase + (p.apyReward ?? 0);
+  // Aero LPs take the fees or the gauge emissions, never both, so there is no
+  // single total to add up.
+  const eitherOr = Boolean(p.emissions);
+  const apyTotal = p.apyBase === null || eitherOr ? null : p.apyBase + (p.apyReward ?? 0);
   return {
     ...p,
     venue: VENUES[p.venueId],
@@ -38,10 +41,14 @@ function toRow(p: LiquidityPool, now: number): LiquidityRow {
   };
 }
 
-/** Fee APY first; pools whose fee share is unpublished sort by volume after them. */
+/**
+ * Fee APY first, full-day rates ahead of rates from only a few hours of trading;
+ * pools with no fee figure sort by volume after them.
+ */
 export function sortLiquidity(rows: LiquidityRow[]): LiquidityRow[] {
+  const rank = (r: LiquidityRow) => (r.apyBase === null ? 2 : isShortWindow(r) ? 1 : 0);
   return [...rows].sort((a, b) => {
-    if ((a.apyBase === null) !== (b.apyBase === null)) return a.apyBase === null ? 1 : -1;
+    if (rank(a) !== rank(b)) return rank(a) - rank(b);
     if (a.apyBase !== null && b.apyBase !== null) return b.apyBase - a.apyBase;
     return b.volumeUsd1d - a.volumeUsd1d;
   });
@@ -68,14 +75,20 @@ const median = (xs: number[]) => {
   return s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2;
 };
 
+/** True when the volume and fee figures cover less than a full day of trading. */
+export function isShortWindow(r: Pick<LiquidityPool, "volumeWindowHours">): boolean {
+  return r.volumeWindowHours != null;
+}
+
 /**
- * Headline numbers over the default view. The fee figures cover only pools that
- * publish what reaches the LP (Raydium, Uniswap); Aero does not, so it is counted
- * in volume and TVL but never in a fee median.
+ * Headline numbers over the default view. The fee figures cover only pools whose
+ * fee APY to LPs is known over a full day: a rate annualised from a few hours of
+ * trading is too noisy to headline, though it is listed in the table, flagged.
+ * Every pool counts towards volume and TVL.
  */
 export function liquidityStats(rows: LiquidityRow[] = getLiquidityRows()) {
   const set = rows.filter(isDefaultVisible);
-  const withFee = set.filter((r) => r.apyBase !== null);
+  const withFee = set.filter((r) => r.apyBase !== null && !isShortWindow(r));
   const deep = withFee.filter((r) => r.tvlUsd >= 250_000);
   return {
     poolCount: set.length,
@@ -84,6 +97,8 @@ export function liquidityStats(rows: LiquidityRow[] = getLiquidityRows()) {
     chains: [...new Set(set.map((r) => r.chain))].sort(),
     venues: [...new Set(set.map((r) => r.venue.name))].sort(),
     feePoolCount: withFee.length,
+    /** Default-view pools with a fee APY measured over less than a day. */
+    shortWindowCount: set.filter((r) => r.apyBase !== null && isShortWindow(r)).length,
     medianFeeApy: median(withFee.map((r) => r.apyBase!)),
     tvlUsd: set.reduce((s, r) => s + r.tvlUsd, 0),
     volumeUsd1d: set.reduce((s, r) => s + r.volumeUsd1d, 0),
