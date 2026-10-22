@@ -46,9 +46,9 @@ export default function OpportunitiesPage() {
       <h1 className="text-3xl font-semibold tracking-tight">All markets</h1>
       <p className="mt-3 max-w-3xl text-[17px] leading-relaxed text-fg-muted">
         Every one of the {rows.length} markets we track, flat and sortable. For a view grouped
-        by platform, start from the{" "}
-        <Link href="/" className="text-accent underline underline-offset-2">
-          home page
+        by platform, see{" "}
+        <Link href="/earn" className="text-accent underline underline-offset-2">
+          Earn
         </Link>
         .
       </p>

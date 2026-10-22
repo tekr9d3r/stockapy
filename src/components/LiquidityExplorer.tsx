@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { ActionButton } from "./ActionButton";
 import { Badge } from "./Badge";
 import { CollapsibleGroup, Metric } from "./CollapsibleGroup";
 import { LiquidityTable } from "./LiquidityTable";
@@ -195,9 +196,9 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
             >
               <LiquidityTable rows={g.pools} hideVenue />
               {g.venue.website && (
-                <a href={g.venue.website} target="_blank" rel="noopener nofollow" className="mt-3 inline-block text-sm text-accent hover:underline">
-                  Open {g.venue.name} →
-                </a>
+                <div className="mt-3">
+                  <ActionButton href={g.venue.website} platform={g.venue.name} category="liquidity" specific={false} size="md" />
+                </div>
               )}
             </CollapsibleGroup>
           ))}

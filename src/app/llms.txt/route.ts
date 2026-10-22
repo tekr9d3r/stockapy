@@ -45,9 +45,12 @@ export function GET() {
 
 ## Pages
 
-- [Comparison table](${SITE_URL}/): every tracked earn opportunity.
+- [Overview](${SITE_URL}/): the best way to earn, provide liquidity and borrow with a tokenized stock right now.
+- [Earn](${SITE_URL}/earn): every place that pays you to deposit a tokenized stock, by platform.
 - [Provide liquidity with tokenized stocks](${SITE_URL}/liquidity): active Raydium, Uniswap and Aero pools with LP fee APY, volume, TVL and deposit links.
 - [Borrow against tokenized stocks](${SITE_URL}/borrow): max LTV, loan asset and borrow cost per venue.
+- [Knowledge Hub](${SITE_URL}/hub): research and explainers.
+- [Weekly newsletter](${SITE_URL}/newsletter): the best pools and updated yields, every week.
 - [Glossary](${SITE_URL}/glossary): base APY, reward APY, points, collateral-only venues, looped vaults, oracle gap risk.
 - [Platforms](${SITE_URL}/platforms)
 - [Issuers](${SITE_URL}/issuers)

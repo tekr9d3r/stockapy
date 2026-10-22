@@ -3,7 +3,8 @@ import Link from "next/link";
 import { BorrowTable } from "@/components/BorrowTable";
 import { CategoryTabs } from "@/components/CategoryTabs";
 import { JsonLd } from "@/components/JsonLd";
-import { Stat, StatStrip } from "@/components/Stat";
+import { CategoryHeader, LogoStack, Tile } from "@/components/CategoryHeader";
+import { PlatformLogo } from "@/components/Logo";
 import { borrowRows, borrowStats } from "@/lib/data/rows";
 import { loadLatestSnapshot } from "@/lib/data/snapshot";
 import { formatDate, formatLtv } from "@/lib/format";
@@ -82,11 +83,31 @@ export default function BorrowPage() {
 
       <CategoryTabs active="borrow" />
 
-      <section className="mb-8 max-w-3xl">
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          Borrow against tokenized stocks
-        </h1>
-        <p className="mt-4 text-[17px] leading-relaxed text-fg-muted">
+      <CategoryHeader
+        category="borrow"
+        title="Borrow against tokenized stocks"
+        logos={
+          <LogoStack caption={`${new Set(rows.map((r) => r.platform.id)).size} platforms · borrow ${stats.loanAssets.join(", ")}`}>
+            {[...new Map(rows.map((r) => [r.platform.id, r.platform])).values()].map((p) => (
+              <PlatformLogo key={p.id} id={p.id} name={p.name} size={30} />
+            ))}
+          </LogoStack>
+        }
+        tiles={
+          <>
+            <Tile category="borrow" label="Highest LTV" value={formatLtv(stats.maxLtv)} note="Before liquidation buffer" />
+            <Tile
+              label="Median borrow cost"
+              value={stats.medianApr === null ? "—" : `${stats.medianApr.toFixed(2)}%`}
+              note={cheapest ? `from ${cheapest.borrow!.borrowApr?.toFixed(2)}% on ${cheapest.platform.name}` : "Annual interest"}
+            />
+            <Tile label="Borrow markets" value={String(rows.length)} note={`${withLtv} with a published LTV`} />
+            <Tile label="Loan assets" value={String(stats.loanAssets.length)} note={stats.loanAssets.join(", ")} />
+          </>
+        }
+      >
+        {/* Answer-first: the paragraph a search engine or AI assistant should lift. */}
+        <p>
           Lending your tokenized stock out pays almost nothing. Posting it as collateral and
           borrowing against it is the thing these venues are actually built for. As of {asOf} we
           track <strong className="text-fg">{rows.length} borrow markets</strong> across{" "}
@@ -102,24 +123,7 @@ export default function BorrowPage() {
           )}
           .
         </p>
-      </section>
-
-      <section className="mb-8">
-        <StatStrip>
-          <Stat
-            label="Borrow markets"
-            value={String(rows.length)}
-            note={`${withLtv} with a published LTV`}
-          />
-          <Stat label="Highest LTV" value={formatLtv(stats.maxLtv)} note="Before liquidation buffer" />
-          <Stat
-            label="Median borrow cost"
-            value={stats.medianApr === null ? "—" : `${stats.medianApr.toFixed(2)}%`}
-            note="Annual interest"
-          />
-          <Stat label="Loan assets" value={String(stats.loanAssets.length)} note={stats.loanAssets.join(", ")} />
-        </StatStrip>
-      </section>
+      </CategoryHeader>
 
       <section className="mb-12">
         <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
@@ -134,25 +138,25 @@ export default function BorrowPage() {
         <BorrowTable rows={rows} />
       </section>
 
-      <section className="mb-12 grid gap-6 md:grid-cols-3">
-        <div>
-          <h3 className="mb-1.5 font-medium">Max LTV is not a target</h3>
+      <section className="mb-12 grid gap-4 md:grid-cols-3">
+        <div className="rounded-xl border bg-bg-raised p-5">
+          <h3 className="mb-1.5 font-semibold">Max LTV is not a target</h3>
           <p className="text-sm leading-relaxed text-fg-muted">
             It is the line at which you are liquidated, not a sensible borrowing level. A
             position opened near the maximum is liquidated by an ordinary day&rsquo;s move in
             the share price.
           </p>
         </div>
-        <div>
-          <h3 className="mb-1.5 font-medium">The weekend is the real risk</h3>
+        <div className="rounded-xl border bg-bg-raised p-5">
+          <h3 className="mb-1.5 font-semibold">The weekend is the real risk</h3>
           <p className="text-sm leading-relaxed text-fg-muted">
             The share stops trading on Friday; the token does not. An oracle still has to quote
             a price, and the gap when the market reopens can liquidate a position nobody was
             awake to defend. This risk does not exist when you hold the share itself.
           </p>
         </div>
-        <div>
-          <h3 className="mb-1.5 font-medium">The lend side is a different trade</h3>
+        <div className="rounded-xl border bg-bg-raised p-5">
+          <h3 className="mb-1.5 font-semibold">The lend side is a different trade</h3>
           <p className="text-sm leading-relaxed text-fg-muted">
             Morpho&rsquo;s interface shows a &ldquo;Lend Rate&rdquo; on each of these markets,
             and some are high. It is not yield on your stock: in a Morpho Blue market the
@@ -160,8 +164,8 @@ export default function BorrowPage() {
             you deposit USDG or USDC, not shares.
           </p>
         </div>
-        <div>
-          <h3 className="mb-1.5 font-medium">A cheap rate usually means a quiet market</h3>
+        <div className="rounded-xl border bg-bg-raised p-5">
+          <h3 className="mb-1.5 font-semibold">A cheap rate usually means a quiet market</h3>
           <p className="text-sm leading-relaxed text-fg-muted">
             Borrow rates fall when nobody is borrowing. The lowest numbers here sit in markets
             holding a few hundred thousand dollars, where your own loan would move the rate.

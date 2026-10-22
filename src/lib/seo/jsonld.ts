@@ -1,4 +1,4 @@
-import { BRAND_NAME, SITE_DESCRIPTION, SITE_URL } from "@/config";
+import { BRAND_NAME, SITE_DESCRIPTION, SITE_URL, SOCIAL } from "@/config";
 import { GLOSSARY } from "@/lib/content/glossary";
 import { formatApy, formatPp } from "@/lib/format";
 import type { Row, UnderlyingAsset } from "@/lib/data/types";
@@ -18,6 +18,7 @@ export function organizationLd(): Json {
     name: BRAND_NAME,
     url: SITE_URL,
     description: SITE_DESCRIPTION,
+    sameAs: [SOCIAL.x, SOCIAL.github],
   };
 }
 

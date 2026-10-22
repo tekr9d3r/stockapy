@@ -2,7 +2,9 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { ActionButton } from "./ActionButton";
 import { Badge } from "./Badge";
+import { PlatformLogo } from "./Logo";
 import { StockLogo } from "./StockLogo";
 import { formatApy, formatLtv, formatRelativeShort, SOURCE_LABEL, formatDate } from "@/lib/format";
 import type { Row } from "@/lib/data/types";
@@ -82,7 +84,7 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
       )}
 
       <div className="overflow-x-auto rounded-lg border bg-bg-raised">
-        <table className="w-full min-w-[1040px] border-collapse text-sm">
+        <table className="w-full min-w-[1140px] border-collapse text-sm">
           <caption className="sr-only">
             Tokenized stocks accepted as collateral, with the maximum loan-to-value and the
             cost of borrowing against them.
@@ -110,7 +112,10 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
               >
                 Lend side
               </th>
-              <th scope="col" className="px-2 py-2 pr-4 text-right font-medium">Updated</th>
+              <th scope="col" className="px-2 py-2 text-right font-medium">Updated</th>
+              <th scope="col" className="px-2 py-2 pr-4 text-right font-medium">
+                <span className="sr-only">Open market</span>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -133,22 +138,8 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
                   </td>
                   <td className="px-2 py-2.5 whitespace-nowrap">
                     <div className="flex items-center gap-1.5">
-                      <a
-                        href={row.deepLink}
-                        target="_blank"
-                        rel="noopener nofollow"
-                        title={
-                          row.deepLinkIsSpecific
-                            ? `Open this market on ${row.platform.name}`
-                            : `${row.platform.name} — no market-specific link yet`
-                        }
-                        className="font-medium hover:text-accent hover:underline"
-                      >
-                        {row.platform.name}
-                        <span aria-hidden="true" className="ml-0.5 text-fg-subtle">
-                          ↗
-                        </span>
-                      </a>
+                      <PlatformLogo id={row.platform.id} name={row.platform.name} size={20} />
+                      <span className="font-medium">{row.platform.name}</span>
                       <Badge tone={row.platform.kind === "cefi" ? "accent" : "neutral"}>
                         {row.platform.kind === "cefi" ? "CeFi" : "DeFi"}
                       </Badge>
@@ -206,7 +197,7 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
                       </span>
                     )}
                   </td>
-                  <td className="px-2 py-2.5 pr-4 text-right text-xs whitespace-nowrap text-fg-subtle">
+                  <td className="px-2 py-2.5 text-right text-xs whitespace-nowrap text-fg-subtle">
                     <span
                       title={`Collected ${formatDate(row.fetchedAt)} from ${
                         SOURCE_LABEL[row.source] ?? row.source
@@ -215,12 +206,20 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
                       {formatRelativeShort(row.fetchedAt)}
                     </span>
                   </td>
+                  <td className="px-2 py-2.5 pr-4 text-right">
+                    <ActionButton
+                      href={row.deepLink}
+                      platform={row.platform.name}
+                      category="borrow"
+                      specific={row.deepLinkIsSpecific}
+                    />
+                  </td>
                 </tr>
               );
             })}
             {visible.length === 0 && (
               <tr>
-                <td colSpan={10} className="px-4 py-10 text-center text-fg-muted">
+                <td colSpan={11} className="px-4 py-10 text-center text-fg-muted">
                   Nothing matches those filters.
                 </td>
               </tr>

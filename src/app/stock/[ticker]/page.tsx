@@ -101,8 +101,8 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
       />
 
       <nav className="mb-4 text-xs text-fg-subtle">
-        <Link href="/" className="hover:text-fg">
-          All opportunities
+        <Link href="/earn" className="hover:text-fg">
+          Earn
         </Link>
         <span className="mx-1.5">/</span>
         <span>{asset.ticker}</span>

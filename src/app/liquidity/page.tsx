@@ -3,7 +3,8 @@ import Link from "next/link";
 import { CategoryTabs } from "@/components/CategoryTabs";
 import { JsonLd } from "@/components/JsonLd";
 import { LiquidityExplorer } from "@/components/LiquidityExplorer";
-import { Stat, StatStrip } from "@/components/Stat";
+import { CategoryHeader, LogoStack, Tile } from "@/components/CategoryHeader";
+import { ChainLogo, PlatformLogo } from "@/components/Logo";
 import { getLiquidityRows, liquidityStats, loadLiquidityFile } from "@/lib/data/liquidity";
 import { marketStats } from "@/lib/data/rows";
 import { formatApy, formatDate, formatUsd } from "@/lib/format";
@@ -92,17 +93,41 @@ export default function LiquidityPage() {
 
       <CategoryTabs active="liquidity" />
 
-      <section className="mb-8 max-w-3xl">
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          Provide liquidity with tokenized stocks
-        </h1>
-        <p className="mt-4 text-[17px] leading-relaxed text-fg-muted">
+      <CategoryHeader
+        category="liquidity"
+        title="Provide liquidity with tokenized stocks"
+        logos={
+          <LogoStack caption={`${stats.venues.join(", ")} · ${stats.chains.join(", ")}`}>
+            {[...new Map(rows.map((r) => [r.venue.id, r.venue])).values()].map((v) => (
+              <PlatformLogo key={v.id} id={v.id} name={v.name} size={30} />
+            ))}
+            {stats.chains.map((c) => (
+              <ChainLogo key={c} chain={c === "BSC" ? "BNB Chain" : c} size={30} />
+            ))}
+          </LogoStack>
+        }
+        tiles={
+          <>
+            <Tile
+              category="liquidity"
+              label="Median fee APY to LPs"
+              value={formatApy(stats.medianFeeApy)}
+              note={`${stats.feePoolCount} pools with a full day of data · ${formatApy(earn.medianApy)} on Earn`}
+            />
+            <Tile label="Active stablecoin pools" value={String(stats.poolCount)} note={`${stats.venues.length} venues · ${stats.chains.length} chains`} />
+            <Tile label="Traded in 24h" value={formatUsd(stats.volumeUsd1d)} note="Across these pools" />
+            <Tile label="Value in these pools" value={formatUsd(stats.tvlUsd)} note={`As of ${asOf}`} />
+          </>
+        }
+      >
+        {/* Answer-first: the paragraph a search engine or AI assistant should lift. */}
+        <p>
           This is the one category where a tokenized stock can earn real yield: traders pay a fee on
           every swap. We track the active pools on Raydium, Uniswap and Aero. As of {asOf}, the median
           stock/stablecoin pool pays liquidity providers{" "}
           <strong className="text-fg">{formatApy(stats.medianFeeApy)}</strong> in trading fees —
           against <strong className="text-fg">{formatApy(earn.medianApy)}</strong> for the median
-          venue on <Link href="/" className="text-accent underline underline-offset-2">Earn</Link>
+          venue on <Link href="/earn" className="text-accent underline underline-offset-2">Earn</Link>
           {best && (
             <>
               . The best with real depth is{" "}
@@ -119,24 +144,7 @@ export default function LiquidityPage() {
           . Every figure is <strong className="text-fg">before impermanent loss</strong>, which lending
           does not carry.
         </p>
-      </section>
-
-      <section className="mb-8">
-        <StatStrip>
-          <Stat
-            label="Active stablecoin pools"
-            value={String(stats.poolCount)}
-            note={`${stats.venues.length} venues · ${stats.chains.length} chains`}
-          />
-          <Stat
-            label="Median fee APY to LPs"
-            value={formatApy(stats.medianFeeApy)}
-            note={`${stats.feePoolCount} pools with a full day of data · ${formatApy(earn.medianApy)} on Earn`}
-          />
-          <Stat label="Traded in 24h" value={formatUsd(stats.volumeUsd1d)} note="Across these pools" />
-          <Stat label="Total value in these pools" value={formatUsd(stats.tvlUsd)} note={`As of ${asOf}`} />
-        </StatStrip>
-      </section>
+      </CategoryHeader>
 
       <section className="mb-12">
         <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
@@ -149,7 +157,7 @@ export default function LiquidityPage() {
         <LiquidityExplorer rows={rows} />
       </section>
 
-      <section className="mb-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <section className="mb-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <Explainer title="Fees are real yield">
           Trading fees are paid by traders on every swap, not by a marketing budget. That makes this
           the one category where the rate on a tokenized stock can be large and durable — for as long
@@ -202,8 +210,8 @@ export default function LiquidityPage() {
 
 function Explainer({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div>
-      <h3 className="mb-1.5 font-medium">{title}</h3>
+    <div className="rounded-xl border bg-bg-raised p-5">
+      <h3 className="mb-1.5 font-semibold">{title}</h3>
       <p className="text-sm leading-relaxed text-fg-muted">{children}</p>
     </div>
   );

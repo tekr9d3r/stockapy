@@ -56,6 +56,36 @@ const PLATFORM_DOMAINS: Record<string, string> = {
   arrowfarm: "arrowfarm.io",
 };
 
+/** Issuer marks, keyed by seed issuer id. */
+const ISSUER_DOMAINS: Record<string, string> = {
+  xstocks: "xstocks.com",
+  ondo: "ondo.finance",
+  coinbase: "coinbase.com",
+  robinhood: "robinhood.com",
+  "cryptocom-issuer": "crypto.com",
+  binance: "binance.com",
+};
+
+/**
+ * Chain marks, keyed by the chain name as it appears in the data. "BSC" (from
+ * the liquidity sources) and "BNB Chain" (from the seed) are the same chain.
+ */
+const CHAIN_DOMAINS: Record<string, string> = {
+  Solana: "solana.com",
+  Base: "base.org",
+  Ethereum: "ethereum.org",
+  "BNB Chain": "bnbchain.org",
+  BSC: "bnbchain.org",
+  "Robinhood Chain": "robinhood.com",
+  Ink: "inkonchain.com",
+  Arbitrum: "arbitrum.io",
+};
+
+/** Where a favicon is too small to use, the project's own GitHub avatar. */
+const CHAIN_URLS: Record<string, string> = {
+  Base: "https://github.com/base.png?size=128",
+};
+
 /** Tried in order. SVG first: it is smaller and stays sharp at any size. */
 const SOURCES = [
   { name: "parqet", ext: "svg", url: (t: string) => `https://assets.parqet.com/logos/symbol/${t}` },
@@ -95,43 +125,62 @@ async function tryFetch(ticker: string) {
   return null;
 }
 
-async function fetchPlatformLogos(force: boolean) {
-  fs.mkdirSync(PLATFORM_DIR, { recursive: true });
-  const manifest: Record<string, string> = fs.existsSync(PLATFORM_MANIFEST)
-    ? JSON.parse(fs.readFileSync(PLATFORM_MANIFEST, "utf8"))
+/**
+ * Fetch a favicon-sourced mark for each { id, domain } into its own folder and
+ * manifest. Shared by platforms, issuers and chains.
+ */
+async function fetchFavicons(
+  label: string,
+  items: { id: string; domain: string | undefined; url?: string }[],
+  dir: string,
+  manifestPath: string,
+  force: boolean,
+) {
+  fs.mkdirSync(dir, { recursive: true });
+  const manifest: Record<string, string> = fs.existsSync(manifestPath)
+    ? JSON.parse(fs.readFileSync(manifestPath, "utf8"))
     : {};
 
-  console.log("\nPlatforms and liquidity venues:");
-  const venues = [...new Map(Object.values(VENUES).map((v) => [v.id, v])).values()];
-  for (const platform of [...loadSeed().platforms, ...venues]) {
-    const domain = PLATFORM_DOMAINS[platform.id];
-    if (!domain) {
-      console.warn(`  ${platform.id}: no domain mapped, will render a monogram`);
+  console.log(`\n${label}:`);
+  for (const { id, domain, url } of items) {
+    if (!domain && !url) {
+      console.warn(`  ${id}: no domain mapped, will render a monogram`);
       continue;
     }
-    const existing = manifest[platform.id];
-    if (!force && existing && fs.existsSync(path.join(PLATFORM_DIR, existing))) {
-      console.log(`  ${platform.id}: already have ${existing}`);
+    const existing = manifest[id];
+    if (!force && existing && fs.existsSync(path.join(dir, existing))) {
+      console.log(`  ${id}: already have ${existing}`);
       continue;
     }
 
     try {
-      const res = await fetch(faviconUrl(domain));
+      const res = await fetch(url ?? faviconUrl(domain!));
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const buffer = Buffer.from(await res.arrayBuffer());
       if (buffer.byteLength < 200) throw new Error("suspiciously small");
 
-      const fileName = `${platform.id}.png`;
-      fs.writeFileSync(path.join(PLATFORM_DIR, fileName), buffer);
-      manifest[platform.id] = fileName;
-      console.log(`  ${platform.id}: ${fileName} (${buffer.byteLength} bytes, ${domain})`);
+      const fileName = `${id.toLowerCase().replace(/[^a-z0-9-]+/g, "-")}.png`;
+      fs.writeFileSync(path.join(dir, fileName), buffer);
+      manifest[id] = fileName;
+      console.log(`  ${id}: ${fileName} (${buffer.byteLength} bytes, ${url ?? domain})`);
     } catch (err) {
-      console.warn(`  ${platform.id}: FAILED (${err})`);
+      console.warn(`  ${id}: FAILED (${err})`);
     }
   }
 
-  fs.writeFileSync(PLATFORM_MANIFEST, JSON.stringify(manifest, null, 2) + "\n");
-  console.log(`${Object.keys(manifest).length} platform logos in the manifest`);
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
+  console.log(`${Object.keys(manifest).length} ${label.toLowerCase()} logos in the manifest`);
+}
+
+async function fetchPlatformLogos(force: boolean) {
+  const venues = [...new Map(Object.values(VENUES).map((v) => [v.id, v])).values()];
+  await fetchFavicons(
+    "Platforms and liquidity venues",
+    [...loadSeed().platforms, ...venues].map((p) => ({ id: p.id, domain: PLATFORM_DOMAINS[p.id] })),
+    PLATFORM_DIR,
+    PLATFORM_MANIFEST,
+    force,
+  );
 }
 
 async function main() {
@@ -174,6 +223,20 @@ async function main() {
   );
 
   await fetchPlatformLogos(force);
+  await fetchFavicons(
+    "Issuers",
+    loadSeed().issuers.map((i) => ({ id: i.id, domain: ISSUER_DOMAINS[i.id] })),
+    path.join(OUT_DIR, "issuers"),
+    path.join(process.cwd(), "data", "issuer-logos.json"),
+    force,
+  );
+  await fetchFavicons(
+    "Chains",
+    Object.entries(CHAIN_DOMAINS).map(([id, domain]) => ({ id, domain, url: CHAIN_URLS[id] })),
+    path.join(OUT_DIR, "chains"),
+    path.join(process.cwd(), "data", "chain-logos.json"),
+    force,
+  );
 }
 
 main();

@@ -1,5 +1,7 @@
 "use client";
 
+import { ActionButton } from "./ActionButton";
+import { PlatformLogo } from "./Logo";
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ApyCell } from "./ApyCell";
@@ -125,7 +127,7 @@ export function OpportunityTable({
       )}
 
       <div className="overflow-x-auto rounded-lg border bg-bg-raised">
-        <table className={`w-full border-collapse text-sm ${hidePlatform ? "min-w-[840px]" : "min-w-[960px]"}`}>
+        <table className={`w-full border-collapse text-sm ${hidePlatform ? "min-w-[940px]" : "min-w-[1080px]"}`}>
           <caption className="sr-only">
             Yield opportunities on tokenized stocks, with base interest and token incentives
             shown separately.
@@ -145,7 +147,10 @@ export function OpportunityTable({
               </Th>
               <Th className="text-right">TVL</Th>
               <Th>Lockup</Th>
-              <Th className="pr-4 text-right">Updated</Th>
+              <Th className="text-right">Updated</Th>
+              <Th className="pr-4 text-right">
+                <span className="sr-only">Open market</span>
+              </Th>
             </tr>
           </thead>
           <tbody>
@@ -171,22 +176,10 @@ export function OpportunityTable({
                 </td>
                 <td className="px-2 py-2.5 whitespace-nowrap">
                   <div className="flex items-center gap-1.5">
-                    <a
-                      href={row.deepLink}
-                      target="_blank"
-                      rel="noopener nofollow"
-                      title={
-                        row.deepLinkIsSpecific
-                          ? `Open this market on ${row.platform.name}`
-                          : `${row.platform.name} — we have no market-specific link for this one yet`
-                      }
-                      className="font-medium hover:text-accent hover:underline"
-                    >
+                    {!hidePlatform && <PlatformLogo id={row.platform.id} name={row.platform.name} size={20} />}
+                    <span className="font-medium">
                       {hidePlatform ? (row.variant ?? "Main market") : row.platform.name}
-                      <span aria-hidden="true" className="ml-0.5 text-fg-subtle">
-                        ↗
-                      </span>
-                    </a>
+                    </span>
                     {!hidePlatform && (
                       <Badge tone={row.platform.kind === "cefi" ? "accent" : "neutral"}>
                         {row.platform.kind === "cefi" ? "CeFi" : "DeFi"}
@@ -241,7 +234,7 @@ export function OpportunityTable({
                   {LOCKUP_LABEL[row.lockup]}
                   {row.withdrawalDelayDays ? ` · ${row.withdrawalDelayDays}d` : ""}
                 </td>
-                <td className="px-2 py-2.5 pr-4 text-right text-xs whitespace-nowrap text-fg-subtle">
+                <td className="px-2 py-2.5 text-right text-xs whitespace-nowrap text-fg-subtle">
                   {row.chartUrl ? (
                     <a
                       href={row.chartUrl}
@@ -264,11 +257,19 @@ export function OpportunityTable({
                     </span>
                   )}
                 </td>
+                <td className="px-2 py-2.5 pr-4 text-right">
+                  <ActionButton
+                    href={row.deepLink}
+                    platform={row.platform.name}
+                    category={row.category === "earn" ? "earn" : "borrow"}
+                    specific={row.deepLinkIsSpecific && row.status === "live"}
+                  />
+                </td>
               </tr>
             ))}
             {visible.length === 0 && (
               <tr>
-                <td colSpan={10} className="px-4 py-10 text-center text-fg-muted">
+                <td colSpan={11} className="px-4 py-10 text-center text-fg-muted">
                   Nothing matches those filters.
                 </td>
               </tr>

@@ -1,40 +1,93 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #ffffff;
-  --bg-subtle: #f7f8fa;
+  color-scheme: light;
+  --bg: #fbfbfd;
+  --bg-subtle: #f3f4f8;
   --bg-raised: #ffffff;
-  --border: #e4e7ec;
-  --border-strong: #d0d5dd;
-  --fg: #101828;
-  --fg-muted: #667085;
-  --fg-subtle: #98a2b3;
-  --accent: #1452f0;
+  --border: #e6e8ee;
+  --border-strong: #d3d7e0;
+  --fg: #0e1320;
+  --fg-muted: #5b6475;
+  --fg-subtle: #8a93a5;
+  --accent: #2457f5;
   --accent-fg: #ffffff;
-  --accent-subtle: #eef3ff;
+  --accent-subtle: #edf2ff;
   --positive: #067647;
   --warn: #b54708;
   --warn-subtle: #fffaeb;
   --zero: #98a2b3;
+  /* One colour per category, used for icons, headers, buttons and bars. */
+  --earn: #0e9f6e;
+  --earn-subtle: #e8f8f1;
+  --liquidity: #7c3aed;
+  --liquidity-subtle: #f3edff;
+  --borrow: #d97706;
+  --borrow-subtle: #fff5e6;
+  --hub: #2457f5;
+  --hub-subtle: #edf2ff;
+  --on-category: #ffffff;
+  --shadow: 0 1px 2px rgb(16 24 40 / 0.04), 0 4px 16px rgb(16 24 40 / 0.06);
+}
+
+/* Dark: chosen explicitly, or following the system unless light was chosen. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #090b10;
+  --bg-subtle: #10131a;
+  --bg-raised: #141821;
+  --border: #232833;
+  --border-strong: #303746;
+  --fg: #f0f2f5;
+  --fg-muted: #a0a9b8;
+  --fg-subtle: #6b7587;
+  --accent: #6b95ff;
+  --accent-fg: #090b10;
+  --accent-subtle: #151d33;
+  --positive: #47cd89;
+  --warn: #fdb022;
+  --warn-subtle: #1c1708;
+  --zero: #6b7587;
+  --earn: #34d399;
+  --earn-subtle: #0d2219;
+  --liquidity: #a78bfa;
+  --liquidity-subtle: #1c1530;
+  --borrow: #fbbf24;
+  --borrow-subtle: #241a07;
+  --hub: #6b95ff;
+  --hub-subtle: #151d33;
+  --on-category: #090b10;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0b0d12;
-    --bg-subtle: #11141b;
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #090b10;
+    --bg-subtle: #10131a;
     --bg-raised: #141821;
-    --border: #22272f;
-    --border-strong: #2f3641;
+    --border: #232833;
+    --border-strong: #303746;
     --fg: #f0f2f5;
-    --fg-muted: #98a2b3;
-    --fg-subtle: #697586;
-    --accent: #5b8dff;
-    --accent-fg: #0b0d12;
-    --accent-subtle: #141d33;
+    --fg-muted: #a0a9b8;
+    --fg-subtle: #6b7587;
+    --accent: #6b95ff;
+    --accent-fg: #090b10;
+    --accent-subtle: #151d33;
     --positive: #47cd89;
     --warn: #fdb022;
     --warn-subtle: #1c1708;
-    --zero: #697586;
+    --zero: #6b7587;
+    --earn: #34d399;
+    --earn-subtle: #0d2219;
+    --liquidity: #a78bfa;
+    --liquidity-subtle: #1c1530;
+    --borrow: #fbbf24;
+    --borrow-subtle: #241a07;
+    --hub: #6b95ff;
+    --hub-subtle: #151d33;
+    --on-category: #090b10;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25);
   }
 }
 
@@ -54,10 +107,27 @@
   --color-warn: var(--warn);
   --color-warn-subtle: var(--warn-subtle);
   --color-zero: var(--zero);
+  --color-earn: var(--earn);
+  --color-earn-subtle: var(--earn-subtle);
+  --color-liquidity: var(--liquidity);
+  --color-liquidity-subtle: var(--liquidity-subtle);
+  --color-borrow: var(--borrow);
+  --color-borrow-subtle: var(--borrow-subtle);
+  --color-hub: var(--hub);
+  --color-hub-subtle: var(--hub-subtle);
+  --color-on-category: var(--on-category);
+  --shadow-card: var(--shadow);
 }
 
-* {
-  border-color: var(--border);
+/* Base rules live in the base layer so Tailwind utilities can override them. */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  a {
+    color: inherit;
+  }
 }
 
 body {
@@ -72,10 +142,6 @@ body {
 .tnum {
   font-variant-numeric: tabular-nums;
   font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
-}
-
-a {
-  color: inherit;
 }
 
 ::selection {

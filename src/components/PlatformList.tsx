@@ -1,3 +1,4 @@
+import { ActionButton } from "./ActionButton";
 import { Badge } from "./Badge";
 import { CollapsibleGroup, Metric } from "./CollapsibleGroup";
 import { OpportunityTable } from "./OpportunityTable";
@@ -108,14 +109,9 @@ function PlatformRow({ group }: { group: PlatformGroup }) {
         </p>
       )}
       <OpportunityTable rows={rows} compact hidePlatform />
-      <a
-        href={platform.website}
-        target="_blank"
-        rel="noopener nofollow"
-        className="mt-3 inline-block text-sm text-accent hover:underline"
-      >
-        Open {platform.name} →
-      </a>
+      <div className="mt-3">
+        <ActionButton href={platform.website} platform={platform.name} category="earn" specific={false} size="md" />
+      </div>
     </CollapsibleGroup>
   );
 }

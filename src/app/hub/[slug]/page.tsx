@@ -60,7 +60,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           }),
           breadcrumbLd([
             { name: BRAND_NAME, path: "/" },
-            { name: "Hub", path: "/hub" },
+            { name: "Knowledge Hub", path: "/hub" },
             { name: post.title, path: `/hub/${post.slug}` },
           ]),
           ...(post.faq?.length ? [faqLd(post.faq)] : []),
@@ -69,7 +69,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
       <nav className="mb-4 text-xs text-fg-subtle">
         <Link href="/hub" className="hover:text-fg">
-          Hub
+          Knowledge Hub
         </Link>
         <span className="mx-1.5">/</span>
         <span>{post.title}</span>

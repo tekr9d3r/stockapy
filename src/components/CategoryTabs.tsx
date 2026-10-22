@@ -1,15 +1,18 @@
 import Link from "next/link";
 
 const TABS = [
-  { href: "/", key: "earn", label: "Earn", hint: "Deposit the stock, get paid" },
+  { href: "/earn", key: "earn", label: "Earn", hint: "Deposit the stock, get paid" },
   { href: "/liquidity", key: "liquidity", label: "Liquidity", hint: "Pair it, earn trading fees" },
   { href: "/borrow", key: "borrow", label: "Borrow", hint: "Post it as collateral" },
 ] as const;
 
-/** The three things you can do with a tokenized stock, as one switcher on each page. */
+/**
+ * The three things you can do with a tokenized stock, as one switcher on each
+ * page. Mobile only: on wider screens the main nav already shows them.
+ */
 export function CategoryTabs({ active }: { active: (typeof TABS)[number]["key"] }) {
   return (
-    <nav aria-label="Category" className="mb-6 grid grid-cols-3 gap-1 rounded-lg border bg-bg-subtle p-1">
+    <nav aria-label="Category" className="mb-6 grid grid-cols-3 gap-1 rounded-lg border bg-bg-subtle p-1 md:hidden">
       {TABS.map((t) => {
         const on = t.key === active;
         return (
