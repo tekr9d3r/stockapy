@@ -35,7 +35,7 @@ export function GET() {
 - ${stats.zeroCount} of ${stats.earnCount} earn opportunities pay exactly 0%.
 - Borrowing is the larger opportunity: ${borrow.length} markets accept a tokenized stock as collateral, with a maximum loan-to-value of ${formatLtv(bs.maxLtv)} and a median borrow cost of ${bs.medianApr === null ? "unknown" : `${bs.medianApr.toFixed(2)}%`}${bs.cheapest ? `, the cheapest being ${bs.cheapest.borrow!.borrowApr?.toFixed(2)}% on ${bs.cheapest.platform.name}` : ""}.
 
-- Liquidity is the one category with meaningful real yield: across ${lq.poolCount} stock/stablecoin pools of at least $10k, the median trading-fee APY is ${formatApy(lq.medianFeeApy)}, and ${lq.feeShare === null ? "an unknown share" : `${(lq.feeShare * 100).toFixed(1)}%`} of LP yield (weighted by pool size) is trading fees rather than incentives. All before impermanent loss.
+- Liquidity is the one category with meaningful real yield: across ${lq.feePoolCount} active Raydium and Uniswap stock/stablecoin pools, the median trading-fee APY reaching LPs is ${formatApy(lq.medianFeeApy)}, before impermanent loss. Aero does not publish what share of fees LPs keep.
 
 ## Data
 
@@ -46,7 +46,7 @@ export function GET() {
 ## Pages
 
 - [Comparison table](${SITE_URL}/): every tracked earn opportunity.
-- [Provide liquidity with tokenized stocks](${SITE_URL}/liquidity): DEX pools with fee and incentive APY shown separately, volume, TVL and LP risks.
+- [Provide liquidity with tokenized stocks](${SITE_URL}/liquidity): active Raydium, Uniswap and Aero pools with LP fee APY, volume, TVL and deposit links.
 - [Borrow against tokenized stocks](${SITE_URL}/borrow): max LTV, loan asset and borrow cost per venue.
 - [Glossary](${SITE_URL}/glossary): base APY, reward APY, points, collateral-only venues, looped vaults, oracle gap risk.
 - [Platforms](${SITE_URL}/platforms)

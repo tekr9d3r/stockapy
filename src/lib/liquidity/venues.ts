@@ -1,49 +1,60 @@
 /**
- * DefiLlama project slug -> the venue we show. Inclusion follows DefiLlama's own
- * protocol category rather than our judgement: Dexs and Liquidity Managers are
- * places you provide liquidity; aggregators and lending protocols are not.
+ * The three liquidity venues we cover, and how to recognise and link to them.
+ * Narrowed deliberately to Raydium, Uniswap and Aero: the venues where almost
+ * all tokenized-stock liquidity actually sits.
  */
-export type Venue = { id: string; name: string; website: string };
+export type VenueId = "raydium" | "uniswap" | "aero";
+export type Venue = { id: VenueId; name: string; website: string };
 
-const uniswap: Venue = { id: "uniswap", name: "Uniswap", website: "https://app.uniswap.org" };
-const aerodrome: Venue = { id: "aerodrome", name: "Aerodrome", website: "https://aerodrome.finance" };
-const pancakeswap: Venue = { id: "pancakeswap", name: "PancakeSwap", website: "https://pancakeswap.finance" };
-
-export const VENUES: Record<string, Venue> = {
-  "raydium-amm": { id: "raydium", name: "Raydium", website: "https://raydium.io" },
-  "orca-dex": { id: "orca", name: "Orca", website: "https://www.orca.so" },
-  "aerodrome-slipstream": aerodrome,
-  "aerodrome-v1": aerodrome,
-  "uniswap-v2": uniswap,
-  "uniswap-v3": uniswap,
-  "uniswap-v4": uniswap,
-  "pancakeswap-amm": pancakeswap,
-  "pancakeswap-amm-v3": pancakeswap,
-  "curve-dex": { id: "curve", name: "Curve", website: "https://curve.fi" },
-  ekubo: { id: "ekubo", name: "Ekubo", website: "https://ekubo.org" },
-  "alandale-v3": { id: "alandale", name: "Alandale", website: "https://alandale.xyz" },
-  "fluxion-network": { id: "fluxion", name: "Fluxion", website: "https://app.fluxion.network" },
-  "nest-cl": { id: "nest", name: "Nest", website: "https://app.usenest.xyz" },
-  "project-x": { id: "project-x", name: "Project X", website: "https://www.prjx.com" },
-  // A Liquidity Manager: it runs Uniswap v3 positions on the depositor's behalf.
-  arrowfarm: { id: "arrowfarm", name: "Arrow Farm", website: "https://www.arrowfarm.io" },
+export const VENUES: Record<VenueId, Venue> = {
+  raydium: { id: "raydium", name: "Raydium", website: "https://raydium.io/liquidity-pools/" },
+  uniswap: { id: "uniswap", name: "Uniswap", website: "https://app.uniswap.org/explore/pools" },
+  aero: { id: "aero", name: "Aero", website: "https://app.aero.xyz/liquidity/pools" },
 };
 
-/** Projects that match a stock but are deliberately not listed, with the reason. */
-export const SKIPPED_PROJECTS: Record<string, string> = {
-  beefy:
-    "Yield Aggregator in DefiLlama's taxonomy. It wraps a pool on another venue, so " +
-    "listing it would count that pool twice.",
-  "ripe-protocol":
-    "Lending protocol in DefiLlama's taxonomy. Its matching pool is governance staking, " +
-    "not a pool traders swap through.",
+/** Our chain name -> GeckoTerminal network id, Uniswap explore slug, EVM chain id. */
+export const EVM_CHAINS: Record<string, { gecko: string; uniswap: string; chainId: number }> = {
+  Base: { gecko: "base", uniswap: "base", chainId: 8453 },
+  BSC: { gecko: "bsc", uniswap: "bnb", chainId: 56 },
+  Ethereum: { gecko: "eth", uniswap: "ethereum", chainId: 1 },
+  "Robinhood Chain": { gecko: "robinhood", uniswap: "robinhood", chainId: 4663 },
 };
 
-/** Version suffix for display, e.g. "v3", "Slipstream". */
-export function venueVariant(project: string): string | null {
-  const m = project.match(/-(v\d)$/);
-  if (m) return m[1];
-  if (project === "aerodrome-slipstream") return "Slipstream";
-  if (project === "pancakeswap-amm-v3") return "v3";
+/**
+ * Map a GeckoTerminal dex id to one of our venues. Aero is the October 2026
+ * merger of Aerodrome and Velodrome; pools created before it still trade under
+ * their old dex ids, so they count as Aero with a "pre-merger" variant.
+ */
+export function venueForDex(dexId: string): { venue: VenueId; variant: string | null } | null {
+  const uni = dexId.match(/^uniswap-v(\d)/);
+  if (uni) return { venue: "uniswap", variant: `v${uni[1]}` };
+  if (/^aero-/.test(dexId)) return { venue: "aero", variant: null };
+  if (/^aerodrome-slipstream/.test(dexId)) return { venue: "aero", variant: "Slipstream, pre-merger" };
+  if (/^aerodrome/.test(dexId)) return { venue: "aero", variant: "Basic, pre-merger" };
+  if (/^velodrome/.test(dexId)) return { venue: "aero", variant: "Velodrome, pre-merger" };
   return null;
+}
+
+/** The page where a user actually deposits into this pool. All three verified in a browser. */
+export function depositUrl(
+  venue: VenueId,
+  chain: string,
+  address: string,
+  raydiumType?: "Concentrated" | "Standard",
+): string {
+  if (venue === "raydium") {
+    return raydiumType === "Standard"
+      ? `https://raydium.io/liquidity/increase/?mode=add&pool_id=${address}`
+      : `https://raydium.io/clmm/create-position/?pool_id=${address}`;
+  }
+  const c = EVM_CHAINS[chain];
+  if (!c) return VENUES[venue].website;
+  if (venue === "uniswap") return `https://app.uniswap.org/explore/pools/${c.uniswap}/${address}`;
+  return `https://app.aero.xyz/deposit/${c.chainId}-${address}`;
+}
+
+/** An independent page for the exact pool, used as the "where this came from" link. */
+export function poolChartUrl(chain: string, address: string): string {
+  const net = chain === "Solana" ? "solana" : EVM_CHAINS[chain]?.gecko;
+  return net ? `https://www.geckoterminal.com/${net}/pools/${address}` : "";
 }

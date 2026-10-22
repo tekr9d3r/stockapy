@@ -334,3 +334,39 @@
   underlying: TSLA
   issuer: xstocks
   name: "Tesla xStock"
+- chain: Robinhood Chain
+  address: "0x12f190a9f9d7d37a250758b26824b97ce941bf54"
+  symbol: AMZN (Robinhood)
+  underlying: AMZN
+  issuer: robinhood
+  name: "Amazon • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xdf0992e440dd0be65bd8439b609d6d4366bf1cb5"
+  symbol: CRCL (Robinhood)
+  underlying: CRCL
+  issuer: robinhood
+  name: "Circle Internet Group • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xaf3d76f1834a1d425780943c99ea8a608f8a93f9"
+  symbol: AAPL (Robinhood)
+  underlying: AAPL
+  issuer: robinhood
+  name: "Apple • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xd5f3879160bc7c32ebb4dc785f8a4f505888de68"
+  symbol: QQQ (Robinhood)
+  underlying: QQQ
+  issuer: robinhood
+  name: "Invesco QQQ • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x894e1ec2d74ffe5aef8dc8a9e84686accb964f2a"
+  symbol: PLTR (Robinhood)
+  underlying: PLTR
+  issuer: robinhood
+  name: "Palantir Technologies • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xe93237c50d904957cf27e7b1133b510c669c2e74"
+  symbol: MSFT (Robinhood)
+  underlying: MSFT
+  issuer: robinhood
+  name: "Microsoft • Robinhood Token"

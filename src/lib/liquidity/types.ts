@@ -1,4 +1,5 @@
 import type { PairType, PoolType } from "./classify";
+import type { VenueId } from "./venues";
 
 export type LiquidityLeg = {
   symbol: string;
@@ -7,13 +8,15 @@ export type LiquidityLeg = {
   stock: { symbol: string; underlying: string; issuer: string } | null;
 };
 
-/** One liquidity pool as stored in data/snapshots/liquidity.json. */
+/** One active liquidity pool, as stored in data/snapshots/liquidity.json. */
 export type LiquidityPool = {
-  /** DefiLlama pool id. */
+  /** `${venue}:${chain}:${address}` — unique across venues. */
   id: string;
-  /** DefiLlama project slug, e.g. uniswap-v3. */
-  project: string;
-  venueId: string;
+  /** The pool's own address on its chain. */
+  address: string;
+  venueId: VenueId;
+  /** e.g. "v3", "Concentrated", "Slipstream, pre-merger". */
+  variant: string | null;
   chain: string;
   symbol: string;
   legs: LiquidityLeg[];
@@ -21,33 +24,41 @@ export type LiquidityPool = {
   issuers: string[];
   pairType: PairType;
   poolType: PoolType;
-  /** Percent, e.g. 0.3. Null when the venue does not report one. */
+  /** Percent per swap, e.g. 0.3. */
   feeTier: number | null;
-  /** Trading fees paid by traders. The real yield in this category. */
+  /**
+   * Fee APY that reaches a liquidity provider. Null when the venue does not say
+   * what share of fees LPs keep (Aero), rather than guessed.
+   */
   apyBase: number | null;
-  /** Token incentives on top. */
+  /** Fees the pool generates per year as a share of TVL, before anyone's cut. */
+  apyBaseGross: number | null;
+  /** Fraction of fees LPs keep, when the venue publishes it. */
+  lpFeeShare: number | null;
+  /** Incentives on top. Null when none are published. */
   apyReward: number | null;
+  /** Fee APY to LPs over 7 days, where the source provides it. */
   apyBase7d: number | null;
-  tvlUsd: number | null;
-  volumeUsd1d: number | null;
+  tvlUsd: number;
+  volumeUsd1d: number;
   volumeUsd7d: number | null;
-  ilRisk: string | null;
-  matchedBy: "address" | "symbol";
-  source: "defillama";
+  /** How apyBase was derived, or why it is missing. Shown beside the figure. */
+  feeNote: string;
+  /** The page where you deposit into this exact pool. */
+  url: string;
+  /** Independent page for the exact pool. */
+  chartUrl: string;
+  source: "raydium-api" | "geckoterminal";
   fetchedAt: string;
-  firstSeen: string;
-  status: "live" | "ended";
-  endedOn: string | null;
 };
 
-export type SkippedPool = { id: string; project: string; chain: string; symbol: string; reason: string };
-export type ReviewPool = SkippedPool & { tvlUsd: number | null };
+export type ReviewPool = { venue: string; chain: string; symbol: string; address: string; reason: string };
 
 export type LiquidityFile = {
   fetchedAt: string;
+  sources: Record<string, { ok: boolean; count: number; error?: string }>;
   pools: LiquidityPool[];
-  /** Matched a stock but deliberately not listed. */
-  skipped: SkippedPool[];
-  /** Looked like a stock pair but did not match the registry: for a human. */
+  /** Pools seen but not listed, with the reason. */
+  excluded: { inactive: number; belowTvl: number; otherVenues: number };
   review: ReviewPool[];
 };

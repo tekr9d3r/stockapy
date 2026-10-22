@@ -41,6 +41,7 @@ const PLATFORM_DOMAINS: Record<string, string> = {
   cryptocom: "crypto.com",
   bybit: "bybit.com",
   // Liquidity venues, keyed by venue id.
+  aero: "aero.xyz",
   raydium: "raydium.io",
   orca: "orca.so",
   aerodrome: "aerodrome.finance",

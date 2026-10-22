@@ -5,7 +5,7 @@
  * failure nothing is written, so the site keeps serving the last good snapshot.
  *
  * Liquidity is a separate step writing its own file (data/snapshots/liquidity.json,
- * latest only — no hourly archive, it is ~10x larger). Earn/Borrow and Liquidity
+ * latest only, no hourly archive). Earn/Borrow and Liquidity
  * succeed or fail independently of each other.
  *
  *   npx tsx scripts/run-fetchers.ts            fetch and write
@@ -85,11 +85,13 @@ async function runLiquidity(): Promise<boolean> {
   try {
     const result = await fetchLiquidity(previous);
     fs.writeFileSync(file, JSON.stringify(result, null, 1) + "\n");
-    const live = result.pools.filter((p) => p.status === "live").length;
+    const bad = Object.entries(result.sources).filter(([, v]) => !v.ok).map(([k, v]) => `${k}: ${v.error}`);
     console.log(
-      `[liquidity] ok, ${live} live pools, ${result.pools.length - live} ended, ` +
-        `${result.skipped.length} skipped, ${result.review.length} for review`,
+      `[liquidity] ${result.pools.length} active pools ` +
+        `(sources: ${Object.entries(result.sources).map(([k, v]) => `${k} ${v.ok ? "ok" : "FAILED"} ${v.count}`).join(", ")}; ` +
+        `excluded: ${result.excluded.inactive} inactive, ${result.excluded.belowTvl} under $10k, ${result.excluded.otherVenues} on other venues)`,
     );
+    for (const b of bad) console.error(`  ${b} — kept the previous run's pools for it`);
     return true;
   } catch (err) {
     console.error(`[liquidity] FAILED: ${err}. Keeping the previous liquidity file.`);

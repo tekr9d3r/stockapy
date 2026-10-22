@@ -99,29 +99,37 @@ export default function MethodologyPage() {
       <section id="liquidity" className="scroll-mt-20">
         <Section title="Liquidity pools">
           <p>
-            Pools come from the DefiLlama yields API. A pool is listed only if one of its tokens
-            matches our registry of tokenized-stock contracts by <strong className="text-fg">address</strong>.
-            Every address in that registry was checked against the token&rsquo;s own on-chain name,
-            because symbols are free to copy: building it turned up a Solana token called AMDC whose
-            on-chain name is a USD stablecoin. Pools whose symbol looks like a stock but whose address
-            is not registered go to a review list, not onto the site.
+            We cover three venues, where nearly all tokenized-stock liquidity sits: Raydium on Solana,
+            Uniswap on Base, BNB Chain, Ethereum and Robinhood Chain, and Aero on Base and Robinhood
+            Chain. Only <strong className="text-fg">active</strong> pools are listed: at least $1,000
+            traded in the last 24 hours and at least $10k in the pool. Below that a pool is not
+            meaningfully traded and its fee rate is noise.
           </p>
           <p>
-            We list pools on venues DefiLlama classes as DEXs or liquidity managers. Yield aggregators
-            are left out because they wrap a pool already listed elsewhere, and counting both would
-            double the pool.
+            <strong className="text-fg">Raydium</strong> data comes from Raydium&rsquo;s own API. Each
+            pool&rsquo;s configuration gives Raydium&rsquo;s cut of trading fees — currently 12% to the
+            protocol and 4% to a fund — and Raydium&rsquo;s published fee APR is computed on the full fee.
+            We apply the cut, so our figure is what an LP actually keeps, about 16% below Raydium&rsquo;s.
           </p>
           <p>
-            Fee APY is DefiLlama&rsquo;s base APY for the pool — trading fees paid by traders.
-            Incentive APY is its reward APY. We never add points or estimate missing figures. The
-            headline share of yield that is fees is weighted by pool size, so a single thin pool with
-            an enormous emission rate cannot dominate it. All rates are before impermanent loss.
+            <strong className="text-fg">Uniswap</strong> and <strong className="text-fg">Aero</strong>{" "}
+            pools come from GeckoTerminal, CoinGecko&rsquo;s on-chain DEX index, which gives each
+            pool&rsquo;s address, 24h volume, value and fee tier. Uniswap&rsquo;s own documented data
+            route is its subgraphs on The Graph, which need an API key; Aero, launched on 21 October 2026
+            from the merger of Aerodrome and Velodrome, publishes no pool data API. For Uniswap the fee
+            APY is 24h volume × fee tier ÷ value, before any Uniswap protocol fee, which applies to some
+            pools and is not deducted. For Aero we show no fee APY: it splits fees between LPs and sAERO
+            Token Operators, lets each LP choose AERO Rewards instead, and does not publish the LP share.
+            Pools created before the merger still trade under their Aerodrome names and are listed as
+            Aero, marked pre-merger.
           </p>
           <p>
-            Pools under $10k of TVL are hidden by default, and pairs against small or speculative
-            tokens are flagged and hidden behind a toggle. A pool that empties or disappears stays
-            listed with its last figures, marked Ended. Pool type and fee tier are parsed from the
-            venue&rsquo;s own pool description and left blank where it does not say.
+            A pool is listed only if one of its tokens is in our registry of tokenized-stock contracts,
+            matched by <strong className="text-fg">address</strong>. Every address in the registry was
+            checked against the token&rsquo;s own on-chain name, because symbols are free to copy:
+            building it turned up a Solana token called AMDC whose on-chain name is a USD stablecoin.
+            Every row links to the exact pool&rsquo;s deposit page and to its independent page on
+            GeckoTerminal. All rates are before impermanent loss.
           </p>
         </Section>
       </section>

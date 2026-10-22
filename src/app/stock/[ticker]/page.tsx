@@ -70,11 +70,9 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
   const byIssuer = Object.groupBy(rows, (r) => r.issuer.name);
   const borrow = borrowRows(rows);
   const borrowSummary = borrowStats(borrow);
-  // Default view on a stock page: live, non-speculative pools of at least $10k.
+  // Active pools only reach the data; hide speculative pairs on the stock page.
   const allPools = liquidityRowsForTicker(asset.ticker);
-  const pools = allPools.filter(
-    (r) => (r.tvlUsd ?? 0) >= 10_000 && r.pairType !== "stock-other" && r.status === "live",
-  );
+  const pools = allPools.filter((r) => r.pairType !== "stock-other");
   const hiddenPools = allPools.length - pools.length;
   const organicPct = stats.organicShare === null ? null : stats.organicShare * 100;
 
@@ -201,7 +199,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
             {hiddenPools > 0 && (
               <>
                 {" "}
-                {hiddenPools} speculative or thin pools are hidden here;{" "}
+                {hiddenPools} speculative pairs are hidden here;{" "}
                 <Link href="/liquidity" className="text-accent underline underline-offset-2">
                   see all
                 </Link>

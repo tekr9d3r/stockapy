@@ -8,8 +8,7 @@ import { PlatformLogo } from "./PlatformLogo";
 import { formatApy, formatUsd } from "@/lib/format";
 import type { LiquidityRow } from "@/lib/data/liquidity";
 
-const MIN_TVL = 10_000;
-type Sort = "fee" | "total" | "tvl" | "turnover";
+type Sort = "fee" | "total" | "tvl" | "turnover" | "volume";
 type PairFilter = "stock-stable" | "stock-crypto" | "stock-stock" | "all";
 
 const ISSUER_LABEL: Record<string, string> = {
@@ -31,9 +30,7 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
   const [sort, setSort] = useState<Sort>("fee");
   const [grouped, setGrouped] = useState(true);
   const [feesOnly, setFeesOnly] = useState(false);
-  const [showThin, setShowThin] = useState(false);
   const [showSpeculative, setShowSpeculative] = useState(false);
-  const [showEnded, setShowEnded] = useState(true);
 
   const opts = useMemo(() => {
     const u = (f: (r: LiquidityRow) => string[]) => [...new Set(rows.flatMap(f))].sort();
@@ -45,17 +42,11 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
     };
   }, [rows]);
 
-  const counts = useMemo(() => ({
-    speculative: rows.filter((r) => r.pairType === "stock-other" && r.status === "live").length,
-    thin: rows.filter((r) => (r.tvlUsd ?? 0) < MIN_TVL && r.status === "live").length,
-    ended: rows.filter((r) => r.status === "ended").length,
-  }), [rows]);
+  const speculativeCount = useMemo(() => rows.filter((r) => r.pairType === "stock-other").length, [rows]);
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
     const out = rows.filter((r) => {
-      if (!showEnded && r.status === "ended") return false;
-      if (!showThin && (r.tvlUsd ?? 0) < MIN_TVL) return false;
       if (r.pairType === "stock-other" && !showSpeculative) return false;
       if (pair !== "all" && r.pairType !== pair && r.pairType !== "stock-other") return false;
       if (feesOnly && r.mostlyIncentives) return false;
@@ -69,31 +60,30 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
     const key: Record<Sort, (r: LiquidityRow) => number> = {
       fee: (r) => r.apyBase ?? -1,
       total: (r) => r.apyTotal ?? -1,
-      tvl: (r) => r.tvlUsd ?? -1,
-      turnover: (r) => r.volumeToTvl ?? -1,
+      tvl: (r) => r.tvlUsd,
+      turnover: (r) => r.volumeToTvl,
+      volume: (r) => r.volumeUsd1d,
     };
+    // Pools with no published fee figure sort after those with one, by volume.
     return out.sort((a, b) => {
-      if (a.status !== b.status) return a.status === "ended" ? 1 : -1;
+      if (sort === "fee" && (a.apyBase === null) !== (b.apyBase === null)) return a.apyBase === null ? 1 : -1;
+      if (sort === "fee" && a.apyBase === null && b.apyBase === null) return b.volumeUsd1d - a.volumeUsd1d;
       return key[sort](b) - key[sort](a);
     });
-  }, [rows, query, stock, issuer, chain, venue, pair, sort, feesOnly, showThin, showSpeculative, showEnded]);
+  }, [rows, query, stock, issuer, chain, venue, pair, sort, feesOnly, showSpeculative]);
 
   const groups = useMemo(() => {
     const m = new Map<string, LiquidityRow[]>();
     for (const r of visible) m.set(r.venue.id, [...(m.get(r.venue.id) ?? []), r]);
     return [...m.values()]
       .map((pools) => {
-        const live = pools.filter((p) => p.status === "live");
-        const fees = live.map((p) => p.apyBase).filter((v): v is number => v !== null);
+        const fees = pools.map((p) => p.apyBase).filter((v): v is number => v !== null);
         return {
           venue: pools[0].venue,
           pools,
           topFee: fees.length ? Math.max(...fees) : null,
-          tvl: live.reduce((s, p) => s + (p.tvlUsd ?? 0), 0),
-          // Null when no pool here reports volume: unknown must not render as $0.
-          volume: live.some((p) => p.volumeUsd1d !== null)
-            ? live.reduce((s, p) => s + (p.volumeUsd1d ?? 0), 0)
-            : null,
+          tvl: pools.reduce((s, p) => s + p.tvlUsd, 0),
+          volume: pools.reduce((s, p) => s + p.volumeUsd1d, 0),
           chains: [...new Set(pools.map((p) => p.chain))].sort(),
           tickers: [...new Set(pools.flatMap((p) => p.underlyings))].sort(),
         };
@@ -141,6 +131,7 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
           <option value="fee">Sort: Fee APY</option>
           <option value="total">Sort: Total APY</option>
           <option value="tvl">Sort: TVL</option>
+          <option value="volume">Sort: 24h volume</option>
           <option value="turnover">Sort: Vol/TVL</option>
         </select>
       </div>
@@ -153,22 +144,10 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
           <input type="checkbox" checked={feesOnly} onChange={(e) => setFeesOnly(e.target.checked)} className="accent-accent" />
           Fees only
         </label>
-        {counts.thin > 0 && (
-          <label className={toggle} title="Thin pools show absurd rates that vanish when real money arrives.">
-            <input type="checkbox" checked={showThin} onChange={(e) => setShowThin(e.target.checked)} className="accent-accent" />
-            Under $10k ({counts.thin})
-          </label>
-        )}
         <label className={toggle} title="Pairs against small or speculative tokens. You hold half of the other token.">
           <input type="checkbox" checked={showSpeculative} onChange={(e) => setShowSpeculative(e.target.checked)} className="accent-accent" />
-          Speculative pairs ({counts.speculative})
+          Speculative pairs ({speculativeCount})
         </label>
-        {counts.ended > 0 && (
-          <label className={toggle}>
-            <input type="checkbox" checked={showEnded} onChange={(e) => setShowEnded(e.target.checked)} className="accent-accent" />
-            Ended ({counts.ended})
-          </label>
-        )}
       </div>
 
       {grouped ? (
@@ -185,7 +164,7 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
                 <>
                   <Metric label="Fee APY" wide always>
                     {g.topFee === null ? (
-                      <span className="text-sm font-normal text-fg-subtle">—</span>
+                      <span className="text-sm font-normal text-fg-subtle" title={g.pools[0]?.feeNote}>not published</span>
                     ) : g.topFee === 0 ? (
                       <span className="text-zero">0%</span>
                     ) : (
@@ -193,9 +172,7 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
                     )}
                   </Metric>
                   <Metric label="TVL">{formatUsd(g.tvl)}</Metric>
-                  <Metric label="24h vol">
-                    {g.volume === null ? <span className="text-sm font-normal text-fg-subtle">—</span> : formatUsd(g.volume)}
-                  </Metric>
+                  <Metric label="24h vol">{formatUsd(g.volume)}</Metric>
                 </>
               }
             >
@@ -216,8 +193,9 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
       )}
 
       <p className="mt-2 text-xs leading-relaxed text-fg-subtle">
-        Showing {visible.length} of {rows.length} pools. Every rate is <strong className="text-fg-muted">before impermanent loss</strong>, and
-        concentrated-liquidity rates assume your position stays in range. Fee APY is paid by traders; incentives are paid by the venue and can stop.
+        Showing {visible.length} of {rows.length} active pools (traded at least $1,000 in the last 24 hours, $10k+ in the pool). Every rate is{" "}
+        <strong className="text-fg-muted">before impermanent loss</strong>, and concentrated-liquidity rates assume your position stays in range.
+        Fee APY is what reaches the liquidity provider: after Raydium&rsquo;s 16% cut, before any Uniswap protocol fee, and not published by Aero.
       </p>
     </div>
   );
