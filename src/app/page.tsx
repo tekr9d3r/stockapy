@@ -111,7 +111,7 @@ export default function Home() {
       />
 
       {/* ---------- Hero ---------- */}
-      <section className="relative grid items-center gap-10 pt-2 pb-10 lg:grid-cols-[1.15fr_1fr]">
+      <section className="relative mb-14 grid items-center gap-10 pt-2 pb-4 lg:grid-cols-[1.15fr_1fr]">
         <div>
           <p className="inline-flex items-center gap-2 rounded-full border bg-bg-raised px-3 py-1 text-xs font-medium text-fg-muted">
             <span className="relative flex size-2">
@@ -156,22 +156,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Covered stocks: instant visual proof of scope. */}
-      <section aria-label="Stocks covered" className="mb-14">
-        <div className="flex flex-wrap items-center gap-2">
-          {d.stocks.map((s) => (
-            <Link
-              key={s.ticker}
-              href={`/stock/${s.ticker.toLowerCase()}`}
-              className="flex items-center gap-1.5 rounded-full border bg-bg-raised py-1 pr-3 pl-1 text-sm font-medium hover:border-border-strong"
-            >
-              <StockLogo ticker={s.ticker} size={22} />
-              {s.ticker}
-            </Link>
-          ))}
-        </div>
-      </section>
-
       {/* ---------- Three ways ---------- */}
       <section className="mb-16" aria-labelledby="three-ways">
         <SectionHead
@@ -207,46 +191,6 @@ export default function Home() {
               <BorrowPick key={r.id} r={r} />
             ))}
           </WayCard>
-        </div>
-      </section>
-
-      {/* ---------- Where yield comes from ---------- */}
-      <section className="mb-16 grid gap-4 lg:grid-cols-2" aria-labelledby="where-yield">
-        <div className="lg:col-span-2">
-          <SectionHead
-            id="where-yield"
-            eyebrow="Read this before chasing a rate"
-            title="Where the yield actually comes from"
-          />
-        </div>
-        <div className="rounded-2xl border bg-bg-raised p-6 shadow-card">
-          <h3 className="font-semibold">Median rate by category</h3>
-          <Bars
-            rows={[
-              { category: "liquidity", label: "Providing liquidity (trading fees)", value: d.lq.medianFeeApy },
-              { category: "earn", label: "Depositing (interest + incentives)", value: d.earn.medianApy },
-              { category: "borrow", label: "Cost to borrow against it", value: d.borrow.medianApr },
-            ]}
-          />
-        </div>
-        <div className="rounded-2xl border bg-bg-raised p-6 shadow-card">
-          <h3 className="font-semibold">What pays deposit yield</h3>
-          <div className="mt-6">
-            <div className="flex h-10 overflow-hidden rounded-lg" role="img" aria-label={`${organicPct?.toFixed(1) ?? "unknown"}% interest, the rest incentives`}>
-              <div className="bg-earn" style={{ width: `${Math.max(organicPct ?? 0, 1.5)}%` }} />
-              <div className="flex-1 bg-[repeating-linear-gradient(135deg,var(--border-strong)_0_6px,var(--border)_6px_12px)]" />
-            </div>
-            <div className="mt-3 flex justify-between gap-4 text-sm">
-              <p>
-                <span className="tabular-nums text-2xl font-semibold text-earn">{organicPct === null ? "—" : `${organicPct.toFixed(1)}%`}</span>
-                <span className="block text-fg-muted">interest paid by borrowers</span>
-              </p>
-              <p className="text-right">
-                <span className="tabular-nums text-2xl font-semibold text-fg">{organicPct === null ? "—" : `${(100 - organicPct).toFixed(1)}%`}</span>
-                <span className="block text-fg-muted">token incentives</span>
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -478,28 +422,6 @@ function BorrowPick({ r }: { r: Row }) {
       rateLabel={r.borrow!.borrowApr !== null ? `at ${r.borrow!.borrowApr.toFixed(2)}%` : "max LTV"}
       action={<ActionButton href={r.deepLink} platform={r.platform.name} category="borrow" specific={r.deepLinkIsSpecific} />}
     />
-  );
-}
-
-function Bars({ rows }: { rows: { category: CategoryKey; label: string; value: number | null }[] }) {
-  const max = Math.max(...rows.map((r) => r.value ?? 0), 1);
-  return (
-    <dl className="mt-6 space-y-4">
-      {rows.map((r) => (
-        <div key={r.label}>
-          <div className="flex items-baseline justify-between gap-3 text-sm">
-            <dt className="flex items-center gap-2 text-fg-muted">
-              <CategoryIcon category={r.category} size={14} />
-              {r.label}
-            </dt>
-            <dd className={`tabular-nums text-lg font-semibold ${CATEGORIES[r.category].cls.text}`}>{r.value === null ? "—" : formatApy(r.value)}</dd>
-          </div>
-          <div className="mt-1.5 h-3 overflow-hidden rounded-full bg-bg-subtle" aria-hidden="true">
-            <div className={`h-full rounded-full ${CATEGORIES[r.category].cls.bg}`} style={{ width: `${Math.max(((r.value ?? 0) / max) * 100, 1.5)}%` }} />
-          </div>
-        </div>
-      ))}
-    </dl>
   );
 }
 
