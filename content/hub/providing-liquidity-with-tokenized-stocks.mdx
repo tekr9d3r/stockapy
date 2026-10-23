@@ -1,0 +1,53 @@
+---
+title: "Providing liquidity with tokenized stocks: fees, impermanent loss and weekend gaps"
+description: "Trading fees are the largest real yield on a tokenized stock. What they cost you: impermanent loss, the weekend price gap, out-of-range positions and the venue's cut."
+datePublished: "2026-10-23"
+dateModified: "2026-10-23"
+author: "StockAPY"
+tags: ["guide", "liquidity", "risk"]
+faq:
+  - question: "Is liquidity-provider yield on tokenized stocks real?"
+    answer: "The trading-fee part is: traders pay it on every swap, so it lasts as long as people trade the pair. It is earned while carrying impermanent loss, which lending does not."
+  - question: "What is impermanent loss on a tokenized stock pool?"
+    answer: "When the stock moves, the pool sells the winner and buys the loser. With $500 of NVDA and $500 of USDC, a 30% rise in NVDA leaves you with about $1,140 against $1,150 had you just held: a $10 shortfall your fees have to cover."
+---
+
+The live pools are on the [Liquidity page](/liquidity). This is what the fee APY there does not
+show.
+
+## Fees are real yield
+
+Trading fees are paid by traders on every swap, not by a marketing budget. That makes this the one
+category where the rate on a tokenized stock can be large and durable — for as long as people keep
+trading the pair.
+
+## Who keeps the fees
+
+Not always the LP. Raydium keeps 16% of every fee, and StockAPY's rates are after that cut —
+Raydium's own figure is not. Uniswap charges a protocol fee on some pools, not deducted in our
+figures. Aero sends 5% of unstaked LPs' fees to sAERO Token Operators, which we deduct; LPs who stake
+for AERO emissions give up the fees entirely.
+
+## Impermanent loss
+
+Put $500 of NVDA and $500 of USDC in a pool. If NVDA rises 30%, the pool rebalances by selling NVDA:
+you end with about 12% fewer shares and hold $1,140, against $1,150 had you just held — a $10
+shortfall your fees have to cover. Bigger moves cost far more, and concentrated positions magnify it.
+
+## Markets close, pools don't
+
+The stock exchange shuts on Friday; the pool keeps trading. Its price drifts on thin weekend flow,
+and when the market reopens arbitrageurs trade it back to the real price — against the liquidity
+providers. This gap is specific to tokenized stocks.
+
+## Concentrated liquidity
+
+On Uniswap v3 and v4, Raydium CLMM and Aero CL pools you earn only while the price stays inside the
+range you chose. The APY shown assumes you stay in range; out of range you earn nothing and hold only
+the losing side.
+
+## Busy today, quiet tomorrow
+
+We list only pools that traded at least $1,000 in the last 24 hours and hold $10k or more. A day's
+volume still swings: a pool on a heavy news day can show a rate it will not repeat. Pairs against
+memecoins are flagged speculative — you would hold half your position in that token.

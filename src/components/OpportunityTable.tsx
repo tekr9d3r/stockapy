@@ -7,11 +7,14 @@ import Link from "next/link";
 import { ApyCell } from "./ApyCell";
 import { Badge } from "./Badge";
 import { StockLogo } from "./StockLogo";
+import { SlidersHorizontal } from "lucide-react";
+import { ChainLogo } from "./Logo";
+import { MiniBar } from "./MiniBar";
 import {
   CATEGORY_LABEL,
   LOCKUP_LABEL,
   SOURCE_LABEL,
-  formatDate,
+  formatPp,
   formatRelativeShort,
   formatUsd,
 } from "@/lib/format";
@@ -84,21 +87,10 @@ export function OpportunityTable({
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search NVDA, xStocks, Kamino…"
+            placeholder="Search NVDA, Kamino…"
             aria-label="Search opportunities"
-            className="h-9 min-w-[200px] flex-1 rounded-md border bg-bg-raised px-3 text-sm outline-none placeholder:text-fg-subtle focus:border-accent"
+            className="h-9 min-w-[180px] flex-1 rounded-md border bg-bg-raised px-3 text-sm outline-none placeholder:text-fg-subtle focus:border-accent"
           />
-          <Select value={category} onChange={setCategory} label="Category">
-            <option value="all">All categories</option>
-            <option value="earn">Earn</option>
-            <option value="collateral">Collateral only</option>
-            <option value="structured">Structured</option>
-          </Select>
-          <Select value={kind} onChange={setKind} label="Venue type">
-            <option value="all">DeFi + CeFi</option>
-            <option value="defi">DeFi</option>
-            <option value="cefi">CeFi</option>
-          </Select>
           <Select value={chain} onChange={setChain} label="Chain">
             <option value="all">All chains</option>
             {chains.map((c) => (
@@ -112,164 +104,160 @@ export function OpportunityTable({
             <option value="tvl">Sort: TVL</option>
             <option value="stock">Sort: Stock</option>
           </Select>
-          {endedCount > 0 && (
-            <label className="flex h-9 cursor-pointer items-center gap-1.5 rounded-md border bg-bg-raised px-2.5 text-sm">
-              <input
-                type="checkbox"
-                checked={showEnded}
-                onChange={(e) => setShowEnded(e.target.checked)}
-                className="accent-accent"
-              />
-              Show ended ({endedCount})
-            </label>
-          )}
+          <details className="relative">
+            <summary className="flex h-9 cursor-pointer list-none items-center gap-1.5 rounded-md border bg-bg-raised px-3 text-sm [&::-webkit-details-marker]:hidden">
+              <SlidersHorizontal size={14} aria-hidden="true" /> Filters
+            </summary>
+            <div className="absolute right-0 z-10 mt-1 flex w-56 flex-col gap-2 rounded-lg border bg-bg-raised p-3 shadow-card">
+              <Select value={category} onChange={setCategory} label="Category">
+                <option value="all">All categories</option>
+                <option value="earn">Earn</option>
+                <option value="collateral">Collateral only</option>
+                <option value="structured">Structured</option>
+              </Select>
+              <Select value={kind} onChange={setKind} label="Venue type">
+                <option value="all">DeFi + CeFi</option>
+                <option value="defi">DeFi</option>
+                <option value="cefi">CeFi</option>
+              </Select>
+              {endedCount > 0 && (
+                <label className="flex cursor-pointer items-center gap-1.5 text-sm">
+                  <input type="checkbox" checked={showEnded} onChange={(e) => setShowEnded(e.target.checked)} className="accent-accent" />
+                  Show ended ({endedCount})
+                </label>
+              )}
+            </div>
+          </details>
         </div>
       )}
 
-      <div className="overflow-x-auto rounded-lg border bg-bg-raised">
-        <table className={`w-full border-collapse text-sm ${hidePlatform ? "min-w-[940px]" : "min-w-[1080px]"}`}>
+      <div className="overflow-hidden rounded-lg border bg-bg-raised md:overflow-x-auto">
+        <table className="block w-full border-collapse text-sm md:table md:min-w-[760px]">
           <caption className="sr-only">
             Yield opportunities on tokenized stocks, with base interest and token incentives
             shown separately.
           </caption>
-          <thead>
+          <thead className="hidden md:table-header-group">
             <tr className="border-b bg-bg-subtle text-left text-[11px] uppercase tracking-wide text-fg-muted">
               <Th className="pl-4">Stock</Th>
-              <Th>Token</Th>
               <Th>{hidePlatform ? "Market" : "Platform"}</Th>
               <Th>Chain</Th>
-              <Th className="text-right">APY</Th>
-              <Th className="text-right" title="Interest actually paid by borrowers.">
-                Base
-              </Th>
-              <Th className="text-right" title="Token incentives. Can stop at any time.">
-                Rewards
-              </Th>
+              <Th className="text-right" title="Total APY. The bar splits it into interest (green) and token incentives (amber).">APY</Th>
               <Th className="text-right">TVL</Th>
-              <Th>Lockup</Th>
-              <Th className="text-right">Updated</Th>
               <Th className="pr-4 text-right">
                 <span className="sr-only">Open market</span>
               </Th>
             </tr>
           </thead>
-          <tbody>
-            {visible.map((row) => (
-              <tr
-                key={row.id}
-                className={`border-b last:border-0 hover:bg-bg-subtle ${
-                  row.status === "ended" ? "opacity-60" : ""
-                }`}
-              >
-                <td className="px-2 py-2.5 pl-4">
-                  <Link
-                    href={`/stock/${row.underlying.ticker.toLowerCase()}`}
-                    className="flex items-center gap-2 font-medium hover:text-accent hover:underline"
-                  >
-                    <StockLogo ticker={row.underlying.ticker} name={row.underlying.name} />
-                    {row.underlying.ticker}
-                  </Link>
-                </td>
-                <td className="px-2 py-2.5 whitespace-nowrap">
-                  <div className="font-medium">{row.token.symbol}</div>
-                  <div className="text-xs text-fg-subtle">{row.issuer.name}</div>
-                </td>
-                <td className="px-2 py-2.5 whitespace-nowrap">
-                  <div className="flex items-center gap-1.5">
-                    {!hidePlatform && <PlatformLogo id={row.platform.id} name={row.platform.name} size={20} />}
-                    <span className="font-medium">
-                      {hidePlatform ? (row.variant ?? "Main market") : row.platform.name}
-                    </span>
-                    {!hidePlatform && (
-                      <Badge tone={row.platform.kind === "cefi" ? "accent" : "neutral"}>
-                        {row.platform.kind === "cefi" ? "CeFi" : "DeFi"}
-                      </Badge>
-                    )}
-                    {!row.listed && (
-                      <Badge
-                        tone="warn"
-                        title="The venue does not list this market in its own interface. It is reachable only by direct link and has not been through their curation."
-                      >
-                        Unlisted
-                      </Badge>
-                    )}
-                    {row.status === "ended" && (
-                      <Badge
-                        tone="ended"
-                        title={
-                          row.endedNote ??
-                          `This programme ended${row.endedOn ? ` on ${row.endedOn}` : ""}.`
-                        }
-                      >
-                        Ended
-                      </Badge>
-                    )}
-                    {row.category !== "earn" && row.status === "live" && (
-                      <Badge
-                        tone="warn"
-                        title="Your stock is only collateral here. It earns nothing."
-                      >
-                        {CATEGORY_LABEL[row.category]}
-                      </Badge>
-                    )}
-                  </div>
-                  {!hidePlatform && row.variant && (
-                    <div className="mt-0.5 text-xs text-fg-subtle">{row.variant}</div>
-                  )}
-                </td>
-                <td className="px-2 py-2.5 whitespace-nowrap text-fg-muted">{row.chain}</td>
-                <td className="px-2 py-2.5 text-right">
-                  <ApyCell row={row} />
-                </td>
-                <td className="tnum px-2 py-2.5 text-right text-fg-muted">
-                  {row.apyBase === null ? "—" : `${row.apyBase.toFixed(2)}`}
-                </td>
-                <td className="tnum px-2 py-2.5 text-right text-fg-muted">
-                  {row.apyReward === null ? "—" : `${row.apyReward.toFixed(2)}`}
-                </td>
-                <td className="tnum px-2 py-2.5 text-right whitespace-nowrap text-fg-muted">
-                  {formatUsd(row.tvlUsd)}
-                </td>
-                <td className="px-2 py-2.5 whitespace-nowrap text-fg-muted">
-                  {LOCKUP_LABEL[row.lockup]}
-                  {row.withdrawalDelayDays ? ` · ${row.withdrawalDelayDays}d` : ""}
-                </td>
-                <td className="px-2 py-2.5 text-right text-xs whitespace-nowrap text-fg-subtle">
-                  {row.chartUrl ? (
-                    <a
-                      href={row.chartUrl}
-                      target="_blank"
-                      rel="noopener nofollow"
-                      title={`Collected ${formatDate(row.fetchedAt)} from ${
-                        SOURCE_LABEL[row.source] ?? row.source
-                      }. Opens this pool's rate history.`}
-                      className="hover:text-accent hover:underline"
+          <tbody className="block md:table-row-group">
+            {visible.map((row) => {
+              const total = row.apyTotal ?? 0;
+              const split =
+                row.apyBase !== null && row.apyReward !== null
+                  ? `${formatPp(row.apyBase)}pp interest + ${formatPp(row.apyReward)}pp incentives`
+                  : "Split not disclosed";
+              const source = `Updated ${formatRelativeShort(row.fetchedAt)} ago from ${SOURCE_LABEL[row.source] ?? row.source}`;
+              return (
+                <tr
+                  key={row.id}
+                  className={`grid grid-cols-[1fr_auto] items-center gap-x-3 gap-y-1.5 border-b px-4 py-3 last:border-0 hover:bg-bg-subtle md:table-row md:p-0 ${
+                    row.status === "ended" ? "opacity-60" : ""
+                  }`}
+                >
+                  <td className="md:px-2 md:py-2.5 md:pl-4">
+                    <Link
+                      href={`/stock/${row.underlying.ticker.toLowerCase()}`}
+                      className="flex items-center gap-2.5 hover:text-accent"
                     >
-                      {formatRelativeShort(row.fetchedAt)}
-                    </a>
-                  ) : (
-                    <span
-                      title={`Collected ${formatDate(row.fetchedAt)} from ${
-                        SOURCE_LABEL[row.source] ?? row.source
-                      }`}
-                    >
-                      {formatRelativeShort(row.fetchedAt)}
+                      <StockLogo ticker={row.underlying.ticker} name={row.underlying.name} size={28} />
+                      <span>
+                        <span className="block font-semibold leading-tight">{row.underlying.ticker}</span>
+                        <span className="block text-xs text-fg-subtle">
+                          {row.token.symbol} · {row.issuer.name.replace(/ \(.*\)$/, "")}
+                        </span>
+                      </span>
+                    </Link>
+                  </td>
+                  <td className="col-start-1 row-start-2 md:px-2 md:py-2.5">
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      {!hidePlatform && <PlatformLogo id={row.platform.id} name={row.platform.name} size={20} />}
+                      <span className="font-medium">
+                        {hidePlatform ? (row.variant ?? "Main market") : row.platform.name}
+                      </span>
+                      <span className="flex items-center gap-1 text-xs text-fg-subtle md:hidden">
+                        · <ChainLogo chain={row.chain} size={12} /> {row.chain}
+                      </span>
+                      {row.platform.kind === "cefi" && !hidePlatform && <Badge tone="accent">CeFi</Badge>}
+                      {!row.listed && (
+                        <Badge tone="warn" title="The venue does not list this market in its own interface. It is reachable only by direct link and has not been through their curation.">
+                          Unlisted
+                        </Badge>
+                      )}
+                      {row.status === "ended" && (
+                        <Badge tone="ended" title={row.endedNote ?? `This programme ended${row.endedOn ? ` on ${row.endedOn}` : ""}.`}>
+                          Ended
+                        </Badge>
+                      )}
+                      {row.category !== "earn" && row.status === "live" && (
+                        <Badge tone="warn" title="Your stock is only collateral here. It earns nothing.">
+                          {CATEGORY_LABEL[row.category]}
+                        </Badge>
+                      )}
+                      {row.lockup !== "none" && (
+                        <Badge tone="neutral" title="You cannot withdraw instantly.">
+                          {LOCKUP_LABEL[row.lockup]}
+                          {row.withdrawalDelayDays ? ` ${row.withdrawalDelayDays}d` : ""}
+                        </Badge>
+                      )}
+                    </div>
+                    {!hidePlatform && row.variant && (
+                      <div className="mt-0.5 hidden text-xs text-fg-subtle md:block">{row.variant}</div>
+                    )}
+                  </td>
+                  <td className="hidden whitespace-nowrap text-fg-muted md:table-cell md:px-2 md:py-2.5">
+                    <span className="flex items-center gap-1.5">
+                      <ChainLogo chain={row.chain} size={16} />
+                      {row.chain}
                     </span>
-                  )}
-                </td>
-                <td className="px-2 py-2.5 pr-4 text-right">
-                  <ActionButton
-                    href={row.deepLink}
-                    platform={row.platform.name}
-                    category={row.category === "earn" ? "earn" : "borrow"}
-                    specific={row.deepLinkIsSpecific && row.status === "live"}
-                  />
-                </td>
-              </tr>
-            ))}
+                  </td>
+                  <td className="col-start-2 row-start-1 text-right md:px-2 md:py-2.5" title={`${split}. ${source}.`}>
+                    <ApyCell row={row} />
+                    {row.status === "live" && !row.unmeasured && total > 0 && row.apyBase !== null && row.apyReward !== null && (
+                      <span className="mt-1 flex justify-end">
+                        <MiniBar
+                          max={total}
+                          segments={[
+                            { value: row.apyBase, className: "bg-positive" },
+                            { value: row.apyReward, className: "bg-warn" },
+                          ]}
+                        />
+                      </span>
+                    )}
+                    <span className="sr-only">{split}.</span>
+                  </td>
+                  <td className="tnum hidden text-right whitespace-nowrap text-fg-muted md:table-cell md:px-2 md:py-2.5">
+                    {row.chartUrl ? (
+                      <a href={row.chartUrl} target="_blank" rel="noopener nofollow" title="Rate and TVL history — opens in a new tab" className="hover:text-accent hover:underline">
+                        {formatUsd(row.tvlUsd)}
+                      </a>
+                    ) : (
+                      formatUsd(row.tvlUsd)
+                    )}
+                  </td>
+                  <td className="col-start-2 row-start-2 text-right md:px-2 md:py-2.5 md:pr-4">
+                    <ActionButton
+                      href={row.deepLink}
+                      platform={row.platform.name}
+                      category={row.category === "earn" ? "earn" : "borrow"}
+                      specific={row.deepLinkIsSpecific && row.status === "live"}
+                    />
+                  </td>
+                </tr>
+              );
+            })}
             {visible.length === 0 && (
-              <tr>
-                <td colSpan={11} className="px-4 py-10 text-center text-fg-muted">
+              <tr className="block md:table-row">
+                <td colSpan={6} className="block px-4 py-10 text-center text-fg-muted md:table-cell">
                   Nothing matches those filters.
                 </td>
               </tr>
@@ -278,14 +266,12 @@ export function OpportunityTable({
         </table>
       </div>
 
-      <p className="mt-2 text-xs text-fg-subtle">
-        Showing {visible.length} of {rows.length} opportunities. Base and Rewards are
-        percentage points of the total APY.
-        {endedCount > 0 && (
-          <> Ended programmes keep their last known rate and are excluded from every
-          headline figure.</>
-        )}
-      </p>
+      {!compact && (
+        <p className="mt-2 text-xs text-fg-subtle">
+          {visible.length} of {rows.length} · bar = interest <span className="text-positive">■</span> vs incentives{" "}
+          <span className="text-warn">■</span>
+        </p>
+      )}
     </div>
   );
 }

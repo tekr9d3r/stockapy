@@ -4,9 +4,10 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ActionButton } from "./ActionButton";
 import { Badge } from "./Badge";
-import { PlatformLogo } from "./Logo";
+import { ChainLogo, PlatformLogo } from "./Logo";
+import { MiniBar } from "./MiniBar";
 import { StockLogo } from "./StockLogo";
-import { formatApy, formatLtv, formatRelativeShort, SOURCE_LABEL, formatDate } from "@/lib/format";
+import { formatApy, formatLtv, formatRelativeShort, SOURCE_LABEL } from "@/lib/format";
 import type { Row } from "@/lib/data/types";
 
 type SortKey = "ltv" | "rate" | "stock";
@@ -19,6 +20,9 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
   const [query, setQuery] = useState("");
   const [asset, setAsset] = useState("all");
   const [sort, setSort] = useState<SortKey>("ltv");
+  // Long lists start short. Hidden rows stay in the HTML, so crawlers still read every market.
+  const [showAll, setShowAll] = useState(false);
+  const PREVIEW = 12;
 
   const assets = useMemo(
     () => [...new Set(rows.map((r) => r.borrow!.loanAsset))].sort(),
@@ -83,143 +87,102 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
         </div>
       )}
 
-      <div className="overflow-x-auto rounded-lg border bg-bg-raised">
-        <table className="w-full min-w-[1140px] border-collapse text-sm">
+      <div className="overflow-hidden rounded-lg border bg-bg-raised md:overflow-x-auto">
+        <table className="block w-full border-collapse text-sm md:table md:min-w-[760px]">
           <caption className="sr-only">
             Tokenized stocks accepted as collateral, with the maximum loan-to-value and the
             cost of borrowing against them.
           </caption>
-          <thead>
+          <thead className="hidden md:table-header-group">
             <tr className="border-b bg-bg-subtle text-left text-[11px] uppercase tracking-wide text-fg-muted">
               <th scope="col" className="px-2 py-2 pl-4 font-medium">Stock</th>
-              <th scope="col" className="px-2 py-2 font-medium">Token</th>
               <th scope="col" className="px-2 py-2 font-medium">Platform</th>
               <th scope="col" className="px-2 py-2 font-medium">Chain</th>
-              <th scope="col" className="px-2 py-2 text-right font-medium" title="The most you can borrow against $100 of this stock.">
+              <th scope="col" className="px-2 py-2 text-right font-medium" title="The most you can borrow against $100 of this stock. You are liquidated well before reaching it.">
                 Max LTV
               </th>
-              <th scope="col" className="px-2 py-2 font-medium">Borrow</th>
-              <th scope="col" className="px-2 py-2 text-right font-medium" title="Annual interest you pay on the loan.">
-                Cost
+              <th scope="col" className="px-2 py-2 text-right font-medium" title="What you borrow and its annual interest.">
+                Borrow
               </th>
-              <th scope="col" className="px-2 py-2 text-right font-medium" title="What the stock itself earns while posted as collateral.">
-                Stock earns
-              </th>
-              <th
-                scope="col"
-                className="px-2 py-2 text-right font-medium"
-                title="The other side of the market: what you earn by supplying the loan asset here, instead of the stock."
-              >
-                Lend side
-              </th>
-              <th scope="col" className="px-2 py-2 text-right font-medium">Updated</th>
               <th scope="col" className="px-2 py-2 pr-4 text-right font-medium">
                 <span className="sr-only">Open market</span>
               </th>
             </tr>
           </thead>
-          <tbody>
-            {visible.map((row) => {
-              const { ltv, borrowApr, loanAsset } = row.borrow!;
+          <tbody className="block md:table-row-group">
+            {visible.map((row, index) => {
+              const { ltv, borrowApr, loanAsset, lendApy } = row.borrow!;
+              const folded = !compact && !showAll && index >= PREVIEW;
+              const extra = [
+                `Stock earns ${row.unmeasured ? "—" : formatApy(row.apyTotal)}${row.pointsLabel ? ` + ${row.pointsLabel}` : ""}`,
+                lendApy !== null ? `lenders of ${loanAsset} earn ${lendApy.toFixed(2)}% (not yield on your stock)` : null,
+                `updated ${formatRelativeShort(row.fetchedAt)} ago from ${SOURCE_LABEL[row.source] ?? row.source}`,
+              ]
+                .filter(Boolean)
+                .join(" · ");
               return (
-                <tr key={row.id} className="border-b last:border-0 hover:bg-bg-subtle">
-                  <td className="px-2 py-2.5 pl-4">
-                    <Link
-                      href={`/stock/${row.underlying.ticker.toLowerCase()}`}
-                      className="flex items-center gap-2 font-medium hover:text-accent hover:underline"
-                    >
-                      <StockLogo ticker={row.underlying.ticker} name={row.underlying.name} />
-                      {row.underlying.ticker}
+                <tr key={row.id} className={`${folded ? "hidden" : "grid md:table-row"} grid-cols-[1fr_auto] items-center gap-x-3 gap-y-1.5 border-b px-4 py-3 last:border-0 hover:bg-bg-subtle md:p-0`}>
+                  <td className="md:px-2 md:py-2.5 md:pl-4">
+                    <Link href={`/stock/${row.underlying.ticker.toLowerCase()}`} className="flex items-center gap-2.5 hover:text-accent">
+                      <StockLogo ticker={row.underlying.ticker} name={row.underlying.name} size={28} />
+                      <span>
+                        <span className="block font-semibold leading-tight">{row.underlying.ticker}</span>
+                        <span className="block text-xs text-fg-subtle">
+                          {row.token.symbol} · {row.issuer.name.replace(/ \(.*\)$/, "")}
+                        </span>
+                      </span>
                     </Link>
                   </td>
-                  <td className="px-2 py-2.5 whitespace-nowrap">
-                    <div className="font-medium">{row.token.symbol}</div>
-                    <div className="text-xs text-fg-subtle">{row.issuer.name}</div>
-                  </td>
-                  <td className="px-2 py-2.5 whitespace-nowrap">
-                    <div className="flex items-center gap-1.5">
+                  <td className="col-start-1 row-start-2 md:px-2 md:py-2.5">
+                    <div className="flex flex-wrap items-center gap-1.5">
                       <PlatformLogo id={row.platform.id} name={row.platform.name} size={20} />
                       <span className="font-medium">{row.platform.name}</span>
-                      <Badge tone={row.platform.kind === "cefi" ? "accent" : "neutral"}>
-                        {row.platform.kind === "cefi" ? "CeFi" : "DeFi"}
-                      </Badge>
+                      <span className="flex items-center gap-1 text-xs text-fg-subtle md:hidden">
+                        · <ChainLogo chain={row.chain} size={12} /> {row.chain}
+                      </span>
                       {!row.listed && (
-                        <Badge
-                          tone="warn"
-                          title="Not listed in the venue's own interface: reachable only by direct link, and not curated by them."
-                        >
+                        <Badge tone="warn" title="Not listed in the venue's own interface: reachable only by direct link, and not curated by them.">
                           Unlisted
                         </Badge>
                       )}
                     </div>
-                    {row.variant && (
-                      <div className="mt-0.5 text-xs text-fg-subtle">{row.variant}</div>
-                    )}
+                    {row.variant && <div className="mt-0.5 hidden text-xs text-fg-subtle md:block">{row.variant}</div>}
                   </td>
-                  <td className="px-2 py-2.5 whitespace-nowrap text-fg-muted">{row.chain}</td>
-                  <td className="tnum px-2 py-2.5 text-right whitespace-nowrap">
+                  <td className="hidden whitespace-nowrap text-fg-muted md:table-cell md:px-2 md:py-2.5">
+                    <span className="flex items-center gap-1.5">
+                      <ChainLogo chain={row.chain} size={16} />
+                      {row.chain}
+                    </span>
+                  </td>
+                  <td className="col-start-2 row-start-1 text-right whitespace-nowrap md:px-2 md:py-2.5">
                     {ltv === null ? (
                       <span className="text-fg-subtle">not collected</span>
                     ) : (
-                      <span className="font-semibold">{formatLtv(ltv)}</span>
+                      <>
+                        <span className="text-[15px] font-semibold tabular-nums">{formatLtv(ltv)}</span>
+                        <span className="mt-1 flex justify-end">
+                          <MiniBar max={1} segments={[{ value: ltv, className: "bg-borrow" }]} />
+                        </span>
+                      </>
                     )}
                   </td>
-                  <td className="px-2 py-2.5 whitespace-nowrap font-medium">{loanAsset}</td>
-                  <td className="tnum px-2 py-2.5 text-right whitespace-nowrap">
+                  <td className="col-span-2 row-start-3 text-left whitespace-nowrap md:col-span-1 md:px-2 md:py-2.5 md:text-right" title={extra}>
+                    <span className="font-medium">{loanAsset}</span>{" "}
                     {borrowApr === null ? (
-                      <span className="text-fg-subtle">—</span>
+                      <span className="text-fg-subtle">· cost —</span>
                     ) : (
-                      <span className={borrowApr > 8 ? "text-warn" : "text-fg"}>
-                        {borrowApr.toFixed(2)}%
-                      </span>
+                      <span className={`tabular-nums ${borrowApr > 8 ? "text-warn" : "text-fg-muted"}`}>at {borrowApr.toFixed(2)}%</span>
                     )}
                   </td>
-                  <td className="tnum px-2 py-2.5 text-right whitespace-nowrap text-fg-muted">
-                    {row.unmeasured ? "—" : formatApy(row.apyTotal)}
-                    {row.pointsLabel && (
-                      <span
-                        className="ml-1 text-[10px] font-medium uppercase tracking-wide text-accent"
-                        title={`Also earns ${row.pointsLabel}. Points have no stated rate, value or date, so they are not part of the APY.`}
-                      >
-                        + {row.pointsLabel}
-                      </span>
-                    )}
-                  </td>
-                  <td className="tnum px-2 py-2.5 text-right whitespace-nowrap">
-                    {row.borrow!.lendApy === null ? (
-                      <span className="text-fg-subtle">—</span>
-                    ) : (
-                      <span
-                        className={row.borrow!.lendApy > 10 ? "text-warn" : "text-positive"}
-                        title={`Supply ${loanAsset} into this market to earn ${row.borrow!.lendApy.toFixed(2)}%. This is yield on ${loanAsset}, not on your stock.`}
-                      >
-                        {row.borrow!.lendApy.toFixed(2)}%
-                      </span>
-                    )}
-                  </td>
-                  <td className="px-2 py-2.5 text-right text-xs whitespace-nowrap text-fg-subtle">
-                    <span
-                      title={`Collected ${formatDate(row.fetchedAt)} from ${
-                        SOURCE_LABEL[row.source] ?? row.source
-                      }`}
-                    >
-                      {formatRelativeShort(row.fetchedAt)}
-                    </span>
-                  </td>
-                  <td className="px-2 py-2.5 pr-4 text-right">
-                    <ActionButton
-                      href={row.deepLink}
-                      platform={row.platform.name}
-                      category="borrow"
-                      specific={row.deepLinkIsSpecific}
-                    />
+                  <td className="col-start-2 row-start-2 text-right md:px-2 md:py-2.5 md:pr-4">
+                    <ActionButton href={row.deepLink} platform={row.platform.name} category="borrow" specific={row.deepLinkIsSpecific} />
                   </td>
                 </tr>
               );
             })}
             {visible.length === 0 && (
-              <tr>
-                <td colSpan={11} className="px-4 py-10 text-center text-fg-muted">
+              <tr className="block md:table-row">
+                <td colSpan={6} className="block px-4 py-10 text-center text-fg-muted md:table-cell">
                   Nothing matches those filters.
                 </td>
               </tr>
@@ -228,12 +191,15 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
         </table>
       </div>
 
-      <p className="mt-2 text-xs text-fg-subtle">
-        Showing {visible.length} of {rows.length} borrow markets. Max LTV is the most you can
-        draw against $100 of the stock; you will be liquidated well before reaching it.
-        &ldquo;Lend side&rdquo; is what a lender earns supplying the loan asset into the same
-        market — yield on that stablecoin, not on your shares.
-      </p>
+      {!compact && visible.length > PREVIEW && (
+        <button
+          type="button"
+          onClick={() => setShowAll((v) => !v)}
+          className="mt-3 w-full rounded-lg border bg-bg-raised py-2.5 text-sm font-medium text-fg-muted hover:text-fg"
+        >
+          {showAll ? "Show fewer" : `Show all ${visible.length} markets`}
+        </button>
+      )}
     </div>
   );
 }

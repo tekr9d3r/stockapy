@@ -1,0 +1,38 @@
+---
+title: "Borrowing against tokenized stocks: four risks behind the LTV number"
+description: "Max LTV is a liquidation line, not a target. The weekend oracle gap, why the lend rate is a different trade, and why the cheapest borrow rate usually sits in the quietest market."
+datePublished: "2026-10-23"
+dateModified: "2026-10-23"
+author: "StockAPY"
+tags: ["guide", "borrow", "risk"]
+faq:
+  - question: "How much can you safely borrow against a tokenized stock?"
+    answer: "Well below the maximum LTV. Max LTV is the line at which you are liquidated, and a position opened near it is liquidated by an ordinary day's move in the share price."
+  - question: "What is the weekend risk when borrowing against a tokenized stock?"
+    answer: "The share stops trading on Friday but the token does not. An oracle still quotes a price, and the gap when the market reopens can liquidate a position nobody was awake to defend."
+---
+
+The live markets are on the [Borrow page](/borrow). Read this before opening a loan against any of
+them.
+
+## Max LTV is not a target
+
+It is the line at which you are liquidated, not a sensible borrowing level. A position opened near
+the maximum is liquidated by an ordinary day's move in the share price.
+
+## The weekend is the real risk
+
+The share stops trading on Friday; the token does not. An oracle still has to quote a price, and the
+gap when the market reopens can liquidate a position nobody was awake to defend. This risk does not
+exist when you hold the share itself.
+
+## The lend side is a different trade
+
+Morpho's interface shows a "Lend Rate" on each of these markets, and some are high. It is not yield
+on your stock: in a Morpho Blue market the lender supplies the loan asset and the collateral is never
+lent out. To earn it you deposit USDG or USDC, not shares.
+
+## A cheap rate usually means a quiet market
+
+Borrow rates fall when nobody is borrowing. The lowest numbers sit in markets holding a few hundred
+thousand dollars, where your own loan would move the rate.

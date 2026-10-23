@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Database, RefreshCw, ShieldCheck } from "lucide-react";
 import { ActionButton } from "@/components/ActionButton";
 import { CategoryBadgeIcon, CategoryIcon } from "@/components/CategoryIcon";
+import { Faq } from "@/components/Faq";
+import { InfoTip } from "@/components/InfoTip";
 import { JsonLd } from "@/components/JsonLd";
 import { ChainLogo, IssuerLogo, PlatformLogo } from "@/components/Logo";
 import { NewsletterForm } from "@/components/NewsletterForm";
@@ -12,9 +15,16 @@ import { loadLatestSnapshot } from "@/lib/data/snapshot";
 import { CATEGORIES, type CategoryKey } from "@/lib/categories";
 import { formatApy, formatDate, formatLtv, formatUsd } from "@/lib/format";
 import { datasetLd, faqLd, organizationLd, webSiteLd } from "@/lib/seo/jsonld";
-import { BRAND_NAME, SITE_DESCRIPTION, SITE_URL, SOCIAL } from "@/config";
+import { BRAND_NAME, SITE_DESCRIPTION, SOCIAL } from "@/config";
 
 export const revalidate = 3600;
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+    types: { "text/markdown": "/index.md", "application/json": "/api/v1/summary" },
+  },
+};
 
 export default function Home() {
   const d = getHomeData();
@@ -115,11 +125,9 @@ export default function Home() {
           </h1>
           {/* Answer-first: the sentence an answer engine should lift. */}
           <p className="mt-4 max-w-xl text-[17px] leading-relaxed text-fg-muted">
-            As of {asOf}, you can earn up to <strong className="text-fg">{formatApy(d.earn.maxApy)}</strong> by
-            depositing a tokenized stock, a median <strong className="text-fg">{formatApy(d.lq.medianFeeApy)}</strong> in
-            trading fees by providing liquidity, or borrow against it at up to{" "}
-            <strong className="text-fg">{formatLtv(d.borrow.maxLtv)}</strong> loan-to-value. We compare{" "}
-            {d.platforms.length} protocols across {d.chains.length} chains, hourly.
+            As of {asOf}: earn up to <strong className="text-fg">{formatApy(d.earn.maxApy)}</strong> by depositing,
+            a median <strong className="text-fg">{formatApy(d.lq.medianFeeApy)}</strong> in trading fees, or borrow at up to{" "}
+            <strong className="text-fg">{formatLtv(d.borrow.maxLtv)}</strong> LTV — across {d.platforms.length} protocols.
           </p>
           <div className="mt-6 max-w-xl">
             <NewsletterForm source="hero" />
@@ -170,12 +178,11 @@ export default function Home() {
           id="three-ways"
           eyebrow="The best of each, right now"
           title="Three ways to put a tokenized stock to work"
-          text="The top three in each category, one per platform. Each button opens that exact market in a new tab."
         />
         <div className="grid gap-4 lg:grid-cols-3">
           <WayCard
             category="earn"
-            what="Deposit the stock into a lending market or vault and get paid a rate."
+            what="Deposit it, get paid a rate."
             count={d.counts.earn}
           >
             {d.topEarn.map((r) => (
@@ -184,7 +191,7 @@ export default function Home() {
           </WayCard>
           <WayCard
             category="liquidity"
-            what="Pair the stock with a stablecoin in a DEX pool and earn a share of every trade."
+            what="Pair it in a DEX pool, earn trading fees."
             count={d.counts.liquidity}
           >
             {d.topLiquidity.map((r) => (
@@ -193,7 +200,7 @@ export default function Home() {
           </WayCard>
           <WayCard
             category="borrow"
-            what="Post the stock as collateral and borrow stablecoins without selling it."
+            what="Borrow stablecoins without selling it."
             count={d.counts.borrow}
           >
             {d.topBorrow.map((r) => (
@@ -210,12 +217,10 @@ export default function Home() {
             id="where-yield"
             eyebrow="Read this before chasing a rate"
             title="Where the yield actually comes from"
-            text="Trading fees are paid by traders on every swap. Most deposit rates are token incentives that end when the budget does."
           />
         </div>
         <div className="rounded-2xl border bg-bg-raised p-6 shadow-card">
           <h3 className="font-semibold">Median rate by category</h3>
-          <p className="mt-1 text-sm text-fg-muted">What a typical opportunity pays, not the best one.</p>
           <Bars
             rows={[
               { category: "liquidity", label: "Providing liquidity (trading fees)", value: d.lq.medianFeeApy },
@@ -226,9 +231,6 @@ export default function Home() {
         </div>
         <div className="rounded-2xl border bg-bg-raised p-6 shadow-card">
           <h3 className="font-semibold">What pays deposit yield</h3>
-          <p className="mt-1 text-sm text-fg-muted">
-            Across the {d.earn.splitKnownCount} deposit venues that disclose it.
-          </p>
           <div className="mt-6">
             <div className="flex h-10 overflow-hidden rounded-lg" role="img" aria-label={`${organicPct?.toFixed(1) ?? "unknown"}% interest, the rest incentives`}>
               <div className="bg-earn" style={{ width: `${Math.max(organicPct ?? 0, 1.5)}%` }} />
@@ -244,10 +246,6 @@ export default function Home() {
                 <span className="block text-fg-muted">token incentives</span>
               </p>
             </div>
-            <p className="mt-4 text-sm text-fg-muted">
-              {d.earn.zeroCount} of {d.earn.earnCount} deposit venues pay exactly 0%
-              {d.earn.endedCount > 0 && <>, and {d.earn.endedCount} incentive programmes have already ended</>}.
-            </p>
           </div>
         </div>
       </section>
@@ -258,7 +256,7 @@ export default function Home() {
           id="by-stock"
           eyebrow={`${d.stocks.length} stocks`}
           title="Pick your stock"
-          text="The best rate in each category for every stock we track. *LP fees count only stablecoin pools holding $250k or more. Open a stock for all of its markets."
+          tip="The best rate in each category for every stock. LP fees count only stablecoin pools holding $250k or more."
         />
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {d.stocks.map((s) => (
@@ -276,7 +274,7 @@ export default function Home() {
               </div>
               <dl className="mt-3 space-y-1 text-xs">
                 <StockStat category="earn" label="Earn" value={s.bestEarn === null ? "—" : formatApy(s.bestEarn)} />
-                <StockStat category="liquidity" label="LP fees*" value={s.bestFee === null ? "—" : formatApy(s.bestFee)} />
+                <StockStat category="liquidity" label="LP fees" value={s.bestFee === null ? "—" : formatApy(s.bestFee)} />
                 <StockStat category="borrow" label="Max LTV" value={s.maxLtv === null ? "—" : formatLtv(s.maxLtv)} />
               </dl>
             </Link>
@@ -290,7 +288,6 @@ export default function Home() {
           id="coverage"
           eyebrow="Independent and open"
           title="Tracked across every major venue"
-          text="We read rates from the protocols themselves and show where every number came from."
         />
         <LogoRow title="Protocols">
           {d.platforms.map((p) => (
@@ -314,17 +311,15 @@ export default function Home() {
           ))}
         </LogoRow>
         <ul className="mt-6 grid gap-3 text-sm sm:grid-cols-3">
-          <Proof icon={<RefreshCw size={16} />}>Refreshed every hour · last run {asOf}</Proof>
+          <Proof icon={<RefreshCw size={16} />}>Hourly · {asOf}</Proof>
           <Proof icon={<Database size={16} />}>
-            DefiLlama, Aave, Morpho, Raydium, GeckoTerminal and on-chain contracts ·{" "}
-            <a href="/api/opportunities" className="underline underline-offset-2">open data</a>
+            <Link href="/developers" className="underline underline-offset-2">Open data &amp; API</Link>
           </Proof>
           <Proof icon={<ShieldCheck size={16} />}>
             No paid placements ·{" "}
             <a href={SOCIAL.github} target="_blank" rel="noopener" className="underline underline-offset-2">
-              open source on GitHub<span className="sr-only"> (opens in a new tab)</span>
-            </a>{" "}
-            · <Link href="/methodology" className="underline underline-offset-2">methodology</Link>
+              open source<span className="sr-only"> (opens in a new tab)</span>
+            </a>
           </Proof>
         </ul>
       </section>
@@ -343,7 +338,6 @@ export default function Home() {
               <Link key={p.slug} href={`/hub/${p.slug}`} className="group flex flex-col rounded-xl border bg-bg-raised p-5 transition hover:border-border-strong hover:shadow-card">
                 <CategoryBadgeIcon category="hub" size={36} />
                 <h3 className="mt-3 font-semibold leading-snug group-hover:text-accent">{p.title}</h3>
-                <p className="mt-1.5 line-clamp-3 text-sm leading-relaxed text-fg-muted">{p.description}</p>
                 <p className="mt-auto pt-3 text-xs text-fg-subtle">
                   <time dateTime={p.datePublished}>{formatDate(p.datePublished)}</time>
                 </p>
@@ -354,35 +348,21 @@ export default function Home() {
       )}
 
       {/* ---------- FAQ ---------- */}
-      <section className="mx-auto max-w-3xl" aria-labelledby="faq">
-        <SectionHead id="faq" eyebrow="FAQ" title="Common questions" />
-        <div className="divide-y rounded-xl border bg-bg-raised">
-          {faq.map((q, i) => (
-            <details key={q.question} open={i === 0} className="group px-5 py-4">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium [&::-webkit-details-marker]:hidden">
-                {q.question}
-                <span aria-hidden="true" className="text-fg-subtle transition group-open:rotate-45">+</span>
-              </summary>
-              <p className="mt-2 text-sm leading-relaxed text-fg-muted">{q.answer}</p>
-            </details>
-          ))}
-        </div>
-        <p className="mt-3 text-center text-xs text-fg-subtle">
-          Data as of {asOf} · <a href={`${SITE_URL}/llms.txt`} className="underline underline-offset-2">llms.txt</a>
-        </p>
-      </section>
+      <Faq entries={faq} />
     </>
   );
 }
 
 /* ---------------------------------------------------------------- pieces */
 
-function SectionHead({ id, eyebrow, title, text }: { id: string; eyebrow?: string; title: string; text?: string }) {
+function SectionHead({ id, eyebrow, title, tip }: { id: string; eyebrow?: string; title: string; tip?: string }) {
   return (
-    <div className="mb-6 max-w-2xl">
+    <div className="mb-5 max-w-2xl">
       {eyebrow && <p className="text-xs font-semibold tracking-widest text-fg-subtle uppercase">{eyebrow}</p>}
-      <h2 id={id} className="mt-1 text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h2>
-      {text && <p className="mt-2 text-fg-muted">{text}</p>}
+      <h2 id={id} className="mt-1 flex items-center gap-2 text-2xl font-semibold tracking-tight sm:text-3xl">
+        {title}
+        {tip && <InfoTip text={tip} />}
+      </h2>
     </div>
   );
 }
@@ -467,7 +447,7 @@ function EarnPick({ r }: { r: Row }) {
       platform={r.platform}
       chain={r.chain}
       rate={formatApy(r.apyTotal)}
-      rateLabel={r.apyReward && r.apyTotal && r.apyReward / r.apyTotal > 0.5 ? "APY · mostly incentives" : "APY"}
+      rateLabel={r.apyReward && r.apyTotal && r.apyReward / r.apyTotal > 0.5 ? "mostly incentives" : "APY"}
       action={<ActionButton href={r.deepLink} platform={r.platform.name} category="earn" specific={r.deepLinkIsSpecific} />}
     />
   );
@@ -481,7 +461,7 @@ function LiquidityPick({ r }: { r: LiquidityRow }) {
       platform={{ id: r.venue.id, name: r.venue.name }}
       chain={r.chain}
       rate={formatApy(r.apyBase)}
-      rateLabel={`fee APY · ${formatUsd(r.tvlUsd)} TVL`}
+      rateLabel={`fees · ${formatUsd(r.tvlUsd)}`}
       action={<ActionButton href={r.url} platform={r.venue.name} category="liquidity" />}
     />
   );
@@ -495,7 +475,7 @@ function BorrowPick({ r }: { r: Row }) {
       platform={r.platform}
       chain={r.chain}
       rate={`${formatLtv(r.borrow!.ltv)} LTV`}
-      rateLabel={r.borrow!.borrowApr !== null ? `borrow at ${r.borrow!.borrowApr.toFixed(2)}%` : "max loan-to-value"}
+      rateLabel={r.borrow!.borrowApr !== null ? `at ${r.borrow!.borrowApr.toFixed(2)}%` : "max LTV"}
       action={<ActionButton href={r.deepLink} platform={r.platform.name} category="borrow" specific={r.deepLinkIsSpecific} />}
     />
   );

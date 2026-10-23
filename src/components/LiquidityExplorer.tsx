@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { ActionButton } from "./ActionButton";
+import { SlidersHorizontal } from "lucide-react";
 import { Badge } from "./Badge";
 import { CollapsibleGroup, Metric } from "./CollapsibleGroup";
 import { LiquidityTable } from "./LiquidityTable";
@@ -107,58 +108,61 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
 
   return (
     <div>
-      <div className="mb-2 flex flex-wrap items-center gap-2">
+      <div className="mb-3 flex flex-wrap items-center gap-2">
         <input
           type="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search NVDA, Raydium, Base…"
+          placeholder="Search NVDA, Raydium…"
           aria-label="Search pools"
-          className="h-9 min-w-[180px] flex-1 rounded-md border bg-bg-raised px-3 text-sm outline-none placeholder:text-fg-subtle focus:border-accent"
+          className="h-9 min-w-[160px] flex-1 rounded-md border bg-bg-raised px-3 text-sm outline-none placeholder:text-fg-subtle focus:border-accent"
         />
-        <select aria-label="Pair type" value={pair} onChange={(e) => setPair(e.target.value as PairFilter)} className={select}>
-          <option value="stock-stable">Stablecoin pairs</option>
-          <option value="stock-crypto">Crypto pairs</option>
-          <option value="stock-stock">Stock / stock</option>
-          <option value="all">All pair types</option>
-        </select>
         <select aria-label="Stock" value={stock} onChange={(e) => setStock(e.target.value)} className={select}>
           <option value="all">All stocks</option>
           {opts.stocks.map((s) => <option key={s} value={s}>{s}</option>)}
         </select>
-        <select aria-label="Issuer" value={issuer} onChange={(e) => setIssuer(e.target.value)} className={select}>
-          <option value="all">All issuers</option>
-          {opts.issuers.map((s) => <option key={s} value={s}>{ISSUER_LABEL[s] ?? s}</option>)}
-        </select>
-        <select aria-label="Chain" value={chain} onChange={(e) => setChain(e.target.value)} className={select}>
-          <option value="all">All chains</option>
-          {opts.chains.map((s) => <option key={s} value={s}>{s}</option>)}
-        </select>
-        <select aria-label="Venue" value={venue} onChange={(e) => setVenue(e.target.value)} className={select}>
-          <option value="all">All venues</option>
-          {opts.venues.map(([id, name]) => <option key={id} value={id}>{name}</option>)}
-        </select>
         <select aria-label="Sort by" value={sort} onChange={(e) => setSort(e.target.value as Sort)} className={select}>
           <option value="fee">Sort: Fee APY</option>
-          <option value="total">Sort: Total APY</option>
           <option value="tvl">Sort: TVL</option>
           <option value="volume">Sort: 24h volume</option>
-          <option value="turnover">Sort: Vol/TVL</option>
         </select>
-      </div>
-      <div className="mb-3 flex flex-wrap items-center gap-2">
         <div className="flex h-9 overflow-hidden rounded-md border text-sm" role="group" aria-label="Layout">
           <button type="button" onClick={() => setGrouped(true)} className={`px-3 ${grouped ? "bg-accent text-accent-fg" : "bg-bg-raised"}`}>By venue</button>
-          <button type="button" onClick={() => setGrouped(false)} className={`px-3 ${!grouped ? "bg-accent text-accent-fg" : "bg-bg-raised"}`}>One table</button>
+          <button type="button" onClick={() => setGrouped(false)} className={`px-3 ${!grouped ? "bg-accent text-accent-fg" : "bg-bg-raised"}`}>All</button>
         </div>
-        <label className={toggle} title="Hide pools where more than half the rate is incentives.">
-          <input type="checkbox" checked={feesOnly} onChange={(e) => setFeesOnly(e.target.checked)} className="accent-accent" />
-          Fees only
-        </label>
-        <label className={toggle} title="Pairs against small or speculative tokens. You hold half of the other token.">
-          <input type="checkbox" checked={showSpeculative} onChange={(e) => setShowSpeculative(e.target.checked)} className="accent-accent" />
-          Speculative pairs ({speculativeCount})
-        </label>
+        <details className="relative">
+          <summary className={`${toggle} list-none [&::-webkit-details-marker]:hidden`}>
+            <SlidersHorizontal size={14} aria-hidden="true" /> Filters
+          </summary>
+          <div className="absolute right-0 z-10 mt-1 flex w-60 flex-col gap-2 rounded-lg border bg-bg-raised p-3 shadow-card">
+            <select aria-label="Pair type" value={pair} onChange={(e) => setPair(e.target.value as PairFilter)} className={select}>
+              <option value="stock-stable">Stablecoin pairs</option>
+              <option value="stock-crypto">Crypto pairs</option>
+              <option value="stock-stock">Stock / stock</option>
+              <option value="all">All pair types</option>
+            </select>
+            <select aria-label="Issuer" value={issuer} onChange={(e) => setIssuer(e.target.value)} className={select}>
+              <option value="all">All issuers</option>
+              {opts.issuers.map((s) => <option key={s} value={s}>{ISSUER_LABEL[s] ?? s}</option>)}
+            </select>
+            <select aria-label="Chain" value={chain} onChange={(e) => setChain(e.target.value)} className={select}>
+              <option value="all">All chains</option>
+              {opts.chains.map((s) => <option key={s} value={s}>{s}</option>)}
+            </select>
+            <select aria-label="Venue" value={venue} onChange={(e) => setVenue(e.target.value)} className={select}>
+              <option value="all">All venues</option>
+              {opts.venues.map(([id, name]) => <option key={id} value={id}>{name}</option>)}
+            </select>
+            <label className="flex cursor-pointer items-center gap-1.5 text-sm" title="Hide pools where more than half the rate is incentives.">
+              <input type="checkbox" checked={feesOnly} onChange={(e) => setFeesOnly(e.target.checked)} className="accent-accent" />
+              Fees only
+            </label>
+            <label className="flex cursor-pointer items-center gap-1.5 text-sm" title="Pairs against small or speculative tokens. You hold half of the other token.">
+              <input type="checkbox" checked={showSpeculative} onChange={(e) => setShowSpeculative(e.target.checked)} className="accent-accent" />
+              Speculative pairs ({speculativeCount})
+            </label>
+          </div>
+        </details>
       </div>
 
       {grouped ? (
@@ -210,11 +214,8 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
         <LiquidityTable rows={visible} />
       )}
 
-      <p className="mt-2 text-xs leading-relaxed text-fg-subtle">
-        Showing {visible.length} of {rows.length} active pools (traded at least $1,000 in the last 24 hours, $10k+ in the pool). Every rate is{" "}
-        <strong className="text-fg-muted">before impermanent loss</strong>, and concentrated-liquidity rates assume your position stays in range.
-        Fee APY is what reaches the liquidity provider: after Raydium&rsquo;s 16% cut and Aero&rsquo;s 5% to sAERO operators, before any Uniswap protocol fee.
-        On Aero, staking in the gauge pays AERO <em>instead</em> of fees, so its AERO column is never added to the fee APY.
+      <p className="mt-2 text-xs text-fg-subtle">
+        {visible.length} of {rows.length} active pools · before impermanent loss
       </p>
     </div>
   );

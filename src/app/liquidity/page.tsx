@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CategoryTabs } from "@/components/CategoryTabs";
+import { Faq } from "@/components/Faq";
+import { InfoTip } from "@/components/InfoTip";
 import { JsonLd } from "@/components/JsonLd";
+import { LearnMore } from "@/components/LearnMore";
 import { LiquidityExplorer } from "@/components/LiquidityExplorer";
 import { CategoryHeader, LogoStack, Tile } from "@/components/CategoryHeader";
 import { ChainLogo, PlatformLogo } from "@/components/Logo";
@@ -20,7 +23,10 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: "Provide liquidity with tokenized stocks",
   description: DESCRIPTION,
-  alternates: { canonical: "/liquidity" },
+  alternates: {
+    canonical: "/liquidity",
+    types: { "text/markdown": "/liquidity.md", "application/json": "/api/v1/liquidity" },
+  },
   openGraph: { title: `Provide liquidity with tokenized stocks · ${BRAND_NAME}`, description: DESCRIPTION },
 };
 
@@ -30,10 +36,6 @@ export default function LiquidityPage() {
   const earn = marketStats();
   const fetchedAt = loadLiquidityFile()?.fetchedAt ?? null;
   const asOf = formatDate(fetchedAt);
-  const best = stats.bestFeeLiquid;
-  const busiest = stats.busiest;
-  const pairName = (r: { legs: { symbol: string; stock: { symbol: string } | null }[] }) =>
-    r.legs.map((l) => l.symbol).join(" / ");
 
   const faq = [
     {
@@ -120,99 +122,34 @@ export default function LiquidityPage() {
           </>
         }
       >
-        {/* Answer-first: the paragraph a search engine or AI assistant should lift. */}
+        {/* Answer-first: the sentence a search engine or AI assistant should lift. */}
         <p>
-          This is the one category where a tokenized stock can earn real yield: traders pay a fee on
-          every swap. We track the active pools on Raydium, Uniswap and Aero. As of {asOf}, the median
-          stock/stablecoin pool pays liquidity providers{" "}
-          <strong className="text-fg">{formatApy(stats.medianFeeApy)}</strong> in trading fees —
-          against <strong className="text-fg">{formatApy(earn.medianApy)}</strong> for the median
-          venue on <Link href="/earn" className="text-accent underline underline-offset-2">Earn</Link>
-          {best && (
-            <>
-              . The best with real depth is{" "}
-              <strong className="text-fg">{pairName(best)}</strong> on {best.venue.name} ({best.chain})
-              at <strong className="text-fg">{formatApy(best.apyBase)}</strong> on {formatUsd(best.tvlUsd)}
-            </>
-          )}
-          {busiest && (
-            <>
-              , and the busiest pool, {pairName(busiest)} on {busiest.venue.name}, traded{" "}
-              {formatUsd(busiest.volumeUsd1d)} in a day
-            </>
-          )}
-          . Every figure is <strong className="text-fg">before impermanent loss</strong>, which lending
-          does not carry.
+          As of {asOf}: the median stock/stablecoin pool pays LPs{" "}
+          <strong className="text-fg">{formatApy(stats.medianFeeApy)}</strong> in trading fees, against{" "}
+          {formatApy(earn.medianApy)} for depositing — before impermanent loss.
         </p>
       </CategoryHeader>
 
       <section className="mb-12">
         <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-          <h2 className="text-lg font-semibold">Every active pool</h2>
+          <h2 className="flex items-center gap-2 text-lg font-semibold">
+            Every active pool
+            <InfoTip text="Pools that traded at least $1,000 in the last 24 hours and hold $10k or more. Fee APY is what reaches the LP, before impermanent loss; concentrated-liquidity rates assume you stay in range." />
+          </h2>
           <p className="text-xs text-fg-subtle">
-            Refreshed hourly · last run {asOf} ·{" "}
-            <Link href="/methodology#liquidity" className="underline hover:text-fg">how we collect this</Link>
+            Updated {asOf} ·{" "}
+            <Link href="/methodology#liquidity" className="underline hover:text-fg">methodology</Link>
           </p>
         </div>
         <LiquidityExplorer rows={rows} />
       </section>
 
-      <section className="mb-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <Explainer title="Fees are real yield">
-          Trading fees are paid by traders on every swap, not by a marketing budget. That makes this
-          the one category where the rate on a tokenized stock can be large and durable — for as long
-          as people keep trading the pair.
-        </Explainer>
-        <Explainer title="Who keeps the fees">
-          Not always the LP. Raydium keeps 16% of every fee, and the rates here are after that cut —
-          Raydium&rsquo;s own figure is not. Uniswap charges a protocol fee on some pools, not deducted
-          here. Aero sends 5% of unstaked LPs&rsquo; fees to sAERO Token Operators, deducted here;
-          LPs who stake for AERO emissions give up the fees entirely.
-        </Explainer>
-        <Explainer title="Impermanent loss">
-          Put $500 of NVDA and $500 of USDC in a pool. If NVDA rises 30%, the pool rebalances by
-          selling NVDA: you end with about 12% fewer shares and hold $1,140, against $1,150 had you
-          just held — a $10 shortfall your fees have to cover. Bigger moves cost far more, and
-          concentrated positions magnify it.
-        </Explainer>
-        <Explainer title="Markets close, pools don't">
-          The stock exchange shuts on Friday; the pool keeps trading. Its price drifts on thin weekend
-          flow, and when the market reopens arbitrageurs trade it back to the real price — against the
-          liquidity providers. This gap is specific to tokenized stocks.
-        </Explainer>
-        <Explainer title="Concentrated liquidity">
-          On Uniswap v3 and v4, Raydium CLMM and Aero CL pools you earn only while the price stays
-          inside the range you chose. The APY shown assumes you stay in range; out of range you earn
-          nothing and hold only the losing side.
-        </Explainer>
-        <Explainer title="Busy today, quiet tomorrow">
-          We list only pools that traded at least $1,000 in the last 24 hours and hold $10k or more.
-          A day&rsquo;s volume still swings: a pool on a heavy news day can show a rate it will not
-          repeat. Pairs against memecoins are flagged speculative — you would hold half your position
-          in that token.
-        </Explainer>
-      </section>
+      <LearnMore
+        posts={["providing-liquidity-with-tokenized-stocks"]}
+        terms={["impermanent-loss", "concentrated-liquidity", "fee-tier", "volume-tvl"]}
+      />
 
-      <section className="max-w-3xl">
-        <h2 className="mb-4 text-lg font-semibold">Common questions</h2>
-        <dl className="space-y-5">
-          {faq.map((entry) => (
-            <div key={entry.question}>
-              <dt className="font-medium">{entry.question}</dt>
-              <dd className="mt-1 text-sm leading-relaxed text-fg-muted">{entry.answer}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
+      <Faq entries={faq} />
     </>
-  );
-}
-
-function Explainer({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="rounded-xl border bg-bg-raised p-5">
-      <h3 className="mb-1.5 font-semibold">{title}</h3>
-      <p className="text-sm leading-relaxed text-fg-muted">{children}</p>
-    </div>
   );
 }

@@ -41,6 +41,9 @@ export function GET() {
 
 - [Full dataset, JSON](${SITE_URL}/api/opportunities): every opportunity with base/reward split, TVL, source and timestamp. CC BY 4.0.
 - [Full dataset, CSV](${SITE_URL}/api/opportunities.csv)
+- [Everything as Markdown](${SITE_URL}/llms-full.txt): key findings and every current table in one file.
+- [Filterable JSON API](${SITE_URL}/developers): /api/v1/summary, /api/v1/earn, /api/v1/liquidity, /api/v1/borrow, /api/v1/stocks/{ticker}. Spec: ${SITE_URL}/openapi.json
+- Any page as Markdown: add .md (e.g. ${SITE_URL}/earn.md) or send Accept: text/markdown.
 - [Methodology](${SITE_URL}/methodology): sources, refresh cadence, known gaps, and what we refuse to publish.
 
 ## Pages
@@ -57,7 +60,7 @@ export function GET() {
 
 ## Per-stock pages
 
-${tickers.map((t) => `- [${t}](${SITE_URL}/stock/${t.toLowerCase()})`).join("\n")}
+${tickers.map((t) => `- [${t}](${SITE_URL}/stock/${t.toLowerCase()}.md)`).join("\n")}
 
 ## Hub
 

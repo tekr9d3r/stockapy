@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BorrowTable } from "@/components/BorrowTable";
 import { CategoryTabs } from "@/components/CategoryTabs";
+import { Faq } from "@/components/Faq";
+import { InfoTip } from "@/components/InfoTip";
 import { JsonLd } from "@/components/JsonLd";
+import { LearnMore } from "@/components/LearnMore";
 import { CategoryHeader, LogoStack, Tile } from "@/components/CategoryHeader";
 import { PlatformLogo } from "@/components/Logo";
 import { borrowRows, borrowStats } from "@/lib/data/rows";
@@ -20,7 +23,10 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: "Borrow against tokenized stocks",
   description: DESCRIPTION,
-  alternates: { canonical: "/borrow" },
+  alternates: {
+    canonical: "/borrow",
+    types: { "text/markdown": "/borrow.md", "application/json": "/api/v1/borrow" },
+  },
   openGraph: { title: `Borrow against tokenized stocks · ${BRAND_NAME}`, description: DESCRIPTION },
 };
 
@@ -106,19 +112,13 @@ export default function BorrowPage() {
           </>
         }
       >
-        {/* Answer-first: the paragraph a search engine or AI assistant should lift. */}
+        {/* Answer-first: the sentence a search engine or AI assistant should lift. */}
         <p>
-          Lending your tokenized stock out pays almost nothing. Posting it as collateral and
-          borrowing against it is the thing these venues are actually built for. As of {asOf} we
-          track <strong className="text-fg">{rows.length} borrow markets</strong> across{" "}
-          {new Set(rows.map((r) => r.platform.name)).size} platforms, with a maximum
-          loan-to-value of <strong className="text-fg">{formatLtv(stats.maxLtv)}</strong>
+          As of {asOf}: {rows.length} markets accept a tokenized stock as collateral, up to{" "}
+          <strong className="text-fg">{formatLtv(stats.maxLtv)}</strong> loan-to-value
           {cheapest && (
             <>
-              {" "}
-              and rates from{" "}
-              <strong className="text-fg">{cheapest.borrow!.borrowApr?.toFixed(2)}%</strong> on{" "}
-              {cheapest.platform.name}
+              , with loans from <strong className="text-fg">{cheapest.borrow!.borrowApr?.toFixed(2)}%</strong> a year
             </>
           )}
           .
@@ -127,63 +127,26 @@ export default function BorrowPage() {
 
       <section className="mb-12">
         <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-          <h2 className="text-lg font-semibold">Every borrow market we track</h2>
+          <h2 className="flex items-center gap-2 text-lg font-semibold">
+            Every borrow market
+            <InfoTip text="Max LTV is the liquidation line, not a target. Cost is the annual interest on the loan. The stock itself usually earns nothing while posted as collateral." />
+          </h2>
           <p className="text-xs text-fg-subtle">
-            Refreshed hourly ·{" "}
+            Updated {asOf} ·{" "}
             <Link href="/methodology" className="underline hover:text-fg">
-              how we collect this
+              methodology
             </Link>
           </p>
         </div>
         <BorrowTable rows={rows} />
       </section>
 
-      <section className="mb-12 grid gap-4 md:grid-cols-3">
-        <div className="rounded-xl border bg-bg-raised p-5">
-          <h3 className="mb-1.5 font-semibold">Max LTV is not a target</h3>
-          <p className="text-sm leading-relaxed text-fg-muted">
-            It is the line at which you are liquidated, not a sensible borrowing level. A
-            position opened near the maximum is liquidated by an ordinary day&rsquo;s move in
-            the share price.
-          </p>
-        </div>
-        <div className="rounded-xl border bg-bg-raised p-5">
-          <h3 className="mb-1.5 font-semibold">The weekend is the real risk</h3>
-          <p className="text-sm leading-relaxed text-fg-muted">
-            The share stops trading on Friday; the token does not. An oracle still has to quote
-            a price, and the gap when the market reopens can liquidate a position nobody was
-            awake to defend. This risk does not exist when you hold the share itself.
-          </p>
-        </div>
-        <div className="rounded-xl border bg-bg-raised p-5">
-          <h3 className="mb-1.5 font-semibold">The lend side is a different trade</h3>
-          <p className="text-sm leading-relaxed text-fg-muted">
-            Morpho&rsquo;s interface shows a &ldquo;Lend Rate&rdquo; on each of these markets,
-            and some are high. It is not yield on your stock: in a Morpho Blue market the
-            lender supplies the loan asset and the collateral is never lent out. To earn it
-            you deposit USDG or USDC, not shares.
-          </p>
-        </div>
-        <div className="rounded-xl border bg-bg-raised p-5">
-          <h3 className="mb-1.5 font-semibold">A cheap rate usually means a quiet market</h3>
-          <p className="text-sm leading-relaxed text-fg-muted">
-            Borrow rates fall when nobody is borrowing. The lowest numbers here sit in markets
-            holding a few hundred thousand dollars, where your own loan would move the rate.
-          </p>
-        </div>
-      </section>
+      <LearnMore
+        posts={["borrowing-against-tokenized-stocks-risks"]}
+        terms={["oracle-gap-risk", "collateral-only", "tokenized-stock"]}
+      />
 
-      <section className="max-w-3xl">
-        <h2 className="mb-4 text-lg font-semibold">Common questions</h2>
-        <dl className="space-y-5">
-          {faq.map((entry) => (
-            <div key={entry.question}>
-              <dt className="font-medium">{entry.question}</dt>
-              <dd className="mt-1 text-sm leading-relaxed text-fg-muted">{entry.answer}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
+      <Faq entries={faq} />
     </>
   );
 }

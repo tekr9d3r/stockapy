@@ -31,7 +31,8 @@ const DATA_LINKS = [
   { href: "/issuers", label: "Issuers" },
   { href: "/methodology", label: "Methodology" },
   { href: "/glossary", label: "Glossary" },
-  { href: "/api/opportunities", label: "Open data (JSON)" },
+  { href: "/developers", label: "API for agents" },
+  { href: "/llms-full.txt", label: "Full data (Markdown)" },
   { href: "/api/opportunities.csv", label: "Open data (CSV)" },
 ];
 
@@ -103,8 +104,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </FooterCol>
             <FooterCol title="Data">
               {DATA_LINKS.map((l) =>
-                // API routes are files, not pages: a plain link, no prefetch.
-                l.href.startsWith("/api/") ? (
+                // API routes and data files are not pages: a plain link, no prefetch.
+                l.href.startsWith("/api/") || l.href.includes(".") ? (
                   <a key={l.href} href={l.href} className="text-fg-muted hover:text-fg">{l.label}</a>
                 ) : (
                   <Link key={l.href} href={l.href} className="text-fg-muted hover:text-fg">{l.label}</Link>
