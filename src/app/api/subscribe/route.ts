@@ -53,11 +53,15 @@ async function subscribe(body: Record<string, string>): Promise<{ status: number
   if (res && (res.status === 201 || res.status === 204)) return { status: 200, result: { ok: true } };
   // Brevo answers an address it already has with a 400; to the visitor that is
   // the same outcome, and saying otherwise would reveal who is subscribed.
-  if (res && res.status === 400) {
-    const err = (await res.json().catch(() => ({}))) as { message?: string };
-    if (/already|exist|duplicate/i.test(err.message ?? "")) return { status: 200, result: { ok: true } };
+  // Brevo's error body names the cause (missing permission, bad template, IP not
+  // authorised). Log its code and message; it never contains the address itself.
+  const err = res ? ((await res.json().catch(() => ({}))) as { code?: string; message?: string }) : {};
+  if (res && res.status === 400 && /already|exist|duplicate/i.test(err.message ?? "")) {
+    return { status: 200, result: { ok: true } };
   }
-  console.error(`[subscribe] Brevo responded ${res?.status ?? "no response"}`);
+  console.error(
+    `[subscribe] Brevo responded ${res?.status ?? "no response"}: ${err.code ?? "?"} — ${(err.message ?? "").replace(email, "<email>")}`,
+  );
   return { status: 502, result: { ok: false, error: "Something went wrong on our side. Please try again." } };
 }
 
