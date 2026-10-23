@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Database, RefreshCw, ShieldCheck } from "lucide-react";
-import { ActionButton } from "@/components/ActionButton";
 import { CategoryBadgeIcon, CategoryIcon } from "@/components/CategoryIcon";
 import { Faq } from "@/components/Faq";
 import { InfoTip } from "@/components/InfoTip";
@@ -302,6 +301,8 @@ const WAYS: { category: "earn" | "liquidity" | "borrow"; title: string; how: str
   { category: "borrow", title: "Borrow against it", how: "Post it as collateral and borrow stablecoins, without selling." },
 ];
 
+const COMPARE_NOUN: Record<string, string> = { earn: "deposit options", liquidity: "pools", borrow: "borrow markets" };
+
 /** The category's menu icon on a solid plate: marks a way to earn, not a step. */
 function WayIcon({ category, size = 28 }: { category: CategoryKey; size?: number }) {
   return (
@@ -339,9 +340,15 @@ function WayCard({
         <p className="mt-1.5 text-sm text-fg-muted">{how}</p>
       </div>
       <ol className="flex-1 divide-y">{children}</ol>
-      <Link href={c.href} className={`flex items-center justify-between rounded-b-2xl border-t px-5 py-3 text-sm font-medium ${c.cls.text} ${c.cls.hoverBg}`}>
-        Compare all {count} <ArrowRight size={15} aria-hidden="true" />
-      </Link>
+      <div className="border-t p-4">
+        <Link
+          href={c.href}
+          className={`group flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold text-on-category shadow-sm transition hover:opacity-90 ${c.cls.bg}`}
+        >
+          Compare all {count} {COMPARE_NOUN[category]}
+          <ArrowRight size={16} aria-hidden="true" className="transition group-hover:translate-x-0.5" />
+        </Link>
+      </div>
     </div>
   );
 }
@@ -356,7 +363,6 @@ function Pick({
   rateLabel,
   rateClass = "",
   extra,
-  action,
 }: {
   ticker: string;
   title: string;
@@ -367,7 +373,6 @@ function Pick({
   rateLabel: string;
   rateClass?: string;
   extra?: React.ReactNode;
-  action: React.ReactNode;
 }) {
   return (
     <li className="flex items-center gap-3 px-5 py-3">
@@ -386,7 +391,6 @@ function Pick({
         <p className={`text-lg leading-none font-semibold tabular-nums ${rateClass}`}>{rate}</p>
         <p className="text-[10px] tracking-wide text-fg-subtle uppercase">{rateLabel}</p>
         {extra}
-        <div className="mt-0.5">{action}</div>
       </div>
     </li>
   );
@@ -419,7 +423,6 @@ function EarnPick({ r }: { r: Row }) {
           />
         ) : undefined
       }
-      action={<ActionButton href={r.deepLink} platform={r.platform.name} category="earn" specific={r.deepLinkIsSpecific} />}
     />
   );
 }
@@ -435,7 +438,6 @@ function LiquidityPick({ r }: { r: LiquidityRow }) {
       rate={formatApy(r.apyBase)}
       rateClass="text-earn"
       rateLabel="fee APY"
-      action={<ActionButton href={r.url} platform={r.venue.name} category="liquidity" />}
     />
   );
 }
@@ -453,7 +455,6 @@ function BorrowPick({ r }: { r: Row }) {
       rateClass="text-borrow"
       rateLabel="max LTV"
       extra={b.ltv !== null ? <MiniBar max={1} width={64} segments={[{ value: b.ltv, className: "bg-borrow" }]} /> : undefined}
-      action={<ActionButton href={r.deepLink} platform={r.platform.name} category="borrow" specific={r.deepLinkIsSpecific} />}
     />
   );
 }
