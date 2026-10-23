@@ -5,7 +5,6 @@ import { CategoryBadgeIcon, CategoryIcon } from "@/components/CategoryIcon";
 import { Faq } from "@/components/Faq";
 import { InfoTip } from "@/components/InfoTip";
 import { JsonLd } from "@/components/JsonLd";
-import { MiniBar } from "@/components/MiniBar";
 import { ChainLogo, IssuerLogo, PlatformLogo } from "@/components/Logo";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { StockLogo } from "@/components/StockLogo";
@@ -362,7 +361,6 @@ function Pick({
   rate,
   rateLabel,
   rateClass = "",
-  extra,
 }: {
   ticker: string;
   title: string;
@@ -372,7 +370,6 @@ function Pick({
   rate: string;
   rateLabel: string;
   rateClass?: string;
-  extra?: React.ReactNode;
 }) {
   return (
     <li className="flex items-center gap-3 px-5 py-3">
@@ -390,16 +387,12 @@ function Pick({
       <div className="flex flex-col items-end gap-1 text-right">
         <p className={`text-lg leading-none font-semibold tabular-nums ${rateClass}`}>{rate}</p>
         <p className="text-[10px] tracking-wide text-fg-subtle uppercase">{rateLabel}</p>
-        {extra}
       </div>
     </li>
   );
 }
 
 function EarnPick({ r }: { r: Row }) {
-  const total = r.apyTotal ?? 0;
-  const split = r.apyBase !== null && r.apyReward !== null && total > 0;
-  const mostlyIncentives = split && r.apyReward! / total > 0.5;
   return (
     <Pick
       ticker={r.underlying.ticker}
@@ -409,20 +402,7 @@ function EarnPick({ r }: { r: Row }) {
       meta={r.tvlUsd !== null ? `${formatUsd(r.tvlUsd)} deposited` : undefined}
       rate={formatApy(r.apyTotal)}
       rateClass="text-earn"
-      rateLabel={mostlyIncentives ? "APY · mostly incentives" : "APY"}
-      extra={
-        split ? (
-          <MiniBar
-            max={total}
-            width={64}
-            title={`${r.apyBase!.toFixed(2)}pp interest, ${r.apyReward!.toFixed(2)}pp incentives`}
-            segments={[
-              { value: r.apyBase!, className: "bg-positive" },
-              { value: r.apyReward!, className: "bg-warn" },
-            ]}
-          />
-        ) : undefined
-      }
+      rateLabel="APY"
     />
   );
 }
@@ -454,7 +434,6 @@ function BorrowPick({ r }: { r: Row }) {
       rate={formatLtv(b.ltv)}
       rateClass="text-borrow"
       rateLabel="max LTV"
-      extra={b.ltv !== null ? <MiniBar max={1} width={64} segments={[{ value: b.ltv, className: "bg-borrow" }]} /> : undefined}
     />
   );
 }
