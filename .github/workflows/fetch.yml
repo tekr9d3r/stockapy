@@ -39,5 +39,16 @@ jobs:
             echo "No change in the data."
           else
             git commit -m "data: refresh $(date -u +'%Y-%m-%dT%H:%MZ')"
-            git push
+            # The fetch takes minutes; someone may push to main meanwhile. Replay
+            # this commit on top of the latest main and retry. If both touched a
+            # snapshot file, this run's fresher data wins ("theirs" in a rebase
+            # is the commit being replayed).
+            for attempt in 1 2 3; do
+              git pull --rebase -X theirs origin main && git push && exit 0
+              echo "Push attempt $attempt failed, retrying in 10s."
+              git rebase --abort 2>/dev/null || true
+              sleep 10
+            done
+            echo "Could not push the snapshot after 3 attempts."
+            exit 1
           fi
