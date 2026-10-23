@@ -6,6 +6,7 @@ import { CategoryBadgeIcon, CategoryIcon } from "@/components/CategoryIcon";
 import { Faq } from "@/components/Faq";
 import { InfoTip } from "@/components/InfoTip";
 import { JsonLd } from "@/components/JsonLd";
+import { MiniBar } from "@/components/MiniBar";
 import { ChainLogo, IssuerLogo, PlatformLogo } from "@/components/Logo";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { StockLogo } from "@/components/StockLogo";
@@ -32,7 +33,6 @@ export default function Home() {
   const asOf = formatDate(fetchedAt);
   const posts = listPosts().slice(0, 3);
   const organicPct = d.earn.organicShare === null ? null : d.earn.organicShare * 100;
-  const bestLp = d.topLiquidity[0] ?? null;
 
   const faq = [
     {
@@ -110,87 +110,72 @@ export default function Home() {
         ]}
       />
 
-      {/* ---------- Hero ---------- */}
-      <section className="relative mb-14 grid items-center gap-10 pt-2 pb-4 lg:grid-cols-[1.15fr_1fr]">
-        <div>
-          <p className="inline-flex items-center gap-2 rounded-full border bg-bg-raised px-3 py-1 text-xs font-medium text-fg-muted">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-positive opacity-60" />
-              <span className="relative inline-flex size-2 rounded-full bg-positive" />
-            </span>
-            Live · {d.counts.markets} markets · updated {asOf}
-          </p>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-            Make your tokenized stocks <span className="text-accent">work for you</span>
-          </h1>
-          {/* Answer-first: the sentence an answer engine should lift. */}
-          <p className="mt-4 max-w-xl text-[17px] leading-relaxed text-fg-muted">
-            As of {asOf}: earn up to <strong className="text-fg">{formatApy(d.earn.maxApy)}</strong> by depositing,
-            a median <strong className="text-fg">{formatApy(d.lq.medianFeeApy)}</strong> in trading fees, or borrow at up to{" "}
-            <strong className="text-fg">{formatLtv(d.borrow.maxLtv)}</strong> LTV — across {d.platforms.length} protocols.
-          </p>
-          <div className="mt-6 max-w-xl">
-            <NewsletterForm source="hero" />
-          </div>
-        </div>
+      {/* ---------- Hero: what this is, in one look ---------- */}
+      <section className="mx-auto max-w-3xl pt-4 pb-8 text-center">
+        <p className="inline-flex items-center gap-2 rounded-full border bg-bg-raised px-3 py-1 text-xs font-medium text-fg-muted">
+          <span className="relative flex size-2">
+            <span className="absolute inline-flex size-full animate-ping rounded-full bg-positive opacity-60" />
+            <span className="relative inline-flex size-2 rounded-full bg-positive" />
+          </span>
+          Live rates · updated {asOf}
+        </p>
+        <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+          Earn yield on your <span className="text-accent">tokenized stocks</span>
+        </h1>
+        <p className="mx-auto mt-3 max-w-xl text-[17px] leading-relaxed text-fg-muted">
+          Hold NVDA, TSLA or SPY as a token? There are three ways to make it earn. Here are the best
+          live opportunities for each, from {d.platforms.length} protocols.
+        </p>
 
-        <div className="grid gap-3">
-          <HeroTile
-            category="earn"
-            label="Earn by depositing"
-            value={`up to ${formatApy(d.earn.maxApy)}`}
-            note={`median ${formatApy(d.earn.medianApy)} · ${d.counts.earn} venues`}
-          />
-          <HeroTile
-            category="liquidity"
-            label="Earn trading fees"
-            value={`${formatApy(d.lq.medianFeeApy)} median`}
-            note={bestLp ? `best deep pool ${formatApy(bestLp.apyBase)} on ${bestLp.venue.name}` : `${d.counts.liquidity} active pools`}
-          />
-          <HeroTile
-            category="borrow"
-            label="Borrow against it"
-            value={`up to ${formatLtv(d.borrow.maxLtv)} LTV`}
-            note={d.borrow.medianApr !== null ? `median cost ${d.borrow.medianApr.toFixed(2)}% · ${d.counts.borrow} markets` : `${d.counts.borrow} markets`}
-          />
+        {/* The idea as a picture: your stock, three ways to put it to work. */}
+        <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <div className="flex -space-x-2 [&>*]:rounded-full [&>*]:ring-2 [&>*]:ring-bg">
+            {d.stocks.slice(0, 5).map((s) => (
+              <StockLogo key={s.ticker} ticker={s.ticker} size={36} />
+            ))}
+          </div>
+          <ArrowRight size={20} aria-hidden="true" className="hidden text-fg-subtle sm:block" />
+          <nav aria-label="Three ways to earn" className="flex flex-wrap justify-center gap-2">
+            {WAYS.map((w, i) => (
+              <a
+                key={w.category}
+                href={`#${w.category}`}
+                className={`flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-medium transition hover:border-border-strong ${CATEGORIES[w.category].cls.subtle}`}
+              >
+                <StepNumber category={w.category} n={i + 1} size={20} />
+                {w.title}
+              </a>
+            ))}
+          </nav>
         </div>
       </section>
 
-      {/* ---------- Three ways ---------- */}
-      <section className="mb-16" aria-labelledby="three-ways">
-        <SectionHead
-          id="three-ways"
-          eyebrow="The best of each, right now"
-          title="Three ways to put a tokenized stock to work"
-        />
+      {/* ---------- The opportunities ---------- */}
+      <section aria-label="Best opportunities right now" className="mb-6">
         <div className="grid gap-4 lg:grid-cols-3">
-          <WayCard
-            category="earn"
-            what="Deposit it, get paid a rate."
-            count={d.counts.earn}
-          >
-            {d.topEarn.map((r) => (
-              <EarnPick key={r.id} r={r} />
-            ))}
-          </WayCard>
-          <WayCard
-            category="liquidity"
-            what="Pair it in a DEX pool, earn trading fees."
-            count={d.counts.liquidity}
-          >
-            {d.topLiquidity.map((r) => (
-              <LiquidityPick key={r.id} r={r} />
-            ))}
-          </WayCard>
-          <WayCard
-            category="borrow"
-            what="Borrow stablecoins without selling it."
-            count={d.counts.borrow}
-          >
-            {d.topBorrow.map((r) => (
-              <BorrowPick key={r.id} r={r} />
-            ))}
-          </WayCard>
+          {WAYS.map((w, i) => (
+            <WayCard key={w.category} category={w.category} n={i + 1} title={w.title} how={w.how} count={d.counts[w.category]}>
+              {w.category === "earn" && d.topEarn.map((r) => <EarnPick key={r.id} r={r} />)}
+              {w.category === "liquidity" && d.topLiquidity.map((r) => <LiquidityPick key={r.id} r={r} />)}
+              {w.category === "borrow" && d.topBorrow.map((r) => <BorrowPick key={r.id} r={r} />)}
+            </WayCard>
+          ))}
+        </div>
+        {/* Answer-first, for search and answer engines: the dated headline numbers in one sentence. */}
+        <p className="mt-4 text-center text-xs text-fg-subtle">
+          As of {asOf}: up to {formatApy(d.earn.maxApy)} for depositing, a median {formatApy(d.lq.medianFeeApy)} in
+          trading fees, borrowing at up to {formatLtv(d.borrow.maxLtv)} LTV. Rates change hourly · not financial advice.
+        </p>
+      </section>
+
+      {/* ---------- Newsletter: after the value, not before it ---------- */}
+      <section aria-labelledby="weekly" className="mb-16 rounded-2xl border bg-bg-raised p-5 shadow-card sm:p-6">
+        <div className="grid items-center gap-4 lg:grid-cols-[1fr_1.1fr]">
+          <div>
+            <h2 id="weekly" className="text-lg font-semibold">Get these picks in your inbox every week</h2>
+            <p className="mt-1 text-sm text-fg-muted">The best pools and updated yields, once a week. Free.</p>
+          </div>
+          <NewsletterForm source="home-picks" />
         </div>
       </section>
 
@@ -311,35 +296,53 @@ function SectionHead({ id, eyebrow, title, tip }: { id: string; eyebrow?: string
   );
 }
 
-function HeroTile({ category, label, value, note }: { category: CategoryKey; label: string; value: string; note: string }) {
-  const c = CATEGORIES[category];
+const WAYS: { category: "earn" | "liquidity" | "borrow"; title: string; how: string }[] = [
+  { category: "earn", title: "Deposit it", how: "Lend the stock in a vault or money market and get paid a rate." },
+  { category: "liquidity", title: "Provide liquidity", how: "Pair it with a stablecoin in a DEX pool and earn a cut of every trade." },
+  { category: "borrow", title: "Borrow against it", how: "Post it as collateral and borrow stablecoins, without selling." },
+];
+
+function StepNumber({ category, n, size = 28 }: { category: CategoryKey; n: number; size?: number }) {
   return (
-    <Link href={c.href} className="group flex items-center gap-4 rounded-2xl border bg-bg-raised p-4 shadow-card transition hover:border-border-strong">
-      <CategoryBadgeIcon category={category} size={48} />
-      <div className="min-w-0 flex-1">
-        <p className="text-xs font-medium tracking-wide text-fg-muted uppercase">{label}</p>
-        <p className={`tabular-nums text-2xl font-semibold tracking-tight ${c.cls.text}`}>{value}</p>
-        <p className="truncate text-xs text-fg-subtle">{note}</p>
-      </div>
-      <ArrowRight size={18} aria-hidden="true" className="text-fg-subtle transition group-hover:translate-x-0.5 group-hover:text-fg" />
-    </Link>
+    <span
+      aria-hidden="true"
+      style={{ width: size, height: size, fontSize: size * 0.5 }}
+      className={`inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-on-category ${CATEGORIES[category].cls.bg}`}
+    >
+      {n}
+    </span>
   );
 }
 
-function WayCard({ category, what, count, children }: { category: CategoryKey; what: string; count: number; children: React.ReactNode }) {
+function WayCard({
+  category,
+  n,
+  title,
+  how,
+  count,
+  children,
+}: {
+  category: CategoryKey;
+  n: number;
+  title: string;
+  how: string;
+  count: number;
+  children: React.ReactNode;
+}) {
   const c = CATEGORIES[category];
   return (
-    <div className="flex flex-col rounded-2xl border bg-bg-raised shadow-card">
-      <div className={`rounded-t-2xl border-b p-5 ${c.cls.subtle}`}>
+    <div id={category} className="flex scroll-mt-24 flex-col rounded-2xl border bg-bg-raised shadow-card">
+      <div className={`rounded-t-2xl border-b px-5 py-4 ${c.cls.subtle}`}>
         <div className="flex items-center gap-2.5">
-          <CategoryIcon category={category} size={20} strokeWidth={2.25} />
-          <h3 className="text-lg font-semibold">{c.title}</h3>
+          <StepNumber category={category} n={n} />
+          <h2 className="text-lg font-semibold">{title}</h2>
+          <CategoryIcon category={category} size={18} strokeWidth={2.25} className="ml-auto" />
         </div>
-        <p className="mt-1.5 text-sm text-fg-muted">{what}</p>
+        <p className="mt-1.5 text-sm text-fg-muted">{how}</p>
       </div>
       <ol className="flex-1 divide-y">{children}</ol>
       <Link href={c.href} className={`flex items-center justify-between rounded-b-2xl border-t px-5 py-3 text-sm font-medium ${c.cls.text} ${c.cls.hoverBg}`}>
-        See all {count} <ArrowRight size={15} aria-hidden="true" />
+        Compare all {count} <ArrowRight size={15} aria-hidden="true" />
       </Link>
     </div>
   );
@@ -350,20 +353,26 @@ function Pick({
   title,
   platform,
   chain,
+  meta,
   rate,
   rateLabel,
+  rateClass = "",
+  extra,
   action,
 }: {
   ticker: string;
   title: string;
   platform: { id: string; name: string };
   chain: string;
+  meta?: string;
   rate: string;
   rateLabel: string;
+  rateClass?: string;
+  extra?: React.ReactNode;
   action: React.ReactNode;
 }) {
   return (
-    <li className="flex items-center gap-3 px-5 py-3.5">
+    <li className="flex items-center gap-3 px-5 py-3">
       <StockLogo ticker={ticker} size={34} />
       <div className="min-w-0 flex-1">
         <p className="truncate font-semibold leading-tight">{title}</p>
@@ -371,27 +380,47 @@ function Pick({
           <PlatformLogo id={platform.id} name={platform.name} size={16} />
           <span className="truncate">{platform.name}</span>
           <ChainLogo chain={chain === "BSC" ? "BNB Chain" : chain} size={14} />
-          <span className="truncate">{chain}</span>
+          <span className="hidden truncate xl:inline">{chain}</span>
         </p>
+        {meta && <p className="mt-0.5 truncate text-[11px] text-fg-subtle">{meta}</p>}
       </div>
-      <div className="text-right">
-        <p className="tabular-nums text-lg leading-tight font-semibold">{rate}</p>
+      <div className="flex flex-col items-end gap-1 text-right">
+        <p className={`text-lg leading-none font-semibold tabular-nums ${rateClass}`}>{rate}</p>
         <p className="text-[10px] tracking-wide text-fg-subtle uppercase">{rateLabel}</p>
-        <div className="mt-1.5">{action}</div>
+        {extra}
+        <div className="mt-0.5">{action}</div>
       </div>
     </li>
   );
 }
 
 function EarnPick({ r }: { r: Row }) {
+  const total = r.apyTotal ?? 0;
+  const split = r.apyBase !== null && r.apyReward !== null && total > 0;
+  const mostlyIncentives = split && r.apyReward! / total > 0.5;
   return (
     <Pick
       ticker={r.underlying.ticker}
       title={r.token.symbol}
       platform={r.platform}
       chain={r.chain}
+      meta={r.tvlUsd !== null ? `${formatUsd(r.tvlUsd)} deposited` : undefined}
       rate={formatApy(r.apyTotal)}
-      rateLabel={r.apyReward && r.apyTotal && r.apyReward / r.apyTotal > 0.5 ? "mostly incentives" : "APY"}
+      rateClass={mostlyIncentives ? "text-warn" : "text-earn"}
+      rateLabel={mostlyIncentives ? "APY · mostly incentives" : "APY"}
+      extra={
+        split ? (
+          <MiniBar
+            max={total}
+            width={64}
+            title={`${r.apyBase!.toFixed(2)}pp interest, ${r.apyReward!.toFixed(2)}pp incentives`}
+            segments={[
+              { value: r.apyBase!, className: "bg-positive" },
+              { value: r.apyReward!, className: "bg-warn" },
+            ]}
+          />
+        ) : undefined
+      }
       action={<ActionButton href={r.deepLink} platform={r.platform.name} category="earn" specific={r.deepLinkIsSpecific} />}
     />
   );
@@ -404,22 +433,28 @@ function LiquidityPick({ r }: { r: LiquidityRow }) {
       title={r.legs.map((l) => l.symbol).join(" / ")}
       platform={{ id: r.venue.id, name: r.venue.name }}
       chain={r.chain}
+      meta={`${formatUsd(r.tvlUsd)} TVL · ${formatUsd(r.volumeUsd1d)} traded 24h`}
       rate={formatApy(r.apyBase)}
-      rateLabel={`fees · ${formatUsd(r.tvlUsd)}`}
+      rateClass="text-liquidity"
+      rateLabel="fee APY"
       action={<ActionButton href={r.url} platform={r.venue.name} category="liquidity" />}
     />
   );
 }
 
 function BorrowPick({ r }: { r: Row }) {
+  const b = r.borrow!;
   return (
     <Pick
       ticker={r.underlying.ticker}
-      title={`${r.token.symbol} → ${r.borrow!.loanAsset}`}
+      title={`${r.token.symbol} → ${b.loanAsset}`}
       platform={r.platform}
       chain={r.chain}
-      rate={`${formatLtv(r.borrow!.ltv)} LTV`}
-      rateLabel={r.borrow!.borrowApr !== null ? `at ${r.borrow!.borrowApr.toFixed(2)}%` : "max LTV"}
+      meta={b.borrowApr !== null ? `Borrow ${b.loanAsset} at ${b.borrowApr.toFixed(2)}% a year` : undefined}
+      rate={formatLtv(b.ltv)}
+      rateClass="text-borrow"
+      rateLabel="max LTV"
+      extra={b.ltv !== null ? <MiniBar max={1} width={64} segments={[{ value: b.ltv, className: "bg-borrow" }]} /> : undefined}
       action={<ActionButton href={r.deepLink} platform={r.platform.name} category="borrow" specific={r.deepLinkIsSpecific} />}
     />
   );

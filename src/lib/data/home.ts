@@ -7,6 +7,8 @@ import type { Row } from "./types";
 
 /** Liquidity picks must be deep enough for their rate to mean something. */
 const DEEP_POOL_USD = 250_000;
+/** How many picks each category shows on the home page. */
+const TOP_N = 5;
 
 /**
  * The top n by the order given, at most one per key first, so three picks show
@@ -31,22 +33,24 @@ export function getHomeData() {
   const lq = liquidityStats(lqRows);
 
   const liveEarn = rows.filter((r) => r.status === "live" && r.category === "earn" && !r.unmeasured);
+  // Picks: varied across platforms first, then back in rank order for display.
   const topEarn = diverse(
     [...liveEarn].filter((r) => (r.apyTotal ?? 0) > 0).sort((a, b) => (b.apyTotal ?? 0) - (a.apyTotal ?? 0)),
     (r) => r.platform.id,
-    3,
-  );
+    TOP_N,
+  ).sort((a, b) => (b.apyTotal ?? 0) - (a.apyTotal ?? 0));
 
   const deepPools = lqRows
     .filter((r) => isDefaultVisible(r) && r.apyBase !== null && !isShortWindow(r) && r.tvlUsd >= DEEP_POOL_USD)
     .sort((a, b) => b.apyBase! - a.apyBase!);
-  const topLiquidity = diverse(deepPools, (r) => r.venueId, 3);
+  // One pool per stock, so five picks are five different stocks.
+  const topLiquidity = diverse(deepPools, (r) => r.underlyings.join(","), TOP_N).sort((a, b) => b.apyBase! - a.apyBase!);
 
   const topBorrow = diverse(
     borrowAll.filter((r) => r.borrow?.ltv != null),
     (r) => r.platform.id,
-    3,
-  );
+    TOP_N,
+  ).sort((a, b) => (b.borrow!.ltv ?? 0) - (a.borrow!.ltv ?? 0) || (a.borrow!.borrowApr ?? Infinity) - (b.borrow!.borrowApr ?? Infinity));
 
   // One tile per stock that has anything live.
   const tickers = [...new Set([...liveEarn.map((r) => r.underlying.ticker), ...lqRows.flatMap((r) => r.underlyings), ...borrowAll.map((r) => r.underlying.ticker)])];
