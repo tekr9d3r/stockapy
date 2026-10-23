@@ -1,0 +1,384 @@
+# Assets discovered by scripts/discover-stock-tokens.ts that are not in seed.yaml.
+# Generated, then reviewed: edit names freely, re-running keeps existing entries.
+
+- ticker: AMAT
+  name: "Applied Materials"
+  type: stock
+- ticker: AMC
+  name: "AMC Entertainment"
+  type: stock
+- ticker: APP
+  name: "AppLovin"
+  type: stock
+- ticker: ARM
+  name: "Arm Holdings"
+  type: stock
+- ticker: ASTS
+  name: "AST SpaceMobile"
+  type: stock
+- ticker: AVGO
+  name: "Broadcom"
+  type: stock
+- ticker: AZN
+  name: "AstraZeneca"
+  type: stock
+- ticker: BA
+  name: "Boeing"
+  type: stock
+- ticker: BABA
+  name: "Alibaba"
+  type: stock
+- ticker: BB
+  name: "BlackBerry"
+  type: stock
+- ticker: BE
+  name: "Bloom Energy"
+  type: stock
+- ticker: BIDU
+  name: "Baidu"
+  type: stock
+- ticker: BILI
+  name: "Bilibili"
+  type: stock
+- ticker: BIRD
+  name: "Smartbird"
+  type: stock
+- ticker: BMNR
+  name: "BitMine Immersion Technologies"
+  type: stock
+- ticker: BNC
+  name: "CEA Industries"
+  type: stock
+- ticker: BNO
+  name: "US Brent Oil Fund"
+  type: etf
+- ticker: BRK.B
+  name: "Berkshire Hathaway"
+  type: stock
+- ticker: BUD
+  name: "Anheuser-Busch InBev"
+  type: stock
+- ticker: BZ
+  name: "Kanzhun"
+  type: stock
+- ticker: CAKE
+  name: "Cheesecake Factory"
+  type: stock
+- ticker: CBRS
+  name: "Cerebras"
+  type: stock
+- ticker: CMG
+  name: "Chipotle"
+  type: stock
+- ticker: COIN
+  name: "Coinbase"
+  type: stock
+- ticker: COPX
+  name: "Global X Copper Miners ETF"
+  type: etf
+- ticker: COST
+  name: "Costco Wholesale"
+  type: stock
+- ticker: CPER
+  name: "US Copper Index Fund"
+  type: etf
+- ticker: CRWV
+  name: "CoreWeave"
+  type: stock
+- ticker: CVX
+  name: "Chevron"
+  type: stock
+- ticker: DASH
+  name: "DoorDash"
+  type: stock
+- ticker: DELL
+  name: "Dell Technologies"
+  type: stock
+- ticker: DIS
+  name: "Disney"
+  type: stock
+- ticker: DJT
+  name: "Trump Media & Technology Group"
+  type: stock
+- ticker: DKNG
+  name: "DraftKings"
+  type: stock
+- ticker: DUOL
+  name: "Duolingo"
+  type: stock
+- ticker: EEM
+  name: "iShares MSCI Emerging Markets ETF"
+  type: etf
+- ticker: ENLV
+  name: "Enlivex Therapeutics"
+  type: stock
+- ticker: ETHA
+  name: "iShares Ethereum Trust ETF"
+  type: etf
+- ticker: FIG
+  name: "Figma"
+  type: stock
+- ticker: FLNC
+  name: "Fluence Energy"
+  type: stock
+- ticker: FUTU
+  name: "Futu Holdings"
+  type: stock
+- ticker: FXI
+  name: "iShares China Large-Cap ETF"
+  type: etf
+- ticker: GLD
+  name: "SPDR Gold Shares"
+  type: etf
+- ticker: GLW
+  name: "Corning"
+  type: stock
+- ticker: GLXY
+  name: "Galaxy Digital"
+  type: stock
+- ticker: GME
+  name: "GameStop"
+  type: stock
+- ticker: HIMS
+  name: "Hims & Hers Health"
+  type: stock
+- ticker: HIMX
+  name: "Himax Technologies"
+  type: stock
+- ticker: HSAI
+  name: "Hesai Group"
+  type: stock
+- ticker: HTZ
+  name: "Hertz Global Holdings"
+  type: stock
+- ticker: IAU
+  name: "iShares Gold Trust"
+  type: etf
+- ticker: IBM
+  name: "IBM"
+  type: stock
+- ticker: INFY
+  name: "Infosys"
+  type: stock
+- ticker: INTC
+  name: "Intel"
+  type: stock
+- ticker: JD
+  name: "JD.com"
+  type: stock
+- ticker: JPM
+  name: "JPMorgan Chase"
+  type: stock
+- ticker: KO
+  name: "Coca-Cola"
+  type: stock
+- ticker: KWEB
+  name: "KraneShares CSI China Internet ETF"
+  type: etf
+- ticker: LI
+  name: "Li Auto"
+  type: stock
+- ticker: LITE
+  name: "Lumentum Holdings"
+  type: stock
+- ticker: LLY
+  name: "Eli Lilly"
+  type: stock
+- ticker: LPTH
+  name: "LightPath Technologies"
+  type: stock
+- ticker: LULU
+  name: "Lululemon"
+  type: stock
+- ticker: MCD
+  name: "McDonald's"
+  type: stock
+- ticker: MRNA
+  name: "Moderna"
+  type: stock
+- ticker: MRVL
+  name: "Marvell Technology"
+  type: stock
+- ticker: MU
+  name: "Micron Technology"
+  type: stock
+- ticker: NBIS
+  name: "Nebius Group"
+  type: stock
+- ticker: NEM
+  name: "Newmont"
+  type: stock
+- ticker: NET
+  name: "Cloudflare"
+  type: stock
+- ticker: NFLX
+  name: "Netflix"
+  type: stock
+- ticker: NIO
+  name: "NIO"
+  type: stock
+- ticker: NKE
+  name: "Nike"
+  type: stock
+- ticker: NOK
+  name: "Nokia"
+  type: stock
+- ticker: NOW
+  name: "ServiceNow"
+  type: stock
+- ticker: NTES
+  name: "NetEase"
+  type: stock
+- ticker: NU
+  name: "Nu Holdings"
+  type: stock
+- ticker: NVAX
+  name: "Novavax"
+  type: stock
+- ticker: NVO
+  name: "Novo Nordisk"
+  type: stock
+- ticker: ORCL
+  name: "Oracle"
+  type: stock
+- ticker: OXY
+  name: "Occidental Petroleum"
+  type: stock
+- ticker: PBR
+  name: "Petrobras"
+  type: stock
+- ticker: PDD
+  name: "PDD Holdings"
+  type: stock
+- ticker: PEP
+  name: "PepsiCo"
+  type: stock
+- ticker: PFE
+  name: "Pfizer"
+  type: stock
+- ticker: PG
+  name: "Procter & Gamble"
+  type: stock
+- ticker: PM
+  name: "Philip Morris International"
+  type: stock
+- ticker: PTON
+  name: "Peloton Interactive"
+  type: stock
+- ticker: PYPL
+  name: "PayPal Holdings"
+  type: stock
+- ticker: QCOM
+  name: "Qualcomm"
+  type: stock
+- ticker: QNT
+  name: "Quantinuum"
+  type: stock
+- ticker: QUBT
+  name: "Quantum Computing"
+  type: stock
+- ticker: RBLX
+  name: "Roblox"
+  type: stock
+- ticker: RDDT
+  name: "Reddit"
+  type: stock
+- ticker: REMX
+  name: "VanEck Rare Earth and Strategic Metals ETF"
+  type: etf
+- ticker: RIOT
+  name: "Riot Platforms"
+  type: stock
+- ticker: RKLB
+  name: "Rocket Lab"
+  type: stock
+- ticker: SAN
+  name: "Banco Santander"
+  type: stock
+- ticker: SAP
+  name: "SAP"
+  type: stock
+- ticker: SE
+  name: "Sea"
+  type: stock
+- ticker: SGOV
+  name: "iShares 0-3 Month Treasury Bond ETF"
+  type: etf
+- ticker: SHOP
+  name: "Shopify"
+  type: stock
+- ticker: SIL
+  name: "Global X Silver Miners ETF"
+  type: etf
+- ticker: SKHY
+  name: "SK hynix"
+  type: stock
+- ticker: SLV
+  name: "iShares Silver Trust"
+  type: etf
+- ticker: SNAP
+  name: "Snap"
+  type: stock
+- ticker: SNDK
+  name: "Sandisk"
+  type: stock
+- ticker: SONY
+  name: "Sony Group"
+  type: stock
+- ticker: SOUN
+  name: "SoundHound AI"
+  type: stock
+- ticker: TCOM
+  name: "Trip.com Group"
+  type: stock
+- ticker: TLT
+  name: "iShares 20+ Year Treasury Bond ETF"
+  type: etf
+- ticker: TSM
+  name: "TSMC"
+  type: stock
+- ticker: TTWO
+  name: "Take-Two Interactive Software"
+  type: stock
+- ticker: UBER
+  name: "Uber Technologies"
+  type: stock
+- ticker: UL
+  name: "Unilever"
+  type: stock
+- ticker: UMC
+  name: "United Microelectronics"
+  type: stock
+- ticker: UNH
+  name: "UnitedHealth"
+  type: stock
+- ticker: USAR
+  name: "USA Rare Earth"
+  type: stock
+- ticker: USO
+  name: "United States Oil Fund"
+  type: etf
+- ticker: V
+  name: "Visa"
+  type: stock
+- ticker: VALE
+  name: "Vale"
+  type: stock
+- ticker: VIDA
+  name: "Vida Global"
+  type: stock
+- ticker: WDC
+  name: "Western Digital"
+  type: stock
+- ticker: WEN
+  name: "Wendy's"
+  type: stock
+- ticker: WMT
+  name: "Walmart"
+  type: stock
+- ticker: WRD
+  name: "WeRide"
+  type: stock
+- ticker: XOM
+  name: "Exxon Mobil"
+  type: stock

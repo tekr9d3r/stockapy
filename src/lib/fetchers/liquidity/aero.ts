@@ -85,7 +85,8 @@ async function fetchChain(
   index: Map<string, RegistryToken>,
   fetchedAt: string,
 ) {
-  const client = createPublicClient({ transport: http(cfg.rpc, { retryCount: 3 }) });
+  // Public RPCs rate-limit bursts: retry patiently, and read tokens in small batches below.
+  const client = createPublicClient({ transport: http(cfg.rpc, { retryCount: 6, retryDelay: 2000 }) });
   const total = await client.readContract({ address: cfg.address, abi: ABI, functionName: "count" });
 
   const lps: Lp[] = [];
@@ -108,15 +109,18 @@ async function fetchChain(
     ...new Set(stockLps.flatMap((p) => [p.token0, p.token1, ...(p.gaugeAlive ? [p.emissionsToken] : [])]).map(normAddress)),
   ] as Address[];
   const info = new Map<string, TokenInfo>();
-  await Promise.all(
-    addresses.map(async (a) => {
-      const [symbol, decimals] = await Promise.all([
-        client.readContract({ address: a, abi: erc20Abi, functionName: "symbol" }),
-        client.readContract({ address: a, abi: erc20Abi, functionName: "decimals" }),
-      ]);
-      info.set(a, { symbol, decimals });
-    }),
-  );
+  for (let i = 0; i < addresses.length; i += 8) {
+    await Promise.all(
+      addresses.slice(i, i + 8).map(async (a) => {
+        const [symbol, decimals] = await Promise.all([
+          client.readContract({ address: a, abi: erc20Abi, functionName: "symbol" }),
+          client.readContract({ address: a, abi: erc20Abi, functionName: "decimals" }),
+        ]);
+        info.set(a, { symbol, decimals });
+      }),
+    );
+    await new Promise((r) => setTimeout(r, 300));
+  }
   const prices = await fetchPrices(cfg.llama, cfg.gecko, addresses);
 
   const nowSeconds = Math.floor(Date.parse(fetchedAt) / 1000);

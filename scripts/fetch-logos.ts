@@ -11,6 +11,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { loadAssets } from "../src/lib/data/assets";
 import { loadSeed } from "../src/lib/data/seed";
 import { VENUES } from "../src/lib/liquidity/venues";
 
@@ -84,6 +85,20 @@ const CHAIN_DOMAINS: Record<string, string> = {
 /** Where a favicon is too small to use, the project's own GitHub avatar. */
 const CHAIN_URLS: Record<string, string> = {
   Base: "https://github.com/base.png?size=128",
+};
+
+/**
+ * Tickers whose fetched logo was checked by eye and found wrong or unusable
+ * (2026-10-23). They render the monogram instead; delete an entry once a
+ * correct mark is available.
+ */
+const LOGO_BLOCKLIST: Record<string, string> = {
+  BB: "service returned CMOC's logo, not BlackBerry's",
+  BIRD: "service returned Allbirds; the token is Smartbird, Inc.",
+  BNC: "unverifiable mark for CEA Industries",
+  APP: "white mark, invisible on a light background",
+  LI: "white mark, invisible on a light background",
+  NOK: "near-invisible light mark",
 };
 
 /** Tried in order. SVG first: it is smaller and stays sharp at any size. */
@@ -193,7 +208,13 @@ async function main() {
 
   const missing: string[] = [];
 
-  for (const asset of loadSeed().underlying_assets) {
+  // Seed assets plus those found by scripts/discover-stock-tokens.ts.
+  for (const asset of loadAssets()) {
+    if (LOGO_BLOCKLIST[asset.ticker]) {
+      console.log(`${asset.ticker}: blocked (${LOGO_BLOCKLIST[asset.ticker]}), monogram`);
+      delete manifest[asset.ticker];
+      continue;
+    }
     const existing = manifest[asset.ticker];
     if (!force && existing && fs.existsSync(path.join(OUT_DIR, existing))) {
       console.log(`${asset.ticker}: already have ${existing}`);

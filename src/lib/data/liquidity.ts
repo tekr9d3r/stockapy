@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { REFRESH_INTERVAL_SECONDS } from "@/config";
+import { loadSeed } from "./seed";
 import { VENUES, type Venue } from "@/lib/liquidity/venues";
 import type { LiquidityFile, LiquidityPool } from "@/lib/liquidity/types";
 
@@ -15,6 +16,8 @@ export type LiquidityRow = LiquidityPool & {
   mostlyIncentives: boolean;
   /** 24h volume ÷ TVL: how hard the liquidity is working. */
   volumeToTvl: number;
+  /** The underlyings that have their own stock page, so the table can link them. */
+  linkable: string[];
   stale: boolean;
 };
 
@@ -26,7 +29,12 @@ export function loadLiquidityFile(): LiquidityFile | null {
   }
 }
 
-function toRow(p: LiquidityPool, now: number): LiquidityRow {
+/** Tickers with a stock page. For now the seed's assets; see stock/[ticker]. */
+function stockPageTickers(): Set<string> {
+  return new Set(loadSeed().underlying_assets.map((a) => a.ticker));
+}
+
+function toRow(p: LiquidityPool, now: number, pages: Set<string>): LiquidityRow {
   // Aero LPs take the fees or the gauge emissions, never both, so there is no
   // single total to add up.
   const eitherOr = Boolean(p.emissions);
@@ -37,6 +45,7 @@ function toRow(p: LiquidityPool, now: number): LiquidityRow {
     apyTotal,
     mostlyIncentives: apyTotal !== null && apyTotal > 0 && (p.apyReward ?? 0) / apyTotal > 0.5,
     volumeToTvl: p.tvlUsd > 0 ? p.volumeUsd1d / p.tvlUsd : 0,
+    linkable: p.underlyings.filter((t) => pages.has(t)),
     stale: now - Date.parse(p.fetchedAt) > STALE_AFTER_MS,
   };
 }
@@ -56,7 +65,8 @@ export function sortLiquidity(rows: LiquidityRow[]): LiquidityRow[] {
 
 export function getLiquidityRows(): LiquidityRow[] {
   const now = Date.now();
-  return sortLiquidity((loadLiquidityFile()?.pools ?? []).map((p) => toRow(p, now)));
+  const pages = stockPageTickers();
+  return sortLiquidity((loadLiquidityFile()?.pools ?? []).map((p) => toRow(p, now, pages)));
 }
 
 export function liquidityRowsForTicker(ticker: string): LiquidityRow[] {

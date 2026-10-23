@@ -10,54 +10,6 @@
 #
 # Regenerate: see scripts/build-stock-registry.md
 
-- chain: BSC
-  address: "0x431a3bee82e2ca41e49895cbece5bb0f76a89b7a"
-  symbol: AAPLB
-  underlying: AAPL
-  issuer: binance
-  name: "Apple"
-- chain: BSC
-  address: "0x1a4b499833a79a09ad7cf1d42d7dacf71e92eb00"
-  symbol: AMZNB
-  underlying: AMZN
-  issuer: binance
-  name: "Amazon"
-- chain: BSC
-  address: "0x7425889fe94f9d693e8daefe88bcced6acfef4c0"
-  symbol: METAB
-  underlying: META
-  issuer: binance
-  name: "Meta Platforms"
-- chain: BSC
-  address: "0x80106cb3ead06659a5ad19df39d9b4733863b9b0"
-  symbol: MSFTB
-  underlying: MSFT
-  issuer: binance
-  name: "Microsoft"
-- chain: BSC
-  address: "0x02fca66c1d1afb4e2a7884261eb00f63598a7436"
-  symbol: NVDAB
-  underlying: NVDA
-  issuer: binance
-  name: "NVIDIA Corp"
-- chain: BSC
-  address: "0x205812cdbed920aff76c6580abd681a46d11efc7"
-  symbol: QQQB
-  underlying: QQQ
-  issuer: binance
-  name: "Invesqo QQQ"
-- chain: BSC
-  address: "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1"
-  symbol: SPCXB
-  underlying: SPCX
-  issuer: binance
-  name: "SpaceX"
-- chain: BSC
-  address: "0x5b1910eaad6450e50f816082aa078c41f10c292f"
-  symbol: TSLAB
-  underlying: TSLA
-  issuer: binance
-  name: "Tesla, Inc. "
 - chain: Base
   address: "0xb200000000000000000000c2e324d24d7eecd1fb"
   symbol: AAPLc
@@ -65,11 +17,125 @@
   issuer: coinbase
   name: "Apple Inc."
 - chain: Base
+  address: "0xb2000000000000000000000d8ce462e99ee7a47b"
+  symbol: AMDc
+  underlying: AMD
+  issuer: coinbase
+  name: "Advanced Micro Devices, Inc."
+- chain: Base
   address: "0xb200000000000000000000d9192b6b456483c2e8"
   symbol: AMZNc
   underlying: AMZN
   issuer: coinbase
   name: "Amazon.com Inc."
+- chain: Base
+  address: "0xb20000000000000000000006f910a0e7bbd3c168"
+  symbol: APPc
+  underlying: APP
+  issuer: coinbase
+  name: "AppLovin Corporation"
+- chain: Base
+  address: "0xb20000000000000000000026215d755356e5043f"
+  symbol: ARMc
+  underlying: ARM
+  issuer: coinbase
+  name: "Arm Holdings plc"
+- chain: Base
+  address: "0xb200000000000000000000b1a29cf17a1819288a"
+  symbol: ASTSc
+  underlying: ASTS
+  issuer: coinbase
+  name: "AST SpaceMobile, Inc."
+- chain: Base
+  address: "0xb200000000000000000000fc737aea6196ab5a4c"
+  symbol: AVGOc
+  underlying: AVGO
+  issuer: coinbase
+  name: "Broadcom Inc."
+- chain: Base
+  address: "0xb20000000000000000000016f9dfe862feba122b"
+  symbol: BEc
+  underlying: BE
+  issuer: coinbase
+  name: "Bloom Energy Corporation"
+- chain: Base
+  address: "0xb200000000000000000000d2b7d9aee52f6c6bef"
+  symbol: BIDUc
+  underlying: BIDU
+  issuer: coinbase
+  name: "Baidu, Inc."
+- chain: Base
+  address: "0xb200000000000000000000ca7c6d1438e7245eb6"
+  symbol: BILIc
+  underlying: BILI
+  issuer: coinbase
+  name: "Bilibili Inc."
+- chain: Base
+  address: "0xb200000000000000000000535fe96f18204bfd96"
+  symbol: BIRDc
+  underlying: BIRD
+  issuer: coinbase
+  name: "Smartbird, Inc."
+- chain: Base
+  address: "0xb20000000000000000000024170488e788cbbcb4"
+  symbol: BRK.Bc
+  underlying: BRK.B
+  issuer: coinbase
+  name: "Berkshire Hathaway Inc. Class B"
+- chain: Base
+  address: "0xb200000000000000000000c36ce081dd09e86ca2"
+  symbol: BUDc
+  underlying: BUD
+  issuer: coinbase
+  name: "Anheuser-Busch InBev SA/NV"
+- chain: Base
+  address: "0xb200000000000000000000f215e4c890cfb7176b"
+  symbol: CAKEc
+  underlying: CAKE
+  issuer: coinbase
+  name: "Cheesecake Factory Inc"
+- chain: Base
+  address: "0xb200000000000000000000720133eedf525f93e2"
+  symbol: CBRSc
+  underlying: CBRS
+  issuer: coinbase
+  name: "Cerebras Systems Inc."
+- chain: Base
+  address: "0xb200000000000000000000f111184a74720787e6"
+  symbol: CRWVc
+  underlying: CRWV
+  issuer: coinbase
+  name: "CoreWeave, Inc."
+- chain: Base
+  address: "0xb2000000000000000000000bd75bf439a38bf7df"
+  symbol: DISc
+  underlying: DIS
+  issuer: coinbase
+  name: "The Walt Disney Company"
+- chain: Base
+  address: "0xb200000000000000000000428e3a3eebbb20692b"
+  symbol: DJTc
+  underlying: DJT
+  issuer: coinbase
+  name: "Trump Media & Technology Group Corp."
+- chain: Base
+  address: "0xb2000000000000000000009b870441031d4d8a41"
+  symbol: DKNGc
+  underlying: DKNG
+  issuer: coinbase
+  name: "DraftKings Inc."
+- chain: Base
+  address: "0xb200000000000000000000a613d12deafbbb1db7"
+  symbol: DUOLc
+  underlying: DUOL
+  issuer: coinbase
+  name: "Duolingo, Inc."
+- chain: Base
+  address: "0xb2000000000000000000007790ed6e48e06ed935"
+  symbol: GMEc
+  underlying: GME
+  issuer: coinbase
+  name: "GameStop Corp."
 - chain: Base
   address: "0xb2000000000000000000002d0ba3164cc74f58b7"
   symbol: GOOGLc
@@ -77,11 +143,71 @@
   issuer: coinbase
   name: "Alphabet Inc."
 - chain: Base
+  address: "0xb20000000000000000000043a599976181bcf336"
+  symbol: HIMSc
+  underlying: HIMS
+  issuer: coinbase
+  name: "Hims & Hers Health, Inc."
+- chain: Base
+  address: "0xb200000000000000000000f3049f4aa834b23b64"
+  symbol: HSAIc
+  underlying: HSAI
+  issuer: coinbase
+  name: "Hesai Group"
+- chain: Base
+  address: "0xb2000000000000000000002601c5c94f435da168"
+  symbol: HTZc
+  underlying: HTZ
+  issuer: coinbase
+  name: "Hertz Global Holdings, Inc."
+- chain: Base
+  address: "0xb200000000000000000000f6b0417af5f52341fc"
+  symbol: INFYc
+  underlying: INFY
+  issuer: coinbase
+  name: "Infosys Limited"
+- chain: Base
+  address: "0xb2000000000000000000004aff16039ba04bdfbc"
+  symbol: INTCc
+  underlying: INTC
+  issuer: coinbase
+  name: "Intel Corporation"
+- chain: Base
+  address: "0xb200000000000000000000d61efd9f54a23ef9eb"
+  symbol: LIc
+  underlying: LI
+  issuer: coinbase
+  name: "Li Auto Inc."
+- chain: Base
+  address: "0xb200000000000000000000f1a0f91e34892e4718"
+  symbol: LLYc
+  underlying: LLY
+  issuer: coinbase
+  name: "Eli Lilly & Co"
+- chain: Base
+  address: "0xb200000000000000000000d2f4cf2f7debb244bb"
+  symbol: MCDc
+  underlying: MCD
+  issuer: coinbase
+  name: "McDonald's Corporation"
+- chain: Base
   address: "0xb2000000000000000000008bc8786b856e61707c"
   symbol: METAc
   underlying: META
   issuer: coinbase
   name: "Meta Platforms Inc."
+- chain: Base
+  address: "0xb200000000000000000000e215e9b76ecba02468"
+  symbol: MRNAc
+  underlying: MRNA
+  issuer: coinbase
+  name: "Moderna, Inc."
+- chain: Base
+  address: "0xb200000000000000000000ec3c4c7395cc609813"
+  symbol: MRVLc
+  underlying: MRVL
+  issuer: coinbase
+  name: "Marvell Technology, Inc."
 - chain: Base
   address: "0xb200000000000000000000ab99cfa739e253872b"
   symbol: MSFTc
@@ -95,17 +221,161 @@
   issuer: coinbase
   name: "Strategy Inc."
 - chain: Base
+  address: "0xb200000000000000000000fd2f87532b90095211"
+  symbol: MUc
+  underlying: MU
+  issuer: coinbase
+  name: "Micron Technology Inc."
+- chain: Base
+  address: "0xb20000000000000000000058b8c947e44011dfe6"
+  symbol: NFLXc
+  underlying: NFLX
+  issuer: coinbase
+  name: "Netflix Inc"
+- chain: Base
+  address: "0xb2000000000000000000002d2b5dc53c61f1ba06"
+  symbol: NIOc
+  underlying: NIO
+  issuer: coinbase
+  name: "NIO Inc."
+- chain: Base
+  address: "0xb2000000000000000000005ac674f707e357409c"
+  symbol: NOKc
+  underlying: NOK
+  issuer: coinbase
+  name: "Nokia Corporation"
+- chain: Base
+  address: "0xb20000000000000000000082cd2c7801305808df"
+  symbol: NOWc
+  underlying: NOW
+  issuer: coinbase
+  name: "ServiceNow, Inc."
+- chain: Base
+  address: "0xb200000000000000000000c597c476fcf9aed3a8"
+  symbol: NVAXc
+  underlying: NVAX
+  issuer: coinbase
+  name: "Novavax Inc"
+- chain: Base
   address: "0xb20000000000000000000078ee7ce2fe4908108c"
   symbol: NVDAc
   underlying: NVDA
   issuer: coinbase
   name: "NVIDIA Corporation"
 - chain: Base
+  address: "0xb2000000000000000000008d5328e9208773dc58"
+  symbol: NVOc
+  underlying: NVO
+  issuer: coinbase
+  name: "Novo Nordisk A/S"
+- chain: Base
+  address: "0xb200000000000000000000347afba223d7b6b63c"
+  symbol: ORCLc
+  underlying: ORCL
+  issuer: coinbase
+  name: "Oracle Corporation"
+- chain: Base
+  address: "0xb200000000000000000000c8a7223510467d8563"
+  symbol: PDDc
+  underlying: PDD
+  issuer: coinbase
+  name: "PDD Holdings Inc."
+- chain: Base
+  address: "0xb20000000000000000000018fe7ec7d6dfeeb528"
+  symbol: PFEc
+  underlying: PFE
+  issuer: coinbase
+  name: "Pfizer Inc"
+- chain: Base
   address: "0xb2000000000000000000007d16372840df4dabbe"
   symbol: PLTRc
   underlying: PLTR
   issuer: coinbase
   name: "Palantir Technologies Inc."
+- chain: Base
+  address: "0xb2000000000000000000008fc2a8c23cf5937b66"
+  symbol: PMc
+  underlying: PM
+  issuer: coinbase
+  name: "Philip Morris International Inc."
+- chain: Base
+  address: "0xb2000000000000000000009272a491812842aa84"
+  symbol: PTONc
+  underlying: PTON
+  issuer: coinbase
+  name: "Peloton Interactive, Inc."
+- chain: Base
+  address: "0xb200000000000000000000450ad3abe5d4846c6e"
+  symbol: PYPLc
+  underlying: PYPL
+  issuer: coinbase
+  name: "PayPal Holdings, Inc."
+- chain: Base
+  address: "0xb200000000000000000000ca425ab42e07c35bc3"
+  symbol: QUBTc
+  underlying: QUBT
+  issuer: coinbase
+  name: "Quantum Computing Inc."
+- chain: Base
+  address: "0xb2000000000000000000005bd7ae89b9e6189bb5"
+  symbol: RBLXc
+  underlying: RBLX
+  issuer: coinbase
+  name: "Roblox Corporation"
+- chain: Base
+  address: "0xb20000000000000000000066242d4067724cb7a1"
+  symbol: RDDTc
+  underlying: RDDT
+  issuer: coinbase
+  name: "Reddit, Inc."
+- chain: Base
+  address: "0xb200000000000000000000e8e50cbbb9a3861a3c"
+  symbol: RKLBc
+  underlying: RKLB
+  issuer: coinbase
+  name: "Rocket Lab Corporation"
+- chain: Base
+  address: "0xb20000000000000000000017bb66e9301e913a99"
+  symbol: SANc
+  underlying: SAN
+  issuer: coinbase
+  name: "Banco Santander, S.A."
+- chain: Base
+  address: "0xb200000000000000000000da6f64c306234127e0"
+  symbol: SAPc
+  underlying: SAP
+  issuer: coinbase
+  name: "SAP SE"
+- chain: Base
+  address: "0xb2000000000000000000003088798f6d0722aaac"
+  symbol: SEc
+  underlying: SE
+  issuer: coinbase
+  name: "Sea Limited"
+- chain: Base
+  address: "0xb200000000000000000000187f7071d6e321a7d2"
+  symbol: SKHYc
+  underlying: SKHY
+  issuer: coinbase
+  name: "SK hynix Inc."
+- chain: Base
+  address: "0xb200000000000000000000397293cb8cda9a10c5"
+  symbol: SNDKc
+  underlying: SNDK
+  issuer: coinbase
+  name: "Sandisk Corporation"
+- chain: Base
+  address: "0xb200000000000000000000a26326a922ffa87f6c"
+  symbol: SONYc
+  underlying: SONY
+  issuer: coinbase
+  name: "Sony Group Corporation"
+- chain: Base
+  address: "0xb2000000000000000000002137743d4a01fe4e88"
+  symbol: SOUNc
+  underlying: SOUN
+  issuer: coinbase
+  name: "SoundHound AI, Inc."
 - chain: Base
   address: "0xb2000000000000000000007b9fcbd005511acbd5"
   symbol: SPCXc
@@ -118,6 +388,720 @@
   underlying: TSLA
   issuer: coinbase
   name: "Tesla Inc."
+- chain: Base
+  address: "0xb200000000000000000000f720c26062bc3067da"
+  symbol: TTWOc
+  underlying: TTWO
+  issuer: coinbase
+  name: "Take-Two Interactive Software, Inc."
+- chain: Base
+  address: "0xb200000000000000000000cae20cb1446462e24c"
+  symbol: UBERc
+  underlying: UBER
+  issuer: coinbase
+  name: "Uber Technologies, Inc."
+- chain: Base
+  address: "0xb200000000000000000000349ef3aa93a0897476"
+  symbol: ULc
+  underlying: UL
+  issuer: coinbase
+  name: "Unilever Plc"
+- chain: Base
+  address: "0xb20000000000000000000063376b142c0764b489"
+  symbol: VALEc
+  underlying: VALE
+  issuer: coinbase
+  name: "Vale S.A."
+- chain: Base
+  address: "0xb2000000000000000000008fde21a1f5c69fec0b"
+  symbol: WDCc
+  underlying: WDC
+  issuer: coinbase
+  name: "Western Digital Corporation"
+- chain: Base
+  address: "0xb20000000000000000000044e3cd7a0e1028e57a"
+  symbol: WENc
+  underlying: WEN
+  issuer: coinbase
+  name: "Wendy's Co"
+- chain: Base
+  address: "0xb2000000000000000000008a7508619c717a7106"
+  symbol: WMTc
+  underlying: WMT
+  issuer: coinbase
+  name: "Walmart Inc."
+- chain: Base
+  address: "0xb200000000000000000000e88efe88d8ade3f0da"
+  symbol: WRDc
+  underlying: WRD
+  issuer: coinbase
+  name: "WeRide Inc."
+- chain: BSC
+  address: "0x431a3bee82e2ca41e49895cbece5bb0f76a89b7a"
+  symbol: AAPLB
+  underlying: AAPL
+  issuer: binance
+  name: "Apple"
+- chain: BSC
+  address: "0x390a684ef9cade28a7ad0dfa61ab1eb3842618c4"
+  symbol: AAPLon
+  underlying: AAPL
+  issuer: ondo
+  name: "Apple (Ondo Tokenized)"
+- chain: BSC
+  address: "0xa304bd78e739c0f777202b3eb73ac3736d1df801"
+  symbol: AMATB
+  underlying: AMAT
+  issuer: binance
+  name: "Applied Materials"
+- chain: BSC
+  address: "0x9f16e46c73b43bdb70861247d537bee4ea18f639"
+  symbol: AMDon
+  underlying: AMD
+  issuer: ondo
+  name: "AMD (Ondo Tokenized)"
+- chain: BSC
+  address: "0x1a4b499833a79a09ad7cf1d42d7dacf71e92eb00"
+  symbol: AMZNB
+  underlying: AMZN
+  issuer: binance
+  name: "Amazon"
+- chain: BSC
+  address: "0x4553cfe1c09f37f38b12dc509f676964e392f8fc"
+  symbol: AMZNon
+  underlying: AMZN
+  issuer: ondo
+  name: "Amazon (Ondo Tokenized)"
+- chain: BSC
+  address: "0x527c6436e1eaa4f2065cde4090f798cb5d031dd6"
+  symbol: ARMon
+  underlying: ARM
+  issuer: ondo
+  name: "Arm Holdings plc (Ondo Tokenized)"
+- chain: BSC
+  address: "0xd42a79ebb7f527f40faecd196ffb47ad5e8d6f8c"
+  symbol: ARMB
+  underlying: ARM
+  issuer: binance
+  name: "Arm"
+- chain: BSC
+  address: "0x45abf29515bc23f8c0ed2a06584444ce473a75fb"
+  symbol: ASTSon
+  underlying: ASTS
+  issuer: ondo
+  name: "AST SpaceMobile (Ondo Tokenized)"
+- chain: BSC
+  address: "0x76682c454467b3a1150ad8b6a92fc5ee2c21d7ed"
+  symbol: AVGOB
+  underlying: AVGO
+  issuer: binance
+  name: "Broadcom"
+- chain: BSC
+  address: "0xd5964f3fcee8d649995ab88f04b8982539c282d2"
+  symbol: BABAon
+  underlying: BABA
+  issuer: ondo
+  name: "Alibaba (Ondo Tokenized)"
+- chain: BSC
+  address: "0x4ef9d3062c7f6eba4aae4990c5036598c6eff4ec"
+  symbol: BABAB
+  underlying: BABA
+  issuer: binance
+  name: "Alibaba"
+- chain: BSC
+  address: "0x17d03ae104a9d12e9e5794efb109b817dd7f3404"
+  symbol: BEon
+  underlying: BE
+  issuer: ondo
+  name: "Bloom Energy (Ondo Tokenized)"
+- chain: BSC
+  address: "0x467e59ce5d5fe01686d4a80dd1e1dae13549aa6c"
+  symbol: BIDUon
+  underlying: BIDU
+  issuer: ondo
+  name: "Baidu (Ondo Tokenized)"
+- chain: BSC
+  address: "0x91fc7371d6de682a1e8cfcb4eb7da693312a03a4"
+  symbol: BILIon
+  underlying: BILI
+  issuer: ondo
+  name: "Bilibili (Ondo Tokenized)"
+- chain: BSC
+  address: "0x4902c5ebc598265ed2212b559b042de8a5eeec3f"
+  symbol: BNCB
+  underlying: BNC
+  issuer: binance
+  name: "CEA Industries"
+- chain: BSC
+  address: "0x5f2d37192576a6804f44722eb828e280d5fb43dc"
+  symbol: BNOon
+  underlying: BNO
+  issuer: ondo
+  name: "US Brent Oil Fund (Ondo Tokenized)"
+- chain: BSC
+  address: "0xc2c7fcddc37f6737ca2481ebda6b81ee279fe20c"
+  symbol: BZon
+  underlying: BZ
+  issuer: ondo
+  name: "Kanzhun (Ondo Tokenized)"
+- chain: BSC
+  address: "0x441a4d4fc23f17f4cf23e3d60f12d2bd6f176728"
+  symbol: CBRSon
+  underlying: CBRS
+  issuer: ondo
+  name: "Cerebras Systems (Ondo Tokenized)"
+- chain: BSC
+  address: "0xe81c6bb0266cd68b4f17278531dd03ea1f12da4e"
+  symbol: CBRSB
+  underlying: CBRS
+  issuer: binance
+  name: "Cerebras"
+- chain: BSC
+  address: "0x585bde7c54abb5ccd7791f923d6c2187635f3952"
+  symbol: COINB
+  underlying: COIN
+  issuer: binance
+  name: "Coinbase"
+- chain: BSC
+  address: "0x0888edfec4c0a66fce074796cf4f6509c00f6c49"
+  symbol: CPERon
+  underlying: CPER
+  issuer: ondo
+  name: "US Copper Index Fund (Ondo Tokenized)"
+- chain: BSC
+  address: "0x992879cd8ce0c312d98648875b5a8d6d042cbf34"
+  symbol: CRCLon
+  underlying: CRCL
+  issuer: ondo
+  name: "Circle Internet Group (Ondo Tokenized)"
+- chain: BSC
+  address: "0x33e7317e17838fee56b10fe8d0b9ca6ca3090c95"
+  symbol: CRWVB
+  underlying: CRWV
+  issuer: binance
+  name: "CoreWeave"
+- chain: BSC
+  address: "0xeee9eee593cb8f7946260b4066cba7907f40acfa"
+  symbol: DISon
+  underlying: DIS
+  issuer: ondo
+  name: "Disney (Ondo Tokenized)"
+- chain: BSC
+  address: "0xf2ec508422174ee564de98187db9359d318afb6b"
+  symbol: DJTB
+  underlying: DJT
+  issuer: binance
+  name: "Trump Media & Technology Group Corp"
+- chain: BSC
+  address: "0x5a9d924fc336a5ec8cf3b1909aa660533b50b015"
+  symbol: ENLVon
+  underlying: ENLV
+  issuer: ondo
+  name: "Enlivex Therapeutics (Ondo Tokenized)"
+- chain: BSC
+  address: "0x04b16ff1f9673146f68aa5d5f57aa45adcf068e1"
+  symbol: ETHAon
+  underlying: ETHA
+  issuer: ondo
+  name: "iShares Ethereum Trust ETF (Ondo Tokenized)"
+- chain: BSC
+  address: "0x4af1d41cd9dd950dca43984b43aaa2a8702714ac"
+  symbol: FLNCB
+  underlying: FLNC
+  issuer: binance
+  name: "Fluence Energy"
+- chain: BSC
+  address: "0x5acf40056ed51c8bbcd1b125ef803581ac89a627"
+  symbol: FUTUon
+  underlying: FUTU
+  issuer: ondo
+  name: "Futu Holdings (Ondo Tokenized)"
+- chain: BSC
+  address: "0x9b8e987e6fec8cf1380c4dca7071e2c7853aeea1"
+  symbol: FXIon
+  underlying: FXI
+  issuer: ondo
+  name: "iShares China Large-Cap ETF (Ondo Tokenized)"
+- chain: BSC
+  address: "0xfa9a1e901085e269f6d428f79cd5252d8b919344"
+  symbol: GLDon
+  underlying: GLD
+  issuer: ondo
+  name: "SPDR Gold Shares (Ondo Tokenized)"
+- chain: BSC
+  address: "0x25a4dbae9a0cd8c75656d6b50ffdf4900cc20d8f"
+  symbol: GLWon
+  underlying: GLW
+  issuer: ondo
+  name: "Corning (Ondo Tokenized)"
+- chain: BSC
+  address: "0xdabb9aff4cf02f26d2014e4ca9f94ac6fe6572a3"
+  symbol: GMEon
+  underlying: GME
+  issuer: ondo
+  name: "GameStop (Ondo Tokenized)"
+- chain: BSC
+  address: "0x46ceefda28dd7207059ed19b0acdc026955bb15c"
+  symbol: GMEB
+  underlying: GME
+  issuer: binance
+  name: "GameStop"
+- chain: BSC
+  address: "0x091fc7778e6932d4009b087b191d1ee3bac5729a"
+  symbol: GOOGLon
+  underlying: GOOGL
+  issuer: ondo
+  name: "Alphabet Class A (Ondo Tokenized)"
+- chain: BSC
+  address: "0x3f53de71c126bdabae20f9cd64848d317f6c3238"
+  symbol: GOOGLB
+  underlying: GOOGL
+  issuer: binance
+  name: "Alphabet"
+- chain: BSC
+  address: "0x4693f6f5ef257381a28afd0673e64d8b32d5c6ad"
+  symbol: HIMSon
+  underlying: HIMS
+  issuer: ondo
+  name: "Hims & Hers Health (Ondo Tokenized)"
+- chain: BSC
+  address: "0x6cf3b84f0ba4d86d9f6987812a11db2c447d9483"
+  symbol: HIMXon
+  underlying: HIMX
+  issuer: ondo
+  name: "Himax Technologies (Ondo Tokenized)"
+- chain: BSC
+  address: "0xa394dcea3fd3847fd793afbfd163e2e3858b7c65"
+  symbol: HOODB
+  underlying: HOOD
+  issuer: binance
+  name: "Robinhood"
+- chain: BSC
+  address: "0x847ef23a3f99af79a185ce033e1664165b846eea"
+  symbol: HSAIon
+  underlying: HSAI
+  issuer: ondo
+  name: "Hesai Group (Ondo Tokenized)"
+- chain: BSC
+  address: "0xfa273b076feb8c0fb34e554ae341082323d016a3"
+  symbol: IBMB
+  underlying: IBM
+  issuer: binance
+  name: "IBM"
+- chain: BSC
+  address: "0xa528caaa2f96090e379d43f90834c75df54d6e74"
+  symbol: INTCon
+  underlying: INTC
+  issuer: ondo
+  name: "Intel (Ondo Tokenized)"
+- chain: BSC
+  address: "0xe92be960ae64f6a914ca77014cac9e56de7f36c1"
+  symbol: JDon
+  underlying: JD
+  issuer: ondo
+  name: "JD.com (Ondo Tokenized)"
+- chain: BSC
+  address: "0x317bf42b43a394860718266dec445dcc9fd9da49"
+  symbol: JPMon
+  underlying: JPM
+  issuer: ondo
+  name: "JPMorgan Chase (Ondo Tokenized)"
+- chain: BSC
+  address: "0x405f38b90bebf1259062cf29da299f3398662bcb"
+  symbol: KOon
+  underlying: KO
+  issuer: ondo
+  name: "Coca-Cola (Ondo Tokenized)"
+- chain: BSC
+  address: "0x7437203800140ba7d9081dde8cef09ee40e3bf03"
+  symbol: KWEBon
+  underlying: KWEB
+  issuer: ondo
+  name: "KraneShares CSI China Internet ETF (Ondo Tokenized)"
+- chain: BSC
+  address: "0x9810beac9af3c30d14cfb61cdd557e160f60fd50"
+  symbol: LIon
+  underlying: LI
+  issuer: ondo
+  name: "Li Auto (Ondo Tokenized)"
+- chain: BSC
+  address: "0x64748bea17b6d19e242adf20425de2440c656142"
+  symbol: LITEB
+  underlying: LITE
+  issuer: binance
+  name: "Lumentum Holdings"
+- chain: BSC
+  address: "0x341d31b2be1fee9c00e395a62ba41837f4322eed"
+  symbol: LLYon
+  underlying: LLY
+  issuer: ondo
+  name: "Eli Lilly (Ondo Tokenized)"
+- chain: BSC
+  address: "0x6ad19e0a57cfea0bc521a12c6c82372852842933"
+  symbol: LPTHon
+  underlying: LPTH
+  issuer: ondo
+  name: "LightPath Technologies (Ondo Tokenized)"
+- chain: BSC
+  address: "0x995add4ba29a628a57930a8a185c62ca044ec090"
+  symbol: MCDon
+  underlying: MCD
+  issuer: ondo
+  name: "McDonald's (Ondo Tokenized)"
+- chain: BSC
+  address: "0x7425889fe94f9d693e8daefe88bcced6acfef4c0"
+  symbol: METAB
+  underlying: META
+  issuer: binance
+  name: "Meta Platforms"
+- chain: BSC
+  address: "0x16cd4fe7e8880ecc3ba222795229e20489fc2c76"
+  symbol: MRVLB
+  underlying: MRVL
+  issuer: binance
+  name: "Marvell Technology"
+- chain: BSC
+  address: "0x80106cb3ead06659a5ad19df39d9b4733863b9b0"
+  symbol: MSFTB
+  underlying: MSFT
+  issuer: binance
+  name: "Microsoft"
+- chain: BSC
+  address: "0x6bfe75d1ad432050ea973c3a3dcd88f02e2444c3"
+  symbol: MSFTon
+  underlying: MSFT
+  issuer: ondo
+  name: "Microsoft (Ondo Tokenized)"
+- chain: BSC
+  address: "0xe87afb3076aeb0f9b14e368de8145ae6a2826a14"
+  symbol: MSTRB
+  underlying: MSTR
+  issuer: binance
+  name: "Strategy Inc."
+- chain: BSC
+  address: "0x8b6acf6041a81567f012ff6a4c6d96d5818d74bf"
+  symbol: MUon
+  underlying: MU
+  issuer: ondo
+  name: "Micron Technology (Ondo Tokenized)"
+- chain: BSC
+  address: "0xcdf2f3e0fa43c47a6662a91c9e4a7c5f69762699"
+  symbol: MUB
+  underlying: MU
+  issuer: binance
+  name: "Micron Technology Inc"
+- chain: BSC
+  address: "0x5e63232993789601ce362e0240a299c1dfcbfbec"
+  symbol: NEMon
+  underlying: NEM
+  issuer: ondo
+  name: "Newmont (Ondo Tokenized)"
+- chain: BSC
+  address: "0xd6829ea836b6fa224d099d40e54b31262f874631"
+  symbol: NFLXB
+  underlying: NFLX
+  issuer: binance
+  name: "Netflix"
+- chain: BSC
+  address: "0xc6f9edbee6042a237d72493bbda3ee2c3c62f708"
+  symbol: NIOon
+  underlying: NIO
+  issuer: ondo
+  name: "NIO (Ondo Tokenized)"
+- chain: BSC
+  address: "0x04b5e199f2ec84f78b111035f57b16bee448db6f"
+  symbol: NKEon
+  underlying: NKE
+  issuer: ondo
+  name: "Nike (Ondo Tokenized)"
+- chain: BSC
+  address: "0x7c4d7a180d737dd5a70d8065a90e6746a69c37ea"
+  symbol: NOKB
+  underlying: NOK
+  issuer: binance
+  name: "Nokia"
+- chain: BSC
+  address: "0x282973969118f9fe39bf2ff3d8dd1efee82ccb11"
+  symbol: NTESon
+  underlying: NTES
+  issuer: ondo
+  name: "NetEase (Ondo Tokenized)"
+- chain: BSC
+  address: "0x02fca66c1d1afb4e2a7884261eb00f63598a7436"
+  symbol: NVDAB
+  underlying: NVDA
+  issuer: binance
+  name: "NVIDIA Corp"
+- chain: BSC
+  address: "0xa9ee28c80f960b889dfbd1902055218cba016f75"
+  symbol: NVDAon
+  underlying: NVDA
+  issuer: ondo
+  name: "NVIDIA (Ondo Tokenized)"
+- chain: BSC
+  address: "0x2b1d5cdecc356530a746c5754231efaeaca64022"
+  symbol: PBRon
+  underlying: PBR
+  issuer: ondo
+  name: "Petrobras (Ondo Tokenized)"
+- chain: BSC
+  address: "0xf3e82ea164cb344b2b11bad4c24b0ea4f7ba4714"
+  symbol: PDDon
+  underlying: PDD
+  issuer: ondo
+  name: "PDD Holdings (Ondo Tokenized)"
+- chain: BSC
+  address: "0x95b0409679b55c31772daa2fb4bee7b125b77521"
+  symbol: PDDB
+  underlying: PDD
+  issuer: binance
+  name: "PDD Holdings Inc"
+- chain: BSC
+  address: "0x0ca5d51d0277bd006fd9607d3e560785ebad8222"
+  symbol: PLTRB
+  underlying: PLTR
+  issuer: binance
+  name: "Palantir Technologies"
+- chain: BSC
+  address: "0xd721c192d612db77621df57a9fab38418033c02e"
+  symbol: QNTB
+  underlying: QNT
+  issuer: binance
+  name: "Quantinuum"
+- chain: BSC
+  address: "0x205812cdbed920aff76c6580abd681a46d11efc7"
+  symbol: QQQB
+  underlying: QQQ
+  issuer: binance
+  name: "Invesqo QQQ"
+- chain: BSC
+  address: "0x0cde6936d305d5b34667fc46425e852efd73559a"
+  symbol: QQQon
+  underlying: QQQ
+  issuer: ondo
+  name: "Invesco QQQ (Ondo Tokenized)"
+- chain: BSC
+  address: "0xc16f47c4a7ed39372b9a0e3e2016cede9b4cb83a"
+  symbol: REMXon
+  underlying: REMX
+  issuer: ondo
+  name: "VanEck Rare Earth and Strategic Metals ETF (Ondo Tokenized)"
+- chain: BSC
+  address: "0xc008c5f579ec1450f20099c39f587547e27c7523"
+  symbol: SGOVon
+  underlying: SGOV
+  issuer: ondo
+  name: "iShares 0-3 Month Treasury Bond ETF (Ondo Tokenized)"
+- chain: BSC
+  address: "0x6a4c1b7aa18638fac4c8e0d1961405e27c25baf1"
+  symbol: SILon
+  underlying: SIL
+  issuer: ondo
+  name: "Global X Silver Miners ETF (Ondo Tokenized)"
+- chain: BSC
+  address: "0xca750ef65f295bbecd685abf54e82caf297bdb61"
+  symbol: SKHYB
+  underlying: SKHY
+  issuer: binance
+  name: "SK Hynix"
+- chain: BSC
+  address: "0x8b872732b07be325a8803cdb480d9d20b6f8d11b"
+  symbol: SLVon
+  underlying: SLV
+  issuer: ondo
+  name: "iShares Silver Trust (Ondo Tokenized)"
+- chain: BSC
+  address: "0xbe9d156892e55e7154bcd3cb0fea677f9d3103e1"
+  symbol: SPCXB
+  underlying: SPCX
+  issuer: binance
+  name: "SpaceX"
+- chain: BSC
+  address: "0xd0a58bc9d88d3ff48c0294cb7e45937d0e41a928"
+  symbol: SPCXon
+  underlying: SPCX
+  issuer: ondo
+  name: "SpaceX (Ondo Tokenized)"
+- chain: BSC
+  address: "0x6a708ead771238919d85930b5a0f10454e1c331a"
+  symbol: SPYon
+  underlying: SPY
+  issuer: ondo
+  name: "SPDR S&P 500 ETF (Ondo Tokenized)"
+- chain: BSC
+  address: "0x7138b48df7d98d7e3cc221bfe7192d0a178182d8"
+  symbol: SPYB
+  underlying: SPY
+  issuer: binance
+  name: "SPY"
+- chain: BSC
+  address: "0x6459303f58244ff1e7a42b90aa3782dfb6ca6969"
+  symbol: TCOMon
+  underlying: TCOM
+  issuer: ondo
+  name: "Trip.com Group (Ondo Tokenized)"
+- chain: BSC
+  address: "0xf69e40069ac227c11459e3f4e8a446b3401616b6"
+  symbol: TLTon
+  underlying: TLT
+  issuer: ondo
+  name: "iShares 20+ Year Treasury Bond ETF (Ondo Tokenized)"
+- chain: BSC
+  address: "0x5b1910eaad6450e50f816082aa078c41f10c292f"
+  symbol: TSLAB
+  underlying: TSLA
+  issuer: binance
+  name: "Tesla, Inc. "
+- chain: BSC
+  address: "0x2494b603319d4d9f9715c9f4496d9e0364b59d93"
+  symbol: TSLAon
+  underlying: TSLA
+  issuer: ondo
+  name: "Tesla (Ondo Tokenized)"
+- chain: BSC
+  address: "0xc37042a7a4fa510d8884a433762ab87257b91965"
+  symbol: TSMon
+  underlying: TSM
+  issuer: ondo
+  name: "Taiwan Semiconductor Manufacturing (Ondo Tokenized)"
+- chain: BSC
+  address: "0xab78b89b5bb00236be0b4b20704cbfa04efc711c"
+  symbol: TSMB
+  underlying: TSM
+  issuer: binance
+  name: "TSMC"
+- chain: BSC
+  address: "0x318ddd4d03d84a40cf44772385a0cfb3d4394049"
+  symbol: UMCon
+  underlying: UMC
+  issuer: ondo
+  name: "United Microelectronics (Ondo Tokenized)"
+- chain: BSC
+  address: "0x94174e3d1335db402dd03a092f7aa7ac2cb32be4"
+  symbol: USOon
+  underlying: USO
+  issuer: ondo
+  name: "United States Oil Fund (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x14c3abf95cb9c93a8b82c1cdcb76d72cb87b2d4c"
+  symbol: AAPLon
+  underlying: AAPL
+  issuer: ondo
+  name: "Apple (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x592643a667633bca51cb2387c98b6de6ce549a45"
+  symbol: AMCon
+  underlying: AMC
+  issuer: ondo
+  name: "AMC Entertainment (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0xbb8774fb97436d23d74c1b882e8e9a69322cfd31"
+  symbol: AMZNon
+  underlying: AMZN
+  issuer: ondo
+  name: "Amazon (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x41765f0fcddc276309195166c7a62ae522fa09ef"
+  symbol: BABAon
+  underlying: BABA
+  issuer: ondo
+  name: "Alibaba (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x33483a58079b4225b10e57958ca28ad7b9cdbaf7"
+  symbol: BMNRon
+  underlying: BMNR
+  issuer: ondo
+  name: "BitMine Immersion Technologies (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x25018520138bbab60684ad7983d4432e8b8e926b"
+  symbol: CMGon
+  underlying: CMG
+  issuer: ondo
+  name: "Chipotle (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x423a63dfe8d82cd9c6568c92210aa537d8ef6885"
+  symbol: COPXon
+  underlying: COPX
+  issuer: ondo
+  name: "Global X Copper Miners ETF (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x3632dea96a953c11dac2f00b4a05a32cd1063fae"
+  symbol: CRCLon
+  underlying: CRCL
+  issuer: ondo
+  name: "Circle Internet Group (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x241958c86c7744d15d5f6314ba1ea4c81dda2896"
+  symbol: DASHon
+  underlying: DASH
+  issuer: ondo
+  name: "DoorDash (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x77a1a02e4a888ada8620b93c30de8a41e621126c"
+  symbol: EEMon
+  underlying: EEM
+  issuer: ondo
+  name: "iShares MSCI Emerging Markets ETF (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x71d24baeb0a033ec5f90ff65c4210545af378d97"
+  symbol: GMEon
+  underlying: GME
+  issuer: ondo
+  name: "GameStop (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0xba47214edd2bb43099611b208f75e4b42fdcfedc"
+  symbol: GOOGLon
+  underlying: GOOGL
+  issuer: ondo
+  name: "Alphabet Class A (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x4f0ca3df1c2e6b943cf82e649d576ffe7b2fabcf"
+  symbol: IAUon
+  underlying: IAU
+  issuer: ondo
+  name: "iShares Gold Trust (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x74a03d741226f738098c35da8188e57aca50d146"
+  symbol: KOon
+  underlying: KO
+  issuer: ondo
+  name: "Coca-Cola (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x4c82c8cd9a218612dce60b156b73a36705645e3b"
+  symbol: MCDon
+  underlying: MCD
+  issuer: ondo
+  name: "McDonald's (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x59644165402b611b350645555b50afb581c71eb2"
+  symbol: METAon
+  underlying: META
+  issuer: ondo
+  name: "Meta Platforms (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0xf404e5f887dbd5508e16a1198fcdd5de1a4296b8"
+  symbol: MRVLon
+  underlying: MRVL
+  issuer: ondo
+  name: "Marvell Technology (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0xb812837b81a3a6b81d7cd74cfb19a7f2784555e5"
+  symbol: MSFTon
+  underlying: MSFT
+  issuer: ondo
+  name: "Microsoft (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x050362ab1072cb2ce74d74770e22a3203ad04ee5"
+  symbol: MUon
+  underlying: MU
+  issuer: ondo
+  name: "Micron Technology (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x032dec3372f25c41ea8054b4987a7c4832cdb338"
+  symbol: NFLXon
+  underlying: NFLX
+  issuer: ondo
+  name: "Netflix (Ondo Tokenized)"
 - chain: Ethereum
   address: "0x2d1f7226bd1f780af6b9a49dcc0ae00e8df4bdee"
   symbol: NVDAon
@@ -125,89 +1109,101 @@
   issuer: ondo
   name: "NVIDIA (Ondo Tokenized)"
 - chain: Ethereum
+  address: "0x28151f5888833d3d767c4d6945a0ee50d1b193e3"
+  symbol: NVOon
+  underlying: NVO
+  issuer: ondo
+  name: "Novo Nordisk (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x8a23c6baadb88512b30475c83df6a63881e33e1e"
+  symbol: ORCLon
+  underlying: ORCL
+  issuer: ondo
+  name: "Oracle (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0xeedc48205852e9d83ea5ca92fa8656597788601f"
+  symbol: OXYon
+  underlying: OXY
+  issuer: ondo
+  name: "Occidental Petroleum (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x06954faa913fa14c28eb1b2e459594f22f33f3de"
+  symbol: PFEon
+  underlying: PFE
+  issuer: ondo
+  name: "Pfizer (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x0e397938c1aa0680954093495b70a9f5e2249aba"
+  symbol: QQQon
+  underlying: QQQ
+  issuer: ondo
+  name: "Invesco QQQ (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x1140043f02d8ee34b10eae2e32ae921cda1459ee"
+  symbol: REMXon
+  underlying: REMX
+  issuer: ondo
+  name: "VanEck Rare Earth and Strategic Metals ETF (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x8de5d49725550f7b318b2fa0f1b1f118e98e8d0f"
+  symbol: SGOVon
+  underlying: SGOV
+  issuer: ondo
+  name: "iShares 0-3 Month Treasury Bond ETF (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0xf3e4872e6a4cf365888d93b6146a2baa7348f1a4"
+  symbol: SLVon
+  underlying: SLV
+  issuer: ondo
+  name: "iShares Silver Trust (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0xc9eef266834730340a55b6cc24621b31baf55581"
+  symbol: SPCXon
+  underlying: SPCX
+  issuer: ondo
+  name: "SpaceX (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0xfedc5f4a6c38211c1338aa411018dfaf26612c08"
+  symbol: SPYon
+  underlying: SPY
+  issuer: ondo
+  name: "SPDR S&P 500 ETF (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x992651bfeb9a0dcc4457610e284ba66d86489d4d"
+  symbol: TLTon
+  underlying: TLT
+  issuer: ondo
+  name: "iShares 20+ Year Treasury Bond ETF (Ondo Tokenized)"
+- chain: Ethereum
   address: "0xf6b1117ec07684d3958cad8beb1b302bfd21103f"
   symbol: TSLAon
   underlying: TSLA
   issuer: ondo
   name: "Tesla (Ondo Tokenized)"
-- chain: Hyperliquid L1
-  address: "0xa8ddb5cd96b5222afe198316e9a57caa642850d5"
-  symbol: wNVDAx
-  underlying: NVDA
-  issuer: xstocks
-  name: "Wrapped NVIDIA xStock"
-- chain: Hyperliquid L1
-  address: "0x4c1ae29c159838fc1b224636e28e086eb69101f7"
-  symbol: wQQQx
-  underlying: QQQ
-  issuer: xstocks
-  name: "Wrapped Nasdaq xStock"
-- chain: Hyperliquid L1
-  address: "0xe7e553cd128f0011777323a0b44a7b96ea1cb540"
-  symbol: wSPYx
-  underlying: SPY
-  issuer: xstocks
-  name: "Wrapped SP500 xStock"
-- chain: Mantle
-  address: "0x5aa7649fdbda47de64a07ac81d64b682af9c0724"
-  symbol: wAAPLx
+- chain: Ethereum
+  address: "0x3cafdbfe682aec17d5ace2f97a2f3ab3dcf6a4a9"
+  symbol: TSMon
+  underlying: TSM
+  issuer: ondo
+  name: "Taiwan Semiconductor Manufacturing (Ondo Tokenized)"
+- chain: Ethereum
+  address: "0x1f5fc5c3c8b0f15c7e21af623936ff2b210b6415"
+  symbol: USOon
+  underlying: USO
+  issuer: ondo
+  name: "United States Oil Fund (Ondo Tokenized)"
+- chain: Robinhood Chain
+  address: "0xaf3d76f1834a1d425780943c99ea8a608f8a93f9"
+  symbol: AAPL (Robinhood)
   underlying: AAPL
-  issuer: xstocks
-  name: "Wrapped Apple xStock"
-- chain: Mantle
-  address: "0xa90872aca656ebe47bdebf3b19ec9dd9c5adc7f8"
-  symbol: wCRCLx
-  underlying: CRCL
-  issuer: xstocks
-  name: "Wrapped Circle xStock"
-- chain: Mantle
-  address: "0x1630f08370917e79df0b7572395a5e907508bbbc"
-  symbol: wGOOGLx
-  underlying: GOOGL
-  issuer: xstocks
-  name: "Wrapped Alphabet xStock"
-- chain: Mantle
-  address: "0x953707d7a1cb30cc5c636bda8eaebe410341eb14"
-  symbol: wHOODx
-  underlying: HOOD
-  issuer: xstocks
-  name: "Wrapped Robinhood xStock"
-- chain: Mantle
-  address: "0x4e41a262caa93c6575d336e0a4eb79f3c67caa06"
-  symbol: wMETAx
-  underlying: META
-  issuer: xstocks
-  name: "Wrapped Meta xStock"
-- chain: Mantle
-  address: "0x266e5923f6118f8b340ca5a23ae7f71897361476"
-  symbol: wMSTRx
-  underlying: MSTR
-  issuer: xstocks
-  name: "Wrapped MicroStrategy xStock"
-- chain: Mantle
-  address: "0x93e62845c1dd5822ebc807ab71a5fb750decd15a"
-  symbol: wNVDAx
-  underlying: NVDA
-  issuer: xstocks
-  name: "Wrapped NVIDIA xStock"
-- chain: Mantle
-  address: "0xdbd9232fee15351068fe02f0683146e16d9f2cea"
-  symbol: wQQQx
-  underlying: QQQ
-  issuer: xstocks
-  name: "Wrapped Nasdaq xStock"
-- chain: Mantle
-  address: "0xc88fcd8b874fdb3256e8b55b3decb8c24eab4c02"
-  symbol: wSPYx
-  underlying: SPY
-  issuer: xstocks
-  name: "Wrapped SP500 xStock"
-- chain: Mantle
-  address: "0x43680abf18cf54898be84c6ef78237cfbd441883"
-  symbol: wTSLAx
-  underlying: TSLA
-  issuer: xstocks
-  name: "Wrapped Tesla xStock"
+  issuer: robinhood
+  name: "Apple • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x05a3d1cd21d0c88145e82600e62e7e496e0f222b"
+  symbol: AMC (Robinhood)
+  underlying: AMC
+  issuer: robinhood
+  name: "AMC Entertainment • Robinhood Token"
 - chain: Robinhood Chain
   address: "0x86923f96303d656e4aa86d9d42d1e57ad2023fdc"
   symbol: AMD (Robinhood)
@@ -215,11 +1211,137 @@
   issuer: robinhood
   name: "AMD • Robinhood Token"
 - chain: Robinhood Chain
+  address: "0x12f190a9f9d7d37a250758b26824b97ce941bf54"
+  symbol: AMZN (Robinhood)
+  underlying: AMZN
+  issuer: robinhood
+  name: "Amazon • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x156e175dd063a8ce274c50654ef40e0032b3fbcf"
+  symbol: AVGO (Robinhood)
+  underlying: AVGO
+  issuer: robinhood
+  name: "Broadcom • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x4d21483a44bf67a86b77e3da301411880797d452"
+  symbol: BA (Robinhood)
+  underlying: BA
+  issuer: robinhood
+  name: "Boeing • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xad25ac6c84d497db898fa1e8387bf6af3532a1c4"
+  symbol: BABA (Robinhood)
+  underlying: BABA
+  issuer: robinhood
+  name: "Alibaba • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x48e39e56acdba37b09020c0b734a613c9a2f100a"
+  symbol: BB (Robinhood)
+  underlying: BB
+  issuer: robinhood
+  name: "Blackberry • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x822cc93ffd030293e9842c30bbd678f530701867"
+  symbol: BE (Robinhood)
+  underlying: BE
+  issuer: robinhood
+  name: "Bloom Energy • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x6330d8c3178a418788df01a47479c0ce7ccf450b"
+  symbol: COIN (Robinhood)
+  underlying: COIN
+  issuer: robinhood
+  name: "Coinbase • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x4ea005168d7f09a7a0ba9d1def21a479950e44c2"
+  symbol: COST (Robinhood)
+  underlying: COST
+  issuer: robinhood
+  name: "Costco • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xdf0992e440dd0be65bd8439b609d6d4366bf1cb5"
+  symbol: CRCL (Robinhood)
+  underlying: CRCL
+  issuer: robinhood
+  name: "Circle Internet Group • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x5f10a1c971b69e47e059e1dc91901b59b3fb49c3"
+  symbol: CRWV (Robinhood)
+  underlying: CRWV
+  issuer: robinhood
+  name: "CoreWeave • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x941ae714ec6d8130c7b75d67160ca08f1e7d11dd"
+  symbol: DELL (Robinhood)
+  underlying: DELL
+  issuer: robinhood
+  name: "Dell • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x1d11f0496982706c5e14a514d4e79f2e6bde4516"
+  symbol: DJT (Robinhood)
+  underlying: DJT
+  issuer: robinhood
+  name: "Trump Media & Technology Group • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x41f4267525a8aff329540ef24fd83d9044758b33"
+  symbol: FIG (Robinhood)
+  underlying: FIG
+  issuer: robinhood
+  name: "Figma • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xc9a981fee1f9dec688bb123ccdecc63d0debfc4e"
+  symbol: GLD (Robinhood)
+  underlying: GLD
+  issuer: robinhood
+  name: "SPDR Gold Trust • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x2d427692e928fa156ec22acfabafa0447c5805b7"
+  symbol: GLXY (Robinhood)
+  underlying: GLXY
+  issuer: robinhood
+  name: "Galaxy Digital Inc. • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x1b0e319c6a659f002271b69db8a7df2f911c153e"
+  symbol: GME (Robinhood)
+  underlying: GME
+  issuer: robinhood
+  name: "GameStop • Robinhood Token"
+- chain: Robinhood Chain
   address: "0x2e0847e8910a9732eb3fb1bb4b70a580adad4fe3"
   symbol: GOOGL (Robinhood)
   underlying: GOOGL
   issuer: robinhood
   name: "Alphabet Class A • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xccee82fe024c36fa15e1005ede3e9e4787e23d09"
+  symbol: HIMS (Robinhood)
+  underlying: HIMS
+  issuer: robinhood
+  name: "Hims & Hers Health • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x980dcf6766fa79f5cf0c4aadb3ab477ff15a9619"
+  symbol: IBM (Robinhood)
+  underlying: IBM
+  issuer: robinhood
+  name: "IBM • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xc72b96e0e48ecd4dc75e1e45396e26300bc39681"
+  symbol: INTC (Robinhood)
+  underlying: INTC
+  issuer: robinhood
+  name: "Intel • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x8005d266423c7ea827372c9c864491e5786600ea"
+  symbol: LLY (Robinhood)
+  underlying: LLY
+  issuer: robinhood
+  name: "Eli Lilly • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x4e62068525ab11fe768e29dfd00ef909b9803016"
+  symbol: LULU (Robinhood)
+  underlying: LULU
+  issuer: robinhood
+  name: "Lululemon • Robinhood Token"
 - chain: Robinhood Chain
   address: "0xc0d6457c16cc70d6790dd43521c899c87ce02f35"
   symbol: META (Robinhood)
@@ -227,11 +1349,143 @@
   issuer: robinhood
   name: "Meta Platforms • Robinhood Token"
 - chain: Robinhood Chain
+  address: "0x43b07d15ce533bec5476d70c22a78a1b2b662155"
+  symbol: MRNA (Robinhood)
+  underlying: MRNA
+  issuer: robinhood
+  name: "Moderna • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xe93237c50d904957cf27e7b1133b510c669c2e74"
+  symbol: MSFT (Robinhood)
+  underlying: MSFT
+  issuer: robinhood
+  name: "Microsoft • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xec262a75e413fafd0df80480274532c79d42da09"
+  symbol: MSTR (Robinhood)
+  underlying: MSTR
+  issuer: robinhood
+  name: "Strategy Inc. • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xff080c8ce2e5feadaca0da81314ae59d232d4afd"
+  symbol: MU (Robinhood)
+  underlying: MU
+  issuer: robinhood
+  name: "Micron Technology • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x9d9c6684f596f66a64c030b93a886d51fd4d7931"
+  symbol: NBIS (Robinhood)
+  underlying: NBIS
+  issuer: robinhood
+  name: "Nebius Group • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x116f00968269b7bfbad4109ce591d6e74c0601d4"
+  symbol: NET (Robinhood)
+  underlying: NET
+  issuer: robinhood
+  name: "Cloudflare, Inc. Class A common stock • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xe0444ef8bf4ed74f74fd73686e2ddf4c1c5591e8"
+  symbol: NFLX (Robinhood)
+  underlying: NFLX
+  issuer: robinhood
+  name: "Netflix • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x408c14038a04f7bd235329e26d2bf569ee20e250"
+  symbol: NU (Robinhood)
+  underlying: NU
+  issuer: robinhood
+  name: "Nu • Robinhood Token"
+- chain: Robinhood Chain
   address: "0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec"
   symbol: NVDA (Robinhood)
   underlying: NVDA
   issuer: robinhood
   name: "NVIDIA • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xb0992820e760d836549ba69bc7598b4af75dee03"
+  symbol: ORCL (Robinhood)
+  underlying: ORCL
+  issuer: robinhood
+  name: "Oracle • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x7066a64c24e4206cd62e83bf198c1e7eb361f51e"
+  symbol: PFE (Robinhood)
+  underlying: PFE
+  issuer: robinhood
+  name: "Pfizer • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x894e1ec2d74ffe5aef8dc8a9e84686accb964f2a"
+  symbol: PLTR (Robinhood)
+  underlying: PLTR
+  issuer: robinhood
+  name: "Palantir Technologies • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x0f17206447090e464c277571124dd2688e48aea9"
+  symbol: QCOM (Robinhood)
+  underlying: QCOM
+  issuer: robinhood
+  name: "Qualcomm • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xd5f3879160bc7c32ebb4dc785f8a4f505888de68"
+  symbol: QQQ (Robinhood)
+  underlying: QQQ
+  issuer: robinhood
+  name: "Invesco QQQ • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x59818904ab4ce163b3ce4ffb64f2d6ca02c434b4"
+  symbol: QUBT (Robinhood)
+  underlying: QUBT
+  issuer: robinhood
+  name: "Quantum Computing • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xf0c4bf4c582cb3836e98394b1d4e7b7281101be8"
+  symbol: RBLX (Robinhood)
+  underlying: RBLX
+  issuer: robinhood
+  name: "Roblox • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x05b37fb53a299a1b874a619e1c4c404d52c36f4c"
+  symbol: RDDT (Robinhood)
+  underlying: RDDT
+  issuer: robinhood
+  name: "Reddit • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x92fd66527192e3e61d4ddd13322aa222de86f9b5"
+  symbol: SGOV (Robinhood)
+  underlying: SGOV
+  issuer: robinhood
+  name: "iShares 0-3 Month Treasury Bond • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xf53f66751b1eff985311b693531e3290f600c410"
+  symbol: SHOP (Robinhood)
+  underlying: SHOP
+  issuer: robinhood
+  name: "Shopify • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x84cab63bc87912e71ad199ff14a0ba45de68fef8"
+  symbol: SKHY (Robinhood)
+  underlying: SKHY
+  issuer: robinhood
+  name: "SK hynix Inc. American Depositary Shares • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x411efb0e7f985935daec3d4c3ebaea0d0ad7d89f"
+  symbol: SLV (Robinhood)
+  underlying: SLV
+  issuer: robinhood
+  name: "iShares Silver Trust • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xf6589f11bc40b669e584073f428b05562f568733"
+  symbol: SNAP (Robinhood)
+  underlying: SNAP
+  issuer: robinhood
+  name: "Snap • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xb90a19ff0af67f7779aff50a882a9cff42446400"
+  symbol: SNDK (Robinhood)
+  underlying: SNDK
+  issuer: robinhood
+  name: "Sandisk Corporation • Robinhood Token"
 - chain: Robinhood Chain
   address: "0x4a0e65a3eccec6dbe60ae065f2e7bb85fae35eea"
   symbol: SPCX (Robinhood)
@@ -250,6 +1504,30 @@
   underlying: TSLA
   issuer: robinhood
   name: "Tesla • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x58ffe4a942d3885baa22d7520691f611ef09e7aa"
+  symbol: TSM (Robinhood)
+  underlying: TSM
+  issuer: robinhood
+  name: "Taiwan Semiconductor Manufacturing • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0x5e81213613b6b86eab4c6c50d718d34359459786"
+  symbol: TTWO (Robinhood)
+  underlying: TTWO
+  issuer: robinhood
+  name: "Take-Two Interactive Software • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xd917b029c761d264c6a312bbbcda868658ef86a6"
+  symbol: USAR (Robinhood)
+  underlying: USAR
+  issuer: robinhood
+  name: "USA Rare Earth • Robinhood Token"
+- chain: Robinhood Chain
+  address: "0xa30fa36db767ad9ed3f7a60fc79526fb4d56d344"
+  symbol: USO (Robinhood)
+  underlying: USO
+  issuer: robinhood
+  name: "United States Oil Fund • Robinhood Token"
 - chain: Solana
   address: "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp"
   symbol: AAPLx
@@ -257,17 +1535,71 @@
   issuer: xstocks
   name: "Apple xStock"
 - chain: Solana
+  address: "XsXcJ6GZ9kVnjqGsjBnktRcuwMBmvKWh8S93RefZ1rF"
+  symbol: AMDx
+  underlying: AMD
+  issuer: xstocks
+  name: "AMD xStock"
+- chain: Solana
   address: "Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg"
   symbol: AMZNx
   underlying: AMZN
   issuer: xstocks
   name: "Amazon.com xStock"
 - chain: Solana
+  address: "XsgSaSvNSqLTtFuyWPBhK9196Xb9Bbdyjj4fH3cPJGo"
+  symbol: AVGOx
+  underlying: AVGO
+  issuer: xstocks
+  name: "Broadcom xStock"
+- chain: Solana
+  address: "Xs3ZFkPYT2BN7qBMqf1j1bfTeTm1rFzEFSsQ1z3wAKU"
+  symbol: AZNx
+  underlying: AZN
+  issuer: xstocks
+  name: "AstraZeneca xStock"
+- chain: Solana
+  address: "XsrBCwaH8c46xiqXBChzobgufRKxQxAWUWbndgBNzFn"
+  symbol: BMNRx
+  underlying: BMNR
+  issuer: xstocks
+  name: "Bitmine xStock"
+- chain: Solana
+  address: "Xs6B6zawENwAbWVi7w92rjazLuAr5Az59qgWKcNb45x"
+  symbol: BRK.Bx
+  underlying: BRK.B
+  issuer: xstocks
+  name: "Berkshire Hathaway xStock"
+- chain: Solana
+  address: "Xs7ZdzSHLU9ftNJsii5fCeJhoRWSC32SQGzGQtePxNu"
+  symbol: COINx
+  underlying: COIN
+  issuer: xstocks
+  name: "Coinbase xStock"
+- chain: Solana
   address: "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1"
   symbol: CRCLx
   underlying: CRCL
   issuer: xstocks
   name: "Circle xStock"
+- chain: Solana
+  address: "XsNNMt7WTNA2sV3jrb1NNfNgapxRF5i4i6GcnTRRHts"
+  symbol: CVXx
+  underlying: CVX
+  issuer: xstocks
+  name: "Chevron xStock"
+- chain: Solana
+  address: "Xsv9hRk1z5ystj9MhnA7Lq4vjSsLwzL2nxrwmwtD3re"
+  symbol: GLDx
+  underlying: GLD
+  issuer: xstocks
+  name: "Gold xStock"
+- chain: Solana
+  address: "Xsf9mBktVB9BSU5kf4nHxPq5hCBJ2j2ui3ecFGxPRGc"
+  symbol: GMEx
+  underlying: GME
+  issuer: xstocks
+  name: "Gamestop xStock"
 - chain: Solana
   address: "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN"
   symbol: GOOGLx
@@ -280,6 +1612,36 @@
   underlying: HOOD
   issuer: xstocks
   name: "Robinhood xStock"
+- chain: Solana
+  address: "XshPgPdXFRWB8tP1j82rebb2Q9rPgGX37RuqzohmArM"
+  symbol: INTCx
+  underlying: INTC
+  issuer: xstocks
+  name: "Intel xStock"
+- chain: Solana
+  address: "XsMAqkcKsUewDrzVkait4e5u4y8REgtyS7jWgCpLV2C"
+  symbol: JPMx
+  underlying: JPM
+  issuer: xstocks
+  name: "JPMorgan Chase xStock"
+- chain: Solana
+  address: "XsaBXg8dU5cPM6ehmVctMkVqoiRG2ZjMo1cyBJ3AykQ"
+  symbol: KOx
+  underlying: KO
+  issuer: xstocks
+  name: "Coca-Cola xStock"
+- chain: Solana
+  address: "Xsnuv4omNoHozR6EEW5mXkw8Nrny5rB3jVfLqi6gKMH"
+  symbol: LLYx
+  underlying: LLY
+  issuer: xstocks
+  name: "Eli Lilly xStock"
+- chain: Solana
+  address: "XsqE9cRRpzxcGKDXj1BJ7Xmg4GRhZoyY1KpmGSxAWT2"
+  symbol: MCDx
+  underlying: MCD
+  issuer: xstocks
+  name: "McDonald's xStock"
 - chain: Solana
   address: "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu"
   symbol: METAx
@@ -299,11 +1661,35 @@
   issuer: xstocks
   name: "MicroStrategy xStock"
 - chain: Solana
+  address: "XsEH7wWfJJu2ZT3UCFeVfALnVA6CP5ur7Ee11KmzVpL"
+  symbol: NFLXx
+  underlying: NFLX
+  issuer: xstocks
+  name: "Netflix xStock"
+- chain: Solana
   address: "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh"
   symbol: NVDAx
   underlying: NVDA
   issuer: xstocks
   name: "NVIDIA xStock"
+- chain: Solana
+  address: "XsjFwUPiLofddX5cWFHW35GCbXcSu1BCUGfxoQAQjeL"
+  symbol: ORCLx
+  underlying: ORCL
+  issuer: xstocks
+  name: "Oracle xStock"
+- chain: Solana
+  address: "Xsv99frTRUeornyvCfvhnDesQDWuvns1M852Pez91vF"
+  symbol: PEPx
+  underlying: PEP
+  issuer: xstocks
+  name: "PepsiCo xStock"
+- chain: Solana
+  address: "XsYdjDjNUygZ7yGKfQaB6TxLh2gC6RRjzLtLAGJrhzV"
+  symbol: PGx
+  underlying: PG
+  issuer: xstocks
+  name: "Procter & Gamble xStock"
 - chain: Solana
   address: "XsoBhf2ufR8fTyNSjqfU71DYGaE6Z3SUGAidpzriAA4"
   symbol: PLTRx
@@ -316,6 +1702,18 @@
   underlying: QQQ
   issuer: xstocks
   name: "Nasdaq xStock"
+- chain: Solana
+  address: "Xs31mE5EiqjSHEaiX9QDKCN6NvSGCqpJ6f1FNq2wri5"
+  symbol: RIOTx
+  underlying: RIOT
+  issuer: xstocks
+  name: "Riot Platforms xStock"
+- chain: Solana
+  address: "Xswbpc8UqU6e1j9QZEWCjBMjyvz4twqD7PCy6j2e7jj"
+  symbol: SNDKx
+  underlying: SNDK
+  issuer: xstocks
+  name: "Sandisk Corporation xStock"
 - chain: Solana
   address: "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8"
   symbol: SPCXx
@@ -334,39 +1732,27 @@
   underlying: TSLA
   issuer: xstocks
   name: "Tesla xStock"
-- chain: Robinhood Chain
-  address: "0x12f190a9f9d7d37a250758b26824b97ce941bf54"
-  symbol: AMZN (Robinhood)
-  underlying: AMZN
-  issuer: robinhood
-  name: "Amazon • Robinhood Token"
-- chain: Robinhood Chain
-  address: "0xdf0992e440dd0be65bd8439b609d6d4366bf1cb5"
-  symbol: CRCL (Robinhood)
-  underlying: CRCL
-  issuer: robinhood
-  name: "Circle Internet Group • Robinhood Token"
-- chain: Robinhood Chain
-  address: "0xaf3d76f1834a1d425780943c99ea8a608f8a93f9"
-  symbol: AAPL (Robinhood)
-  underlying: AAPL
-  issuer: robinhood
-  name: "Apple • Robinhood Token"
-- chain: Robinhood Chain
-  address: "0xd5f3879160bc7c32ebb4dc785f8a4f505888de68"
-  symbol: QQQ (Robinhood)
-  underlying: QQQ
-  issuer: robinhood
-  name: "Invesco QQQ • Robinhood Token"
-- chain: Robinhood Chain
-  address: "0x894e1ec2d74ffe5aef8dc8a9e84686accb964f2a"
-  symbol: PLTR (Robinhood)
-  underlying: PLTR
-  issuer: robinhood
-  name: "Palantir Technologies • Robinhood Token"
-- chain: Robinhood Chain
-  address: "0xe93237c50d904957cf27e7b1133b510c669c2e74"
-  symbol: MSFT (Robinhood)
-  underlying: MSFT
-  issuer: robinhood
-  name: "Microsoft • Robinhood Token"
+- chain: Solana
+  address: "XszvaiXGPwvk2nwb3o9C1CX4K6zH8sez11E6uyup6fe"
+  symbol: UNHx
+  underlying: UNH
+  issuer: xstocks
+  name: "UnitedHealth xStock"
+- chain: Solana
+  address: "XsqgsbXwWogGJsNcVZ3TyVouy2MbTkfCFhCGGGcQZ2p"
+  symbol: Vx
+  underlying: V
+  issuer: xstocks
+  name: "Visa xStock"
+- chain: Solana
+  address: "XsfCC9VL4DamVGNgdJpfLXB3sBVa158Gbx8sh7NzmTk"
+  symbol: VIDAx
+  underlying: VIDA
+  issuer: xstocks
+  name: "Vida Global xStock"
+- chain: Solana
+  address: "XsaHND8sHyfMfsWPj6kSdd5VwvCayZvjYgKmmcNL5qh"
+  symbol: XOMx
+  underlying: XOM
+  issuer: xstocks
+  name: "Exxon Mobil xStock"

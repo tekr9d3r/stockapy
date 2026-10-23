@@ -57,12 +57,19 @@ export function LiquidityTable({ rows, hideVenue = false }: { rows: LiquidityRow
               <tr key={r.id} className="grid grid-cols-[1fr_auto] items-center gap-x-3 gap-y-1.5 border-b px-4 py-3 last:border-0 hover:bg-bg-subtle md:table-row md:p-0">
                 <td className="md:px-2 md:py-2.5 md:pl-4">
                   <div className="flex items-center gap-2">
-                    {r.underlyings.map((t) => (
-                      <a key={t} href={`/stock/${t.toLowerCase()}`} className="flex items-center gap-2 font-semibold hover:text-accent">
-                        <StockLogo ticker={t} size={28} />
-                        {t}
-                      </a>
-                    ))}
+                    {r.underlyings.map((t) =>
+                      r.linkable.includes(t) ? (
+                        <a key={t} href={`/stock/${t.toLowerCase()}`} className="flex items-center gap-2 font-semibold hover:text-accent">
+                          <StockLogo ticker={t} size={28} />
+                          {t}
+                        </a>
+                      ) : (
+                        <span key={t} className="flex items-center gap-2 font-semibold">
+                          <StockLogo ticker={t} size={28} />
+                          {t}
+                        </span>
+                      ),
+                    )}
                   </div>
                 </td>
                 <td className="col-start-1 row-start-2 md:px-2 md:py-2.5">
