@@ -136,13 +136,13 @@ export default function Home() {
           </div>
           <ArrowRight size={20} aria-hidden="true" className="hidden text-fg-subtle sm:block" />
           <nav aria-label="Three ways to earn" className="flex flex-wrap justify-center gap-2">
-            {WAYS.map((w, i) => (
+            {WAYS.map((w) => (
               <a
                 key={w.category}
                 href={`#${w.category}`}
                 className={`flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-medium transition hover:border-border-strong ${CATEGORIES[w.category].cls.subtle}`}
               >
-                <StepNumber category={w.category} n={i + 1} size={20} />
+                <WayIcon category={w.category} size={22} />
                 {w.title}
               </a>
             ))}
@@ -153,8 +153,8 @@ export default function Home() {
       {/* ---------- The opportunities ---------- */}
       <section aria-label="Best opportunities right now" className="mb-6">
         <div className="grid gap-4 lg:grid-cols-3">
-          {WAYS.map((w, i) => (
-            <WayCard key={w.category} category={w.category} n={i + 1} title={w.title} how={w.how} count={d.counts[w.category]}>
+          {WAYS.map((w) => (
+            <WayCard key={w.category} category={w.category} title={w.title} how={w.how} count={d.counts[w.category]}>
               {w.category === "earn" && d.topEarn.map((r) => <EarnPick key={r.id} r={r} />)}
               {w.category === "liquidity" && d.topLiquidity.map((r) => <LiquidityPick key={r.id} r={r} />)}
               {w.category === "borrow" && d.topBorrow.map((r) => <BorrowPick key={r.id} r={r} />)}
@@ -302,28 +302,27 @@ const WAYS: { category: "earn" | "liquidity" | "borrow"; title: string; how: str
   { category: "borrow", title: "Borrow against it", how: "Post it as collateral and borrow stablecoins, without selling." },
 ];
 
-function StepNumber({ category, n, size = 28 }: { category: CategoryKey; n: number; size?: number }) {
+/** The category's menu icon on a solid plate: marks a way to earn, not a step. */
+function WayIcon({ category, size = 28 }: { category: CategoryKey; size?: number }) {
   return (
     <span
       aria-hidden="true"
-      style={{ width: size, height: size, fontSize: size * 0.5 }}
-      className={`inline-flex shrink-0 items-center justify-center rounded-full font-semibold text-on-category ${CATEGORIES[category].cls.bg}`}
+      style={{ width: size, height: size }}
+      className={`inline-flex shrink-0 items-center justify-center rounded-full text-on-category ${CATEGORIES[category].cls.bg}`}
     >
-      {n}
+      <CategoryIcon category={category} size={size * 0.55} strokeWidth={2.25} className="text-on-category!" />
     </span>
   );
 }
 
 function WayCard({
   category,
-  n,
   title,
   how,
   count,
   children,
 }: {
   category: CategoryKey;
-  n: number;
   title: string;
   how: string;
   count: number;
@@ -334,9 +333,8 @@ function WayCard({
     <div id={category} className="flex scroll-mt-24 flex-col rounded-2xl border bg-bg-raised shadow-card">
       <div className={`rounded-t-2xl border-b px-5 py-4 ${c.cls.subtle}`}>
         <div className="flex items-center gap-2.5">
-          <StepNumber category={category} n={n} />
+          <WayIcon category={category} size={30} />
           <h2 className="text-lg font-semibold">{title}</h2>
-          <CategoryIcon category={category} size={18} strokeWidth={2.25} className="ml-auto" />
         </div>
         <p className="mt-1.5 text-sm text-fg-muted">{how}</p>
       </div>
@@ -406,7 +404,7 @@ function EarnPick({ r }: { r: Row }) {
       chain={r.chain}
       meta={r.tvlUsd !== null ? `${formatUsd(r.tvlUsd)} deposited` : undefined}
       rate={formatApy(r.apyTotal)}
-      rateClass={mostlyIncentives ? "text-warn" : "text-earn"}
+      rateClass="text-earn"
       rateLabel={mostlyIncentives ? "APY · mostly incentives" : "APY"}
       extra={
         split ? (
@@ -435,7 +433,7 @@ function LiquidityPick({ r }: { r: LiquidityRow }) {
       chain={r.chain}
       meta={`${formatUsd(r.tvlUsd)} TVL · ${formatUsd(r.volumeUsd1d)} traded 24h`}
       rate={formatApy(r.apyBase)}
-      rateClass="text-liquidity"
+      rateClass="text-earn"
       rateLabel="fee APY"
       action={<ActionButton href={r.url} platform={r.venue.name} category="liquidity" />}
     />
