@@ -2,9 +2,9 @@ import { mdLink, mdLtv, mdPct, mdTable, mdUsd } from "./markdown";
 import { liquidityItem, opportunityItem, type LiquidityItem, type OpportunityItem } from "./serialize";
 import { getSummary } from "./summary";
 import { getPost } from "@/lib/content/posts";
-import { getLiquidityRows, liquidityRowsForTicker } from "@/lib/data/liquidity";
+import { getLiquidityRows, liquidityRowsForTicker, stockPageTickers } from "@/lib/data/liquidity";
+import { assetByTicker } from "@/lib/data/assets";
 import { getRows, rowsForTicker } from "@/lib/data/rows";
-import { loadSeed } from "@/lib/data/seed";
 import { BRAND_NAME, SITE_URL } from "@/config";
 
 /**
@@ -153,8 +153,8 @@ ${footer("/borrow", "/api/v1/borrow")}`;
 }
 
 export function stockMd(ticker: string): string | null {
-  const asset = loadSeed().underlying_assets.find((a) => a.ticker.toLowerCase() === ticker.toLowerCase());
-  if (!asset) return null;
+  const asset = assetByTicker(ticker);
+  if (!asset || !stockPageTickers().has(asset.ticker)) return null;
   const rows = rowsForTicker(asset.ticker).map(opportunityItem);
   const earn = rows.filter((r) => r.category === "earn").sort((a, b) => (b.apyTotal ?? -1) - (a.apyTotal ?? -1));
   const borrow = rows.filter((r) => r.borrow && r.status === "live");

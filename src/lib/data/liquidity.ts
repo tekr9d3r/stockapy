@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { REFRESH_INTERVAL_SECONDS } from "@/config";
-import { loadSeed } from "./seed";
+import { getRows } from "./rows";
 import { VENUES, type Venue } from "@/lib/liquidity/venues";
 import type { LiquidityFile, LiquidityPool } from "@/lib/liquidity/types";
 
@@ -29,9 +29,16 @@ export function loadLiquidityFile(): LiquidityFile | null {
   }
 }
 
-/** Tickers with a stock page. For now the seed's assets; see stock/[ticker]. */
-function stockPageTickers(): Set<string> {
-  return new Set(loadSeed().underlying_assets.map((a) => a.ticker));
+/**
+ * Tickers that get a stock page: any with a deposit or borrow market, plus any
+ * with an active liquidity pool (the activity rule the pool list already
+ * applies). Stocks with neither stay in the registry without a page, so there
+ * are no empty pages. Used by the pages, sitemap, llms.txt, API and Markdown.
+ */
+export function stockPageTickers(): Set<string> {
+  const tickers = new Set(getRows().map((r) => r.underlying.ticker));
+  for (const p of loadLiquidityFile()?.pools ?? []) for (const t of p.underlyings) tickers.add(t);
+  return tickers;
 }
 
 function toRow(p: LiquidityPool, now: number, pages: Set<string>): LiquidityRow {

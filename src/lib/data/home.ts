@@ -1,6 +1,7 @@
 import chainLogos from "../../../data/chain-logos.json";
 import { borrowRows, borrowStats, getRows, marketStats } from "./rows";
-import { getLiquidityRows, isDefaultVisible, isShortWindow, liquidityStats, type LiquidityRow } from "./liquidity";
+import { getLiquidityRows, isDefaultVisible, isShortWindow, liquidityStats, stockPageTickers, type LiquidityRow } from "./liquidity";
+import { loadAssets } from "./assets";
 import { loadSeed } from "./seed";
 import { VENUES } from "@/lib/liquidity/venues";
 import type { Row } from "./types";
@@ -52,27 +53,36 @@ export function getHomeData() {
     TOP_N,
   ).sort((a, b) => (b.borrow!.ltv ?? 0) - (a.borrow!.ltv ?? 0) || (a.borrow!.borrowApr ?? Infinity) - (b.borrow!.borrowApr ?? Infinity));
 
-  // One tile per stock that has anything live.
-  const tickers = [...new Set([...liveEarn.map((r) => r.underlying.ticker), ...lqRows.flatMap((r) => r.underlyings), ...borrowAll.map((r) => r.underlying.ticker)])];
-  const assets = new Map(loadSeed().underlying_assets.map((a) => [a.ticker, a]));
-  const stocks = tickers
+  // One entry per stock with a page (a live market), ranked by activity.
+  const assets = new Map(loadAssets().map((a) => [a.ticker, a]));
+  const stocks = [...stockPageTickers()]
     .filter((t) => assets.has(t))
     .map((t) => {
-      const e = liveEarn.filter((r) => r.underlying.ticker === t).map((r) => r.apyTotal ?? 0);
-      const l = lqRows
-        .filter((r) => r.underlyings.includes(t) && deepPools.includes(r))
+      const earnHere = liveEarn.filter((r) => r.underlying.ticker === t);
+      const poolsHere = lqRows.filter((r) => r.underlyings.includes(t) && r.pairType !== "stock-other");
+      const deep = poolsHere.filter((r) => deepPools.includes(r)).map((r) => r.apyBase!);
+      // No $250k+ pool: fall back to the best stablecoin pool with a full day of data.
+      const fullDay = poolsHere
+        .filter((r) => isDefaultVisible(r) && r.apyBase !== null && !isShortWindow(r))
         .map((r) => r.apyBase!);
       const b = borrowAll.filter((r) => r.underlying.ticker === t).map((r) => r.borrow?.ltv ?? 0);
+      const poolVolume = poolsHere.reduce((s, r) => s + r.volumeUsd1d, 0);
+      const earnTvl = earnHere.reduce((s, r) => s + (r.tvlUsd ?? 0), 0);
       return {
         ticker: t,
         name: assets.get(t)!.name,
-        bestEarn: e.length ? Math.max(...e) : null,
-        bestFee: l.length ? Math.max(...l) : null,
+        type: assets.get(t)!.type,
+        bestEarn: earnHere.length ? Math.max(...earnHere.map((r) => r.apyTotal ?? 0)) : null,
+        bestFee: deep.length ? Math.max(...deep) : fullDay.length ? Math.max(...fullDay) : null,
         maxLtv: b.length && Math.max(...b) > 0 ? Math.max(...b) : null,
-        markets: e.length + l.length + b.length,
+        markets: earnHere.length + poolsHere.length + b.length,
+        pools: poolsHere.length,
+        poolVolume,
+        /** For ranking: money moving through this stock's markets. */
+        activity: poolVolume + earnTvl,
       };
     })
-    .sort((a, b) => b.markets - a.markets);
+    .sort((a, b) => b.activity - a.activity || b.markets - a.markets);
 
   // Proof of coverage: everything we read data from, with logos.
   const seed = loadSeed();

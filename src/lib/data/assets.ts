@@ -31,3 +31,16 @@ export function assetByTicker(ticker: string): UnderlyingAsset | undefined {
   const t = ticker.toUpperCase();
   return loadAssets().find((a) => a.ticker.toUpperCase() === t);
 }
+
+const REGISTRY = path.join(process.cwd(), "data", "stock-tokens.yaml");
+
+export type RegisteredToken = { chain: string; address: string; symbol: string; underlying: string; issuer: string; name: string };
+
+let registry: RegisteredToken[] | null = null;
+
+/** The verified tokens for one asset, across issuers and chains (data/stock-tokens.yaml). */
+export function tokensForTicker(ticker: string): RegisteredToken[] {
+  registry ??= (parse(fs.readFileSync(REGISTRY, "utf8")) as RegisteredToken[]) ?? [];
+  const t = ticker.toUpperCase();
+  return registry.filter((r) => r.underlying.toUpperCase() === t);
+}

@@ -1,6 +1,6 @@
 import { BRAND_NAME, SITE_DESCRIPTION, SITE_URL, SOCIAL } from "@/config";
 import { GLOSSARY } from "@/lib/content/glossary";
-import { formatApy, formatPp } from "@/lib/format";
+import { formatApy, formatPp, formatUsd } from "@/lib/format";
 import type { Row, UnderlyingAsset } from "@/lib/data/types";
 
 type Json = Record<string, unknown>;
@@ -183,7 +183,13 @@ export function articleLd({
  * Builds the questions a stock page answers, from live data. Written as real
  * sentences because these are what an answer engine quotes.
  */
-export function stockFaq(asset: UnderlyingAsset, rows: Row[]) {
+/** What the FAQ knows beyond deposit and borrow rows: every verified token, and the best pool. */
+export type StockFaqExtra = {
+  tokens?: { symbol: string; issuer: string; chain: string }[];
+  bestPool?: { pair: string; venue: string; chain: string; feeApy: number; tvlUsd: number } | null;
+};
+
+export function stockFaq(asset: UnderlyingAsset, rows: Row[], extra: StockFaqExtra = {}) {
   const earn = rows.filter((r) => r.category === "earn" && !r.unmeasured);
   const best = earn.length
     ? earn.reduce((a, b) => ((b.apyTotal ?? 0) > (a.apyTotal ?? 0) ? b : a))
@@ -198,15 +204,27 @@ export function stockFaq(asset: UnderlyingAsset, rows: Row[]) {
           `${formatApy(best.apyTotal)} on ${best.platform.name} for ${best.token.symbol} on ` +
           `${best.chain}, and ${formatPp(best.apyReward)} of those ${formatPp(best.apyTotal)} ` +
           `percentage points are token incentives rather than interest paid by borrowers.`
-        : `Not at the moment. Every venue we track that accepts a tokenized ${asset.ticker} ` +
-          `holds it as collateral only, which means it earns nothing while deposited.`,
+        : (collateralOnly.length > 0
+            ? `Not by depositing it. Every venue we track that accepts a tokenized ${asset.ticker} ` +
+              `holds it as collateral only, which means it earns nothing while deposited.`
+            : `Not by depositing it: no lending market or vault we track pays on a tokenized ${asset.ticker} yet.`) +
+          (extra.bestPool
+            ? ` The yield available is from providing liquidity: the ${extra.bestPool.pair} pool on ` +
+              `${extra.bestPool.venue} (${extra.bestPool.chain}) pays ${formatApy(extra.bestPool.feeApy)} in trading ` +
+              `fees on ${formatUsd(extra.bestPool.tvlUsd)}, before impermanent loss.`
+            : ""),
     },
     {
       question: `Which tokenized ${asset.ticker} tokens exist?`,
-      answer:
-        `We track ${new Set(rows.map((r) => r.token.symbol)).size} tokenized ${asset.ticker} ` +
-        `tokens: ${[...new Set(rows.map((r) => `${r.token.symbol} from ${r.issuer.name} on ${r.chain}`))].join("; ")}. ` +
-        `They are not interchangeable — each issuer has its own redemption rules and its own venues.`,
+      answer: (() => {
+        const list = extra.tokens?.length
+          ? extra.tokens.map((t) => `${t.symbol} from ${t.issuer} on ${t.chain}`)
+          : [...new Set(rows.map((r) => `${r.token.symbol} from ${r.issuer.name} on ${r.chain}`))];
+        return (
+          `We track ${list.length} tokenized ${asset.ticker} ${list.length === 1 ? "token" : "tokens"}: ${list.join("; ")}. ` +
+          `They are not interchangeable — each issuer has its own redemption rules and its own venues.`
+        );
+      })(),
     },
   ];
 

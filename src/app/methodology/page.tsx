@@ -136,9 +136,15 @@ export default function MethodologyPage() {
           </p>
           <p>
             A pool is listed only if one of its tokens is in our registry of tokenized-stock contracts,
-            matched by <strong className="text-fg">address</strong>. Every address in the registry was
-            checked against the token&rsquo;s own on-chain name, because symbols are free to copy:
-            building it turned up a Solana token called AMDC whose on-chain name is a USD stablecoin.
+            matched by <strong className="text-fg">address</strong>. Symbols are free to copy, so every
+            token is verified on-chain before it is added: its own name must follow the issuer&rsquo;s
+            naming, and its provenance must check out — the issuer&rsquo;s proxy contract (Robinhood,
+            Ondo, Binance bStocks), the mint authority of genuine xStocks on Solana, or for Coinbase&rsquo;s
+            native tokens on Base the issuer&rsquo;s conventions together (address, symbol, decimals). This
+            rejected, among others, a Solana token called AMDC whose on-chain name is a USD stablecoin, and
+            memecoins sharing Coinbase&rsquo;s address prefix. We list company shares from any market and
+            plain ETFs and commodity funds; leveraged funds, preferred shares and wrapped copies of
+            another issuer&rsquo;s token are left out. A stock gets its own page once it has a live market.
             Every row links to the exact pool&rsquo;s deposit page and to its independent page on
             GeckoTerminal. All rates are before impermanent loss.
           </p>

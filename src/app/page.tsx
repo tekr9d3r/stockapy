@@ -8,6 +8,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { ChainLogo, IssuerLogo, PlatformLogo } from "@/components/Logo";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { StockLogo } from "@/components/StockLogo";
+import { StockTile } from "@/components/StockTile";
 import { listPosts } from "@/lib/content/posts";
 import { getHomeData, type LiquidityRow, type Row } from "@/lib/data/home";
 import { loadLatestSnapshot } from "@/lib/data/snapshot";
@@ -17,6 +18,11 @@ import { datasetLd, faqLd, organizationLd, webSiteLd } from "@/lib/seo/jsonld";
 import { BRAND_NAME, SITE_DESCRIPTION, SOCIAL } from "@/config";
 
 export const revalidate = 3600;
+
+/** How many stocks the home grid shows; the rest are on /stocks. */
+const HOME_STOCKS = 15;
+/** The hero's logos: the names the headline mentions, not whatever trades most today. */
+const HERO_TICKERS = ["NVDA", "TSLA", "SPY", "GOOGL", "AAPL"];
 
 export const metadata: Metadata = {
   alternates: {
@@ -128,8 +134,8 @@ export default function Home() {
         {/* The idea as a picture: your stock, three ways to put it to work. */}
         <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <div className="flex -space-x-2 [&>*]:rounded-full [&>*]:ring-2 [&>*]:ring-bg">
-            {d.stocks.slice(0, 5).map((s) => (
-              <StockLogo key={s.ticker} ticker={s.ticker} size={36} />
+            {HERO_TICKERS.map((t) => (
+              <StockLogo key={t} ticker={t} size={36} />
             ))}
           </div>
           <ArrowRight size={20} aria-hidden="true" className="hidden text-fg-subtle sm:block" />
@@ -181,32 +187,22 @@ export default function Home() {
       <section className="mb-16" aria-labelledby="by-stock">
         <SectionHead
           id="by-stock"
-          eyebrow={`${d.stocks.length} stocks`}
+          eyebrow="Most active right now"
           title="Pick your stock"
-          tip="The best rate in each category for every stock. LP fees count only stablecoin pools holding $250k or more."
+          tip="The best rate in each category, for the stocks with the most money moving through their markets. LP fees: the best stablecoin pool holding $250k or more, or else the best one with a full day of data."
         />
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-          {d.stocks.map((s) => (
-            <Link
-              key={s.ticker}
-              href={`/stock/${s.ticker.toLowerCase()}`}
-              className="group rounded-xl border bg-bg-raised p-4 transition hover:border-border-strong hover:shadow-card"
-            >
-              <div className="flex items-center gap-2.5">
-                <StockLogo ticker={s.ticker} size={32} />
-                <div className="min-w-0">
-                  <p className="font-semibold leading-tight">{s.ticker}</p>
-                  <p className="truncate text-xs text-fg-subtle">{s.name}</p>
-                </div>
-              </div>
-              <dl className="mt-3 space-y-1 text-xs">
-                <StockStat category="earn" label="Earn" value={s.bestEarn === null ? "—" : formatApy(s.bestEarn)} />
-                <StockStat category="liquidity" label="LP fees" value={s.bestFee === null ? "—" : formatApy(s.bestFee)} />
-                <StockStat category="borrow" label="Max LTV" value={s.maxLtv === null ? "—" : formatLtv(s.maxLtv)} />
-              </dl>
-            </Link>
+          {d.stocks.slice(0, HOME_STOCKS).map((s) => (
+            <StockTile key={s.ticker} s={s} />
           ))}
         </div>
+        {d.stocks.length > HOME_STOCKS && (
+          <div className="mt-4 text-center">
+            <Link href="/stocks" className="inline-flex items-center gap-1.5 rounded-lg border bg-bg-raised px-4 py-2.5 text-sm font-semibold hover:border-border-strong">
+              See all {d.stocks.length} stocks <ArrowRight size={15} aria-hidden="true" />
+            </Link>
+          </div>
+        )}
       </section>
 
       {/* ---------- Coverage / trust ---------- */}
@@ -435,18 +431,6 @@ function BorrowPick({ r }: { r: Row }) {
       rateClass="text-borrow"
       rateLabel="max LTV"
     />
-  );
-}
-
-function StockStat({ category, label, value }: { category: CategoryKey; label: string; value: string }) {
-  return (
-    <div className="flex items-center justify-between gap-2">
-      <dt className="flex items-center gap-1.5 text-fg-muted">
-        <span aria-hidden="true" className={`size-1.5 rounded-full ${CATEGORIES[category].cls.bg}`} />
-        {label}
-      </dt>
-      <dd className={`tabular-nums font-semibold ${value === "—" ? "text-fg-subtle" : "text-fg"}`}>{value}</dd>
-    </div>
   );
 }
 

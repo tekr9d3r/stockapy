@@ -1,7 +1,7 @@
 import { borrowRows, borrowStats, getRows, marketStats } from "@/lib/data/rows";
 import { loadLatestSnapshot } from "@/lib/data/snapshot";
 import { listPosts } from "@/lib/content/posts";
-import { liquidityStats } from "@/lib/data/liquidity";
+import { liquidityStats, stockPageTickers } from "@/lib/data/liquidity";
 import { formatApy, formatDate, formatLtv } from "@/lib/format";
 import { BRAND_NAME, SITE_DESCRIPTION, SITE_URL } from "@/config";
 
@@ -16,7 +16,7 @@ export function GET() {
   const rows = getRows();
   const stats = marketStats(rows);
   const asOf = formatDate(loadLatestSnapshot()?.fetchedAt ?? null);
-  const tickers = [...new Set(rows.map((r) => r.underlying.ticker))].sort();
+  const tickers = [...stockPageTickers()].sort();
   const borrow = borrowRows(rows);
   const lq = liquidityStats();
   const bs = borrowStats(borrow);
@@ -52,6 +52,7 @@ export function GET() {
 - [Earn](${SITE_URL}/earn): every place that pays you to deposit a tokenized stock, by platform.
 - [Provide liquidity with tokenized stocks](${SITE_URL}/liquidity): active Raydium, Uniswap and Aero pools with LP fee APY, volume, TVL and deposit links.
 - [Borrow against tokenized stocks](${SITE_URL}/borrow): max LTV, loan asset and borrow cost per venue.
+- [All stocks](${SITE_URL}/stocks): every tokenized stock and fund with a live market, with the best rate for each.
 - [Knowledge Hub](${SITE_URL}/hub): research and explainers.
 - [Weekly newsletter](${SITE_URL}/newsletter): the best pools and updated yields, every week.
 - [Glossary](${SITE_URL}/glossary): base APY, reward APY, points, collateral-only venues, looped vaults, oracle gap risk.

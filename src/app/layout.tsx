@@ -26,6 +26,7 @@ export const metadata: Metadata = {
 };
 
 const DATA_LINKS = [
+  { href: "/stocks", label: "All stocks" },
   { href: "/opportunities", label: "All earn & borrow markets" },
   { href: "/platforms", label: "Platforms" },
   { href: "/issuers", label: "Issuers" },

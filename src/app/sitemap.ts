@@ -1,15 +1,15 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/config";
-import { getRows } from "@/lib/data/rows";
+import { stockPageTickers } from "@/lib/data/liquidity";
 import { loadLatestSnapshot } from "@/lib/data/snapshot";
 import { listPosts } from "@/lib/content/posts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const dataModified = new Date(loadLatestSnapshot()?.fetchedAt ?? Date.now());
-  const rows = getRows();
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`, lastModified: dataModified, changeFrequency: "hourly", priority: 1 },
+    { url: `${SITE_URL}/stocks`, lastModified: dataModified, changeFrequency: "hourly", priority: 0.9 },
     { url: `${SITE_URL}/earn`, lastModified: dataModified, changeFrequency: "hourly", priority: 0.9 },
     { url: `${SITE_URL}/newsletter`, lastModified: dataModified, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/developers`, lastModified: dataModified, changeFrequency: "monthly", priority: 0.5 },
@@ -24,9 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/hub`, lastModified: dataModified, changeFrequency: "weekly", priority: 0.8 },
   ];
 
-  const stockPages: MetadataRoute.Sitemap = [
-    ...new Set(rows.map((r) => r.underlying.ticker.toLowerCase())),
-  ].map((ticker) => ({
+  const stockPages: MetadataRoute.Sitemap = [...stockPageTickers()].map((t) => t.toLowerCase()).map((ticker) => ({
     url: `${SITE_URL}/stock/${ticker}`,
     lastModified: dataModified,
     changeFrequency: "hourly" as const,

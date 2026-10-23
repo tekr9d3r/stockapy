@@ -12,10 +12,11 @@ import { Faq } from "@/components/Faq";
 import { InfoTip } from "@/components/InfoTip";
 import { LearnMore } from "@/components/LearnMore";
 import { IssuerLogo } from "@/components/Logo";
-import { borrowRows, borrowStats, getRows, marketStats, rowsForTicker } from "@/lib/data/rows";
+import { assetByTicker, tokensForTicker } from "@/lib/data/assets";
+import { borrowRows, borrowStats, marketStats, rowsForTicker } from "@/lib/data/rows";
 import { loadSeed } from "@/lib/data/seed";
 import { loadLatestSnapshot } from "@/lib/data/snapshot";
-import { liquidityRowsForTicker } from "@/lib/data/liquidity";
+import { liquidityRowsForTicker, stockPageTickers, type LiquidityRow } from "@/lib/data/liquidity";
 import { formatApy, formatDate, formatLtv, formatPp, formatUsd } from "@/lib/format";
 import { breadcrumbLd, datasetLd, faqLd, itemListLd, stockFaq } from "@/lib/seo/jsonld";
 import { BRAND_NAME } from "@/config";
@@ -23,38 +24,49 @@ import { BRAND_NAME } from "@/config";
 export const revalidate = 3600;
 export const dynamicParams = false;
 
-/** Only tickers that actually have an opportunity get a page. No thin permutations. */
+/**
+ * A page per stock with a real market: a deposit or borrow venue, or an active
+ * liquidity pool (stockPageTickers). Stocks with neither get no page.
+ */
 export function generateStaticParams() {
-  const tickers = new Set(getRows().map((r) => r.underlying.ticker.toLowerCase()));
-  return [...tickers].map((ticker) => ({ ticker }));
+  return [...stockPageTickers()].map((t) => ({ ticker: t.toLowerCase() }));
 }
+
+/** Pools that can headline: stablecoin pairs with a full day of data and real depth. */
+const DEEP_POOL_USD = 250_000;
 
 function load(ticker: string) {
-  const asset = loadSeed().underlying_assets.find(
-    (a) => a.ticker.toLowerCase() === ticker.toLowerCase(),
-  );
-  const rows = rowsForTicker(ticker);
-  if (!asset || rows.length === 0) return null;
-  return { asset, rows, stats: marketStats(rows) };
+  const asset = assetByTicker(ticker);
+  if (!asset || !stockPageTickers().has(asset.ticker)) return null;
+  const rows = rowsForTicker(asset.ticker);
+  // Hide speculative pairs on the stock page; the Liquidity page has them.
+  const allPools = liquidityRowsForTicker(asset.ticker);
+  const pools = allPools.filter((r) => r.pairType !== "stock-other");
+  const ranked = pools
+    .filter((r) => r.pairType === "stock-stable" && r.apyBase !== null && r.volumeWindowHours == null)
+    .sort((a, b) => b.apyBase! - a.apyBase!);
+  const bestPool: LiquidityRow | null = ranked.find((r) => r.tvlUsd >= DEEP_POOL_USD) ?? ranked[0] ?? null;
+  return { asset, rows, stats: marketStats(rows), allPools, pools, bestPool };
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ ticker: string }>;
-}): Promise<Metadata> {
+const pairName = (r: LiquidityRow) => r.legs.map((l) => l.symbol).join(" / ");
+
+export async function generateMetadata({ params }: { params: Promise<{ ticker: string }> }): Promise<Metadata> {
   const { ticker } = await params;
   const data = load(ticker);
   if (!data) return {};
 
-  const { asset, stats } = data;
+  const { asset, stats, bestPool, pools } = data;
   const best = stats.best;
   const title = `Earn yield on tokenized ${asset.ticker} (${asset.name})`;
   const description = best
     ? `The highest rate on tokenized ${asset.ticker} is ${formatApy(stats.maxApy)} on ` +
       `${best.platform.name}, of which ${formatPp(best.apyReward)}pp is token incentives. ` +
-      `${data.rows.length} venues compared, updated hourly.`
-    : `Every venue that accepts tokenized ${asset.ticker}, compared. Updated hourly.`;
+      `${data.rows.length + pools.length} markets compared, updated hourly.`
+    : bestPool
+      ? `Tokenized ${asset.ticker}: providing liquidity pays up to ${formatApy(bestPool.apyBase)} in trading fees ` +
+        `on ${bestPool.venue.name}. ${pools.length} active pools compared, updated hourly.`
+      : `Every market for tokenized ${asset.ticker}, compared. Updated hourly.`;
 
   return {
     title,
@@ -75,24 +87,27 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
   const data = load(ticker);
   if (!data) notFound();
 
-  const { asset, rows, stats } = data;
+  const { asset, rows, stats, allPools, pools, bestPool } = data;
   const asOf = formatDate(loadLatestSnapshot()?.fetchedAt ?? null);
   const best = stats.best;
-  const byIssuer = Object.groupBy(rows, (r) => r.issuer.name);
   const borrow = borrowRows(rows);
   const borrowSummary = borrowStats(borrow);
-  // Active pools only reach the data; hide speculative pairs on the stock page.
-  const allPools = liquidityRowsForTicker(asset.ticker);
-  const pools = allPools.filter((r) => r.pairType !== "stock-other");
   const hiddenPools = allPools.length - pools.length;
   const organicPct = stats.organicShare === null ? null : stats.organicShare * 100;
-  // Same depth floor as the home page, so a thin pool never headlines.
-  const bestPool =
-    pools
-      .filter((r) => r.pairType === "stock-stable" && r.apyBase !== null && r.volumeWindowHours == null && r.tvlUsd >= 250_000)
-      .sort((a, b) => b.apyBase! - a.apyBase!)[0] ?? null;
 
-  const faq = stockFaq(asset, rows);
+  // Every verified token for this asset, grouped by issuer, from the registry.
+  const issuers = new Map(loadSeed().issuers.map((i) => [i.id, i]));
+  const tokens = tokensForTicker(asset.ticker);
+  const byIssuer = new Map<string, typeof tokens>();
+  for (const t of tokens) byIssuer.set(t.issuer, [...(byIssuer.get(t.issuer) ?? []), t]);
+  const issuerName = (id: string) => (issuers.get(id)?.name ?? id).replace(/ \(.*\)$/, "");
+
+  const faq = stockFaq(asset, rows, {
+    tokens: tokens.map((t) => ({ symbol: t.symbol, issuer: issuerName(t.issuer), chain: t.chain })),
+    bestPool: bestPool
+      ? { pair: pairName(bestPool), venue: bestPool.venue.name, chain: bestPool.chain, feeApy: bestPool.apyBase!, tvlUsd: bestPool.tvlUsd }
+      : null,
+  });
 
   return (
     <>
@@ -101,24 +116,25 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
           datasetLd({
             name: `Yield on tokenized ${asset.ticker} (${asset.name})`,
             description:
-              `Every venue that accepts a tokenized ${asset.ticker}, with base interest and ` +
-              `token incentives shown separately.`,
+              `Every market for a tokenized ${asset.ticker}: deposit venues, liquidity pools and borrow ` +
+              `markets, with base interest and token incentives shown separately.`,
             url: `/stock/${asset.ticker.toLowerCase()}`,
             modified: loadLatestSnapshot()?.fetchedAt ?? null,
-            variables: ["APY", "Base APY", "Reward APY", "TVL in USD", "Lockup", "Chain"],
+            variables: ["APY", "Base APY", "Reward APY", "LP fee APY", "TVL in USD", "Max LTV", "Chain"],
           }),
-          itemListLd(rows, `Ways to earn on tokenized ${asset.ticker}`),
+          ...(rows.length ? [itemListLd(rows, `Ways to earn on tokenized ${asset.ticker}`)] : []),
           faqLd(faq),
           breadcrumbLd([
             { name: BRAND_NAME, path: "/" },
+            { name: "Stocks", path: "/stocks" },
             { name: asset.ticker, path: `/stock/${asset.ticker.toLowerCase()}` },
           ]),
         ]}
       />
 
       <nav className="mb-4 text-xs text-fg-subtle">
-        <Link href="/earn" className="hover:text-fg">
-          Earn
+        <Link href="/stocks" className="hover:text-fg">
+          Stocks
         </Link>
         <span className="mx-1.5">/</span>
         <span>{asset.ticker}</span>
@@ -143,42 +159,60 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
             {formatPp(best.apyReward)}pp incentives); the median of {stats.earnCount} venues is{" "}
             {formatApy(stats.medianApy)}.
           </>
+        ) : bestPool ? (
+          <>
+            As of {asOf}: no deposit market pays on tokenized {asset.ticker} yet. Providing liquidity pays up to{" "}
+            <strong className="text-fg">{formatApy(bestPool.apyBase)}</strong> in trading fees ({pairName(bestPool)} on{" "}
+            {bestPool.venue.name}, {formatUsd(bestPool.tvlUsd)} TVL), before impermanent loss.
+          </>
         ) : (
           <>
-            As of {asOf}, no venue pays interest on a tokenized {asset.ticker}; the {rows.length} below accept
-            it as collateral only.
+            As of {asOf}, tokenized {asset.ticker} trades in {pools.length} active{" "}
+            {pools.length === 1 ? "pool" : "pools"}; no deposit market pays on it yet.
           </>
         )}
       </p>
 
       <dl className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <Tile category="earn" label="Best deposit rate" value={formatApy(stats.maxApy)} note={best?.platform.name ?? "none found"} />
+        <Tile
+          category="earn"
+          label="Best deposit rate"
+          value={best ? formatApy(stats.maxApy) : "—"}
+          note={best ? best.platform.name : "no deposit market yet"}
+        />
         <Tile
           category="liquidity"
           label="Best LP fee APY"
           value={bestPool ? formatApy(bestPool.apyBase) : "—"}
-          note={bestPool ? `${bestPool.venue.name} · ${formatUsd(bestPool.tvlUsd)} TVL` : "no deep stablecoin pool"}
+          note={bestPool ? `${bestPool.venue.name} · ${formatUsd(bestPool.tvlUsd)} TVL` : "no stablecoin pool with a full day of data"}
         />
         <Tile
           category="borrow"
           label="Max LTV"
           value={formatLtv(borrowSummary.maxLtv)}
-          note={borrowSummary.cheapest ? `from ${borrowSummary.cheapest.borrow!.borrowApr?.toFixed(2)}%` : undefined}
+          note={
+            borrowSummary.cheapest
+              ? `from ${borrowSummary.cheapest.borrow!.borrowApr?.toFixed(2)}%`
+              : borrow.length
+                ? undefined
+                : "no borrow market yet"
+          }
         />
         <Tile
-          tone="warn"
-          label="Real interest"
-          value={organicPct === null ? "—" : `${organicPct.toFixed(1)}%`}
-          note="share of deposit yield"
+          label="Active markets"
+          value={String(rows.filter((r) => r.status === "live").length + pools.length)}
+          note={organicPct === null ? `${tokens.length} verified ${tokens.length === 1 ? "token" : "tokens"}` : `${organicPct.toFixed(1)}% of deposit yield is interest`}
         />
       </dl>
 
-      <section className="mt-10">
-        <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
-          <CategoryIcon category="earn" size={18} /> Deposit {asset.ticker}
-        </h2>
-        <OpportunityTable rows={rows} />
-      </section>
+      {rows.length > 0 && (
+        <section className="mt-10">
+          <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+            <CategoryIcon category="earn" size={18} /> Deposit {asset.ticker}
+          </h2>
+          <OpportunityTable rows={rows} />
+        </section>
+      )}
 
       {pools.length > 0 && (
         <section className="mt-10">
@@ -202,32 +236,34 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
         </section>
       )}
 
-      <section className="mt-10">
-        <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
-          Which {asset.ticker} token?
-          <InfoTip text="The same share exists as several tokens. They are not interchangeable: each issuer has its own chain, redemption rules and venues." />
-        </h2>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {Object.entries(byIssuer).map(([issuerName, issuerRows]) => {
-            const list = issuerRows ?? [];
-            const first = list[0];
-            if (!first) return null;
-            const bestHere = list.reduce((a, b) => ((b.apyTotal ?? 0) > (a.apyTotal ?? 0) ? b : a));
-            return (
-              <div key={issuerName} className="flex items-center gap-3 rounded-xl border bg-bg-raised p-4" title={first.issuer.structure_note}>
-                <IssuerLogo id={first.issuer.id} name={issuerName} size={32} />
-                <div className="min-w-0 flex-1">
-                  <p className="font-medium">{issuerName.replace(/ \(.*\)$/, "")}</p>
-                  <p className="truncate text-xs text-fg-subtle">
-                    {[...new Set(list.map((r) => r.token.symbol))].join(", ")} · {[...new Set(list.map((r) => r.chain))].join(", ")}
-                  </p>
+      {byIssuer.size > 0 && (
+        <section className="mt-10">
+          <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+            Which {asset.ticker} token?
+            <InfoTip text="The same share exists as several tokens. They are not interchangeable: each issuer has its own chain, redemption rules and venues." />
+          </h2>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {[...byIssuer].map(([issuerId, list]) => {
+              const bestHere = rows
+                .filter((r) => r.issuer.id === issuerId && r.status === "live")
+                .reduce<number | null>((m, r) => (r.apyTotal !== null && (m === null || r.apyTotal > m) ? r.apyTotal : m), null);
+              return (
+                <div key={issuerId} className="flex items-center gap-3 rounded-xl border bg-bg-raised p-4" title={issuers.get(issuerId)?.structure_note}>
+                  <IssuerLogo id={issuerId} name={issuerName(issuerId)} size={32} />
+                  <div className="min-w-0 flex-1">
+                    <p className="font-medium">{issuerName(issuerId)}</p>
+                    <p className="truncate text-xs text-fg-subtle">
+                      {[...new Set(list.map((t) => t.symbol.replace(/ \(Robinhood\)$/, "")))].join(", ")} ·{" "}
+                      {[...new Set(list.map((t) => t.chain))].join(", ")}
+                    </p>
+                  </div>
+                  {bestHere !== null && <span className="text-sm font-semibold tabular-nums">{formatApy(bestHere)}</span>}
                 </div>
-                <span className="text-sm font-semibold tabular-nums">{formatApy(bestHere.apyTotal)}</span>
-              </div>
-            );
-          })}
-        </div>
-      </section>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       <LearnMore
         posts={["earning-on-tokenized-stocks-what-to-know", "providing-liquidity-with-tokenized-stocks", "borrowing-against-tokenized-stocks-risks"]}
