@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { Menu } from "lucide-react";
 import { BrandMark } from "@/components/BrandMark";
 import { CategoryIcon } from "@/components/CategoryIcon";
@@ -134,6 +135,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </footer>
+        {/* Vercel Web Analytics: cookieless page-view counts, no personal data. */}
+        <Analytics />
       </body>
     </html>
   );

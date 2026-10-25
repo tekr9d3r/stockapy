@@ -39,6 +39,11 @@ export default function PrivacyPage() {
         Your theme choice (light or dark) is kept in your own browser&rsquo;s storage and never sent
         to us. Our host may keep standard server logs, such as IP addresses, for security.
       </p>
+      <p>
+        We count visits with Vercel Web Analytics, which uses no cookies and stores no personal data:
+        it records which pages are viewed, the referring site, and the country and device type, in
+        aggregate. It cannot identify you or follow you across sites.
+      </p>
     </article>
   );
 }
