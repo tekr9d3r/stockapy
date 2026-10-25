@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { readJsonCached } from "./fileCache";
 import type { Snapshot, SnapshotFile } from "./types";
 
 const SNAPSHOT_DIR = path.join(process.cwd(), "data", "snapshots");
@@ -10,11 +11,7 @@ const LATEST = path.join(SNAPSHOT_DIR, "latest.json");
  * site still builds from seed data alone (and on a fetcher outage).
  */
 export function loadLatestSnapshot(): SnapshotFile | null {
-  try {
-    return JSON.parse(fs.readFileSync(LATEST, "utf8")) as SnapshotFile;
-  } catch {
-    return null;
-  }
+  return readJsonCached<SnapshotFile>(LATEST);
 }
 
 export function snapshotsById(): Map<string, Snapshot> {

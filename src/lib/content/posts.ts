@@ -4,6 +4,10 @@ import matter from "gray-matter";
 
 const POSTS_DIR = path.join(process.cwd(), "content", "hub");
 
+const NO_JS = (): never => {
+  throw new Error("JavaScript front matter is disabled");
+};
+
 export type PostMeta = {
   slug: string;
   title: string;
@@ -21,7 +25,9 @@ export type Post = PostMeta & { body: string };
 function parseFile(fileName: string): Post {
   const slug = fileName.replace(/\.mdx?$/, "");
   const raw = fs.readFileSync(path.join(POSTS_DIR, fileName), "utf8");
-  const { data, content } = matter(raw);
+  // Front matter is YAML only. gray-matter can also evaluate "---js" blocks;
+  // that is switched off so a file can never run code just by being parsed.
+  const { data, content } = matter(raw, { engines: { js: NO_JS, javascript: NO_JS } });
 
   const required = ["title", "description", "datePublished", "author"] as const;
   for (const key of required) {
@@ -53,7 +59,12 @@ export function listPosts(): PostMeta[] {
     .sort((a, b) => Date.parse(b.datePublished) - Date.parse(a.datePublished));
 }
 
+/** Post slugs are lower-case words and hyphens. Anything else (dots, slashes) is refused. */
+const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
 export function getPost(slug: string): Post | null {
+  // The slug comes from the URL (e.g. /hub/<slug>.md): never let it leave POSTS_DIR.
+  if (!SLUG.test(slug)) return null;
   for (const ext of [".mdx", ".md"]) {
     const file = `${slug}${ext}`;
     if (fs.existsSync(path.join(POSTS_DIR, file))) return parseFile(file);

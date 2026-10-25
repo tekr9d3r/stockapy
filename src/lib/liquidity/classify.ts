@@ -34,6 +34,26 @@ export const MAJORS = new Set([
   "XAUT", "XAUT0", "PAXG",
 ]);
 
+/**
+ * A token symbol from a third party, made safe to show and to hand to agents.
+ * Anyone can name a token anything (markup, "ignore previous instructions…"),
+ * and these symbols reach our pages, Markdown and llms-full.txt. Real tickers
+ * use letters, digits and a few separators, so anything else is dropped and the
+ * result is capped; an empty result becomes "?".
+ */
+export function cleanSymbol(symbol: unknown): string {
+  const s = String(symbol ?? "")
+    .normalize("NFKC")
+    // Tether writes its name with the tugrik sign (USD₮0); keep it readable, not "USD0".
+    .replace(/₮/g, "T")
+    .replace(/[^A-Za-z0-9.$_+\-/ ()]/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 24)
+    .trim();
+  return s || "?";
+}
+
 /** EVM addresses compare case-insensitively; Solana mints are case-sensitive. */
 export function normAddress(address: string): string {
   return address.startsWith("0x") ? address.toLowerCase() : address;

@@ -1,7 +1,7 @@
-import fs from "node:fs";
 import path from "node:path";
 import { REFRESH_INTERVAL_SECONDS } from "@/config";
 import { getRows } from "./rows";
+import { readJsonCached } from "./fileCache";
 import { VENUES, type Venue } from "@/lib/liquidity/venues";
 import type { LiquidityFile, LiquidityPool } from "@/lib/liquidity/types";
 
@@ -22,11 +22,7 @@ export type LiquidityRow = LiquidityPool & {
 };
 
 export function loadLiquidityFile(): LiquidityFile | null {
-  try {
-    return JSON.parse(fs.readFileSync(FILE, "utf8")) as LiquidityFile;
-  } catch {
-    return null;
-  }
+  return readJsonCached<LiquidityFile>(FILE);
 }
 
 /**

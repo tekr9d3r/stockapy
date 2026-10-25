@@ -11,6 +11,7 @@ import { CATEGORIES, type CategoryKey } from "@/lib/categories";
 import { formatApy, formatDate, formatLtv } from "@/lib/format";
 import { breadcrumbLd } from "@/lib/seo/jsonld";
 import { BRAND_NAME, NEWSLETTER } from "@/config";
+import { signupErrorMessage } from "@/lib/newsletter";
 
 export const revalidate = 3600;
 
@@ -26,7 +27,8 @@ export const metadata: Metadata = {
 };
 
 export default async function NewsletterPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
-  const { error } = await searchParams;
+  // Only codes we issued map to a message; any other text in the URL is ignored.
+  const error = signupErrorMessage((await searchParams).error);
   const d = getHomeData();
   const asOf = formatDate(loadLatestSnapshot()?.fetchedAt ?? null);
 

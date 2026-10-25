@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { parse } from "yaml";
-import { buildIndex, type RegistryToken } from "@/lib/liquidity/classify";
+import { buildIndex, cleanSymbol, type RegistryToken } from "@/lib/liquidity/classify";
 import type { LiquidityFile, LiquidityPool, LiquiditySource, ReviewPool } from "@/lib/liquidity/types";
 import { fetchAeroSugar } from "./liquidity/aero";
 import { fetchGeckoTerminal } from "./liquidity/geckoterminal";
@@ -16,6 +16,22 @@ const REGISTRY = path.join(process.cwd(), "data", "stock-tokens.yaml");
  */
 export const ACTIVE_MIN_VOLUME_USD = 1_000;
 export const MIN_TVL_USD = 10_000;
+
+/**
+ * Token symbols come from third parties and anyone can name a token anything.
+ * They are cleaned once here, after each venue has classified its pools (which
+ * needs the original symbols), and before they are stored or shown anywhere.
+ */
+const cleanPair = (pair: string) => pair.split(" / ").map(cleanSymbol).join(" / ");
+
+function sanitizePool(p: LiquidityPool): LiquidityPool {
+  return {
+    ...p,
+    symbol: cleanPair(p.symbol),
+    legs: p.legs.map((l) => ({ ...l, symbol: cleanSymbol(l.symbol) })),
+    emissions: p.emissions ? { ...p.emissions, token: cleanSymbol(p.emissions.token) } : p.emissions,
+  };
+}
 
 export function loadRegistry(): RegistryToken[] {
   return parse(fs.readFileSync(REGISTRY, "utf8")) as RegistryToken[];
@@ -64,7 +80,7 @@ export async function fetchLiquidity(previous: LiquidityFile | null): Promise<Li
 
   // A pool seen by two sources is listed once, from the first (most direct) one.
   const seen = new Set<string>();
-  const unique = all.filter((p) => (seen.has(p.id) ? false : (seen.add(p.id), true)));
+  const unique = all.filter((p) => (seen.has(p.id) ? false : (seen.add(p.id), true))).map(sanitizePool);
 
   let inactive = 0;
   let belowTvl = 0;
@@ -74,5 +90,11 @@ export async function fetchLiquidity(previous: LiquidityFile | null): Promise<Li
     return true;
   });
 
-  return { fetchedAt, sources, pools, excluded: { inactive, belowTvl, otherVenues }, review };
+  return {
+    fetchedAt,
+    sources,
+    pools,
+    excluded: { inactive, belowTvl, otherVenues },
+    review: review.map((r) => ({ ...r, symbol: cleanPair(r.symbol) })),
+  };
 }
