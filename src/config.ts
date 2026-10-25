@@ -19,7 +19,7 @@ export const REFRESH_INTERVAL_SECONDS = 3600;
 
 /** Social profiles: footer links and Organization.sameAs in the JSON-LD. */
 export const SOCIAL = {
-  x: "https://x.com/tekr9d3r",
+  x: "https://x.com/tekr0x",
   github: "https://github.com/tekr9d3r/stockapy",
 } as const;
 
