@@ -113,18 +113,10 @@ export default function Home() {
         ]}
       />
 
-      {/* ---------- Front page: dateline, headline answer, dek ---------- */}
-      <section className="border-b-2 border-fg pb-6">
-        <h1 className="max-w-4xl text-4xl leading-[1.08] tracking-tight sm:text-6xl">
-          Tokenized stocks give you more options than ever: extra yield on the stocks you already like.
-        </h1>
-        <p className="mt-4 max-w-2xl text-[18px] leading-relaxed text-fg-muted">
-          Once a stock is a token, you can lend it, use it to make a market, or borrow against it, without
-          selling it. Below are today&apos;s rates from {d.platforms.length} platforms, checked hourly and never paid for. Last updated {asOf}.
-        </p>
-      </section>
+      {/* The page opens straight on the tables. The H1 is for search engines and screen readers. */}
+      <h1 className="sr-only">Yield on tokenized stocks: lend, market-make or borrow against them</h1>
 
-      <div className="mt-8 grid gap-x-10 gap-y-12 lg:grid-cols-[1fr_300px]">
+      <div className="grid gap-x-10 gap-y-12 lg:grid-cols-[1fr_300px]">
         {/* ---------- The opportunities ---------- */}
         <div className="min-w-0 space-y-12">
           {WAYS.map((w) => (
