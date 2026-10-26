@@ -12,7 +12,7 @@ import { loadSeed } from "@/lib/data/seed";
 import { loadLatestSnapshot } from "@/lib/data/snapshot";
 import { formatApy, formatDate, formatUsd } from "@/lib/format";
 import { breadcrumbLd, datasetLd, itemListLd } from "@/lib/seo/jsonld";
-import { BRAND_NAME } from "@/config";
+import { BRAND_NAME, OG_IMAGE } from "@/config";
 
 export const revalidate = 3600;
 
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     canonical: "/earn",
     types: { "text/markdown": "/earn.md", "application/json": "/api/v1/earn" },
   },
-  openGraph: { title: `Earn yield on tokenized stocks · ${BRAND_NAME}`, description: DESCRIPTION },
+  openGraph: { images: [OG_IMAGE], title: `Lend your tokenized stock and earn a yield · ${BRAND_NAME}`, description: DESCRIPTION },
 };
 
 export default function EarnPage() {

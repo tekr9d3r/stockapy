@@ -8,7 +8,7 @@ import { mdxComponents } from "@/components/mdx";
 import { getPost, listLessons, listPosts } from "@/lib/content/posts";
 import { articleLd, breadcrumbLd, faqLd } from "@/lib/seo/jsonld";
 import { formatDate } from "@/lib/format";
-import { BRAND_NAME } from "@/config";
+import { BRAND_NAME, OG_IMAGE } from "@/config";
 
 export const revalidate = 3600;
 export const dynamicParams = false;
@@ -31,6 +31,7 @@ export async function generateMetadata({
     description: post.description,
     alternates: { canonical: `/hub/${post.slug}` },
     openGraph: {
+    images: [OG_IMAGE],
       title: `${post.title} · ${BRAND_NAME}`,
       description: post.description,
       type: "article",

@@ -18,7 +18,7 @@ import { loadLatestSnapshot } from "@/lib/data/snapshot";
 import { liquidityRowsForTicker, stockPageTickers, type LiquidityRow } from "@/lib/data/liquidity";
 import { formatApy, formatDate, formatLtv, formatPp, formatUsd } from "@/lib/format";
 import { breadcrumbLd, datasetLd, faqLd, itemListLd, stockFaq } from "@/lib/seo/jsonld";
-import { BRAND_NAME } from "@/config";
+import { BRAND_NAME, OG_IMAGE } from "@/config";
 
 export const revalidate = 3600;
 export const dynamicParams = false;
@@ -77,7 +77,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ticker: s
         "application/json": `/api/v1/stocks/${asset.ticker.toLowerCase()}`,
       },
     },
-    openGraph: { title: `${title} · ${BRAND_NAME}`, description, type: "website" },
+    openGraph: { images: [OG_IMAGE], title: `${title} · ${BRAND_NAME}`, description, type: "website" },
   };
 }
 

@@ -12,7 +12,7 @@ import { borrowRows, borrowStats } from "@/lib/data/rows";
 import { loadLatestSnapshot } from "@/lib/data/snapshot";
 import { formatDate, formatLtv } from "@/lib/format";
 import { breadcrumbLd, datasetLd, faqLd } from "@/lib/seo/jsonld";
-import { BRAND_NAME } from "@/config";
+import { BRAND_NAME, OG_IMAGE } from "@/config";
 
 export const revalidate = 3600;
 
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     canonical: "/borrow",
     types: { "text/markdown": "/borrow.md", "application/json": "/api/v1/borrow" },
   },
-  openGraph: { title: `Borrow against tokenized stocks · ${BRAND_NAME}`, description: DESCRIPTION },
+  openGraph: { images: [OG_IMAGE], title: `Borrow cash against your tokenized stock · ${BRAND_NAME}`, description: DESCRIPTION },
 };
 
 export default function BorrowPage() {

@@ -12,7 +12,7 @@ import { getLiquidityRows, liquidityStats, loadLiquidityFile } from "@/lib/data/
 import { marketStats } from "@/lib/data/rows";
 import { formatApy, formatDate, formatUsd } from "@/lib/format";
 import { breadcrumbLd, datasetLd, faqLd } from "@/lib/seo/jsonld";
-import { BRAND_NAME } from "@/config";
+import { BRAND_NAME, OG_IMAGE } from "@/config";
 
 export const revalidate = 3600;
 
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     canonical: "/liquidity",
     types: { "text/markdown": "/liquidity.md", "application/json": "/api/v1/liquidity" },
   },
-  openGraph: { title: `Provide liquidity with tokenized stocks · ${BRAND_NAME}`, description: DESCRIPTION },
+  openGraph: { images: [OG_IMAGE], title: `Act as a market maker with your tokenized stock · ${BRAND_NAME}`, description: DESCRIPTION },
 };
 
 export default function LiquidityPage() {

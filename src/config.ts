@@ -4,6 +4,16 @@
 export const BRAND_NAME = "StockAPY";
 export const BRAND_TAGLINE = "Where tokenized stocks actually earn";
 export const SITE_URL = "https://stockapy.xyz";
+/**
+ * The social preview card (src/app/opengraph-image.png). Pages that set their own
+ * `openGraph` replace the inherited one wholesale, so they list this explicitly.
+ */
+export const OG_IMAGE = {
+  url: "/opengraph-image.png",
+  width: 1200,
+  height: 630,
+  alt: "StockAPY: where tokenized stocks actually earn. Lend, market-make or borrow, compared across platforms and chains.",
+};
 export const SITE_DESCRIPTION =
   "An independent comparison of every place you can earn yield on tokenized stocks — " +
   "across chains, issuers, DeFi protocols and CeFi platforms. Base rates, incentives and " +

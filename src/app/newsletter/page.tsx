@@ -9,7 +9,7 @@ import { loadLatestSnapshot } from "@/lib/data/snapshot";
 import { CATEGORIES, type CategoryKey } from "@/lib/categories";
 import { formatApy, formatDate, formatLtv } from "@/lib/format";
 import { breadcrumbLd } from "@/lib/seo/jsonld";
-import { BRAND_NAME, NEWSLETTER } from "@/config";
+import { BRAND_NAME, NEWSLETTER, OG_IMAGE } from "@/config";
 import { signupErrorMessage } from "@/lib/newsletter";
 
 export const revalidate = 3600;
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: "Weekly newsletter: the best tokenized-stock yields",
   description: DESCRIPTION,
   alternates: { canonical: "/newsletter" },
-  openGraph: { title: `${NEWSLETTER.name} · ${BRAND_NAME}`, description: DESCRIPTION },
+  openGraph: { images: [OG_IMAGE], title: `${NEWSLETTER.name} · ${BRAND_NAME}`, description: DESCRIPTION },
 };
 
 export default async function NewsletterPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
