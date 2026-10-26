@@ -120,7 +120,7 @@ export default function Home() {
         {/* ---------- The opportunities ---------- */}
         <div className="min-w-0 space-y-12">
           {WAYS.map((w) => (
-            <Way key={w.category} category={w.category} count={d.counts[w.category]} rateLabel={w.rateLabel}>
+            <Way key={w.category} category={w.category} count={d.counts[w.category]} extraLabel={w.extraLabel} rateLabel={w.rateLabel}>
               {w.category === "earn" && d.topEarn.map((r) => <EarnPick key={r.id} r={r} />)}
               {w.category === "liquidity" && d.topLiquidity.map((r) => <LiquidityPick key={r.id} r={r} />)}
               {w.category === "borrow" && d.topBorrow.map((r) => <BorrowPick key={r.id} r={r} />)}
@@ -228,10 +228,10 @@ export default function Home() {
 
 /* ---------------------------------------------------------------- pieces */
 
-const WAYS: { category: "earn" | "liquidity" | "borrow"; rateLabel: string }[] = [
-  { category: "earn", rateLabel: "Yield / yr" },
-  { category: "liquidity", rateLabel: "Fee yield / yr" },
-  { category: "borrow", rateLabel: "Borrow up to" },
+const WAYS: { category: "earn" | "liquidity" | "borrow"; extraLabel: string; rateLabel: string }[] = [
+  { category: "earn", extraLabel: "Money in", rateLabel: "Yield / yr" },
+  { category: "liquidity", extraLabel: "Money in pool", rateLabel: "Fee yield / yr" },
+  { category: "borrow", extraLabel: "Interest / yr", rateLabel: "Borrow up to" },
 ];
 
 const COMPARE_NOUN: Record<string, string> = { earn: "places to lend", liquidity: "trading pools", borrow: "borrowing markets" };
@@ -240,11 +240,13 @@ const COMPARE_NOUN: Record<string, string> = { earn: "places to lend", liquidity
 function Way({
   category,
   count,
+  extraLabel,
   rateLabel,
   children,
 }: {
   category: CategoryKey;
   count: number;
+  extraLabel: string;
   rateLabel: string;
   children: React.ReactNode;
 }) {
@@ -259,9 +261,11 @@ function Way({
       <table className="mt-4 w-full border-t border-fg text-sm">
         <thead>
           <tr className="border-b text-left">
-            <th scope="col" className="kicker py-2 font-semibold">Stock</th>
-            <th scope="col" className="kicker hidden py-2 font-semibold sm:table-cell">Platform</th>
-            <th scope="col" className="kicker py-2 text-right font-semibold">{rateLabel}</th>
+            <th scope="col" className="kicker py-2 pr-3">Stock</th>
+            <th scope="col" className="kicker hidden py-2 pr-3 sm:table-cell">Platform</th>
+            <th scope="col" className="kicker hidden py-2 pr-3 md:table-cell">Chain</th>
+            <th scope="col" className="kicker hidden py-2 pr-3 text-right sm:table-cell">{extraLabel}</th>
+            <th scope="col" className="kicker py-2 text-right">{rateLabel}</th>
           </tr>
         </thead>
         <tbody className="divide-y">{children}</tbody>
@@ -279,16 +283,21 @@ function Way({
 function Pick({
   ticker,
   title,
+  sub,
   platform,
   chain,
-  meta,
+  extra,
+  extraSub,
   rate,
 }: {
   ticker: string;
   title: string;
+  /** Second line under the token: the company, or the day's trading. */
+  sub?: string;
   platform: { id: string; name: string };
   chain: string;
-  meta?: string;
+  extra: string;
+  extraSub?: string;
   rate: string;
 }) {
   const chainName = chain === "BSC" ? "BNB Chain" : chain;
@@ -296,25 +305,33 @@ function Pick({
     <tr>
       <td className="py-3 pr-3">
         <div className="flex items-center gap-2.5">
-          <StockLogo ticker={ticker} size={28} />
+          <StockLogo ticker={ticker} size={30} />
           <div className="min-w-0">
             <p className="truncate font-semibold leading-tight">{title}</p>
+            {sub && <p className="mt-0.5 truncate text-xs text-fg-subtle">{sub}</p>}
+            {/* Phone width: platform and chain fold under the token. */}
             <p className="mt-0.5 truncate text-xs text-fg-subtle sm:hidden">
               {platform.name} · {chainName}
             </p>
-            {meta && <p className="mt-0.5 hidden truncate text-xs text-fg-subtle sm:block">{meta}</p>}
           </div>
         </div>
       </td>
       <td className="hidden py-3 pr-3 sm:table-cell">
-        <span className="flex items-center gap-1.5">
-          <PlatformLogo id={platform.id} name={platform.name} size={16} />
+        <span className="flex items-center gap-2">
+          <PlatformLogo id={platform.id} name={platform.name} size={20} />
           {platform.name}
         </span>
-        <span className="mt-0.5 flex items-center gap-1.5 text-xs text-fg-subtle">
-          <ChainLogo chain={chainName} size={12} />
+        <span className="mt-0.5 block text-xs text-fg-subtle md:hidden">{chainName}</span>
+      </td>
+      <td className="hidden py-3 pr-3 md:table-cell">
+        <span className="flex items-center gap-2 text-fg-muted">
+          <ChainLogo chain={chainName} size={16} />
           {chainName}
         </span>
+      </td>
+      <td className="hidden py-3 pr-3 text-right tabular-nums sm:table-cell">
+        {extra}
+        {extraSub && <span className="mt-0.5 block text-xs text-fg-subtle">{extraSub}</span>}
       </td>
       <td className="py-3 text-right font-[family-name:var(--font-display)] text-xl tabular-nums">{rate}</td>
     </tr>
@@ -326,9 +343,10 @@ function EarnPick({ r }: { r: Row }) {
     <Pick
       ticker={r.underlying.ticker}
       title={r.token.symbol}
+      sub={r.underlying.name}
       platform={r.platform}
       chain={r.chain}
-      meta={r.tvlUsd !== null ? `${formatUsd(r.tvlUsd)} deposited` : undefined}
+      extra={r.tvlUsd !== null ? formatUsd(r.tvlUsd) : "—"}
       rate={formatApy(r.apyTotal)}
     />
   );
@@ -339,9 +357,10 @@ function LiquidityPick({ r }: { r: LiquidityRow }) {
     <Pick
       ticker={r.underlyings[0]}
       title={r.legs.map((l) => l.symbol).join(" / ")}
+      sub={`${formatUsd(r.volumeUsd1d)} traded today`}
       platform={{ id: r.venue.id, name: r.venue.name }}
       chain={r.chain}
-      meta={`${formatUsd(r.tvlUsd)} in the pool · ${formatUsd(r.volumeUsd1d)} traded today`}
+      extra={formatUsd(r.tvlUsd)}
       rate={formatApy(r.apyBase)}
     />
   );
@@ -353,9 +372,11 @@ function BorrowPick({ r }: { r: Row }) {
     <Pick
       ticker={r.underlying.ticker}
       title={`${r.token.symbol} → ${b.loanAsset}`}
+      sub={r.underlying.name}
       platform={r.platform}
       chain={r.chain}
-      meta={b.borrowApr !== null ? `Borrow ${b.loanAsset} at ${b.borrowApr.toFixed(2)}% a year` : undefined}
+      extra={b.borrowApr !== null ? `${b.borrowApr.toFixed(2)}%` : "—"}
+      extraSub={`in ${b.loanAsset}`}
       rate={formatLtv(b.ltv)}
     />
   );
