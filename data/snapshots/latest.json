@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-25T21:42:56.830Z",
+  "fetchedAt": "2026-10-26T00:16:40.802Z",
   "sources": {
     "defillama": {
       "ok": true,
@@ -26,9 +26,9 @@
       "apyReward": 0,
       "tvlUsd": 2377161,
       "ltv": 0.55,
-      "borrowApr": 7.85001,
+      "borrowApr": 7.86065,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "kamino-xstocks-tslax",
@@ -37,9 +37,9 @@
       "apyReward": 0,
       "tvlUsd": 2807519,
       "ltv": 0.55,
-      "borrowApr": 7.85001,
+      "borrowApr": 7.86065,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "kamino-xstocks-aaplx",
@@ -48,9 +48,9 @@
       "apyReward": 0,
       "tvlUsd": 449876,
       "ltv": 0.4,
-      "borrowApr": 7.85001,
+      "borrowApr": 7.86065,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "kamino-xstocks-googlx",
@@ -59,31 +59,31 @@
       "apyReward": 0,
       "tvlUsd": 3852376,
       "ltv": 0.6,
-      "borrowApr": 7.85001,
+      "borrowApr": 7.86065,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "kamino-xstocks-mstrx",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 4624962,
+      "tvlUsd": 4624963,
       "ltv": 0.3,
-      "borrowApr": 7.85001,
+      "borrowApr": 7.86065,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "kamino-xstocks-crclx",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 948063,
+      "tvlUsd": 993459,
       "ltv": 0.3,
-      "borrowApr": 7.85001,
+      "borrowApr": 7.86065,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "kamino-xstocks-hoodx",
@@ -92,20 +92,20 @@
       "apyReward": 0,
       "tvlUsd": 478762,
       "ltv": 0.3,
-      "borrowApr": 7.85001,
+      "borrowApr": 7.86065,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "kamino-xstocks-spyx",
       "apyTotal": 0.10212,
       "apyBase": 0.10212,
       "apyReward": 0,
-      "tvlUsd": 4100405,
+      "tvlUsd": 4100438,
       "ltv": 0.73,
-      "borrowApr": 7.85001,
+      "borrowApr": 7.86065,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "kamino-xstocks-qqqx",
@@ -114,9 +114,9 @@
       "apyReward": 0,
       "tvlUsd": 3192351,
       "ltv": 0.7,
-      "borrowApr": 7.85001,
+      "borrowApr": 7.86065,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "kamino-sentora-nvdax",
@@ -127,7 +127,7 @@
       "ltv": 0.62,
       "borrowApr": 0.87957,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "kamino-sentora-spyx",
@@ -138,7 +138,7 @@
       "ltv": 0.72,
       "borrowApr": 0.87957,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "kamino-sentora-qqqx",
@@ -149,431 +149,431 @@
       "ltv": 0.7,
       "borrowApr": 0.87957,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "jupiter-nvdax-usdc",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 1374469,
+      "tvlUsd": 1380469,
       "ltv": 0.65,
-      "borrowApr": 6.25747,
+      "borrowApr": 6.33187,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "jupiter-nvdax-jupusd",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 130736,
+      "tvlUsd": 131338,
       "ltv": 0.65,
       "borrowApr": 6.68328,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "jupiter-tslax-usdc",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 679163,
+      "tvlUsd": 682616,
       "ltv": 0.65,
-      "borrowApr": 6.25747,
+      "borrowApr": 6.33187,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "jupiter-tslax-jupusd",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 261533,
+      "tvlUsd": 263060,
       "ltv": 0.65,
       "borrowApr": 6.68328,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "jupiter-spyx-usdc",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 5215114,
+      "tvlUsd": 5222746,
       "ltv": 0.75,
-      "borrowApr": 6.25747,
+      "borrowApr": 6.33187,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "jupiter-spyx-jupusd",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 446331,
+      "tvlUsd": 447238,
       "ltv": 0.75,
       "borrowApr": 6.68328,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "jupiter-qqqx-usdc",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 325476,
+      "tvlUsd": 326722,
       "ltv": 0.75,
-      "borrowApr": 6.25747,
+      "borrowApr": 6.33187,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "jupiter-qqqx-jupusd",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 119551,
+      "tvlUsd": 119878,
       "ltv": 0.75,
       "borrowApr": 6.68328,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "superform-supernvda",
-      "apyTotal": 14.56316,
-      "apyBase": 0.12307,
-      "apyReward": 14.44009,
-      "tvlUsd": 460557,
+      "apyTotal": 14.47135,
+      "apyBase": 0.12521,
+      "apyReward": 14.34613,
+      "tvlUsd": 462539,
       "ltv": null,
       "borrowApr": null,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "superform-supertsla",
-      "apyTotal": 18.2587,
-      "apyBase": 0.07668,
-      "apyReward": 18.18202,
-      "tvlUsd": 249584,
+      "apyTotal": 18.08838,
+      "apyBase": 0.0795,
+      "apyReward": 18.00889,
+      "tvlUsd": 250568,
       "ltv": null,
       "borrowApr": null,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "superform-supergoogl",
-      "apyTotal": 21.70897,
-      "apyBase": 0.09902,
-      "apyReward": 21.60995,
-      "tvlUsd": 211351,
+      "apyTotal": 21.46627,
+      "apyBase": 0.10199,
+      "apyReward": 21.36428,
+      "tvlUsd": 212211,
       "ltv": null,
       "borrowApr": null,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "superform-superaapl",
-      "apyTotal": 21.71131,
-      "apyBase": 0.10136,
-      "apyReward": 21.60995,
-      "tvlUsd": 96250,
+      "apyTotal": 21.4693,
+      "apyBase": 0.10502,
+      "apyReward": 21.36428,
+      "tvlUsd": 96440,
       "ltv": null,
       "borrowApr": null,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "superform-supermeta",
-      "apyTotal": 21.70166,
-      "apyBase": 0.09171,
-      "apyReward": 21.60995,
-      "tvlUsd": 42500,
+      "apyTotal": 21.45938,
+      "apyBase": 0.0951,
+      "apyReward": 21.36428,
+      "tvlUsd": 42566,
       "ltv": null,
       "borrowApr": null,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "superform-superamzn",
-      "apyTotal": 15.0914,
-      "apyBase": 0.0914,
+      "apyTotal": 15.0938,
+      "apyBase": 0.0938,
       "apyReward": 15,
-      "tvlUsd": 24769,
+      "tvlUsd": 24893,
       "ltv": null,
       "borrowApr": null,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "superform-supermsft",
-      "apyTotal": 15.09291,
-      "apyBase": 0.09291,
+      "apyTotal": 15.09583,
+      "apyBase": 0.09583,
       "apyReward": 15,
-      "tvlUsd": 17998,
+      "tvlUsd": 18064,
       "ltv": null,
       "borrowApr": null,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "superform-superspcx",
-      "apyTotal": 18.65381,
+      "apyTotal": 18.47052,
       "apyBase": 0,
-      "apyReward": 18.65381,
-      "tvlUsd": 226765,
+      "apyReward": 18.47052,
+      "tvlUsd": 226569,
       "ltv": null,
       "borrowApr": null,
       "source": "defillama",
-      "fetchedAt": "2026-10-25T21:42:57.730Z"
+      "fetchedAt": "2026-10-26T00:16:41.475Z"
     },
     {
       "opportunityId": "aave-v4-nvdac",
-      "apyTotal": 3.04456200797878,
+      "apyTotal": 3.0445620082521545,
       "apyBase": 0,
-      "apyReward": 3.04456200797878,
-      "tvlUsd": 3022460.2541,
+      "apyReward": 3.0445620082521545,
+      "tvlUsd": 3028445.4406,
       "ltv": 0.7,
-      "borrowApr": 3.7035187605422624,
+      "borrowApr": 3.702880785928044,
       "source": "aave_api",
-      "fetchedAt": "2026-10-25T21:42:58.173Z"
+      "fetchedAt": "2026-10-26T00:16:41.910Z"
     },
     {
       "opportunityId": "aave-v4-tslac",
       "apyTotal": 3.044561986177704,
       "apyBase": 0,
       "apyReward": 3.044561986177704,
-      "tvlUsd": 983526.0581,
+      "tvlUsd": 987439.3818,
       "ltv": 0.65,
-      "borrowApr": 3.7035187605422624,
+      "borrowApr": 3.702880785928044,
       "source": "aave_api",
-      "fetchedAt": "2026-10-25T21:42:58.173Z"
+      "fetchedAt": "2026-10-26T00:16:41.910Z"
     },
     {
       "opportunityId": "aave-v4-aaplc",
       "apyTotal": 3.0445620059490697,
       "apyBase": 0,
       "apyReward": 3.0445620059490697,
-      "tvlUsd": 768060.6418,
+      "tvlUsd": 765621.0337,
       "ltv": 0.78,
-      "borrowApr": 3.7035187605422624,
+      "borrowApr": 3.702880785928044,
       "source": "aave_api",
-      "fetchedAt": "2026-10-25T21:42:58.173Z"
+      "fetchedAt": "2026-10-26T00:16:41.910Z"
     },
     {
       "opportunityId": "aave-v4-googlc",
       "apyTotal": 3.0445620002569096,
       "apyBase": 0,
       "apyReward": 3.0445620002569096,
-      "tvlUsd": 3793264.3489,
+      "tvlUsd": 3789583.3529,
       "ltv": 0.76,
-      "borrowApr": 3.7035187605422624,
+      "borrowApr": 3.702880785928044,
       "source": "aave_api",
-      "fetchedAt": "2026-10-25T21:42:58.173Z"
+      "fetchedAt": "2026-10-26T00:16:41.910Z"
     },
     {
       "opportunityId": "aave-v4-msftc",
       "apyTotal": 3.0445620305386627,
       "apyBase": 0,
       "apyReward": 3.0445620305386627,
-      "tvlUsd": 331798.0127,
+      "tvlUsd": 330605.2947,
       "ltv": 0.79,
-      "borrowApr": 3.7035187605422624,
+      "borrowApr": 3.702880785928044,
       "source": "aave_api",
-      "fetchedAt": "2026-10-25T21:42:58.173Z"
+      "fetchedAt": "2026-10-26T00:16:41.910Z"
     },
     {
       "opportunityId": "aave-v4-metac",
-      "apyTotal": 3.04456200419276,
+      "apyTotal": 3.0445620114825664,
       "apyBase": 0,
-      "apyReward": 3.04456200419276,
-      "tvlUsd": 1839601.751,
+      "apyReward": 3.0445620114825664,
+      "tvlUsd": 1844984.9612,
       "ltv": 0.65,
-      "borrowApr": 3.7035187605422624,
+      "borrowApr": 3.702880785928044,
       "source": "aave_api",
-      "fetchedAt": "2026-10-25T21:42:58.173Z"
+      "fetchedAt": "2026-10-26T00:16:41.910Z"
     },
     {
       "opportunityId": "aave-v4-amznc",
       "apyTotal": 3.0445620276094365,
       "apyBase": 0,
       "apyReward": 3.0445620276094365,
-      "tvlUsd": 468784.1173,
+      "tvlUsd": 470856.8669,
       "ltv": 0.73,
-      "borrowApr": 3.7035187605422624,
+      "borrowApr": 3.702880785928044,
       "source": "aave_api",
-      "fetchedAt": "2026-10-25T21:42:58.173Z"
+      "fetchedAt": "2026-10-26T00:16:41.910Z"
     },
     {
       "opportunityId": "morpho-nvda-usdg-robinhood",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 1376699.6585079664,
+      "tvlUsd": 1375336.9429071716,
       "ltv": 0.625,
-      "borrowApr": 32.54984418487964,
-      "lendApy": 29.17646666692835,
+      "borrowApr": 32.61149154657388,
+      "lendApy": 29.231340421002916,
       "source": "morpho_api",
-      "fetchedAt": "2026-10-25T21:42:58.747Z"
+      "fetchedAt": "2026-10-26T00:16:42.376Z"
     },
     {
       "opportunityId": "morpho-spcx-usdg-robinhood",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 1198744.9672236908,
+      "tvlUsd": 1205127.1083561173,
       "ltv": 0.625,
-      "borrowApr": 31.491128433928985,
-      "lendApy": 28.388805695564166,
+      "borrowApr": 31.54842842604113,
+      "lendApy": 28.438905026873083,
       "source": "morpho_api",
-      "fetchedAt": "2026-10-25T21:42:58.747Z"
+      "fetchedAt": "2026-10-26T00:16:42.376Z"
     },
     {
       "opportunityId": "morpho-googl-usdg-robinhood",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 606508.1676469008,
+      "tvlUsd": 605441.2027537897,
       "ltv": 0.625,
-      "borrowApr": 30.189007998602747,
-      "lendApy": 27.252239844888464,
+      "borrowApr": 30.273829174375226,
+      "lendApy": 27.328215875886556,
       "source": "morpho_api",
-      "fetchedAt": "2026-10-25T21:42:58.747Z"
+      "fetchedAt": "2026-10-26T00:16:42.376Z"
     },
     {
       "opportunityId": "morpho-wspyx-ausd-ethereum",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 478237.4040040542,
+      "tvlUsd": 477463.35597395117,
       "ltv": 0.86,
-      "borrowApr": 12.706589481025809,
-      "lendApy": 10.832441074549699,
+      "borrowApr": 12.696336136075285,
+      "lendApy": 10.823836993845255,
       "source": "morpho_api",
-      "fetchedAt": "2026-10-25T21:42:58.747Z"
+      "fetchedAt": "2026-10-26T00:16:42.376Z"
     },
     {
       "opportunityId": "morpho-aapl-usdg-robinhood",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 504849.15641393303,
+      "tvlUsd": 502230.24644127715,
       "ltv": 0.625,
-      "borrowApr": 21.555815695168832,
-      "lendApy": 19.1969055365607,
+      "borrowApr": 21.5557428148902,
+      "lendApy": 19.196981712590606,
       "source": "morpho_api",
-      "fetchedAt": "2026-10-25T21:42:58.747Z"
+      "fetchedAt": "2026-10-26T00:16:42.376Z"
     },
     {
       "opportunityId": "morpho-nvda-usdg-robinhood-2",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 97563.66002738534,
+      "tvlUsd": 97467.0873866003,
       "ltv": 0.625,
-      "borrowApr": 0.9731723616818724,
-      "lendApy": 0.9682830282968119,
+      "borrowApr": 0.9892092130111817,
+      "lendApy": 0.9842389329550727,
       "source": "morpho_api",
-      "fetchedAt": "2026-10-25T21:42:58.747Z"
+      "fetchedAt": "2026-10-26T00:16:42.376Z"
     },
     {
       "opportunityId": "morpho-spy-usdg-robinhood",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 20314.95859653182,
+      "tvlUsd": 20303.343106170432,
       "ltv": 0.625,
-      "borrowApr": 0.09377210624881312,
-      "lendApy": 0.07733107333414466,
+      "borrowApr": 0.09377211256192751,
+      "lendApy": 0.0773310828022608,
       "source": "morpho_api",
-      "fetchedAt": "2026-10-25T21:42:58.747Z"
+      "fetchedAt": "2026-10-26T00:16:42.376Z"
     },
     {
       "opportunityId": "morpho-spcxc-usdc-base",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 14691.995864244454,
+      "tvlUsd": 14653.096948378872,
       "ltv": 0.625,
-      "borrowApr": 5.5817458891713345,
-      "lendApy": 5.077201238791209,
+      "borrowApr": 5.596782768116151,
+      "lendApy": 5.090981793808287,
       "source": "morpho_api",
-      "fetchedAt": "2026-10-25T21:42:58.747Z"
+      "fetchedAt": "2026-10-26T00:16:42.376Z"
     },
     {
       "opportunityId": "morpho-aaplc-usdc-base",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 13395.490795366934,
+      "tvlUsd": 13345.351009823384,
       "ltv": 0.625,
-      "borrowApr": 5.824626016091188,
-      "lendApy": 5.231264381439717,
+      "borrowApr": 5.838913462121587,
+      "lendApy": 5.24452037070128,
       "source": "morpho_api",
-      "fetchedAt": "2026-10-25T21:42:58.747Z"
+      "fetchedAt": "2026-10-26T00:16:42.376Z"
     },
     {
       "opportunityId": "morpho-googlc-usdc-base",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 11862.732695966268,
+      "tvlUsd": 11844.917400381222,
       "ltv": 0.77,
-      "borrowApr": 5.650294963988518,
-      "lendApy": 5.074154391962169,
+      "borrowApr": 5.664598783695759,
+      "lendApy": 5.087429616162664,
       "source": "morpho_api",
-      "fetchedAt": "2026-10-25T21:42:58.747Z"
+      "fetchedAt": "2026-10-26T00:16:42.376Z"
     },
     {
       "opportunityId": "morpho-nvda-usdg-robinhood-3",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 3759.49258078815,
+      "tvlUsd": 3755.7712758838798,
       "ltv": 0.625,
-      "borrowApr": 1.3221354267633445,
-      "lendApy": 1.0173136295367065,
+      "borrowApr": 1.3194089087561587,
+      "lendApy": 1.0152197406859522,
       "source": "morpho_api",
-      "fetchedAt": "2026-10-25T21:42:58.747Z"
+      "fetchedAt": "2026-10-26T00:16:42.376Z"
     },
     {
       "opportunityId": "morpho-nvdac-usdc-base",
       "apyTotal": 0,
       "apyBase": 0,
       "apyReward": 0,
-      "tvlUsd": 3255.3470715564667,
+      "tvlUsd": 3250.960884453743,
       "ltv": 0.625,
-      "borrowApr": 1.2032644273432307,
-      "lendApy": 0.1749783792251827,
+      "borrowApr": 1.1860317497469886,
+      "lendApy": 0.17248557540767936,
       "source": "morpho_api",
-      "fetchedAt": "2026-10-25T21:42:58.747Z"
+      "fetchedAt": "2026-10-26T00:16:42.376Z"
     },
     {
       "opportunityId": "kraken-vault-nvdax",
       "apyTotal": null,
       "apyBase": null,
       "apyReward": null,
-      "tvlUsd": 380571.3042649343,
+      "tvlUsd": 380333.95054073207,
       "source": "onchain",
-      "fetchedAt": "2026-10-25T21:42:59.768Z"
+      "fetchedAt": "2026-10-26T00:16:43.322Z"
     },
     {
       "opportunityId": "kraken-vault-spyx",
       "apyTotal": null,
       "apyBase": null,
       "apyReward": null,
-      "tvlUsd": 1019211.1689710042,
+      "tvlUsd": 1017563.4680667944,
       "source": "onchain",
-      "fetchedAt": "2026-10-25T21:42:59.768Z"
+      "fetchedAt": "2026-10-26T00:16:43.322Z"
     },
     {
       "opportunityId": "kraken-vault-qqqx",
       "apyTotal": null,
       "apyBase": null,
       "apyReward": null,
-      "tvlUsd": 771398.8613814875,
+      "tvlUsd": 768766.322020375,
       "source": "onchain",
-      "fetchedAt": "2026-10-25T21:42:59.768Z"
+      "fetchedAt": "2026-10-26T00:16:43.322Z"
     }
   ]
 }
