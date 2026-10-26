@@ -33,7 +33,7 @@ export function LiquidityTable({ rows, hideVenue = false }: { rows: LiquidityRow
           liquidity provider. All rates are before impermanent loss.
         </caption>
         <thead className="hidden md:table-header-group">
-          <tr className="border-y border-t-fg text-left text-[11px] uppercase tracking-wide text-fg-muted">
+          <tr className="border-y border-t-fg text-left text-[11px] text-fg-muted">
             <th scope="col" className="px-2 py-2 pl-4 font-medium">Stock</th>
             <th scope="col" className="px-2 py-2 font-medium">Pool</th>
             <th scope="col" className="px-2 py-2 font-medium">Chain</th>
@@ -115,7 +115,7 @@ export function LiquidityTable({ rows, hideVenue = false }: { rows: LiquidityRow
                     </span>
                   )}
                   {r.volumeWindowHours != null && (
-                    <span className="block text-[10px] font-medium uppercase tracking-wide text-warn">{r.volumeWindowHours}h of data</span>
+                    <span className="block text-[10px] font-medium text-warn">{r.volumeWindowHours}h of data</span>
                   )}
                   {r.emissions ? (
                     <span

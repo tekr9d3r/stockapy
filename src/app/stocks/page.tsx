@@ -63,7 +63,7 @@ export default function StocksPage() {
 function Group({ title, items }: { title: string; items: ReturnType<typeof getHomeData>["stocks"] }) {
   return (
     <section className="mt-8">
-      <h2 className="mb-3 text-sm font-semibold tracking-wide text-fg-muted uppercase">
+      <h2 className="mb-3 text-2xl tracking-tight">
         {title} · {items.length}
       </h2>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">

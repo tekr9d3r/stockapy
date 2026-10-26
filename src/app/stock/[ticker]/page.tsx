@@ -271,7 +271,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
       <Faq entries={faq} title={`Questions about tokenized ${asset.ticker}`} />
 
       {rows.some((r) => r.riskNotes) && (
-        <details className="mx-auto mt-4 max-w-3xl rounded-xl border bg-bg-raised px-5 py-3.5">
+        <details className="mt-4 max-w-3xl border-y py-3.5">
           <summary className="cursor-pointer text-sm font-medium text-fg-muted">Platform-specific notes</summary>
           <ul className="mt-3 space-y-2">
             {[...new Map(rows.filter((r) => r.riskNotes).map((r) => [r.platform.id, r])).values()].map((row) => (

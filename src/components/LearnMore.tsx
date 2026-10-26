@@ -20,7 +20,7 @@ export function LearnMore({ posts, terms = [] }: { posts: string[]; terms?: stri
 
   return (
     <section aria-labelledby="learn-more" className="mt-12 border-t-2 border-fg pt-4">
-      <h2 id="learn-more" className="kicker">
+      <h2 id="learn-more" className="text-2xl tracking-tight">
         Before you deposit
       </h2>
       <ul className="mt-2 divide-y">
@@ -28,7 +28,7 @@ export function LearnMore({ posts, terms = [] }: { posts: string[]; terms?: stri
           <li key={a.href}>
             <Link href={a.href} className="group flex items-baseline justify-between gap-4 py-3">
               <span className="font-[family-name:var(--font-display)] text-lg leading-snug group-hover:underline">{a.title}</span>
-              <span className="shrink-0 text-xs text-fg-subtle">{a.meta} →</span>
+              <span className="shrink-0 text-xs text-fg-subtle">{a.meta}</span>
             </Link>
           </li>
         ))}

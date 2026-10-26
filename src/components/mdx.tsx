@@ -56,7 +56,7 @@ export const mdxComponents: MDXComponents = {
     </div>
   ),
   th: (props) => (
-    <th className="border-b bg-bg-subtle px-3 py-2 text-left text-xs font-medium uppercase tracking-wide text-fg-muted" {...props} />
+    <th className="border-b bg-bg-subtle px-3 py-2 text-left text-xs font-medium text-fg-muted" {...props} />
   ),
   td: (props) => <td className="border-b px-3 py-2 text-fg-muted last:border-0" {...props} />,
   a: ({ href = "", ...props }) =>

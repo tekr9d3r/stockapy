@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CATEGORIES, type CategoryKey } from "@/lib/categories";
 
 /**
- * Top of a category page: the crypto term as a kicker, the H1, a short
+ * Top of a category page: the H1, a short
  * answer-first paragraph (the one an answer engine should lift), the
  * traditional-finance equivalent for newcomers, and the stat tiles.
  */
@@ -22,10 +22,7 @@ export function CategoryHeader({
   const c = CATEGORIES[category];
   return (
     <section className="mb-8">
-      <p className="kicker">
-        {c.title} <span className="text-fg-subtle">· in crypto: {c.term}</span>
-      </p>
-      <h1 className="mt-2 max-w-3xl text-4xl tracking-tight sm:text-5xl">{title}</h1>
+      <h1 className="max-w-3xl text-4xl tracking-tight sm:text-5xl">{title}</h1>
       <div className="mt-3 max-w-3xl text-[17px] leading-relaxed text-fg-muted">{children}</div>
       <p className="mt-3 max-w-3xl border-l-2 border-fg pl-3 text-sm leading-relaxed text-fg">
         {c.tradfi}{" "}
@@ -69,12 +66,7 @@ export function Tile({
   );
 }
 
-/** A row of overlapping logos with a caption, e.g. the platforms behind a number. */
-export function LogoStack({ children, caption }: { children: React.ReactNode; caption: React.ReactNode }) {
-  return (
-    <div className="flex flex-wrap items-center gap-3">
-      <div className="flex -space-x-1.5 [&>*]:ring-2 [&>*]:ring-bg">{children}</div>
-      <span className="text-xs text-fg-subtle">{caption}</span>
-    </div>
-  );
+/** The coverage behind a page's numbers, as one plain line. Logos stay in the tables. */
+export function LogoStack({ caption }: { children?: React.ReactNode; caption: React.ReactNode }) {
+  return <p className="text-xs text-fg-subtle">{caption}</p>;
 }

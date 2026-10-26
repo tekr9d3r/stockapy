@@ -35,13 +35,6 @@ export default function Home() {
   const asOf = formatDate(fetchedAt);
   const lessons = listLessons();
   const research = listPosts().find((p) => p.track !== "start");
-  const today = new Date(fetchedAt ?? Date.now()).toLocaleDateString("en-GB", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  });
   const organicPct = d.earn.organicShare === null ? null : d.earn.organicShare * 100;
 
   const faq = [
@@ -122,15 +115,12 @@ export default function Home() {
 
       {/* ---------- Front page: dateline, headline answer, dek ---------- */}
       <section className="border-b-2 border-fg pb-6">
-        <p className="kicker">
-          {today} <span className="text-fg-subtle">· live rates, updated {asOf}</span>
-        </p>
-        <h1 className="mt-3 max-w-4xl text-4xl leading-[1.08] tracking-tight sm:text-6xl">
+        <h1 className="max-w-4xl text-4xl leading-[1.08] tracking-tight sm:text-6xl">
           Tokenized stocks give you more options than ever: extra yield on the stocks you already like.
         </h1>
         <p className="mt-4 max-w-2xl text-[18px] leading-relaxed text-fg-muted">
           Once a stock is a token, you can lend it, use it to make a market, or borrow against it, without
-          selling it. Below are today&apos;s rates from {d.platforms.length} platforms, checked hourly and never paid for.
+          selling it. Below are today&apos;s rates from {d.platforms.length} platforms, checked hourly and never paid for. Last updated {asOf}.
         </p>
       </section>
 
@@ -156,7 +146,7 @@ export default function Home() {
         <aside className="space-y-10 lg:border-l lg:pl-8">
           {lessons.length > 0 && (
             <section aria-labelledby="start-here">
-              <h2 id="start-here" className="kicker">New to this? Start here</h2>
+              <h2 id="start-here" className="text-xl tracking-tight">New to this? Start here</h2>
               <ol className="mt-3 divide-y border-t">
                 {lessons.slice(0, SIDEBAR_LESSONS).map((p, i) => (
                   <li key={p.slug}>
@@ -170,14 +160,14 @@ export default function Home() {
                 ))}
               </ol>
               <Link href="/hub" className="mt-2 inline-block text-sm text-accent underline-offset-2 hover:underline">
-                All {lessons.length} lessons →
+                All {lessons.length} lessons
               </Link>
             </section>
           )}
 
           <section aria-labelledby="weekly" className="border-t-2 border-fg pt-4">
-            <h2 id="weekly" className="kicker">The weekly letter</h2>
-            <p className="mt-2 font-[family-name:var(--font-display)] text-xl leading-snug">
+            <h2 id="weekly" className="text-xl tracking-tight">The weekly letter</h2>
+            <p className="mt-1 text-sm text-fg-muted">
               The best rates and what changed, once a week. Free.
             </p>
             <div className="mt-3">
@@ -187,7 +177,7 @@ export default function Home() {
 
           {research && (
             <section aria-labelledby="research" className="border-t-2 border-fg pt-4">
-              <h2 id="research" className="kicker">Analysis</h2>
+              <h2 id="research" className="text-xl tracking-tight">Analysis</h2>
               <Link href={`/hub/${research.slug}`} className="group mt-2 block">
                 <span className="font-[family-name:var(--font-display)] text-lg leading-snug group-hover:underline">{research.title}</span>
                 <time dateTime={research.datePublished} className="mt-1 block text-xs text-fg-subtle">
@@ -213,14 +203,14 @@ export default function Home() {
         </div>
         {d.stocks.length > HOME_STOCKS && (
           <Link href="/stocks" className="mt-6 inline-block text-sm text-accent underline-offset-2 hover:underline">
-            All {d.stocks.length} stocks →
+            All {d.stocks.length} stocks
           </Link>
         )}
       </section>
 
       {/* ---------- Coverage / trust ---------- */}
       <section className="mt-16 border-t-2 border-fg pt-4" aria-labelledby="coverage">
-        <h2 id="coverage" className="kicker">Independent and open</h2>
+        <h2 id="coverage" className="text-3xl tracking-tight">Independent and open</h2>
         <dl className="mt-3 grid gap-6 text-sm sm:grid-cols-3">
           <Coverage title={`${d.platforms.length} platforms`} names={d.platforms.map((p) => p.name)} />
           <Coverage title={`${d.issuers.length} issuers`} names={d.issuers.map((i) => i.name.replace(/ \(.*\)$/, ""))} />
@@ -269,10 +259,7 @@ function Way({
   const c = CATEGORIES[category];
   return (
     <section id={category} aria-labelledby={`${category}-h`} className="scroll-mt-24">
-      <p className="kicker">
-        {c.hint} <span className="text-fg-subtle">· in crypto: {c.term}</span>
-      </p>
-      <h2 id={`${category}-h`} className="mt-1 text-3xl tracking-tight">{c.title}</h2>
+      <h2 id={`${category}-h`} className="text-3xl tracking-tight">{c.title}</h2>
       <p className="mt-1 max-w-2xl text-sm text-fg-muted">
         {c.tradfi}{" "}
         <Link href={`/hub/${c.lesson}`} className="text-accent underline-offset-2 hover:underline">How it works</Link>
@@ -291,7 +278,7 @@ function Way({
         href={c.href}
         className="mt-3 inline-flex items-center gap-1 border-b border-fg pb-0.5 text-sm font-semibold hover:text-accent hover:border-accent"
       >
-        Compare all {count} {COMPARE_NOUN[category]} →
+        Compare all {count} {COMPARE_NOUN[category]}
       </Link>
     </section>
   );

@@ -136,7 +136,7 @@ export default function EarnPage() {
       />
 
       {seed.watchlist.length > 0 && (
-        <details className="mt-8 rounded-xl border bg-bg-raised px-5 py-3.5">
+        <details className="mt-8 border-y py-3.5">
           <summary className="cursor-pointer text-sm font-medium text-fg-muted">
             Watchlist: {seed.watchlist.length} venues we have not confirmed yet
           </summary>

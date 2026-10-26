@@ -138,7 +138,7 @@ export function OpportunityTable({
             shown separately.
           </caption>
           <thead className="hidden md:table-header-group">
-            <tr className="border-y border-t-fg text-left text-[11px] uppercase tracking-wide text-fg-muted">
+            <tr className="border-y border-t-fg text-left text-[11px] text-fg-muted">
               <Th className="pl-4">Stock</Th>
               <Th>{hidePlatform ? "Market" : "Platform"}</Th>
               <Th>Chain</Th>

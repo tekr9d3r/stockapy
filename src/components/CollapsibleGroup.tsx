@@ -1,4 +1,3 @@
-import { StockLogo } from "./StockLogo";
 
 /**
  * A venue-level row that opens to reveal its markets. Native <details> rather
@@ -25,8 +24,8 @@ export function CollapsibleGroup({
   children: React.ReactNode;
 }) {
   return (
-    <details className="group overflow-hidden rounded-lg border bg-bg-raised">
-      <summary className="flex cursor-pointer list-none items-center gap-3 px-4 py-3 hover:bg-bg-subtle [&::-webkit-details-marker]:hidden">
+    <details className="group border-b">
+      <summary className="flex cursor-pointer list-none items-center gap-3 py-3.5 hover:bg-bg-subtle/60 [&::-webkit-details-marker]:hidden">
         {logo}
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
@@ -37,16 +36,10 @@ export function CollapsibleGroup({
         </div>
 
         {tickers && tickers.length > 0 && (
-          <div className="hidden items-center -space-x-1.5 lg:flex">
-            {tickers.slice(0, 5).map((ticker) => (
-              <span key={ticker} className="rounded-[4px] ring-2 ring-bg-raised">
-                <StockLogo ticker={ticker} size={18} />
-              </span>
-            ))}
-            {tickers.length > 5 && (
-              <span className="pl-2.5 text-[11px] text-fg-subtle">+{tickers.length - 5}</span>
-            )}
-          </div>
+          <p className="hidden max-w-48 truncate text-xs text-fg-subtle lg:block">
+            {tickers.slice(0, 4).join(", ")}
+            {tickers.length > 4 && ` +${tickers.length - 4}`}
+          </p>
         )}
 
         {metrics}
@@ -62,7 +55,7 @@ export function CollapsibleGroup({
           <path d="M5 7.5l5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </summary>
-      <div className="border-t bg-bg-subtle/40 px-4 py-4">{children}</div>
+      <div className="pb-5">{children}</div>
     </details>
   );
 }
@@ -85,7 +78,7 @@ export function Metric({
         wide ? "w-24 sm:w-28" : "w-20"
       }`}
     >
-      <div className="text-[10px] uppercase tracking-wide text-fg-subtle">{label}</div>
+      <div className="text-[10px] text-fg-subtle">{label}</div>
       <div className="tnum text-sm font-semibold">{children}</div>
     </div>
   );

@@ -19,7 +19,7 @@ export function Stat({
 }) {
   return (
     <div className="bg-bg-raised px-4 py-3">
-      <dt className="text-[11px] uppercase tracking-wide text-fg-muted">{label}</dt>
+      <dt className="text-[11px] text-fg-muted">{label}</dt>
       <dd
         className={`tnum mt-1 text-xl font-semibold ${tone === "warn" ? "text-warn" : "text-fg"}`}
       >

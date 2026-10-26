@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2, Mail } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -49,14 +49,13 @@ export function NewsletterForm({ source, tone = "default" }: { source: string; t
       <div className="flex flex-col gap-2 @sm:flex-row">
         <label className="relative flex-1">
           <span className="sr-only">Email address</span>
-          <Mail size={16} aria-hidden="true" className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-fg-subtle" />
           <input
             type="email"
             name="email"
             required
             autoComplete="email"
             placeholder="you@example.com"
-            className="h-11 w-full rounded-lg border border-border-strong bg-bg-raised pr-3 pl-9 text-[15px] text-fg outline-none placeholder:text-fg-subtle focus:border-accent focus:ring-2 focus:ring-accent/25"
+            className="h-11 w-full rounded-lg border border-border-strong bg-bg-raised px-3 text-[15px] text-fg outline-none placeholder:text-fg-subtle focus:border-accent focus:ring-2 focus:ring-accent/25"
           />
         </label>
         {/* Honeypot: hidden from people, irresistible to bots. */}

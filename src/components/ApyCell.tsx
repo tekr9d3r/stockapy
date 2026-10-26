@@ -48,7 +48,7 @@ export function ApyCell({ row }: { row: Row }) {
       </span>
       {mostlyIncentives && (
         <span
-          className="text-[10px] font-medium uppercase tracking-wide text-warn"
+          className="text-[10px] font-medium text-warn"
           title={`${formatPp(reward)} of ${formatPp(total)} percentage points come from token incentives, which can stop at any time.`}
         >
           incentive
@@ -56,7 +56,7 @@ export function ApyCell({ row }: { row: Row }) {
       )}
       {row.pointsLabel && (
         <span
-          className="text-[10px] font-medium uppercase tracking-wide text-accent"
+          className="text-[10px] font-medium text-accent"
           title={`This market also earns ${row.pointsLabel}. Points have no stated rate, value or date, so they are not part of the APY.`}
         >
           + {row.pointsLabel}

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PartyPopper } from "lucide-react";
 import { CATEGORIES, NAV_CATEGORIES } from "@/lib/categories";
 
 export const metadata: Metadata = {
@@ -11,7 +10,6 @@ export const metadata: Metadata = {
 export default function ConfirmedPage() {
   return (
     <section className="mx-auto max-w-lg py-16 text-center">
-      <PartyPopper size={44} aria-hidden="true" className="mx-auto text-positive" />
       <h1 className="mt-4 text-3xl font-semibold tracking-tight">You&rsquo;re in</h1>
       <p className="mt-3 text-fg-muted">
         Your subscription is confirmed. The next issue lands this week. Meanwhile, the live data:

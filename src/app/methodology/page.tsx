@@ -54,7 +54,7 @@ export default function MethodologyPage() {
         <dl className="mt-3 grid grid-cols-2 gap-2 text-sm sm:grid-cols-3">
           {Object.entries(bySource).map(([source, count]) => (
             <div key={source} className="rounded border bg-bg-subtle px-3 py-2">
-              <dt className="text-xs uppercase tracking-wide text-fg-subtle">{source}</dt>
+              <dt className="text-xs text-fg-subtle">{source}</dt>
               <dd className="tnum font-medium">{count} rows</dd>
             </div>
           ))}

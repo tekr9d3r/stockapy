@@ -166,7 +166,7 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
       </div>
 
       {grouped ? (
-        <div className="space-y-2">
+        <div className="border-t border-fg">
           {groups.map((g) => (
             <CollapsibleGroup
               key={g.venue.id}

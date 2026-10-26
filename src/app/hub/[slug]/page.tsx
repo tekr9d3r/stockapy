@@ -79,8 +79,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <span>{at >= 0 ? `Lesson ${at + 1} of ${lessons.length}` : "Analysis"}</span>
       </nav>
 
-      {at >= 0 && <p className="kicker">Start here · lesson {at + 1} of {lessons.length}</p>}
-      <h1 className="mt-2 text-4xl leading-tight tracking-tight">{post.title}</h1>
+      <h1 className="text-4xl leading-tight tracking-tight">{post.title}</h1>
       <p className="mt-2 text-sm text-fg-subtle">
         <time dateTime={post.datePublished}>{formatDate(post.datePublished)}</time>
         {post.dateModified !== post.datePublished && (

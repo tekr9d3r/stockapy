@@ -43,8 +43,7 @@ export default async function NewsletterPage({ searchParams }: { searchParams: P
       <JsonLd data={[breadcrumbLd([{ name: BRAND_NAME, path: "/" }, { name: "Newsletter", path: "/newsletter" }])]} />
       <section className="grid items-start gap-10 lg:grid-cols-[1fr_1fr]">
         <div className="lg:pt-6">
-          <p className="text-xs font-semibold tracking-widest text-accent uppercase">{NEWSLETTER.name}</p>
-          <h1 className="mt-2 text-4xl font-semibold tracking-tight sm:text-5xl">{NEWSLETTER.headline}</h1>
+          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">{NEWSLETTER.headline}</h1>
           <p className="mt-4 max-w-xl text-[17px] leading-relaxed text-fg-muted">{NEWSLETTER.promise}</p>
           <div className="mt-6 max-w-xl">
             {error && (

@@ -9,13 +9,12 @@ export function NewsletterBand() {
     <section aria-labelledby="newsletter-band" className="mx-auto mt-16 w-full max-w-7xl px-4">
       <div className="grid items-start gap-8 border-t-2 border-fg pt-6 lg:grid-cols-[1.1fr_1fr]">
         <div>
-          <p className="kicker">{NEWSLETTER.name}</p>
-          <h2 id="newsletter-band" className="mt-2 text-3xl tracking-tight">
+          <h2 id="newsletter-band" className="text-3xl tracking-tight">
             {NEWSLETTER.headline}
           </h2>
-          <ul className="mt-3 space-y-1 text-sm text-fg-muted">
+          <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-fg-muted">
             {WHAT.map((w) => (
-              <li key={w}>— {w}</li>
+              <li key={w}>{w}</li>
             ))}
           </ul>
         </div>

@@ -18,19 +18,18 @@ export default function HubPage() {
 
   return (
     <>
-      <p className="kicker">Knowledge Hub</p>
-      <h1 className="mt-2 max-w-3xl text-4xl tracking-tight sm:text-5xl">Tokenized stocks, explained for stock investors</h1>
+      <h1 className="max-w-3xl text-4xl tracking-tight sm:text-5xl">Tokenized stocks, explained for stock investors</h1>
       <p className="mt-3 max-w-2xl text-[17px] leading-relaxed text-fg-muted">
         You know shares, brokers and dividends. These {lessons.length} short lessons cover what changes when a
         share becomes a token, and what it lets you do. Read them in order, or jump to the one you need.
       </p>
 
       <section aria-labelledby="start-here" className="mt-10 border-t-2 border-fg pt-4">
-        <h2 id="start-here" className="kicker">Start here · {lessons.length} lessons</h2>
+        <h2 id="start-here" className="text-2xl tracking-tight">Start here: {lessons.length} lessons</h2>
         <ol className="mt-2 divide-y">
           {lessons.map((p, i) => (
             <li key={p.slug}>
-              <Link href={`/hub/${p.slug}`} className="group grid grid-cols-[2.5rem_1fr] gap-x-2 py-4 sm:grid-cols-[3rem_1fr_auto]">
+              <Link href={`/hub/${p.slug}`} className="group grid grid-cols-[2.5rem_1fr] gap-x-2 py-4 sm:grid-cols-[3rem_1fr]">
                 <span className="font-[family-name:var(--font-display)] text-2xl text-fg-subtle tabular-nums">{i + 1}</span>
                 <span>
                   <span className="block font-[family-name:var(--font-display)] text-xl leading-snug group-hover:underline">
@@ -38,7 +37,6 @@ export default function HubPage() {
                   </span>
                   <span className="mt-1 block max-w-2xl text-sm leading-relaxed text-fg-muted">{p.description}</span>
                 </span>
-                <span className="col-start-2 mt-2 text-xs text-fg-subtle sm:col-start-3 sm:mt-1">Read →</span>
               </Link>
             </li>
           ))}
@@ -47,7 +45,7 @@ export default function HubPage() {
 
       {analysis.length > 0 && (
         <section aria-labelledby="analysis" className="mt-12 border-t-2 border-fg pt-4">
-          <h2 id="analysis" className="kicker">Analysis and research</h2>
+          <h2 id="analysis" className="text-2xl tracking-tight">Analysis and research</h2>
           <ul className="mt-2 divide-y">
             {analysis.map((p) => (
               <li key={p.slug}>

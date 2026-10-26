@@ -94,7 +94,7 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
             cost of borrowing against them.
           </caption>
           <thead className="hidden md:table-header-group">
-            <tr className="border-y border-t-fg text-left text-[11px] uppercase tracking-wide text-fg-muted">
+            <tr className="border-y border-t-fg text-left text-[11px] text-fg-muted">
               <th scope="col" className="px-2 py-2 pl-4 font-medium">Stock</th>
               <th scope="col" className="px-2 py-2 font-medium">Platform</th>
               <th scope="col" className="px-2 py-2 font-medium">Chain</th>

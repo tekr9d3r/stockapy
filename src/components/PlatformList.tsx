@@ -9,7 +9,7 @@ import type { PlatformGroup } from "@/lib/data/rows";
 /** Platform-level view of the Earn data, one collapsible row per platform. */
 export function PlatformList({ groups }: { groups: PlatformGroup[] }) {
   return (
-    <div className="space-y-2">
+    <div className="border-t border-fg">
       {groups.map((group) => (
         <PlatformRow key={group.platform.id} group={group} />
       ))}
