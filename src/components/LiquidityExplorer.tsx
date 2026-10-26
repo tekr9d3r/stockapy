@@ -122,7 +122,7 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
           {opts.stocks.map((s) => <option key={s} value={s}>{s}</option>)}
         </select>
         <select aria-label="Sort by" value={sort} onChange={(e) => setSort(e.target.value as Sort)} className={select}>
-          <option value="fee">Sort: Fee APY</option>
+          <option value="fee">Sort: fee yield</option>
           <option value="tvl">Sort: TVL</option>
           <option value="volume">Sort: 24h volume</option>
         </select>
@@ -177,7 +177,7 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
               tickers={g.tickers}
               metrics={
                 <>
-                  <Metric label="Fee APY" wide always>
+                  <Metric label="Fee yield / yr" wide always>
                     {g.topFee === null && g.topFeeShort !== null ? (
                       <>
                         <span className="text-positive">up to {formatApy(g.topFeeShort)}</span>
@@ -193,8 +193,8 @@ export function LiquidityExplorer({ rows }: { rows: LiquidityRow[] }) {
                       <span className="text-positive">up to {formatApy(g.topFee)}</span>
                     )}
                   </Metric>
-                  <Metric label="TVL">{formatUsd(g.tvl)}</Metric>
-                  <Metric label="24h vol">{formatUsd(g.volume)}</Metric>
+                  <Metric label="Money in pool">{formatUsd(g.tvl)}</Metric>
+                  <Metric label="Traded 24h">{formatUsd(g.volume)}</Metric>
                 </>
               }
             >

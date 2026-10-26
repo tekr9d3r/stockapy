@@ -54,7 +54,7 @@ function PlatformRow({ group }: { group: PlatformGroup }) {
       tickers={group.stocks}
       metrics={
         <>
-          <Metric label="APY" wide always>
+          <Metric label="Yield / yr" wide always>
             {group.allEnded ? (
               <span className="text-sm font-normal text-fg-subtle">no longer paying</span>
             ) : everythingUnmeasured ? (
@@ -76,14 +76,14 @@ function PlatformRow({ group }: { group: PlatformGroup }) {
               </>
             )}
           </Metric>
-          <Metric label="TVL">
+          <Metric label="Money in">
             {group.tvlUsd === null ? (
               <span className="text-sm font-normal text-fg-subtle">n/d</span>
             ) : (
               formatUsd(group.tvlUsd)
             )}
           </Metric>
-          <Metric label="Max LTV">
+          <Metric label="Borrow up to">
             {group.maxLtv === null ? (
               <span className="text-sm font-normal text-fg-subtle">—</span>
             ) : (

@@ -40,14 +40,14 @@ export function LiveStats({ ticker }: { ticker?: string }) {
 export const mdxComponents: MDXComponents = {
   LiveTable,
   LiveStats,
-  h2: (props) => <h2 className="mt-10 mb-3 text-xl font-semibold tracking-tight" {...props} />,
+  h2: (props) => <h2 className="mt-10 mb-3 text-2xl tracking-tight" {...props} />,
   h3: (props) => <h3 className="mt-6 mb-2 text-lg font-medium" {...props} />,
-  p: (props) => <p className="my-4 leading-relaxed text-fg-muted" {...props} />,
-  ul: (props) => <ul className="my-4 list-disc space-y-1.5 pl-5 text-fg-muted" {...props} />,
-  ol: (props) => <ol className="my-4 list-decimal space-y-1.5 pl-5 text-fg-muted" {...props} />,
+  p: (props) => <p className="my-4 text-[17px] leading-relaxed" {...props} />,
+  ul: (props) => <ul className="my-4 list-disc space-y-1.5 pl-5 text-[17px]" {...props} />,
+  ol: (props) => <ol className="my-4 list-decimal space-y-1.5 pl-5 text-[17px]" {...props} />,
   strong: (props) => <strong className="font-semibold text-fg" {...props} />,
   blockquote: (props) => (
-    <blockquote className="my-5 border-l-2 border-accent pl-4 text-fg-muted italic" {...props} />
+    <blockquote className="my-5 border-l-2 border-fg pl-4 font-[family-name:var(--font-display)] text-lg italic" {...props} />
   ),
   code: (props) => <code className="rounded bg-bg-subtle px-1 py-0.5 text-[13px]" {...props} />,
   table: (props) => (

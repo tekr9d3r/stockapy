@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { CalendarClock, Inbox, ShieldCheck } from "lucide-react";
-import { CategoryIcon } from "@/components/CategoryIcon";
 import { JsonLd } from "@/components/JsonLd";
 import { PlatformLogo } from "@/components/Logo";
 import { NewsletterForm } from "@/components/NewsletterForm";
@@ -72,8 +71,7 @@ export default async function NewsletterPage({ searchParams }: { searchParams: P
             <p className="text-lg font-semibold">This week in tokenized-stock yield</p>
             {preview.map((sec) => (
               <div key={sec.category}>
-                <p className={`mb-2 flex items-center gap-2 text-sm font-semibold ${CATEGORIES[sec.category].cls.text}`}>
-                  <CategoryIcon category={sec.category} size={16} />
+                <p className="kicker mb-2">
                   {CATEGORIES[sec.category].title}
                 </p>
                 <ul className="divide-y rounded-lg border">

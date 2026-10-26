@@ -80,7 +80,7 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
             onChange={(e) => setSort(e.target.value as SortKey)}
             className="h-9 rounded-md border bg-bg-raised px-2 text-sm outline-none focus:border-accent"
           >
-            <option value="ltv">Sort: Max LTV</option>
+            <option value="ltv">Sort: borrow up to</option>
             <option value="rate">Sort: Cheapest</option>
             <option value="stock">Sort: Stock</option>
           </select>
@@ -94,12 +94,12 @@ export function BorrowTable({ rows, compact = false }: { rows: Row[]; compact?: 
             cost of borrowing against them.
           </caption>
           <thead className="hidden md:table-header-group">
-            <tr className="border-b bg-bg-subtle text-left text-[11px] uppercase tracking-wide text-fg-muted">
+            <tr className="border-y border-t-fg text-left text-[11px] uppercase tracking-wide text-fg-muted">
               <th scope="col" className="px-2 py-2 pl-4 font-medium">Stock</th>
               <th scope="col" className="px-2 py-2 font-medium">Platform</th>
               <th scope="col" className="px-2 py-2 font-medium">Chain</th>
               <th scope="col" className="px-2 py-2 text-right font-medium" title="The most you can borrow against $100 of this stock. You are liquidated well before reaching it.">
-                Max LTV
+                Borrow up to
               </th>
               <th scope="col" className="px-2 py-2 text-right font-medium" title="What you borrow and its annual interest.">
                 Borrow

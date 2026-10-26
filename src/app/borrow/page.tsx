@@ -91,7 +91,7 @@ export default function BorrowPage() {
 
       <CategoryHeader
         category="borrow"
-        title="Borrow against tokenized stocks"
+        title="Borrow cash against your tokenized stock"
         logos={
           <LogoStack caption={`${new Set(rows.map((r) => r.platform.id)).size} platforms · borrow ${stats.loanAssets.join(", ")}`}>
             {[...new Map(rows.map((r) => [r.platform.id, r.platform])).values()].map((p) => (
@@ -101,9 +101,9 @@ export default function BorrowPage() {
         }
         tiles={
           <>
-            <Tile category="borrow" label="Highest LTV" value={formatLtv(stats.maxLtv)} note="Before liquidation buffer" />
+            <Tile category="borrow" label="Borrow up to" value={formatLtv(stats.maxLtv)} note="of the stock's value (max LTV)" />
             <Tile
-              label="Median borrow cost"
+              label="Typical interest"
               value={stats.medianApr === null ? "—" : `${stats.medianApr.toFixed(2)}%`}
               note={cheapest ? `from ${cheapest.borrow!.borrowApr?.toFixed(2)}% on ${cheapest.platform.name}` : "Annual interest"}
             />

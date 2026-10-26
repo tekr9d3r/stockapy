@@ -97,7 +97,7 @@ export default function LiquidityPage() {
 
       <CategoryHeader
         category="liquidity"
-        title="Provide liquidity with tokenized stocks"
+        title="Act as a market maker with your tokenized stock"
         logos={
           <LogoStack caption={`${stats.venues.join(", ")} · ${stats.chains.join(", ")}`}>
             {[...new Map(rows.map((r) => [r.venue.id, r.venue])).values()].map((v) => (
@@ -112,13 +112,13 @@ export default function LiquidityPage() {
           <>
             <Tile
               category="liquidity"
-              label="Median fee APY to LPs"
+              label="Typical fee yield"
               value={formatApy(stats.medianFeeApy)}
               note={`${stats.feePoolCount} pools with a full day of data · ${formatApy(earn.medianApy)} on Earn`}
             />
             <Tile label="Active stablecoin pools" value={String(stats.poolCount)} note={`${stats.venues.length} venues · ${stats.chains.length} chains`} />
             <Tile label="Traded in 24h" value={formatUsd(stats.volumeUsd1d)} note="Across these pools" />
-            <Tile label="Value in these pools" value={formatUsd(stats.tvlUsd)} note={`As of ${asOf}`} />
+            <Tile label="Money in these pools" value={formatUsd(stats.tvlUsd)} note={`As of ${asOf}`} />
           </>
         }
       >

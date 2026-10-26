@@ -18,6 +18,11 @@ export type PostMeta = {
   tags: string[];
   /** Questions this post answers, rendered as an FAQ block and as FAQPage JSON-LD. */
   faq?: { question: string; answer: string }[];
+  /** Set on lessons of the "Start here" course, with their position in it. */
+  track?: "start";
+  order?: number;
+  /** Short title for the course listing; the SEO title stays `title`. */
+  lessonTitle?: string;
 };
 
 export type Post = PostMeta & { body: string };
@@ -43,6 +48,9 @@ function parseFile(fileName: string): Post {
     author: data.author,
     tags: data.tags ?? [],
     faq: data.faq,
+    track: data.track === "start" ? "start" : undefined,
+    order: typeof data.order === "number" ? data.order : undefined,
+    lessonTitle: data.lessonTitle,
     body: content,
   };
 }
@@ -57,6 +65,13 @@ export function listPosts(): PostMeta[] {
   return files
     .map(parseFile)
     .sort((a, b) => Date.parse(b.datePublished) - Date.parse(a.datePublished));
+}
+
+/** The "Start here" course for readers new to crypto, in lesson order. */
+export function listLessons(): PostMeta[] {
+  return listPosts()
+    .filter((p) => p.track === "start")
+    .sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
 }
 
 /** Post slugs are lower-case words and hyphens. Anything else (dots, slashes) is refused. */

@@ -45,8 +45,8 @@ export function NewsletterForm({ source, tone = "default" }: { source: string; t
   }
 
   return (
-    <form action="/api/subscribe" method="post" onSubmit={onSubmit} className="w-full">
-      <div className="flex flex-col gap-2 sm:flex-row">
+    <form action="/api/subscribe" method="post" onSubmit={onSubmit} className="@container w-full">
+      <div className="flex flex-col gap-2 @sm:flex-row">
         <label className="relative flex-1">
           <span className="sr-only">Email address</span>
           <Mail size={16} aria-hidden="true" className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-fg-subtle" />

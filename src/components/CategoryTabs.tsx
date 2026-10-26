@@ -1,18 +1,15 @@
 import Link from "next/link";
+import { CATEGORIES } from "@/lib/categories";
 
-const TABS = [
-  { href: "/earn", key: "earn", label: "Earn", hint: "Deposit the stock, get paid" },
-  { href: "/liquidity", key: "liquidity", label: "Liquidity", hint: "Pair it, earn trading fees" },
-  { href: "/borrow", key: "borrow", label: "Borrow", hint: "Post it as collateral" },
-] as const;
+const TABS = (["earn", "liquidity", "borrow"] as const).map((key) => CATEGORIES[key]);
 
 /**
  * The three things you can do with a tokenized stock, as one switcher on each
  * page. Mobile only: on wider screens the main nav already shows them.
  */
-export function CategoryTabs({ active }: { active: (typeof TABS)[number]["key"] }) {
+export function CategoryTabs({ active }: { active: "earn" | "liquidity" | "borrow" }) {
   return (
-    <nav aria-label="Category" className="mb-6 grid grid-cols-3 gap-1 rounded-lg border bg-bg-subtle p-1 md:hidden">
+    <nav aria-label="Category" className="mb-6 grid grid-cols-3 border-y md:hidden">
       {TABS.map((t) => {
         const on = t.key === active;
         return (
@@ -20,8 +17,8 @@ export function CategoryTabs({ active }: { active: (typeof TABS)[number]["key"] 
             key={t.key}
             href={t.href}
             aria-current={on ? "page" : undefined}
-            className={`rounded-md px-3 py-2 text-center transition-colors ${
-              on ? "bg-bg-raised shadow-sm ring-1 ring-border" : "text-fg-muted hover:text-fg"
+            className={`-mb-px border-b-2 px-3 py-2 text-center transition-colors ${
+              on ? "border-fg text-fg" : "border-transparent text-fg-muted hover:text-fg"
             }`}
           >
             <span className="block text-sm font-semibold">{t.label}</span>

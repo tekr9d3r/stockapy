@@ -68,7 +68,7 @@ export default function EarnPage() {
 
       <CategoryHeader
         category="earn"
-        title="Earn yield on tokenized stocks"
+        title="Lend your tokenized stock and earn a yield"
         logos={
           <LogoStack caption={`${groups.length} platforms, ${new Set(earnRows.map((r) => r.chain)).size} chains`}>
             {groups.map((g) => (
@@ -80,23 +80,23 @@ export default function EarnPage() {
           <>
             <Tile
               category="earn"
-              label="Best rate"
+              label="Best yield (yearly)"
               value={formatApy(stats.maxApy)}
               note={stats.best ? `${stats.best.platform.name} · ${stats.best.token.symbol}` : undefined}
             />
             <Tile
               tone="warn"
-              label="Median rate"
+              label="Typical yield"
               value={formatApy(stats.medianApy)}
               note={`${stats.zeroCount} of ${stats.earnCount} pay exactly 0%`}
             />
             <Tile
               tone="warn"
-              label="Real interest"
+              label="Paid by borrowers"
               value={organicPct === null ? "—" : `${organicPct.toFixed(1)}%`}
               note={`of the yield, across ${stats.splitKnownCount} venues that disclose it`}
             />
-            <Tile label="Deposited" value={formatUsd(earnTvl)} note={`As of ${asOf}`} />
+            <Tile label="Money deposited" value={formatUsd(earnTvl)} note={`As of ${asOf}`} />
           </>
         }
       >

@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Database, RefreshCw, ShieldCheck } from "lucide-react";
-import { CategoryBadgeIcon, CategoryIcon } from "@/components/CategoryIcon";
 import { Faq } from "@/components/Faq";
 import { InfoTip } from "@/components/InfoTip";
 import { JsonLd } from "@/components/JsonLd";
-import { ChainLogo, IssuerLogo, PlatformLogo } from "@/components/Logo";
+import { ChainLogo, PlatformLogo } from "@/components/Logo";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { StockLogo } from "@/components/StockLogo";
 import { StockTile } from "@/components/StockTile";
-import { listPosts } from "@/lib/content/posts";
+import { listLessons, listPosts } from "@/lib/content/posts";
 import { getHomeData, type LiquidityRow, type Row } from "@/lib/data/home";
 import { loadLatestSnapshot } from "@/lib/data/snapshot";
 import { CATEGORIES, type CategoryKey } from "@/lib/categories";
@@ -21,8 +19,8 @@ export const revalidate = 3600;
 
 /** How many stocks the home grid shows; the rest are on /stocks. */
 const HOME_STOCKS = 15;
-/** The hero's logos: the names the headline mentions, not whatever trades most today. */
-const HERO_TICKERS = ["NVDA", "TSLA", "SPY", "GOOGL", "AAPL"];
+/** Lessons shown in the "Start here" sidebar. */
+const SIDEBAR_LESSONS = 3;
 
 export const metadata: Metadata = {
   alternates: {
@@ -35,7 +33,15 @@ export default function Home() {
   const d = getHomeData();
   const fetchedAt = loadLatestSnapshot()?.fetchedAt ?? null;
   const asOf = formatDate(fetchedAt);
-  const posts = listPosts().slice(0, 3);
+  const lessons = listLessons();
+  const research = listPosts().find((p) => p.track !== "start");
+  const today = new Date(fetchedAt ?? Date.now()).toLocaleDateString("en-GB", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
   const organicPct = d.earn.organicShare === null ? null : d.earn.organicShare * 100;
 
   const faq = [
@@ -114,237 +120,180 @@ export default function Home() {
         ]}
       />
 
-      {/* ---------- Hero: what this is, in one look ---------- */}
-      <section className="mx-auto max-w-3xl pt-4 pb-8 text-center">
-        <p className="inline-flex items-center gap-2 rounded-full border bg-bg-raised px-3 py-1 text-xs font-medium text-fg-muted">
-          <span className="relative flex size-2">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-positive opacity-60" />
-            <span className="relative inline-flex size-2 rounded-full bg-positive" />
-          </span>
-          Live rates · updated {asOf}
+      {/* ---------- Front page: dateline, headline answer, dek ---------- */}
+      <section className="border-b-2 border-fg pb-6">
+        <p className="kicker">
+          {today} <span className="text-fg-subtle">· live rates, updated {asOf}</span>
         </p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-          Earn yield on your <span className="text-accent">tokenized stocks</span>
+        <h1 className="mt-3 max-w-4xl text-4xl leading-[1.08] tracking-tight sm:text-6xl">
+          Your tokenized stock can earn up to {formatApy(d.earn.maxApy)} a year. Here is how, and the catch.
         </h1>
-        <p className="mx-auto mt-3 max-w-xl text-[17px] leading-relaxed text-fg-muted">
-          Hold NVDA, TSLA or SPY as a token? There are three ways to make it earn. Here are the best
-          live opportunities for each, from {d.platforms.length} protocols.
+        <p className="mt-4 max-w-2xl text-[18px] leading-relaxed text-fg-muted">
+          A stock held as a token can be lent out, used to make a market, or borrowed against, without
+          selling it. Today&apos;s best rates from {d.platforms.length} platforms, checked hourly and never paid for.
         </p>
-
-        {/* The idea as a picture: your stock, three ways to put it to work. */}
-        <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-          <div className="flex -space-x-2 [&>*]:rounded-full [&>*]:ring-2 [&>*]:ring-bg">
-            {HERO_TICKERS.map((t) => (
-              <StockLogo key={t} ticker={t} size={36} />
-            ))}
-          </div>
-          <ArrowRight size={20} aria-hidden="true" className="hidden text-fg-subtle sm:block" />
-          <nav aria-label="Three ways to earn" className="flex flex-wrap justify-center gap-2">
-            {WAYS.map((w) => (
-              <a
-                key={w.category}
-                href={`#${w.category}`}
-                className={`flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-medium transition hover:border-border-strong ${CATEGORIES[w.category].cls.subtle}`}
-              >
-                <WayIcon category={w.category} size={22} />
-                {w.title}
-              </a>
-            ))}
-          </nav>
-        </div>
       </section>
 
-      {/* ---------- The opportunities ---------- */}
-      <section aria-label="Best opportunities right now" className="mb-6">
-        <div className="grid gap-4 lg:grid-cols-3">
+      <div className="mt-8 grid gap-x-10 gap-y-12 lg:grid-cols-[1fr_300px]">
+        {/* ---------- The opportunities ---------- */}
+        <div className="min-w-0 space-y-12">
           {WAYS.map((w) => (
-            <WayCard key={w.category} category={w.category} title={w.title} how={w.how} count={d.counts[w.category]}>
+            <Way key={w.category} category={w.category} count={d.counts[w.category]} rateLabel={w.rateLabel}>
               {w.category === "earn" && d.topEarn.map((r) => <EarnPick key={r.id} r={r} />)}
               {w.category === "liquidity" && d.topLiquidity.map((r) => <LiquidityPick key={r.id} r={r} />)}
               {w.category === "borrow" && d.topBorrow.map((r) => <BorrowPick key={r.id} r={r} />)}
-            </WayCard>
+            </Way>
           ))}
+          {/* Answer-first, for search and answer engines: the dated headline numbers in one sentence. */}
+          <p className="text-xs text-fg-subtle">
+            As of {asOf}: up to {formatApy(d.earn.maxApy)} for lending, a median {formatApy(d.lq.medianFeeApy)} in
+            market-making fees, borrowing at up to {formatLtv(d.borrow.maxLtv)} of the stock&apos;s value. Rates change
+            hourly · not financial advice.
+          </p>
         </div>
-        {/* Answer-first, for search and answer engines: the dated headline numbers in one sentence. */}
-        <p className="mt-4 text-center text-xs text-fg-subtle">
-          As of {asOf}: up to {formatApy(d.earn.maxApy)} for depositing, a median {formatApy(d.lq.medianFeeApy)} in
-          trading fees, borrowing at up to {formatLtv(d.borrow.maxLtv)} LTV. Rates change hourly · not financial advice.
-        </p>
-      </section>
 
-      {/* ---------- Newsletter: after the value, not before it ---------- */}
-      <section aria-labelledby="weekly" className="mb-16 rounded-2xl border bg-bg-raised p-5 shadow-card sm:p-6">
-        <div className="grid items-center gap-4 lg:grid-cols-[1fr_1.1fr]">
-          <div>
-            <h2 id="weekly" className="text-lg font-semibold">Get these picks in your inbox every week</h2>
-            <p className="mt-1 text-sm text-fg-muted">The best pools and updated yields, once a week. Free.</p>
-          </div>
-          <NewsletterForm source="home-picks" />
-        </div>
-      </section>
+        {/* ---------- Sidebar: the way in for newcomers, then the newsletter ---------- */}
+        <aside className="space-y-10 lg:border-l lg:pl-8">
+          {lessons.length > 0 && (
+            <section aria-labelledby="start-here">
+              <h2 id="start-here" className="kicker">New to this? Start here</h2>
+              <ol className="mt-3 divide-y border-t">
+                {lessons.slice(0, SIDEBAR_LESSONS).map((p, i) => (
+                  <li key={p.slug}>
+                    <Link href={`/hub/${p.slug}`} className="group flex gap-3 py-3">
+                      <span className="font-[family-name:var(--font-display)] text-xl text-fg-subtle tabular-nums">{i + 1}</span>
+                      <span className="font-[family-name:var(--font-display)] text-lg leading-snug group-hover:underline">
+                        {p.lessonTitle ?? p.title}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+              <Link href="/hub" className="mt-2 inline-block text-sm text-accent underline-offset-2 hover:underline">
+                All {lessons.length} lessons →
+              </Link>
+            </section>
+          )}
+
+          <section aria-labelledby="weekly" className="border-t-2 border-fg pt-4">
+            <h2 id="weekly" className="kicker">The weekly letter</h2>
+            <p className="mt-2 font-[family-name:var(--font-display)] text-xl leading-snug">
+              The best rates and what changed, once a week. Free.
+            </p>
+            <div className="mt-3">
+              <NewsletterForm source="home-picks" />
+            </div>
+          </section>
+
+          {research && (
+            <section aria-labelledby="research" className="border-t-2 border-fg pt-4">
+              <h2 id="research" className="kicker">Analysis</h2>
+              <Link href={`/hub/${research.slug}`} className="group mt-2 block">
+                <span className="font-[family-name:var(--font-display)] text-lg leading-snug group-hover:underline">{research.title}</span>
+                <time dateTime={research.datePublished} className="mt-1 block text-xs text-fg-subtle">
+                  {formatDate(research.datePublished)}
+                </time>
+              </Link>
+            </section>
+          )}
+        </aside>
+      </div>
 
       {/* ---------- Pick your stock ---------- */}
-      <section className="mb-16" aria-labelledby="by-stock">
-        <SectionHead
-          id="by-stock"
-          eyebrow="Most active right now"
-          title="Pick your stock"
-          tip="The best rate in each category, for the stocks with the most money moving through their markets. LP fees: the best stablecoin pool holding $250k or more, or else the best one with a full day of data."
-        />
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+      <section className="mt-16 border-t-2 border-fg pt-4" aria-labelledby="by-stock">
+        <h2 id="by-stock" className="flex items-center gap-2 text-3xl tracking-tight">
+          Pick your stock
+          <InfoTip text="The best rate in each category, for the stocks with the most money moving through their markets. Market-make: the best stablecoin pool holding $250k or more, or else the best one with a full day of data." />
+        </h2>
+        <p className="mt-1 text-sm text-fg-muted">Most active right now. Each stock page lists every token and market for that company.</p>
+        <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3 lg:grid-cols-5">
           {d.stocks.slice(0, HOME_STOCKS).map((s) => (
             <StockTile key={s.ticker} s={s} />
           ))}
         </div>
         {d.stocks.length > HOME_STOCKS && (
-          <div className="mt-4 text-center">
-            <Link href="/stocks" className="inline-flex items-center gap-1.5 rounded-lg border bg-bg-raised px-4 py-2.5 text-sm font-semibold hover:border-border-strong">
-              See all {d.stocks.length} stocks <ArrowRight size={15} aria-hidden="true" />
-            </Link>
-          </div>
+          <Link href="/stocks" className="mt-6 inline-block text-sm text-accent underline-offset-2 hover:underline">
+            All {d.stocks.length} stocks →
+          </Link>
         )}
       </section>
 
       {/* ---------- Coverage / trust ---------- */}
-      <section className="mb-16 rounded-2xl border bg-bg-subtle p-6 sm:p-8" aria-labelledby="coverage">
-        <SectionHead
-          id="coverage"
-          eyebrow="Independent and open"
-          title="Tracked across every major venue"
-        />
-        <LogoRow title="Protocols">
-          {d.platforms.map((p) => (
-            <LogoChip key={p.id} name={p.name}>
-              <PlatformLogo id={p.id} name={p.name} size={36} />
-            </LogoChip>
-          ))}
-        </LogoRow>
-        <LogoRow title="Issuers">
-          {d.issuers.map((i) => (
-            <LogoChip key={i.id} name={i.name.replace(/ \(.*\)$/, "")}>
-              <IssuerLogo id={i.id} name={i.name} size={36} />
-            </LogoChip>
-          ))}
-        </LogoRow>
-        <LogoRow title="Chains">
-          {d.chains.map((c) => (
-            <LogoChip key={c} name={c}>
-              <ChainLogo chain={c} size={36} />
-            </LogoChip>
-          ))}
-        </LogoRow>
-        <ul className="mt-6 grid gap-3 text-sm sm:grid-cols-3">
-          <Proof icon={<RefreshCw size={16} />}>Hourly · {asOf}</Proof>
-          <Proof icon={<Database size={16} />}>
-            <Link href="/developers" className="underline underline-offset-2">Open data &amp; API</Link>
-          </Proof>
-          <Proof icon={<ShieldCheck size={16} />}>
-            No paid placements ·{" "}
-            <a href={SOCIAL.github} target="_blank" rel="noopener" className="underline underline-offset-2">
-              open source<span className="sr-only"> (opens in a new tab)</span>
-            </a>
-          </Proof>
-        </ul>
+      <section className="mt-16 border-t-2 border-fg pt-4" aria-labelledby="coverage">
+        <h2 id="coverage" className="kicker">Independent and open</h2>
+        <dl className="mt-3 grid gap-6 text-sm sm:grid-cols-3">
+          <Coverage title={`${d.platforms.length} platforms`} names={d.platforms.map((p) => p.name)} />
+          <Coverage title={`${d.issuers.length} issuers`} names={d.issuers.map((i) => i.name.replace(/ \(.*\)$/, ""))} />
+          <Coverage title={`${d.chains.length} chains`} names={d.chains} />
+        </dl>
+        <p className="mt-6 text-sm text-fg-muted">
+          Refreshed hourly · no paid placements ·{" "}
+          <Link href="/methodology" className="underline underline-offset-2 hover:text-fg">methodology</Link> ·{" "}
+          <Link href="/developers" className="underline underline-offset-2 hover:text-fg">open data and API</Link> ·{" "}
+          <a href={SOCIAL.github} target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-fg">
+            open source<span className="sr-only"> (opens in a new tab)</span>
+          </a>
+        </p>
       </section>
 
-      {/* ---------- Knowledge Hub ---------- */}
-      {posts.length > 0 && (
-        <section className="mb-16" aria-labelledby="from-hub">
-          <div className="flex items-end justify-between gap-4">
-            <SectionHead id="from-hub" eyebrow="Knowledge Hub" title="Learn before you deposit" />
-            <Link href="/hub" className="mb-6 hidden items-center gap-1 text-sm font-medium text-accent hover:underline sm:inline-flex">
-              All articles <ArrowRight size={14} aria-hidden="true" />
-            </Link>
-          </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {posts.map((p) => (
-              <Link key={p.slug} href={`/hub/${p.slug}`} className="group flex flex-col rounded-xl border bg-bg-raised p-5 transition hover:border-border-strong hover:shadow-card">
-                <CategoryBadgeIcon category="hub" size={36} />
-                <h3 className="mt-3 font-semibold leading-snug group-hover:text-accent">{p.title}</h3>
-                <p className="mt-auto pt-3 text-xs text-fg-subtle">
-                  <time dateTime={p.datePublished}>{formatDate(p.datePublished)}</time>
-                </p>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
-
       {/* ---------- FAQ ---------- */}
-      <Faq entries={faq} />
+      <div className="mt-16">
+        <Faq entries={faq} />
+      </div>
     </>
   );
 }
 
 /* ---------------------------------------------------------------- pieces */
 
-function SectionHead({ id, eyebrow, title, tip }: { id: string; eyebrow?: string; title: string; tip?: string }) {
-  return (
-    <div className="mb-5 max-w-2xl">
-      {eyebrow && <p className="text-xs font-semibold tracking-widest text-fg-subtle uppercase">{eyebrow}</p>}
-      <h2 id={id} className="mt-1 flex items-center gap-2 text-2xl font-semibold tracking-tight sm:text-3xl">
-        {title}
-        {tip && <InfoTip text={tip} />}
-      </h2>
-    </div>
-  );
-}
-
-const WAYS: { category: "earn" | "liquidity" | "borrow"; title: string; how: string }[] = [
-  { category: "earn", title: "Deposit it", how: "Lend the stock in a vault or money market and get paid a rate." },
-  { category: "liquidity", title: "Provide liquidity", how: "Pair it with a stablecoin in a DEX pool and earn a cut of every trade." },
-  { category: "borrow", title: "Borrow against it", how: "Post it as collateral and borrow stablecoins, without selling." },
+const WAYS: { category: "earn" | "liquidity" | "borrow"; rateLabel: string }[] = [
+  { category: "earn", rateLabel: "Yield / yr" },
+  { category: "liquidity", rateLabel: "Fee yield / yr" },
+  { category: "borrow", rateLabel: "Borrow up to" },
 ];
 
-const COMPARE_NOUN: Record<string, string> = { earn: "deposit options", liquidity: "pools", borrow: "borrow markets" };
+const COMPARE_NOUN: Record<string, string> = { earn: "places to lend", liquidity: "trading pools", borrow: "borrowing markets" };
 
-/** The category's menu icon on a solid plate: marks a way to earn, not a step. */
-function WayIcon({ category, size = 28 }: { category: CategoryKey; size?: number }) {
-  return (
-    <span
-      aria-hidden="true"
-      style={{ width: size, height: size }}
-      className={`inline-flex shrink-0 items-center justify-center rounded-full text-on-category ${CATEGORIES[category].cls.bg}`}
-    >
-      <CategoryIcon category={category} size={size * 0.55} strokeWidth={2.25} className="text-on-category!" />
-    </span>
-  );
-}
-
-function WayCard({
+/** One way to earn: plain-English name, its TradFi equivalent, the top five, and the way to the full table. */
+function Way({
   category,
-  title,
-  how,
   count,
+  rateLabel,
   children,
 }: {
   category: CategoryKey;
-  title: string;
-  how: string;
   count: number;
+  rateLabel: string;
   children: React.ReactNode;
 }) {
   const c = CATEGORIES[category];
   return (
-    <div id={category} className="flex scroll-mt-24 flex-col rounded-2xl border bg-bg-raised shadow-card">
-      <div className={`rounded-t-2xl border-b px-5 py-4 ${c.cls.subtle}`}>
-        <div className="flex items-center gap-2.5">
-          <WayIcon category={category} size={30} />
-          <h2 className="text-lg font-semibold">{title}</h2>
-        </div>
-        <p className="mt-1.5 text-sm text-fg-muted">{how}</p>
-      </div>
-      <ol className="flex-1 divide-y">{children}</ol>
-      <div className="border-t p-4">
-        <Link
-          href={c.href}
-          className={`group flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold text-on-category shadow-sm transition hover:opacity-90 ${c.cls.bg}`}
-        >
-          Compare all {count} {COMPARE_NOUN[category]}
-          <ArrowRight size={16} aria-hidden="true" className="transition group-hover:translate-x-0.5" />
-        </Link>
-      </div>
-    </div>
+    <section id={category} aria-labelledby={`${category}-h`} className="scroll-mt-24">
+      <p className="kicker">
+        {c.hint} <span className="text-fg-subtle">· in crypto: {c.term}</span>
+      </p>
+      <h2 id={`${category}-h`} className="mt-1 text-3xl tracking-tight">{c.title}</h2>
+      <p className="mt-1 max-w-2xl text-sm text-fg-muted">
+        {c.tradfi}{" "}
+        <Link href={`/hub/${c.lesson}`} className="text-accent underline-offset-2 hover:underline">How it works</Link>
+      </p>
+      <table className="mt-4 w-full border-t border-fg text-sm">
+        <thead>
+          <tr className="border-b text-left">
+            <th scope="col" className="kicker py-2 font-semibold">Stock</th>
+            <th scope="col" className="kicker hidden py-2 font-semibold sm:table-cell">Platform</th>
+            <th scope="col" className="kicker py-2 text-right font-semibold">{rateLabel}</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y">{children}</tbody>
+      </table>
+      <Link
+        href={c.href}
+        className="mt-3 inline-flex items-center gap-1 border-b border-fg pb-0.5 text-sm font-semibold hover:text-accent hover:border-accent"
+      >
+        Compare all {count} {COMPARE_NOUN[category]} →
+      </Link>
+    </section>
   );
 }
 
@@ -355,8 +304,6 @@ function Pick({
   chain,
   meta,
   rate,
-  rateLabel,
-  rateClass = "",
 }: {
   ticker: string;
   title: string;
@@ -364,27 +311,34 @@ function Pick({
   chain: string;
   meta?: string;
   rate: string;
-  rateLabel: string;
-  rateClass?: string;
 }) {
+  const chainName = chain === "BSC" ? "BNB Chain" : chain;
   return (
-    <li className="flex items-center gap-3 px-5 py-3">
-      <StockLogo ticker={ticker} size={34} />
-      <div className="min-w-0 flex-1">
-        <p className="truncate font-semibold leading-tight">{title}</p>
-        <p className="mt-1 flex items-center gap-1.5 text-xs text-fg-muted">
+    <tr>
+      <td className="py-3 pr-3">
+        <div className="flex items-center gap-2.5">
+          <StockLogo ticker={ticker} size={28} />
+          <div className="min-w-0">
+            <p className="truncate font-semibold leading-tight">{title}</p>
+            <p className="mt-0.5 truncate text-xs text-fg-subtle sm:hidden">
+              {platform.name} · {chainName}
+            </p>
+            {meta && <p className="mt-0.5 hidden truncate text-xs text-fg-subtle sm:block">{meta}</p>}
+          </div>
+        </div>
+      </td>
+      <td className="hidden py-3 pr-3 sm:table-cell">
+        <span className="flex items-center gap-1.5">
           <PlatformLogo id={platform.id} name={platform.name} size={16} />
-          <span className="truncate">{platform.name}</span>
-          <ChainLogo chain={chain === "BSC" ? "BNB Chain" : chain} size={14} />
-          <span className="hidden truncate xl:inline">{chain}</span>
-        </p>
-        {meta && <p className="mt-0.5 truncate text-[11px] text-fg-subtle">{meta}</p>}
-      </div>
-      <div className="flex flex-col items-end gap-1 text-right">
-        <p className={`text-lg leading-none font-semibold tabular-nums ${rateClass}`}>{rate}</p>
-        <p className="text-[10px] tracking-wide text-fg-subtle uppercase">{rateLabel}</p>
-      </div>
-    </li>
+          {platform.name}
+        </span>
+        <span className="mt-0.5 flex items-center gap-1.5 text-xs text-fg-subtle">
+          <ChainLogo chain={chainName} size={12} />
+          {chainName}
+        </span>
+      </td>
+      <td className="py-3 text-right font-[family-name:var(--font-display)] text-xl tabular-nums">{rate}</td>
+    </tr>
   );
 }
 
@@ -397,8 +351,6 @@ function EarnPick({ r }: { r: Row }) {
       chain={r.chain}
       meta={r.tvlUsd !== null ? `${formatUsd(r.tvlUsd)} deposited` : undefined}
       rate={formatApy(r.apyTotal)}
-      rateClass="text-earn"
-      rateLabel="APY"
     />
   );
 }
@@ -410,10 +362,8 @@ function LiquidityPick({ r }: { r: LiquidityRow }) {
       title={r.legs.map((l) => l.symbol).join(" / ")}
       platform={{ id: r.venue.id, name: r.venue.name }}
       chain={r.chain}
-      meta={`${formatUsd(r.tvlUsd)} TVL · ${formatUsd(r.volumeUsd1d)} traded 24h`}
+      meta={`${formatUsd(r.tvlUsd)} in the pool · ${formatUsd(r.volumeUsd1d)} traded today`}
       rate={formatApy(r.apyBase)}
-      rateClass="text-earn"
-      rateLabel="fee APY"
     />
   );
 }
@@ -428,35 +378,15 @@ function BorrowPick({ r }: { r: Row }) {
       chain={r.chain}
       meta={b.borrowApr !== null ? `Borrow ${b.loanAsset} at ${b.borrowApr.toFixed(2)}% a year` : undefined}
       rate={formatLtv(b.ltv)}
-      rateClass="text-borrow"
-      rateLabel="max LTV"
     />
   );
 }
 
-function LogoRow({ title, children }: { title: string; children: React.ReactNode }) {
+function Coverage({ title, names }: { title: string; names: string[] }) {
   return (
-    <div className="mt-5 first-of-type:mt-0">
-      <h3 className="mb-2.5 text-xs font-semibold tracking-wide text-fg-muted uppercase">{title}</h3>
-      <ul className="flex flex-wrap gap-2">{children}</ul>
+    <div>
+      <dt className="font-[family-name:var(--font-display)] text-xl">{title}</dt>
+      <dd className="mt-1 leading-relaxed text-fg-muted">{names.join(", ")}</dd>
     </div>
-  );
-}
-
-function LogoChip({ name, children }: { name: string; children: React.ReactNode }) {
-  return (
-    <li className="flex items-center gap-2 rounded-xl border bg-bg-raised py-1.5 pr-3.5 pl-1.5 text-sm font-medium">
-      {children}
-      {name}
-    </li>
-  );
-}
-
-function Proof({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) {
-  return (
-    <li className="flex items-start gap-2.5 text-fg-muted">
-      <span aria-hidden="true" className="mt-0.5 text-positive">{icon}</span>
-      <span>{children}</span>
-    </li>
   );
 }

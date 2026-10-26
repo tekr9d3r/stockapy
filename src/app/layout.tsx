@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Geist, Geist_Mono } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans, Newsreader } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { Menu } from "lucide-react";
-import { BrandMark } from "@/components/BrandMark";
-import { CategoryIcon } from "@/components/CategoryIcon";
 import { NavLinks } from "@/components/NavLinks";
 import { NewsletterBand } from "@/components/NewsletterBand";
 import { PathGate } from "@/components/PathGate";
@@ -13,8 +11,10 @@ import { CATEGORIES, NAV_CATEGORIES } from "@/lib/categories";
 import { BRAND_NAME, BRAND_TAGLINE, DISCLAIMER, SITE_DESCRIPTION, SITE_URL, SOCIAL } from "@/config";
 import "./globals.css";
 
-const sans = Geist({ variable: "--font-sans", subsets: ["latin"], display: "swap" });
-const mono = Geist_Mono({ variable: "--font-mono", subsets: ["latin"], display: "swap" });
+// A newspaper serif for headlines, a plain grotesque for text and figures.
+const serif = Newsreader({ variable: "--font-serif", subsets: ["latin"], display: "swap", weight: ["400", "500", "600"] });
+const sans = IBM_Plex_Sans({ variable: "--font-sans", subsets: ["latin"], display: "swap", weight: ["400", "500", "600"] });
+const mono = IBM_Plex_Mono({ variable: "--font-mono", subsets: ["latin"], display: "swap", weight: ["400"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -44,11 +44,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
-      <body className={`${sans.variable} ${mono.variable} flex min-h-screen flex-col`}>
-        <header className="sticky top-0 z-30 border-b bg-bg/85 backdrop-blur">
+      <body className={`${serif.variable} ${sans.variable} ${mono.variable} flex min-h-screen flex-col`}>
+        <header className="sticky top-0 z-30 border-b bg-bg">
           <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4">
-            <Link href="/" className="flex items-center gap-2 text-[17px] font-semibold tracking-tight">
-              <BrandMark />
+            <Link href="/" className="flex items-center gap-2 font-[family-name:var(--font-display)] text-[21px] font-semibold tracking-tight">
               {BRAND_NAME}
             </Link>
             <nav aria-label="Main" className="hidden flex-1 items-center gap-1 md:flex">
@@ -57,9 +56,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="ml-auto flex items-center gap-2">
               <Link
                 href="/newsletter"
-                className="hidden h-9 items-center rounded-md bg-accent px-3.5 text-sm font-semibold text-accent-fg hover:opacity-90 sm:inline-flex"
+                className="hidden h-9 items-center px-1 text-sm font-medium text-accent underline-offset-4 hover:underline sm:inline-flex"
               >
-                Get weekly picks
+                Weekly newsletter
               </Link>
               <ThemeToggle />
               {/* Mobile menu: native <details>, so it works without JavaScript. */}
@@ -68,10 +67,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <Menu size={18} aria-hidden="true" />
                   <span className="sr-only">Menu</span>
                 </summary>
-                <nav aria-label="Main" className="absolute right-0 mt-2 flex w-60 flex-col gap-0.5 rounded-xl border bg-bg-raised p-2 shadow-card">
+                <nav aria-label="Main" className="absolute right-0 mt-2 flex w-60 flex-col border bg-bg-raised p-2">
                   <NavLinks vertical />
-                  <Link href="/newsletter" className="mt-1 rounded-md bg-accent px-3 py-2.5 text-center text-sm font-semibold text-accent-fg">
-                    Get weekly picks
+                  <Link href="/newsletter" className="mt-1 border-t px-2.5 pt-3 pb-1 text-sm font-medium text-accent">
+                    Weekly newsletter
                   </Link>
                 </nav>
               </details>
@@ -81,15 +80,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8">{children}</main>
 
-        <PathGate hideOn={["/newsletter"]}>
+        <PathGate hideOn={["/", "/newsletter"]}>
           <NewsletterBand />
         </PathGate>
 
-        <footer className="mt-16 border-t bg-bg-subtle">
+        <footer className="mt-16 border-t-2 border-fg">
           <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 text-sm sm:grid-cols-2 lg:grid-cols-4">
             <div>
-              <Link href="/" className="flex items-center gap-2 font-semibold">
-                <BrandMark size={24} />
+              <Link href="/" className="flex items-center gap-2 font-[family-name:var(--font-display)] text-lg font-semibold">
                 {BRAND_NAME}
               </Link>
               <p className="mt-3 max-w-xs text-fg-muted">{BRAND_TAGLINE}. Independent, refreshed hourly, every number sourced.</p>
@@ -97,9 +95,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <FooterCol title="Explore">
               {NAV_CATEGORIES.map((k) => (
-                <Link key={k} href={CATEGORIES[k].href} className="flex items-center gap-2 text-fg-muted hover:text-fg">
-                  <CategoryIcon category={k} size={14} />
-                  {CATEGORIES[k].label}
+                <Link key={k} href={CATEGORIES[k].href} className="text-fg-muted hover:text-fg">
+                  {CATEGORIES[k].title}
                 </Link>
               ))}
               <Link href="/newsletter" className="text-fg-muted hover:text-fg">Newsletter</Link>
@@ -145,7 +142,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 function FooterCol({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h2 className="text-xs font-semibold tracking-wide text-fg uppercase">{title}</h2>
+      <h2 className="kicker">{title}</h2>
       <div className="mt-3 flex flex-col gap-2">{children}</div>
     </div>
   );

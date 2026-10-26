@@ -33,16 +33,16 @@ export function LiquidityTable({ rows, hideVenue = false }: { rows: LiquidityRow
           liquidity provider. All rates are before impermanent loss.
         </caption>
         <thead className="hidden md:table-header-group">
-          <tr className="border-b bg-bg-subtle text-left text-[11px] uppercase tracking-wide text-fg-muted">
+          <tr className="border-y border-t-fg text-left text-[11px] uppercase tracking-wide text-fg-muted">
             <th scope="col" className="px-2 py-2 pl-4 font-medium">Stock</th>
             <th scope="col" className="px-2 py-2 font-medium">Pool</th>
             <th scope="col" className="px-2 py-2 font-medium">Chain</th>
-            <th scope="col" className="px-2 py-2 text-right font-medium" title="Trading fees that reach the liquidity provider, before impermanent loss. Hover a figure for how it was worked out.">
-              Fee APY
+            <th scope="col" className="px-2 py-2 text-right font-medium" title="Fee APY: trading fees that reach you as the liquidity provider, per year, before impermanent loss. Hover a figure for how it was worked out.">
+              Fee yield / yr
             </th>
-            <th scope="col" className="px-2 py-2 text-right font-medium">TVL</th>
+            <th scope="col" className="px-2 py-2 text-right font-medium" title="TVL: total value in the pool.">Money in pool</th>
             <th scope="col" className="px-2 py-2 text-right font-medium" title="Volume traded in the last 24 hours, and how many times over it turned the pool's TVL.">
-              24h volume
+              Traded 24h
             </th>
             <th scope="col" className="px-2 py-2 pr-4 text-right font-medium">
               <span className="sr-only">Open pool</span>

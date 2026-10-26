@@ -7,7 +7,6 @@ import { LiquidityTable } from "@/components/LiquidityTable";
 import { OpportunityTable } from "@/components/OpportunityTable";
 import { StockLogo } from "@/components/StockLogo";
 import { Tile } from "@/components/CategoryHeader";
-import { CategoryIcon } from "@/components/CategoryIcon";
 import { Faq } from "@/components/Faq";
 import { InfoTip } from "@/components/InfoTip";
 import { LearnMore } from "@/components/LearnMore";
@@ -208,7 +207,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
       {rows.length > 0 && (
         <section className="mt-10">
           <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
-            <CategoryIcon category="earn" size={18} /> Deposit {asset.ticker}
+            Lend {asset.ticker}
           </h2>
           <OpportunityTable rows={rows} />
         </section>
@@ -217,7 +216,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
       {pools.length > 0 && (
         <section className="mt-10">
           <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
-            <CategoryIcon category="liquidity" size={18} /> Provide liquidity
+            Act as a market maker
             <InfoTip
               text={`Fee APY is paid by traders, before impermanent loss; concentrated pools only earn while in range.${hiddenPools > 0 ? ` ${hiddenPools} speculative pairs are hidden here.` : ""}`}
             />
@@ -229,7 +228,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
       {borrow.length > 0 && (
         <section className="mt-10">
           <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
-            <CategoryIcon category="borrow" size={18} /> Borrow against it
+            Borrow against it
             <InfoTip text="Max LTV is the liquidation line, not a target: borrowing near it invites liquidation on an ordinary day's move." />
           </h2>
           <BorrowTable rows={borrow} compact />

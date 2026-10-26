@@ -1,9 +1,10 @@
-import { CategoryBadgeIcon } from "./CategoryIcon";
+import Link from "next/link";
 import { CATEGORIES, type CategoryKey } from "@/lib/categories";
 
 /**
- * Top of a category page: icon and colour, the H1, a short answer-first
- * paragraph (the one an answer engine should lift), and visual stat tiles.
+ * Top of a category page: the crypto term as a kicker, the H1, a short
+ * answer-first paragraph (the one an answer engine should lift), the
+ * traditional-finance equivalent for newcomers, and the stat tiles.
  */
 export function CategoryHeader({
   category,
@@ -21,14 +22,23 @@ export function CategoryHeader({
   const c = CATEGORIES[category];
   return (
     <section className="mb-8">
-      <div className="flex items-center gap-3">
-        <CategoryBadgeIcon category={category} size={44} />
-        <p className={`text-xs font-semibold tracking-widest uppercase ${c.cls.text}`}>{c.hint}</p>
-      </div>
-      <h1 className="mt-3 max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h1>
-      <div className="mt-3 max-w-3xl text-[16px] leading-relaxed text-fg-muted">{children}</div>
+      <p className="kicker">
+        {c.title} <span className="text-fg-subtle">· in crypto: {c.term}</span>
+      </p>
+      <h1 className="mt-2 max-w-3xl text-4xl tracking-tight sm:text-5xl">{title}</h1>
+      <div className="mt-3 max-w-3xl text-[17px] leading-relaxed text-fg-muted">{children}</div>
+      <p className="mt-3 max-w-3xl border-l-2 border-fg pl-3 text-sm leading-relaxed text-fg">
+        {c.tradfi}{" "}
+        <Link href={`/hub/${c.lesson}`} className="text-accent underline underline-offset-2">
+          How it works
+        </Link>
+        <span className="text-fg-subtle"> · New to this? </span>
+        <Link href={`/hub/${CATEGORIES.hub.lesson}`} className="text-accent underline underline-offset-2">
+          Start here
+        </Link>
+      </p>
       {logos && <div className="mt-4">{logos}</div>}
-      {tiles && <dl className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">{tiles}</dl>}
+      {tiles && <dl className="mt-7 grid grid-cols-2 border-t lg:grid-cols-4">{tiles}</dl>}
     </section>
   );
 }
@@ -49,9 +59,9 @@ export function Tile({
 }) {
   const accent = category ? CATEGORIES[category].cls.text : tone === "warn" ? "text-warn" : "text-fg";
   return (
-    <div className="rounded-xl border bg-bg-raised p-4 shadow-card">
-      <dt className="text-[11px] font-medium tracking-wide text-fg-muted uppercase">{label}</dt>
-      <dd className={`tabular-nums mt-1.5 text-2xl font-semibold tracking-tight sm:text-[28px] ${tone === "warn" ? "text-warn" : accent}`}>
+    <div className="border-b py-4 pr-4 lg:border-r lg:pl-4 lg:first:pl-0 lg:last:border-r-0">
+      <dt className="kicker">{label}</dt>
+      <dd className={`tabular-nums mt-1.5 font-[family-name:var(--font-display)] text-3xl ${tone === "warn" ? "text-warn" : accent}`}>
         {value}
       </dd>
       {note && <p className="mt-1 text-xs leading-snug text-fg-subtle">{note}</p>}

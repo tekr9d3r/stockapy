@@ -124,7 +124,7 @@ ${footer("/", "/api/v1/summary")}`;
 
 export function earnMd(): string {
   const s = getSummary();
-  return `# Earn yield on tokenized stocks
+  return `# Lend your tokenized stock and earn a yield (Earn)
 
 As of ${s.asOf}: up to ${mdPct(s.earn.maxApy)} across ${s.earn.venues} venues; median ${mdPct(s.earn.medianApy)}. Interest and incentives are shown separately; ended programmes keep their last rate.
 
@@ -134,7 +134,7 @@ ${footer("/earn", "/api/v1/earn")}`;
 
 export function liquidityMd(): string {
   const s = getSummary();
-  return `# Provide liquidity with tokenized stocks
+  return `# Act as a market maker with your tokenized stock (Liquidity)
 
 As of ${s.asOf}: median LP fee APY ${mdPct(s.liquidity.medianFeeApy)} across stock/stablecoin pools, before impermanent loss. Fee APY is what reaches the LP.
 
@@ -144,7 +144,7 @@ ${footer("/liquidity", "/api/v1/liquidity")}`;
 
 export function borrowMd(): string {
   const s = getSummary();
-  return `# Borrow against tokenized stocks
+  return `# Borrow cash against your tokenized stock (Borrow)
 
 As of ${s.asOf}: ${s.borrow.markets} markets, up to ${mdLtv(s.borrow.maxLtv)} loan-to-value, median borrow APR ${mdPct(s.borrow.medianBorrowApr)}. Max LTV is the liquidation line, not a target.
 
@@ -162,11 +162,11 @@ export function stockMd(ticker: string): string | null {
   const t = asset.ticker.toLowerCase();
   return `# Tokenized ${asset.ticker} (${asset.name})
 
-## Deposit (${earn.length})
+## Lend (${earn.length})
 
 ${earn.length ? earnTable(earn) : "None tracked."}
 
-## Provide liquidity (${pools.length})
+## Act as a market maker (${pools.length})
 
 ${pools.length ? liquidityTable(pools) : "No active pools."}
 

@@ -1,93 +1,97 @@
 @import "tailwindcss";
 
+/*
+ * Editorial palette: paper, ink and one restrained accent. Categories are told
+ * apart by their names, not by colour, so the category tokens resolve to ink.
+ * Colour is kept for meaning only: positive, warning, zero.
+ */
 :root {
   color-scheme: light;
-  --bg: #fbfbfd;
-  --bg-subtle: #f3f4f8;
+  --bg: #faf9f6;
+  --bg-subtle: #f2f0eb;
   --bg-raised: #ffffff;
-  --border: #e6e8ee;
-  --border-strong: #d3d7e0;
-  --fg: #0e1320;
-  --fg-muted: #5b6475;
-  --fg-subtle: #8a93a5;
-  --accent: #2457f5;
+  --border: #e3dfd7;
+  --border-strong: #c9c3b8;
+  --fg: #151515;
+  --fg-muted: #57534c;
+  --fg-subtle: #8a857c;
+  --accent: #1f3a68;
   --accent-fg: #ffffff;
-  --accent-subtle: #edf2ff;
-  --positive: #067647;
-  --warn: #b54708;
-  --warn-subtle: #fffaeb;
-  --zero: #98a2b3;
-  /* One colour per category, used for icons, headers, buttons and bars. */
-  --earn: #0e9f6e;
-  --earn-subtle: #e8f8f1;
-  --liquidity: #7c3aed;
-  --liquidity-subtle: #f3edff;
-  --borrow: #d97706;
-  --borrow-subtle: #fff5e6;
-  --hub: #2457f5;
-  --hub-subtle: #edf2ff;
-  --on-category: #ffffff;
-  --shadow: 0 1px 2px rgb(16 24 40 / 0.04), 0 4px 16px rgb(16 24 40 / 0.06);
+  --accent-subtle: #eaeef5;
+  --positive: #1d6b44;
+  --warn: #9a4a0b;
+  --warn-subtle: #fbf3e6;
+  --zero: #a09a90;
+  --earn: var(--fg);
+  --earn-subtle: var(--bg-subtle);
+  --liquidity: var(--fg);
+  --liquidity-subtle: var(--bg-subtle);
+  --borrow: var(--fg);
+  --borrow-subtle: var(--bg-subtle);
+  --hub: var(--accent);
+  --hub-subtle: var(--accent-subtle);
+  --on-category: var(--bg);
+  --shadow: none;
 }
 
 /* Dark: chosen explicitly, or following the system unless light was chosen. */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #090b10;
-  --bg-subtle: #10131a;
-  --bg-raised: #141821;
-  --border: #232833;
-  --border-strong: #303746;
-  --fg: #f0f2f5;
-  --fg-muted: #a0a9b8;
-  --fg-subtle: #6b7587;
-  --accent: #6b95ff;
-  --accent-fg: #090b10;
-  --accent-subtle: #151d33;
-  --positive: #47cd89;
-  --warn: #fdb022;
-  --warn-subtle: #1c1708;
-  --zero: #6b7587;
-  --earn: #34d399;
-  --earn-subtle: #0d2219;
-  --liquidity: #a78bfa;
-  --liquidity-subtle: #1c1530;
-  --borrow: #fbbf24;
-  --borrow-subtle: #241a07;
-  --hub: #6b95ff;
-  --hub-subtle: #151d33;
-  --on-category: #090b10;
-  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25);
+  --bg: #131211;
+  --bg-subtle: #1a1917;
+  --bg-raised: #1c1b19;
+  --border: #2c2a26;
+  --border-strong: #403c36;
+  --fg: #ecebe7;
+  --fg-muted: #aaa69d;
+  --fg-subtle: #78746c;
+  --accent: #a9bde3;
+  --accent-fg: #131211;
+  --accent-subtle: #1d2433;
+  --positive: #6cc395;
+  --warn: #e0a24a;
+  --warn-subtle: #241c10;
+  --zero: #6f6b64;
+  --earn: var(--fg);
+  --earn-subtle: var(--bg-subtle);
+  --liquidity: var(--fg);
+  --liquidity-subtle: var(--bg-subtle);
+  --borrow: var(--fg);
+  --borrow-subtle: var(--bg-subtle);
+  --hub: var(--accent);
+  --hub-subtle: var(--accent-subtle);
+  --on-category: var(--bg);
+  --shadow: none;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --bg: #090b10;
-    --bg-subtle: #10131a;
-    --bg-raised: #141821;
-    --border: #232833;
-    --border-strong: #303746;
-    --fg: #f0f2f5;
-    --fg-muted: #a0a9b8;
-    --fg-subtle: #6b7587;
-    --accent: #6b95ff;
-    --accent-fg: #090b10;
-    --accent-subtle: #151d33;
-    --positive: #47cd89;
-    --warn: #fdb022;
-    --warn-subtle: #1c1708;
-    --zero: #6b7587;
-    --earn: #34d399;
-    --earn-subtle: #0d2219;
-    --liquidity: #a78bfa;
-    --liquidity-subtle: #1c1530;
-    --borrow: #fbbf24;
-    --borrow-subtle: #241a07;
-    --hub: #6b95ff;
-    --hub-subtle: #151d33;
-    --on-category: #090b10;
-    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25);
+    --bg: #131211;
+    --bg-subtle: #1a1917;
+    --bg-raised: #1c1b19;
+    --border: #2c2a26;
+    --border-strong: #403c36;
+    --fg: #ecebe7;
+    --fg-muted: #aaa69d;
+    --fg-subtle: #78746c;
+    --accent: #a9bde3;
+    --accent-fg: #131211;
+    --accent-subtle: #1d2433;
+    --positive: #6cc395;
+    --warn: #e0a24a;
+    --warn-subtle: #241c10;
+    --zero: #6f6b64;
+    --earn: var(--fg);
+    --earn-subtle: var(--bg-subtle);
+    --liquidity: var(--fg);
+    --liquidity-subtle: var(--bg-subtle);
+    --borrow: var(--fg);
+    --borrow-subtle: var(--bg-subtle);
+    --hub: var(--accent);
+    --hub-subtle: var(--accent-subtle);
+    --on-category: var(--bg);
+    --shadow: none;
   }
 }
 
@@ -117,6 +121,14 @@
   --color-hub-subtle: var(--hub-subtle);
   --color-on-category: var(--on-category);
   --shadow-card: var(--shadow);
+  --font-display: var(--font-serif), Georgia, "Times New Roman", serif;
+  /* Square, print-like corners. Logos keep rounded-full. */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 3px;
+  --radius-xl: 4px;
+  --radius-2xl: 4px;
+  --radius-3xl: 4px;
 }
 
 /* Base rules live in the base layer so Tailwind utilities can override them. */
@@ -128,6 +140,14 @@
   a {
     color: inherit;
   }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
 }
 
 body {
@@ -135,13 +155,21 @@ body {
   color: var(--fg);
   font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
-  font-feature-settings: "cv02", "cv03", "cv04";
+}
+
+/* Small caps section label, the editorial replacement for icon badges. */
+.kicker {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
 }
 
 /* Numbers in a comparison table must line up. */
 .tnum {
   font-variant-numeric: tabular-nums;
-  font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
 ::selection {

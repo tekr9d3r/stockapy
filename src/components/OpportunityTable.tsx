@@ -100,8 +100,8 @@ export function OpportunityTable({
             ))}
           </Select>
           <Select value={sort} onChange={(v) => setSort(v as SortKey)} label="Sort by">
-            <option value="apy">Sort: APY</option>
-            <option value="tvl">Sort: TVL</option>
+            <option value="apy">Sort: yield</option>
+            <option value="tvl">Sort: money in</option>
             <option value="stock">Sort: Stock</option>
           </Select>
           <details className="relative">
@@ -138,12 +138,12 @@ export function OpportunityTable({
             shown separately.
           </caption>
           <thead className="hidden md:table-header-group">
-            <tr className="border-b bg-bg-subtle text-left text-[11px] uppercase tracking-wide text-fg-muted">
+            <tr className="border-y border-t-fg text-left text-[11px] uppercase tracking-wide text-fg-muted">
               <Th className="pl-4">Stock</Th>
               <Th>{hidePlatform ? "Market" : "Platform"}</Th>
               <Th>Chain</Th>
-              <Th className="text-right" title="Total APY. The bar splits it into interest (green) and token incentives (amber).">APY</Th>
-              <Th className="text-right">TVL</Th>
+              <Th className="text-right" title="APY: what the rate would pay over a year. The bar splits it into interest paid by borrowers and token incentives paid by the platform.">Yield / yr</Th>
+              <Th className="text-right" title="TVL: total value deposited in this market.">Money in</Th>
               <Th className="pr-4 text-right">
                 <span className="sr-only">Open market</span>
               </Th>

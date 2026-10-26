@@ -26,9 +26,10 @@ export function ActionButton({
   const c = CATEGORIES[category];
   const text = specific ? (label ?? c.action) : `Open ${platform}`;
   const pad = size === "md" ? "h-9 px-3.5 text-sm" : "h-7 px-2.5 text-xs";
+  // Understated, like a link in a printed table: an ink outline that fills on hover.
   const tone = specific
-    ? `${c.cls.bg} text-on-category hover:opacity-90`
-    : "border border-border-strong bg-bg-raised text-fg hover:bg-bg-subtle";
+    ? "border border-fg text-fg hover:bg-fg hover:text-bg"
+    : "border border-border-strong text-fg-muted hover:border-fg hover:text-fg";
   return (
     <a
       href={href}

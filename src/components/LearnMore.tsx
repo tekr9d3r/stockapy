@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, Hash } from "lucide-react";
 import { GLOSSARY } from "@/lib/content/glossary";
 import { getPost } from "@/lib/content/posts";
 
@@ -20,36 +19,30 @@ export function LearnMore({ posts, terms = [] }: { posts: string[]; terms?: stri
   });
 
   return (
-    <section aria-labelledby="learn-more" className="mt-12">
-      <h2 id="learn-more" className="mb-3 text-sm font-semibold tracking-wide text-fg-muted uppercase">
+    <section aria-labelledby="learn-more" className="mt-12 border-t-2 border-fg pt-4">
+      <h2 id="learn-more" className="kicker">
         Before you deposit
       </h2>
-      <div className="grid gap-3 md:grid-cols-2">
+      <ul className="mt-2 divide-y">
         {articles.map((a) => (
-          <Link
-            key={a.href}
-            href={a.href}
-            className="group flex items-center gap-3 rounded-xl border bg-bg-raised p-4 transition hover:border-border-strong hover:shadow-card"
-          >
-            <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg bg-hub-subtle text-hub">
-              <BookOpen size={17} aria-hidden="true" />
-            </span>
-            <span className="min-w-0 flex-1">
-              <span className="block font-medium leading-snug group-hover:text-accent">{a.title}</span>
-              <span className="text-xs text-fg-subtle">{a.meta}</span>
-            </span>
-            <ArrowRight size={16} aria-hidden="true" className="text-fg-subtle" />
-          </Link>
-        ))}
-      </div>
-      {defs.length > 0 && (
-        <p className="mt-3 flex flex-wrap items-center gap-2 text-sm">
-          <span className="text-fg-subtle">Terms:</span>
-          {defs.map((d) => (
-            <Link key={d.href} href={d.href} className="inline-flex items-center gap-1 rounded-full border bg-bg-raised px-2.5 py-0.5 text-fg-muted hover:text-fg">
-              <Hash size={12} aria-hidden="true" />
-              {d.title}
+          <li key={a.href}>
+            <Link href={a.href} className="group flex items-baseline justify-between gap-4 py-3">
+              <span className="font-[family-name:var(--font-display)] text-lg leading-snug group-hover:underline">{a.title}</span>
+              <span className="shrink-0 text-xs text-fg-subtle">{a.meta} →</span>
             </Link>
+          </li>
+        ))}
+      </ul>
+      {defs.length > 0 && (
+        <p className="mt-3 text-sm">
+          <span className="text-fg-subtle">Terms used here: </span>
+          {defs.map((d, i) => (
+            <span key={d.href}>
+              {i > 0 && <span className="text-fg-subtle"> · </span>}
+              <Link href={d.href} className="text-accent underline-offset-2 hover:underline">
+                {d.title}
+              </Link>
+            </span>
           ))}
         </p>
       )}
