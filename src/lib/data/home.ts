@@ -47,11 +47,15 @@ export function getHomeData() {
   // One pool per stock, so five picks are five different stocks.
   const topLiquidity = diverse(deepPools, (r) => r.underlyings.join(","), TOP_N).sort((a, b) => b.apyBase! - a.apyBase!);
 
+  // Cheapest interest first: for a borrower, a lower rate is the better deal.
+  // Markets with no published rate can't be ranked on cost, so they come last.
+  const byCost = (x: Row, y: Row) =>
+    (x.borrow!.borrowApr ?? Infinity) - (y.borrow!.borrowApr ?? Infinity) || (y.borrow!.ltv ?? 0) - (x.borrow!.ltv ?? 0);
   const topBorrow = diverse(
-    borrowAll.filter((r) => r.borrow?.ltv != null),
+    borrowAll.filter((r) => r.borrow?.ltv != null).sort(byCost),
     (r) => r.platform.id,
     TOP_N,
-  ).sort((a, b) => (b.borrow!.ltv ?? 0) - (a.borrow!.ltv ?? 0) || (a.borrow!.borrowApr ?? Infinity) - (b.borrow!.borrowApr ?? Infinity));
+  ).sort(byCost);
 
   // One entry per stock with a page (a live market), ranked by activity.
   const assets = new Map(loadAssets().map((a) => [a.ticker, a]));

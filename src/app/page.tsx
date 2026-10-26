@@ -231,7 +231,7 @@ export default function Home() {
 const WAYS: { category: "earn" | "liquidity" | "borrow"; extraLabel: string; rateLabel: string }[] = [
   { category: "earn", extraLabel: "Money in", rateLabel: "Yield / yr" },
   { category: "liquidity", extraLabel: "Money in pool", rateLabel: "Fee yield / yr" },
-  { category: "borrow", extraLabel: "Interest / yr", rateLabel: "Borrow up to" },
+  { category: "borrow", extraLabel: "Borrow up to", rateLabel: "Interest / yr" },
 ];
 
 const COMPARE_NOUN: Record<string, string> = { earn: "places to lend", liquidity: "trading pools", borrow: "borrowing markets" };
@@ -375,9 +375,9 @@ function BorrowPick({ r }: { r: Row }) {
       sub={r.underlying.name}
       platform={r.platform}
       chain={r.chain}
-      extra={b.borrowApr !== null ? `${b.borrowApr.toFixed(2)}%` : "—"}
-      extraSub={`in ${b.loanAsset}`}
-      rate={formatLtv(b.ltv)}
+      extra={formatLtv(b.ltv)}
+      extraSub="of the stock's value"
+      rate={b.borrowApr !== null ? `${b.borrowApr.toFixed(2)}%` : "—"}
     />
   );
 }
