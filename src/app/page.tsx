@@ -126,11 +126,11 @@ export default function Home() {
           {today} <span className="text-fg-subtle">· live rates, updated {asOf}</span>
         </p>
         <h1 className="mt-3 max-w-4xl text-4xl leading-[1.08] tracking-tight sm:text-6xl">
-          Your tokenized stock can earn up to {formatApy(d.earn.maxApy)} a year. Here is how, and the catch.
+          Tokenized stocks give you more options than ever: extra yield on the stocks you already like.
         </h1>
         <p className="mt-4 max-w-2xl text-[18px] leading-relaxed text-fg-muted">
-          A stock held as a token can be lent out, used to make a market, or borrowed against, without
-          selling it. Today&apos;s best rates from {d.platforms.length} platforms, checked hourly and never paid for.
+          Once a stock is a token, you can lend it, use it to make a market, or borrow against it, without
+          selling it. Below are today&apos;s rates from {d.platforms.length} platforms, checked hourly and never paid for.
         </p>
       </section>
 
