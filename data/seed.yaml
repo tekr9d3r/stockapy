@@ -754,7 +754,8 @@ opportunities:
       liability), while superTSLA and superSPCX held 100% unallocated stock and no
       leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
       almost entirely sUP emissions, not interest.
-    active: true
+    # Moved to the watchlist on 26 Oct 2026: the strategy is hard to explain plainly.
+    active: false
   - id: superform-supertsla
     token: TSLAc
     platform: superform
@@ -774,7 +775,8 @@ opportunities:
       liability), while superTSLA and superSPCX held 100% unallocated stock and no
       leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
       almost entirely sUP emissions, not interest.
-    active: true
+    # Moved to the watchlist on 26 Oct 2026: the strategy is hard to explain plainly.
+    active: false
   - id: superform-supergoogl
     token: GOOGLc
     platform: superform
@@ -794,7 +796,8 @@ opportunities:
       liability), while superTSLA and superSPCX held 100% unallocated stock and no
       leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
       almost entirely sUP emissions, not interest.
-    active: true
+    # Moved to the watchlist on 26 Oct 2026: the strategy is hard to explain plainly.
+    active: false
   - id: superform-superaapl
     token: AAPLc
     platform: superform
@@ -814,7 +817,8 @@ opportunities:
       liability), while superTSLA and superSPCX held 100% unallocated stock and no
       leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
       almost entirely sUP emissions, not interest.
-    active: true
+    # Moved to the watchlist on 26 Oct 2026: the strategy is hard to explain plainly.
+    active: false
   - id: superform-supermeta
     token: METAc
     platform: superform
@@ -834,7 +838,8 @@ opportunities:
       liability), while superTSLA and superSPCX held 100% unallocated stock and no
       leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
       almost entirely sUP emissions, not interest.
-    active: true
+    # Moved to the watchlist on 26 Oct 2026: the strategy is hard to explain plainly.
+    active: false
   - id: superform-superamzn
     token: AMZNc
     platform: superform
@@ -854,7 +859,8 @@ opportunities:
       liability), while superTSLA and superSPCX held 100% unallocated stock and no
       leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
       almost entirely sUP emissions, not interest.
-    active: true
+    # Moved to the watchlist on 26 Oct 2026: the strategy is hard to explain plainly.
+    active: false
   - id: superform-supermsft
     token: MSFTc
     platform: superform
@@ -874,7 +880,8 @@ opportunities:
       liability), while superTSLA and superSPCX held 100% unallocated stock and no
       leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
       almost entirely sUP emissions, not interest.
-    active: true
+    # Moved to the watchlist on 26 Oct 2026: the strategy is hard to explain plainly.
+    active: false
   - id: superform-superspcx
     token: SPCXc
     platform: superform
@@ -894,7 +901,8 @@ opportunities:
       liability), while superTSLA and superSPCX held 100% unallocated stock and no
       leverage at all. Where leverage is on, so is liquidation risk. The rate itself is
       almost entirely sUP emissions, not interest.
-    active: true
+    # Moved to the watchlist on 26 Oct 2026: the strategy is hard to explain plainly.
+    active: false
 
 
   - id: morpho-nvda-usdg-robinhood
@@ -1807,6 +1815,16 @@ opportunities:
 # Venues named in research that we have NOT been able to confirm as live stock-earn
 # opportunities. Shown on the site as a watchlist, never as a row with a number next to it.
 watchlist:
+  - platform: Superform
+    chain: Base
+    status: Not listed
+    note: >-
+      SuperStocks vaults take a Coinbase tokenized stock and may run a leveraged loop
+      against USDC (on 19 Oct 2026 superNVDA was looped through Aave V4 and Morpho, while
+      superTSLA held the stock unallocated). The rate is almost entirely sUP token
+      emissions. Taken off the comparison on 26 Oct 2026 until the strategy can be
+      described plainly.
+    url: https://app.superform.xyz
   - platform: Euler
     chain: Ethereum
     status: Unconfirmed
