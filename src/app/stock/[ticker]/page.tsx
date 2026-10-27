@@ -205,7 +205,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
       </dl>
 
       {rows.length > 0 && (
-        <section className="mt-10">
+        <section id="lend" className="mt-10 scroll-mt-24">
           <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
             Lend {asset.ticker}
           </h2>
@@ -214,7 +214,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
       )}
 
       {pools.length > 0 && (
-        <section className="mt-10">
+        <section id="market-make" className="mt-10 scroll-mt-24">
           <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
             Act as a market maker
             <InfoTip
@@ -226,7 +226,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
       )}
 
       {borrow.length > 0 && (
-        <section className="mt-10">
+        <section id="borrow" className="mt-10 scroll-mt-24">
           <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
             Borrow against it
             <InfoTip text="Max LTV is the liquidation line, not a target: borrowing near it invites liquidation on an ordinary day's move." />

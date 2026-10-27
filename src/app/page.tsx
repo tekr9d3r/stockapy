@@ -281,6 +281,7 @@ function Way({
 }
 
 function Pick({
+  href,
   ticker,
   title,
   sub,
@@ -290,6 +291,8 @@ function Pick({
   extraSub,
   rate,
 }: {
+  /** The stock's page, at this category's table: every market for that stock, compared. */
+  href: string;
   ticker: string;
   title: string;
   /** Second line under the token: the company, or the day's trading. */
@@ -302,12 +305,17 @@ function Pick({
 }) {
   const chainName = chain === "BSC" ? "BNB Chain" : chain;
   return (
-    <tr>
+    // The whole row is the link: the title's link stretches over it.
+    <tr className="group relative transition-colors hover:bg-bg-subtle">
       <td className="py-3 pr-3">
         <div className="flex items-center gap-2.5">
           <StockLogo ticker={ticker} size={30} />
           <div className="min-w-0">
-            <p className="truncate font-semibold leading-tight">{title}</p>
+            <p className="truncate font-semibold leading-tight">
+              <Link href={href} className="after:absolute after:inset-0 group-hover:underline">
+                {title}
+              </Link>
+            </p>
             {sub && <p className="mt-0.5 truncate text-xs text-fg-subtle">{sub}</p>}
             {/* Phone width: platform and chain fold under the token. */}
             <p className="mt-0.5 truncate text-xs text-fg-subtle sm:hidden">
@@ -341,6 +349,7 @@ function Pick({
 function EarnPick({ r }: { r: Row }) {
   return (
     <Pick
+      href={`/stock/${r.underlying.ticker.toLowerCase()}#lend`}
       ticker={r.underlying.ticker}
       title={r.token.symbol}
       sub={r.underlying.name}
@@ -355,6 +364,7 @@ function EarnPick({ r }: { r: Row }) {
 function LiquidityPick({ r }: { r: LiquidityRow }) {
   return (
     <Pick
+      href={`/stock/${r.underlyings[0].toLowerCase()}#market-make`}
       ticker={r.underlyings[0]}
       title={r.legs.map((l) => l.symbol).join(" / ")}
       sub={`${formatUsd(r.volumeUsd1d)} traded today`}
@@ -370,6 +380,7 @@ function BorrowPick({ r }: { r: Row }) {
   const b = r.borrow!;
   return (
     <Pick
+      href={`/stock/${r.underlying.ticker.toLowerCase()}#borrow`}
       ticker={r.underlying.ticker}
       title={`${r.token.symbol} → ${b.loanAsset}`}
       sub={r.underlying.name}
