@@ -1,8 +1,8 @@
-# Project: StockYield (working name)
+# Project: StockAPY
 
 A comparison site that shows tokenized stock holders where they can earn yield on their tokens, across chains, issuers, DeFi protocols and CeFi platforms, in one place.
 
-> Working name. Alternatives under consideration: Equifarm, xEarn, Dividendless, OnchainDividends. Keep the brand name in one config constant so it can be changed easily.
+> The brand name lives in one config constant (`BRAND_NAME` in `src/config.ts`).
 
 ---
 
