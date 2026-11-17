@@ -1744,11 +1744,11 @@ opportunities:
     manual:
       apy_base: null
       apy_reward: null
-      apy_total: 2.3
+      apy_total: 2.47
       tvl_usd: null
-      checked_at: 2026-11-10
+      checked_at: 2026-11-17
       note: >-
-        Rate read from Kraken's own xStocks Earn page on 10 Nov 2026. Kraken has no
+        Rate read from Kraken's own xStocks Earn page on 17 Nov 2026. Kraken has no
         public earn API — its Earn endpoint needs an authenticated key — so this is
         hand-entered and will go stale between checks. Kraken does not split it into
         interest and incentive, so the split is unknown rather than zero.
@@ -1771,11 +1771,11 @@ opportunities:
     manual:
       apy_base: null
       apy_reward: null
-      apy_total: 2.59
+      apy_total: 3.01
       tvl_usd: null
-      checked_at: 2026-11-10
+      checked_at: 2026-11-17
       note: >-
-        Rate read from Kraken's own xStocks Earn page on 10 Nov 2026. Kraken has no
+        Rate read from Kraken's own xStocks Earn page on 17 Nov 2026. Kraken has no
         public earn API — its Earn endpoint needs an authenticated key — so this is
         hand-entered and will go stale between checks. Kraken does not split it into
         interest and incentive, so the split is unknown rather than zero.
@@ -1798,11 +1798,11 @@ opportunities:
     manual:
       apy_base: null
       apy_reward: null
-      apy_total: 3.32
+      apy_total: 2.84
       tvl_usd: null
-      checked_at: 2026-11-10
+      checked_at: 2026-11-17
       note: >-
-        Rate read from Kraken's own xStocks Earn page on 10 Nov 2026. Kraken has no
+        Rate read from Kraken's own xStocks Earn page on 17 Nov 2026. Kraken has no
         public earn API — its Earn endpoint needs an authenticated key — so this is
         hand-entered and will go stale between checks. Kraken does not split it into
         interest and incentive, so the split is unknown rather than zero.
